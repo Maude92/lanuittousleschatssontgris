@@ -18,6 +18,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	Animator animatorMist;
 
 	public GameObject camera;
+	public GameObject testTourne;
 
 	// Use this for initialization
 	void Start () {
@@ -28,29 +29,31 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 	void FixedUpdate(){
 		Movement ();
+
+		if (Input.GetAxis ("Vertical") != 0 || Input.GetAxis ("Horizontal") != 0) {
+			//transform.forward = testTourne.transform.forward;
+			//transform.forward = camera.transform.localEulerAngles;
+			//transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, Camera.main.transform.localEulerAngles.y, transform.localEulerAngles.z);
+			print ("je crois pas que le forward soit si nécessaire que ça");
+		}
 	}
 
 	// Update is called once per frame
 	void Update () {
 		UserInputs ();
-		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Horizontal")));
+		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
 	}
 
 
 	void Movement(){
-		// Partie Cristelle
-		//		if(Input.GetAxis("Vertical")>0){
-		//			transform.forward = camera.transform.forward;
-		//		}
-
-		// Cette ligne est pour le vertical movement, en ce moment c'est sur l'axe Z
+//		// Cette ligne est pour le vertical movement, en ce moment c'est sur l'axe Z
 		transform.Translate (0, 0, Input.GetAxis ("Vertical") * Time.deltaTime * PlayerMovementSpeed);
-
-		// Cette ligne est pour le horizontal movement, en ce moment c'est sur l'axe X. When combined with vertical movement it can be used for Strafing
+//
+//		// Cette ligne est pour le horizontal movement, en ce moment c'est sur l'axe X. When combined with vertical movement it can be used for Strafing
 		transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * PlayerMovementSpeed, 0, 0);
 		transform.Rotate (0, Input.GetAxis ("Horizontal") * Time.deltaTime * PlayerRotationSpeed, 0);
-		// VERSION CRISTELLEtransform.Rotate (0 , 2 * Input.GetAxis("Horizontal"), 0 );
+
 	}
 
 	void UserInputs(){
