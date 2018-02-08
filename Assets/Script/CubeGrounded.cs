@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CubeGrounded : MonoBehaviour {
 
-	float longueurRay = 0.8f;
+	public float longueurRay = 0.8f;
 	private RaycastHit hit;	
 
 	//public GameObject groundCheck;
