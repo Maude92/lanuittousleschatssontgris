@@ -33,8 +33,25 @@ public class Xbox_Controls : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		UserInputs ();
-		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Horizontal")));
+		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
+
+		//print (Input.GetAxis ("RightStick"));
+
+		// POUR FAIRE PIVOTER LA TÊTE
+		if (Input.GetAxis ("RightStick") < -0.1f) {
+			print ("Allo! Tête à gauche.");
+			animatorMist.SetFloat ("TurnG", 1);
+		} else
+			animatorMist.SetFloat ("TurnG", 0);
+
+		if (Input.GetAxis ("RightStick") > 0.1f) {
+			print ("Allo! Tête à droite.");
+		}
+
+		if (Input.GetAxis ("RightStickY") > 0.1f) {
+			print ("Allo! Tête en haut.");
+		}
 	}
 
 
