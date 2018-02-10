@@ -623,8 +623,6 @@ GameObject:
   - component: {fileID: 375910164}
   - component: {fileID: 375910163}
   - component: {fileID: 375910169}
-  - component: {fileID: 375910168}
-  - component: {fileID: 375910167}
   m_Layer: 0
   m_Name: Player (1)
   m_TagString: Player
@@ -660,10 +658,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerMovementSpeed: 2
-  PlayerRotationSpeed: 150
+  PlayerRotationSpeed: 10
   jumpforce: 200
+  isjumping: 0
   mistObj: {fileID: 1243956811}
-  camera: {fileID: 734760054}
+  camera: {fileID: 734760060}
 --- !u!136 &375910165
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -694,36 +693,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &375910167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 375910162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca96b2ee134761e48a7df1cb0e0073cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &375910168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 375910162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a7913be68a3bbe4c8f20ae16981b28e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 360
-  m_StationaryTurnSpeed: 180
-  m_JumpPower: 12
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 1
-  m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.1
 --- !u!95 &375910169
 Animator:
   serializedVersion: 3
@@ -2519,7 +2488,7 @@ Transform:
   m_GameObject: {fileID: 1342389453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3

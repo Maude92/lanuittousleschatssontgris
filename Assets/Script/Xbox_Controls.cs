@@ -9,7 +9,10 @@ public class Xbox_Controls : MonoBehaviour {
 
 	public int jumpforce = 100;
 
+	public bool isjumping;
+
 	public GameObject mistObj;
+	public Transform camera;
 	//public GameObject cubeGroundObj;
 
 	CubeGrounded cubegrounded;
@@ -17,7 +20,7 @@ public class Xbox_Controls : MonoBehaviour {
 	Rigidbody rb;
 	Animator animatorMist;
 
-	public GameObject camera;
+	//public GameObject camera;
 
 	// Use this for initialization
 	void Start () {
@@ -67,13 +70,21 @@ public class Xbox_Controls : MonoBehaviour {
 //		if(Input.GetAxis("Vertical")>0){
 //			transform.forward = camera.transform.forward;
 //		}
+		Vector3 forward = Vector3.Scale(camera.forward, new Vector3(1, 0, 1)).normalized;
+		float v = Input.GetAxis ("Vertical") * Time.deltaTime  * PlayerMovementSpeed;			//float v = Input.GetAxis ("Vertical")  * PlayerMovementSpeed;
+																								//float h = Input.GetAxis ("Horizontal")  * PlayerMovementSpeed;
+		float h = Input.GetAxis ("Horizontal") * Time.deltaTime * PlayerMovementSpeed;
+
+		Vector3 move = v * forward + h * camera.right;
 
 		// Cette ligne est pour le vertical movement, en ce moment c'est sur l'axe Z
-		transform.Translate (0, 0, Input.GetAxis ("Vertical") * Time.deltaTime * PlayerMovementSpeed);
-
+		transform.Translate (move, Space.World);
+																								//rb.velocity = new Vector3 (move.x, rb.velocity.y, move.z);
 		// Cette ligne est pour le horizontal movement, en ce moment c'est sur l'axe X. When combined with vertical movement it can be used for Strafing
 		//transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * PlayerMovementSpeed, 0, 0);
-		transform.Rotate (0, Input.GetAxis ("Horizontal") * Time.deltaTime * PlayerRotationSpeed, 0);
+		if (move.magnitude > 0) {
+			transform.forward = Vector3.RotateTowards(transform.forward, move.normalized, Time.deltaTime * PlayerRotationSpeed, 0);
+		}
 
 		// VERSION CRISTELLE transform.Rotate (0 , 2 * Input.GetAxis("Horizontal"), 0 );
 
@@ -84,7 +95,7 @@ public class Xbox_Controls : MonoBehaviour {
 	void UserInputs(){
 	
 		// Bouton A (joystick button 0)
-		if (Input.GetButtonDown ("360_AButton") && cubegrounded.isGrounded == true){
+		if (Input.GetButtonDown ("360_AButton") && cubegrounded.isGrounded == true && isjumping == false){
 			print ("Je pèse sur: le bouton A!");
 				//animatorMist.SetTrigger ("Jump");
 				//animatorMist.SetBool ("Grounded", false);
@@ -170,10 +181,13 @@ public class Xbox_Controls : MonoBehaviour {
 //	}
 
 	IEnumerator JumpMistRoutine(){
+		isjumping = true;
 		animatorMist.SetTrigger ("Jump");
 		animatorMist.SetBool ("Grounded", false);
 		yield return new WaitForSeconds (0.23f);
+		cubegrounded.isGrounded = false;
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
+		isjumping = false;
 	}
 
 }
