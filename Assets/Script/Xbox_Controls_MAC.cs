@@ -19,12 +19,19 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 	public GameObject camera;
 	public GameObject testTourne;
+	Vector3 MistV3;
+
+	//Test Lump :
+	public float targetHeight = 0;
+	public bool Lumper = false;
+
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent <Rigidbody> ();
 		animatorMist = mistObj.GetComponent <Animator> ();
 		cubegrounded = cubeGroundObj.GetComponent <CubeGrounded> ();
+		MistV3 = mistObj.transform.position;
 	}
 
 	void FixedUpdate(){
@@ -122,7 +129,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 		}
 
-		print (Input.GetAxis("XbOne_RightTrigger"));
+		//print (Input.GetAxis("XbOne_RightTrigger"));
 
 		//		// The D-PAD is read from the 6th (horizontal) and 7th (vertical) joystick axes and from a sensitivity rating from -1 to 1, similar to the Triggers
 		//		//RIGHT d-pad button is activated when pressure is above 0, or the dead zone
@@ -172,4 +179,33 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	void JumpMist(){
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
 	}
+
+
+	//La première méthode avec des Lerp, mais genre le tuto était vieux de 8 ans so...
+//	void OnTriggerEnter (Collider col){
+//		if (Input.GetButtonDown ("XbOne_RightBumper") && col.transform.tag == "ZoneLump") {
+//			targetHeight = transform.TransformPoint(0,5,0).y;
+//			Lumper = true;
+//			rb.useGravity = false;
+//		}
+//	}
+//		
+//	void OnTriggerStay (Collider col){
+//		if(col.transform.tag == "ZoneLump" && Lumper == true && Input.GetButtonDown ("XbOne_RightBumper")) {
+//			MistV3.y = Mathf.Lerp(MistV3.y, targetHeight, 3.0f * Time.deltaTime);
+//			if(MistV3.y > (targetHeight - 1)) {
+//				Lumper = false;
+//				targetHeight = 0.0f;
+//				rb.useGravity = false;
+//			}
+//		}
+//	}
+//		
+//	void OnTriggerExit (Collider col){
+//		if (col.transform.tag == "ZoneLump") {
+//			targetHeight = 0.0f;
+//			Lumper = false;
+//			rb.useGravity = true;
+//		}
+//	}
 }
