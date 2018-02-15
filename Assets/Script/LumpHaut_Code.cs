@@ -36,7 +36,7 @@ public class LumpHaut_Code : MonoBehaviour {
 	}
 
 	void Update(){
-		if (isGrounded == true)
-			animatorMist.SetBool ("Grounded", true);
+	//	if (isGrounded == true)
+			//animatorMist.SetBool ("Grounded", true);
 	}
 }

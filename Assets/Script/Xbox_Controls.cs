@@ -166,13 +166,13 @@ public class Xbox_Controls : MonoBehaviour {
 		}
 
 		//Trigger gauche (L)
-		if (Input.GetAxis ("360_TriggerL")> 0.001){
-			print ("Je pèse sur le trigger gauche!!");
-		}
+//		if (Input.GetAxis ("360_TriggerL")> 0.001){
+//			//print ("Je pèse sur le trigger gauche!!");
+//		}
 
-		if (Input.GetAxis ("360_TriggerR") > 0.001) {
-			print ("Je pèse sur le trigger droit!!");
-		}
+//		if (Input.GetAxis ("360_TriggerR") > 0.001) {
+//			//print ("Je pèse sur le trigger droit!!");
+//		}
 
 		// The D-PAD is read from the 6th (horizontal) and 7th (vertical) joystick axes and from a sensitivity rating from -1 to 1, similar to the Triggers
 		//RIGHT d-pad button is activated when pressure is above 0, or the dead zone
@@ -201,9 +201,10 @@ public class Xbox_Controls : MonoBehaviour {
 			PlayerMovementSpeed = 4;
 			LumpHaut.SetActive (true);
 			JeLump = true;
-			//LumpUP ();
+			animatorMist.SetBool ("IsLumpingG", true);
 		} else if (Input.GetAxis ("360_TriggerL") < 0.001) {
 			PlayerMovementSpeed = 2;
+			animatorMist.SetBool ("IsLumpingG", false);
 			LumpHaut.SetActive (false);
 			JeLump = false;
 		}
@@ -215,9 +216,10 @@ public class Xbox_Controls : MonoBehaviour {
 			PlayerMovementSpeed = 4;
 			LumpBas.SetActive (true);
 			JeLump = true;
-			//LumpDown ();
+			animatorMist.SetBool ("IsLumping", true);
 		} else if (Input.GetAxis ("360_TriggerR") < 0.001) {
 			PlayerMovementSpeed = 2;
+			animatorMist.SetBool ("IsLumping", false);
 			LumpBas.SetActive (false);
 			JeLump = false;
 		}
