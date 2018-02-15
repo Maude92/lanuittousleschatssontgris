@@ -196,33 +196,46 @@ public class Xbox_Controls : MonoBehaviour {
 		// LUMP ET COURSE!!
 
 		//Trigger gauche (L)
-		if (Input.GetAxis ("360_TriggerL")> 0.001){
-			print ("Je pèse sur le trigger gauche!!");
-			PlayerMovementSpeed = 4;
-			LumpHaut.SetActive (true);
-			JeLump = true;
-			animatorMist.SetBool ("IsLumpingG", true);
-		} else if (Input.GetAxis ("360_TriggerL") < 0.001) {
-			PlayerMovementSpeed = 2;
-			animatorMist.SetBool ("IsLumpingG", false);
-			LumpHaut.SetActive (false);
-			JeLump = false;
-		}
+//		if (Input.GetAxis ("360_TriggerL")> 0.001){
+//			print ("Je pèse sur le trigger gauche!!");
+//			PlayerMovementSpeed = 4;
+//			LumpHaut.SetActive (true);
+//			JeLump = true;
+//			animatorMist.SetBool ("IsLumpingG", true);
+//		} else if (Input.GetAxis ("360_TriggerL") < 0.001) {
+//			PlayerMovementSpeed = 2;
+//			animatorMist.SetBool ("IsLumpingG", false);
+//			LumpHaut.SetActive (false);
+//			JeLump = false;
+//		}
 
 
 		//Trigger droite (R)
-		if (Input.GetAxis ("360_TriggerR") > 0.001) {
+		if (Input.GetAxis ("360_TriggerR") > 0.001 || Input.GetAxis ("360_TriggerL") > 0.001) {
 			print ("Je pèse sur le trigger droit!!");
 			PlayerMovementSpeed = 4;
-			LumpBas.SetActive (true);
+			//LumpBas.SetActive (true);
 			JeLump = true;
 			animatorMist.SetBool ("IsLumping", true);
-		} else if (Input.GetAxis ("360_TriggerR") < 0.001) {
+			if (Input.GetAxis ("360_TriggerR") > 0.001) {
+				LumpBas.SetActive (true);
+			}
+			if (Input.GetAxis ("360_TriggerL") > 0.001) {
+				LumpHaut.SetActive (true);
+			}
+		} else if (Input.GetAxis ("360_TriggerR") < 0.001 || Input.GetAxis ("360_TriggerL") < 0.001) {
 			PlayerMovementSpeed = 2;
 			animatorMist.SetBool ("IsLumping", false);
-			LumpBas.SetActive (false);
+			//LumpBas.SetActive (false);
 			JeLump = false;
+			if (Input.GetAxis ("360_TriggerR") < 0.001) {
+				LumpBas.SetActive (false);
+			}
+			if (Input.GetAxis ("360_TriggerL") < 0.001) {
+				LumpHaut.SetActive (false);
+			}
 		}
+
 			
 		if (Input.GetAxis ("360_TriggerR") > 0.001 && Input.GetAxis ("360_TriggerL")> 0.001) {
 			LumpHaut.SetActive (false);
