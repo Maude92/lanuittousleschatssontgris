@@ -9,21 +9,38 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 	public int jumpforce = 100;
 
+	public bool isjumping;
+
 	public GameObject mistObj;
-	public GameObject cubeGroundObj;
+	public Transform camera;
+	//public GameObject cubeGroundObj;
 
 	CubeGrounded cubegrounded;
 
 	Rigidbody rb;
 	Animator animatorMist;
 
-	public GameObject camera;
+	//public GameObject camera;
+
+
+	//Lumping test
+	public float longueurRay = 0.8f;
+	private RaycastHit hit;	
+
+	public GameObject LumpHaut;
+	public GameObject LumpBas;
+
+	public bool JeLump = false;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent <Rigidbody> ();
 		animatorMist = mistObj.GetComponent <Animator> ();
-		cubegrounded = cubeGroundObj.GetComponent <CubeGrounded> ();
+		cubegrounded = GetComponent <CubeGrounded> ();
+
+		//Pour Lump
+		LumpHaut.SetActive (false);
+		LumpBas.SetActive (false);
 	}
 
 	void FixedUpdate(){
@@ -33,8 +50,31 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		UserInputs ();
-		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Horizontal")));
+		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
+
+		// POUR FAIRE PIVOTER LA TÊTE
+		// Tête à gauche
+		if (Input.GetAxis ("XbOne_RightStickX") < -0.1f) {
+			print ("Allo! Tête à gauche.");
+			animatorMist.SetFloat ("TurnG", 1);
+		} else
+			animatorMist.SetFloat ("TurnG", 0);
+
+		// Tête à droite
+		if (Input.GetAxis ("XbOne_RightStickX") > 0.1f) {
+			print ("Allo! Tête à droite.");
+			animatorMist.SetFloat ("TurnD", 1);
+		} else
+			animatorMist.SetFloat ("TurnD", 0);
+
+		// Tête en haut
+		if (Input.GetAxis ("XbOne_RightStickY") > 0.1f) {
+			print ("Allo! Tête en haut.");
+			animatorMist.SetFloat ("TurnU", 1);
+		} else 
+			animatorMist.SetFloat ("TurnU", 0);
+
 	}
 
 
@@ -43,24 +83,37 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		//		if(Input.GetAxis("Vertical")>0){
 		//			transform.forward = camera.transform.forward;
 		//		}
+		Vector3 forward = Vector3.Scale(camera.forward, new Vector3(1, 0, 1)).normalized;
+		float v = Input.GetAxis ("Vertical") * Time.deltaTime  * PlayerMovementSpeed;			//float v = Input.GetAxis ("Vertical")  * PlayerMovementSpeed;
+		//float h = Input.GetAxis ("Horizontal")  * PlayerMovementSpeed;
+		float h = Input.GetAxis ("Horizontal") * Time.deltaTime * PlayerMovementSpeed;
+
+		Vector3 move = v * forward + h * camera.right;
 
 		// Cette ligne est pour le vertical movement, en ce moment c'est sur l'axe Z
-		transform.Translate (0, 0, Input.GetAxis ("Vertical") * Time.deltaTime * PlayerMovementSpeed);
-
+		transform.Translate (move, Space.World);
+		//rb.velocity = new Vector3 (move.x, rb.velocity.y, move.z);
 		// Cette ligne est pour le horizontal movement, en ce moment c'est sur l'axe X. When combined with vertical movement it can be used for Strafing
-		transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * PlayerMovementSpeed, 0, 0);
-		transform.Rotate (0, Input.GetAxis ("Horizontal") * Time.deltaTime * PlayerRotationSpeed, 0);
-		// VERSION CRISTELLEtransform.Rotate (0 , 2 * Input.GetAxis("Horizontal"), 0 );
+		//transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * PlayerMovementSpeed, 0, 0);
+		if (move.magnitude > 0) {
+			transform.forward = Vector3.RotateTowards(transform.forward, move.normalized, Time.deltaTime * PlayerRotationSpeed, 0);
+		}
+
+		// VERSION CRISTELLE transform.Rotate (0 , 2 * Input.GetAxis("Horizontal"), 0 );
+
+		// Pour rotater la cam
+		//transform.Rotate(0, Input.GetAxis ("RightStick") * Time.deltaTime * PlayerRotationSpeed, 0);
 	}
 
 	void UserInputs(){
 
 		// Bouton A (joystick button 0)
-		if (Input.GetButtonDown ("XbOne_AButton")){
+		if (Input.GetButtonDown ("XbOne_AButton") && cubegrounded.isGrounded == true && isjumping == false){
 			print ("Je pèse sur: le bouton A!");
-			animatorMist.SetTrigger ("Jump");
-			animatorMist.SetBool ("Grounded", false);
-			Invoke ("JumpMist", 0.23f);
+			//animatorMist.SetTrigger ("Jump");
+			//animatorMist.SetBool ("Grounded", false);
+			StartCoroutine (JumpMistRoutine ());
+			//Invoke ("JumpMist", 0.23f);
 		}
 
 		// Bouton B (joystick button 1)
@@ -108,36 +161,53 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			print ("Je pèse sur: right thumbstick button!");
 		}
 
+// LUMP et course
+
 		//Trigger gauche (L)
 		if (Input.GetAxis ("XbOne_LeftTrigger")> 0.001){
 			print ("Je pèse sur le trigger gauche!!");
+			PlayerMovementSpeed = 4;
+			LumpHaut.SetActive (true);
+			JeLump = true;
+			//LumpUP ();
+		} else if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001) {
+			PlayerMovementSpeed = 2;
+			LumpHaut.SetActive (false);
+			JeLump = false;
 		}
+			
 
-		//Trigger doirte (R)
+		//Trigger droite (R)
 		if (Input.GetAxis ("XbOne_RightTrigger") < -0.001) {
 			print ("Je pèse sur le trigger droit!!");
-
+			PlayerMovementSpeed = 4;
+			LumpBas.SetActive (true);
+			JeLump = true;
+			//LumpDown ();
+		} else if (Input.GetAxis ("XbOne_RightTrigger") < -0.001) {
+			PlayerMovementSpeed = 2;
+			//LumpBas.SetActive (false);
+			JeLump = false;
 		}
 
-		print (Input.GetAxis("XbOne_RightTrigger"));
+		if (Input.GetAxis ("XbOne_RightTrigger") == 1) {
+			LumpBas.SetActive (false);
+		}
 
-		//		// The D-PAD is read from the 6th (horizontal) and 7th (vertical) joystick axes and from a sensitivity rating from -1 to 1, similar to the Triggers
-		//		//RIGHT d-pad button is activated when pressure is above 0, or the dead zone
-		//		if (Input.GetAxis ("360_HorizontalDPAD")>0.001){
-		//			print ("Right D-PAD button!");
-		//		}
-		//		// LEFT d-pad....
-		//		if(Input.GetAxis ("360_HorizontalDPAD")<0){
-		//			print ("Left D-PAD button!");
-		//		}
-		//		// UP d-pad...
-		//		if (Input.GetAxis("360_VerticalDPAD")>0.001){
-		//			print ("Up D-PAD button!");
-		//		}
-		//		// DOWN d-pad...
-		//		if (Input.GetAxis("360_VerticalDPAD")<0){
-		//			print ("Down D-PAD button!");
-		//		}
+		if (Input.GetAxis ("XbOne_RightTrigger") < -0.001 && Input.GetAxis ("XbOne_LeftTrigger")> 0.001) {
+			LumpHaut.SetActive (false);
+			LumpBas.SetActive (false);
+		}
+
+		print ("Mon Axis de marde est pogné à" + Input.GetAxis ("XbOne_RightTrigger"));
+
+//		//Retourner le speed à la normal
+//		if (Input.GetAxis ("XbOne_RightTrigger") == 0 && Input.GetAxis ("XbOne_LeftTrigger") == 0) {
+//			PlayerMovementSpeed = 2;
+//			print (PlayerMovementSpeed);
+//		}
+
+		//print (Input.GetAxis("XbOne_RightTrigger"));
 
 		//D-PAD Mac
 		// UP
@@ -166,7 +236,25 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		}
 	}
 
-	void JumpMist(){
+//	void JumpMist(){
+//		rb.AddForce (new Vector3 (0, jumpforce, 0));
+//	}
+
+	IEnumerator JumpMistRoutine(){
+		isjumping = true;
+		animatorMist.SetTrigger ("Jump");
+		animatorMist.SetBool ("Grounded", false);
+		yield return new WaitForSeconds (0.23f);
+		cubegrounded.isGrounded = false;
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
+		isjumping = false;
+	}
+
+	void LumpUP (){
+		print ("Je Lump vers le haut ! Wouhou !");
+	}
+
+	void LumpDown (){
+		print ("Je Lump vers le bas ! Wouhou !");
 	}
 }
