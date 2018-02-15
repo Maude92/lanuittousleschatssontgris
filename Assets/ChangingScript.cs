@@ -13,7 +13,9 @@ public class ChangingScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col){
 		if (col.tag == "Balancing") {
+			transform.parent = col.transform;
 			Mist.transform.forward = ReferencePoint.transform.forward;
+			Mist.transform.position =  new Vector3 (ReferencePoint.transform.position.x, Mist.transform.position.y,Mist.transform.position.z );
 			Mist.GetComponent<Xbox_Controls_Balancing>().enabled = true;
 			Mist.GetComponent<Xbox_Controls>().enabled = false;
 		}
@@ -22,6 +24,7 @@ public class ChangingScript : MonoBehaviour {
 		if (col.tag == "Balancing") {
 			Mist.GetComponent<Xbox_Controls_Balancing>().enabled = false;
 			Mist.GetComponent<Xbox_Controls>().enabled = true;
+			transform.parent = null;
 		}
 	}
 	

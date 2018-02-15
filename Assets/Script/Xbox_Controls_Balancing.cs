@@ -13,12 +13,25 @@ public class Xbox_Controls_Balancing : MonoBehaviour {
 
 	public GameObject mistObj;
 	public Transform camera;
+	public GameObject balancing;
 	//public GameObject cubeGroundObj;
 
 	CubeGrounded cubegrounded;
 
 	Rigidbody rb;
 	Animator animatorMist;
+
+	//to try and align character to the ground
+	float longueurRay = 1.5f;
+
+	RaycastHit hit;
+	Quaternion rot;
+	public int smooth = 0;
+
+	public int explosion = 60;
+
+	Vector3 DifferenceBetweenPlayerandObject;
+	Vector3 forwardRelativeToSurfaceNormal;
 
 	//public GameObject camera;
 
@@ -36,44 +49,74 @@ public class Xbox_Controls_Balancing : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		UserInputs ();
-		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
+		//animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
 
+		//raycast
+//		if (Physics.Raycast (balancing.transform.position, -transform.up, out hit, longueurRay)) { //version de base!!!!!!!!
+//			if (hit.transform.tag == "Balancing") {
+//				print("Je suis sur un cylindre");
+//				DifferenceBetweenPlayerandObject = hit.transform.position - transform.position;
+//				float fucktrigo = Mathf.Tan (DifferenceBetweenPlayerandObject.x/DifferenceBetweenPlayerandObject.y);
+//				print ("Mon angle est" + fucktrigo);
+//				transform.eulerAngles = new Vector3 (0, 0 , -fucktrigo);
+//				//transform.rotation ;
+//				//hit.transform.rotation = ;
+//				//print ("Attention c'est un mechant");
+//			}
+//
+			// POUR FAIRE PIVOTER LA TÊTE
+			// Tête à gauche
+			if (Input.GetAxis ("RightStick") < -0.1f) {
+				print ("Allo! Tête à gauche.");
+				animatorMist.SetFloat ("TurnG", 1);
+			} else
+				animatorMist.SetFloat ("TurnG", 0);
 
-	// POUR FAIRE PIVOTER LA TÊTE
-		// Tête à gauche
-		if (Input.GetAxis ("RightStick") < -0.1f) {
-			print ("Allo! Tête à gauche.");
-			animatorMist.SetFloat ("TurnG", 1);
-		} else
-			animatorMist.SetFloat ("TurnG", 0);
+			// Tête à droite
+			if (Input.GetAxis ("RightStick") > 0.1f) {
+				print ("Allo! Tête à droite.");
+				animatorMist.SetFloat ("TurnD", 1);
+			} else
+				animatorMist.SetFloat ("TurnD", 0);
 
-		// Tête à droite
-		if (Input.GetAxis ("RightStick") > 0.1f) {
-			print ("Allo! Tête à droite.");
-			animatorMist.SetFloat ("TurnD", 1);
-		} else
-			animatorMist.SetFloat ("TurnD", 0);
+			// Tête en haut
+			if (Input.GetAxis ("RightStickY") > 0.1f) {
+				print ("Allo! Tête en haut.");
+				animatorMist.SetFloat ("TurnU", 1);
+			} else
+				animatorMist.SetFloat ("TurnU", 0);
 
-		// Tête en haut
-		if (Input.GetAxis ("RightStickY") > 0.1f) {
-			print ("Allo! Tête en haut.");
-			animatorMist.SetFloat ("TurnU", 1);
-		} else 
-			animatorMist.SetFloat ("TurnU", 0);
+			//CharacterFaceRelativeToSurface ();
+			//transform.Translate(Input.GetAxis("Horizontal")*0.01f, 0,0);
 
-	}
 
+
+			//try and set character rotating;
+//		Ray ray = new Ray (transform.position, -transform.up);
+//		if(Physics.Raycast(ray, out hit)){
+//			rot = Quaternion.FromToRotation (transform.up, hit.normal) * transform.rotation;
+//			transform.rotation = Quaternion.Lerp (transform.rotation, rot, Time.deltaTime * smooth);
+//		}
+
+		}
+
+
+//	private void CharacterFaceRelativeToSurface(){
+//		if(Physics.Raycast(transform.position, -Vector3.up, out hit, 10)){
+//			surfaceNormal = hit.normal;
+//			forwardRelativeToSurfaceNormal = Vector3.Cross (transform.right, surfaceNormal);
+//			Quaternion targetRotation = Quaternion.LookRotation (forwardRelativeToSurfaceNormal, surfaceNormal);
+//			transform.rotation = Quaternion.Lerp (transform.rotation, targetRotation,Time.deltaTime *2);
+//		}
+//	}
 
 	void Movement(){
-		// Partie Cristelle
-//		if(Input.GetAxis("Vertical")>0){
-//			transform.forward = camera.transform.forward;
-//		}
+		
 		Vector3 forward = Vector3.Scale(camera.forward, new Vector3(1, 0, 1)).normalized;
 		float v = Input.GetAxis ("Vertical") * Time.deltaTime  * PlayerMovementSpeed;			//float v = Input.GetAxis ("Vertical")  * PlayerMovementSpeed;
 																								//float h = Input.GetAxis ("Horizontal")  * PlayerMovementSpeed;
-		//float h = Input.GetAxis ("Horizontal") * Time.deltaTime * PlayerMovementSpeed;
+
 
 		Vector3 move = v * forward ;//+ h * camera.right;
 
@@ -96,7 +139,7 @@ public class Xbox_Controls_Balancing : MonoBehaviour {
 	
 		// Bouton A (joystick button 0)
 		if (Input.GetButtonDown ("360_AButton") && cubegrounded.isGrounded == true && isjumping == false){
-			print ("Je pèse sur: le bouton A!");
+			//print ("Je pèse sur: le bouton A!");
 				//animatorMist.SetTrigger ("Jump");
 				//animatorMist.SetBool ("Grounded", false);
 				StartCoroutine (JumpMistRoutine ());
@@ -120,12 +163,14 @@ public class Xbox_Controls_Balancing : MonoBehaviour {
 
 		// Left Bumper (... 4)
 		if (Input.GetButtonDown ("360_LeftBumper")){
-			print ("Je pèse sur: left bumper!");
+			//print ("Je pèse sur: left bumper!");
+			rb.AddForce (transform.right * -explosion);
 		}
 
 		// Right bumper (... 5)
 		if (Input.GetButtonDown ("360_RightBumper")){
-			print ("Je pèse sur: right bumper!");
+			//print ("Je pèse sur: right bumper!");
+			rb.AddForce (transform.right * explosion);
 		}
 
 		// Back button (... 6)
