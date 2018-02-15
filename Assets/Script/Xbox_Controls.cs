@@ -39,6 +39,14 @@ public class Xbox_Controls : MonoBehaviour {
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
 
+		if (cubegrounded.isGrounded == true) {
+			animatorMist.SetBool ("Grounded", true);
+			//isjumping = false;
+		} else if (cubegrounded.isGrounded == false) {
+			animatorMist.SetBool ("Grounded", false);
+			//isjumping = true;
+		}
+
 
 	// POUR FAIRE PIVOTER LA TÊTE
 		// Tête à gauche
@@ -183,10 +191,11 @@ public class Xbox_Controls : MonoBehaviour {
 	IEnumerator JumpMistRoutine(){
 		isjumping = true;
 		animatorMist.SetTrigger ("Jump");
-		animatorMist.SetBool ("Grounded", false);
-		yield return new WaitForSeconds (0.23f);
+		//animatorMist.SetBool ("Grounded", false);
+		yield return new WaitForSeconds (0.115f);
 		cubegrounded.isGrounded = false;
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
+		yield return new WaitForSeconds (0.5f);
 		isjumping = false;
 	}
 
