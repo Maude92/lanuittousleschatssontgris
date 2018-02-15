@@ -15,10 +15,23 @@ public class LumpHaut_Code : MonoBehaviour {
 
 	Rigidbody rb;
 
+	public bool isLerping;
+
+	//Variables Lerp Test
+	public float lerpTime = 1f;
+	public float currentLerpTime;
+
+	public float moveDistance = 10f;
+
+	Vector3 startPos;
+	Vector3 endPos;
+
 	// Use this for initialization
 	void Start () {
 		animatorMist = mistObj.GetComponent <Animator> ();
 		rb = GetComponent <Rigidbody> ();
+		startPos = mistObj.transform.position;
+		//endPos = (transform.position + 200) + transform.up * moveDistance;
 	}
 
 	void FixedUpdate () {
@@ -27,16 +40,35 @@ public class LumpHaut_Code : MonoBehaviour {
 		if (Physics.Raycast (transform.position + new Vector3 (0, 0.5f, 0), transform.up, out hit, longueurRay, LayerMask.GetMask("Vide"))) {		// je vais chercher la position du transform sur lequel l'objet est		//origine, direction, maxdistance
 			print ("On touche à : " + hit.transform.name);										// out = va mettre des infos dans la variable hit, va affecter des valeurs à hit												// out : La variable doit absolument être privée et qu'elle n'est pas de valeur déjà assignée
 			print ("JE TOUCHE À DU VIDE!");
-			isGrounded = false;
+			isLerping = true;
 		} else {
-			isGrounded = true;
+			isLerping = false;
 		}		
 
 		Debug.DrawRay (transform.position, transform.up * longueurRay, Color.red);
 	}
+		
 
-	void Update(){
-	//	if (isGrounded == true)
-			//animatorMist.SetBool ("Grounded", true);
+	protected void Update() {
+		//reset when we press spacebar
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			currentLerpTime = 0f;
+		}
+
+		//increment timer once per frame
+		currentLerpTime += Time.deltaTime;
+		if (currentLerpTime > lerpTime) {
+			currentLerpTime = lerpTime;
+		}
+
+		//lerp!
+		//		float perc = currentLerpTime / lerpTime;
+		//		transform.position = Vector3.Lerp(startPos, endPos, perc);
+		float t = currentLerpTime / lerpTime;
+		//		t = Mathf.Sin(t * Mathf.PI * 0.5f);
+		//		t = t*t*t * (t * (6f*t - 15f) + 10f);
+		t = t*t;
+		transform.position = Vector3.Lerp(startPos, endPos, t);
 	}
+		
 }

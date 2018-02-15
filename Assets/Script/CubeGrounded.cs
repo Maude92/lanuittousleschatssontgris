@@ -37,8 +37,8 @@ public class CubeGrounded : MonoBehaviour {
 	void FixedUpdate () {
 
 		if (rb.velocity.y <= 0.001f && Physics.Raycast (transform.position + new Vector3 (0, 0.5f, 0), -transform.up, out hit, longueurRay, LayerMask.GetMask("Ground"))) {		// je vais chercher la position du transform sur lequel l'objet est		//origine, direction, maxdistance
-			print ("On touche à : " + hit.transform.name);										// out = va mettre des infos dans la variable hit, va affecter des valeurs à hit												// out : La variable doit absolument être privée et qu'elle n'est pas de valeur déjà assignée
-				print ("JE TOUCHE À DU GROUND!");
+			//print ("On touche à : " + hit.transform.name);										// out = va mettre des infos dans la variable hit, va affecter des valeurs à hit												// out : La variable doit absolument être privée et qu'elle n'est pas de valeur déjà assignée
+				//print ("JE TOUCHE À DU GROUND!");
 				isGrounded = true;
 		} else {
 			isGrounded = false;
