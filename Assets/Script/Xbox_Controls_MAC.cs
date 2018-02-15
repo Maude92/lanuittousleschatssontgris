@@ -197,6 +197,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		if (Input.GetAxis ("XbOne_RightTrigger") < -0.001 && Input.GetAxis ("XbOne_LeftTrigger")> 0.001) {
 			LumpHaut.SetActive (false);
 			LumpBas.SetActive (false);
+			JeLump = false;
 		}
 
 		print ("Mon Axis de marde est pogné à" + Input.GetAxis ("XbOne_RightTrigger"));
