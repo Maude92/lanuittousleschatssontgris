@@ -50,7 +50,7 @@ public class CubeGrounded : MonoBehaviour {
 
 		//Debug.DrawLine (transform.position, groundCheck.transform.position, Color.red);
 		//transform.position = new Vector3 (player.transform.position.x, player.transform.position.y + 0.1f, player.transform.position.z);
-		//isGrounded = Physics.Raycast (transform.position, groundCheck.transform.position, groundLayerMask);
+		//isGrounded = Physics.Raycast (transform.position, groundCheck.transform.position, groundLayerMask);Debug.DrawRay (transform.position, transform.up * longueurRay, Color.yellow);
 	}
 
 	void Update(){
