@@ -163,36 +163,63 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 // LUMP et course
 
-		//Trigger gauche (L)
-		if (Input.GetAxis ("XbOne_LeftTrigger")> 0.001){
-			print ("Je pèse sur le trigger gauche!!");
-			PlayerMovementSpeed = 5;
-			LumpHaut.SetActive (true);
-			JeLump = true;
-			//LumpUP ();
-			animatorMist.SetBool ("IsLumpingG", true);
-		} else if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001) {
-			PlayerMovementSpeed = 2;
-			LumpHaut.SetActive (false);
-			JeLump = false;
-			animatorMist.SetBool ("IsLumpingG", false);
-		}
-			
 
-		//Trigger droite (R)
-		if (Input.GetAxis ("XbOne_RightTrigger") < -0.001) {
-			print ("Je pèse sur le trigger droit!!");
+
+		if (Input.GetAxis ("XbOne_LeftTrigger")> 0.001 || Input.GetAxis ("XbOne_RightTrigger") < -0.001){
+			print ("Je pèse sur le trigger gauche!!");
 			PlayerMovementSpeed = 4;
-			LumpBas.SetActive (true);
 			JeLump = true;
-			//LumpDown ();
 			animatorMist.SetBool ("IsLumping", true);
-		} else if (Input.GetAxis ("XbOne_RightTrigger") > -0.001) {
+			if (Input.GetAxis ("XbOne_LeftTrigger") > 0.001) {
+				LumpHaut.SetActive (true);
+			}
+			if (Input.GetAxis ("XbOne_RightTrigger") < -0.001) {
+				LumpBas.SetActive (true);
+			}
+		} else if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001 || Input.GetAxis ("XbOne_RightTrigger") > -0.001) {
 			PlayerMovementSpeed = 2;
-			LumpBas.SetActive (false);
 			JeLump = false;
 			animatorMist.SetBool ("IsLumping", false);
+			if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001) {
+				LumpHaut.SetActive (false);
+			}
+			if (Input.GetAxis ("XbOne_RightTrigger") > -0.001) {
+				LumpBas.SetActive (false);
+			}
 		}
+
+
+
+		//Trigger gauche (L)
+//		if (Input.GetAxis ("XbOne_LeftTrigger")> 0.001){
+//			print ("Je pèse sur le trigger gauche!!");
+//			PlayerMovementSpeed = 5;
+//			LumpHaut.SetActive (true);
+//			JeLump = true;
+//			//LumpUP ();
+//			animatorMist.SetBool ("IsLumpingG", true);
+//		} else if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001) {
+//			PlayerMovementSpeed = 2;
+//			LumpHaut.SetActive (false);
+//			JeLump = false;
+//			animatorMist.SetBool ("IsLumpingG", false);
+//		}
+			
+
+//		//Trigger droite (R)
+//		if (Input.GetAxis ("XbOne_RightTrigger") < -0.001) {
+//			print ("Je pèse sur le trigger droit!!");
+//			PlayerMovementSpeed = 4;
+//			LumpBas.SetActive (true);
+//			JeLump = true;
+//			//LumpDown ();
+//			animatorMist.SetBool ("IsLumping", true);
+//		} else if (Input.GetAxis ("XbOne_RightTrigger") > -0.001) {
+//			PlayerMovementSpeed = 2;
+//			LumpBas.SetActive (false);
+//			JeLump = false;
+//			animatorMist.SetBool ("IsLumping", false);
+//		}
 
 		if (Input.GetAxis ("XbOne_RightTrigger") < -0.001 && Input.GetAxis ("XbOne_LeftTrigger")> 0.001) {
 			LumpHaut.SetActive (false);

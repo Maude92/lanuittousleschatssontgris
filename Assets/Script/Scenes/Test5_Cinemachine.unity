@@ -281,7 +281,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 124759625}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0001220888, y: 0.16000001, z: 0.3540001}
+  m_LocalPosition: {x: -0.0001220888, y: 0.16000001, z: 0.354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 829823300}
@@ -1656,6 +1656,10 @@ MonoBehaviour:
   isjumping: 0
   mistObj: {fileID: 28678117}
   camera: {fileID: 1346415186}
+  longueurRay: 0.8
+  LumpHaut: {fileID: 0}
+  LumpBas: {fileID: 0}
+  JeLump: 0
 --- !u!136 &829823304
 CapsuleCollider:
   m_ObjectHideFlags: 0
