@@ -166,14 +166,16 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		//Trigger gauche (L)
 		if (Input.GetAxis ("XbOne_LeftTrigger")> 0.001){
 			print ("Je pèse sur le trigger gauche!!");
-			PlayerMovementSpeed = 4;
+			PlayerMovementSpeed = 5;
 			LumpHaut.SetActive (true);
 			JeLump = true;
 			//LumpUP ();
+			animatorMist.SetBool ("IsLumpingG", true);
 		} else if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001) {
 			PlayerMovementSpeed = 2;
 			LumpHaut.SetActive (false);
 			JeLump = false;
+			animatorMist.SetBool ("IsLumpingG", false);
 		}
 			
 
@@ -184,14 +186,12 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			LumpBas.SetActive (true);
 			JeLump = true;
 			//LumpDown ();
-		} else if (Input.GetAxis ("XbOne_RightTrigger") < -0.001) {
+			animatorMist.SetBool ("IsLumping", true);
+		} else if (Input.GetAxis ("XbOne_RightTrigger") > -0.001) {
 			PlayerMovementSpeed = 2;
-			//LumpBas.SetActive (false);
-			JeLump = false;
-		}
-
-		if (Input.GetAxis ("XbOne_RightTrigger") == 1) {
 			LumpBas.SetActive (false);
+			JeLump = false;
+			animatorMist.SetBool ("IsLumping", false);
 		}
 
 		if (Input.GetAxis ("XbOne_RightTrigger") < -0.001 && Input.GetAxis ("XbOne_LeftTrigger")> 0.001) {
@@ -200,7 +200,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			JeLump = false;
 		}
 
-		print ("Mon Axis de marde est pogné à" + Input.GetAxis ("XbOne_RightTrigger"));
+		//print ("Mon Axis de marde est pogné à" + Input.GetAxis ("XbOne_RightTrigger"));
 
 //		//Retourner le speed à la normal
 //		if (Input.GetAxis ("XbOne_RightTrigger") == 0 && Input.GetAxis ("XbOne_LeftTrigger") == 0) {
