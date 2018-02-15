@@ -20,13 +20,22 @@ public class Xbox_Controls : MonoBehaviour {
 	Rigidbody rb;
 	Animator animatorMist;
 
-	//public GameObject camera;
+	//Lumping test
+	public float longueurRay = 0.8f;
+	private RaycastHit hit;	
+	public GameObject LumpHaut;
+	public GameObject LumpBas;
+	public bool JeLump = false;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent <Rigidbody> ();
 		animatorMist = mistObj.GetComponent <Animator> ();
 		cubegrounded = GetComponent <CubeGrounded> ();
+
+		//Pour Lump
+		LumpHaut.SetActive (false);
+		LumpBas.SetActive (false);
 	}
 
 	void FixedUpdate(){
@@ -38,6 +47,14 @@ public class Xbox_Controls : MonoBehaviour {
 		UserInputs ();
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
+
+		if (cubegrounded.isGrounded == true) {
+			animatorMist.SetBool ("Grounded", true);
+			//isjumping = false;
+		} else if (cubegrounded.isGrounded == false) {
+			animatorMist.SetBool ("Grounded", false);
+			//isjumping = true;
+		}
 
 
 	// POUR FAIRE PIVOTER LA TÊTE
@@ -149,13 +166,13 @@ public class Xbox_Controls : MonoBehaviour {
 		}
 
 		//Trigger gauche (L)
-		if (Input.GetAxis ("360_TriggerL")> 0.001){
-			print ("Je pèse sur le trigger gauche!!");
-		}
+//		if (Input.GetAxis ("360_TriggerL")> 0.001){
+//			//print ("Je pèse sur le trigger gauche!!");
+//		}
 
-		if (Input.GetAxis ("360_TriggerR") > 0.001) {
-			print ("Je pèse sur le trigger droit!!");
-		}
+//		if (Input.GetAxis ("360_TriggerR") > 0.001) {
+//			//print ("Je pèse sur le trigger droit!!");
+//		}
 
 		// The D-PAD is read from the 6th (horizontal) and 7th (vertical) joystick axes and from a sensitivity rating from -1 to 1, similar to the Triggers
 		//RIGHT d-pad button is activated when pressure is above 0, or the dead zone
@@ -174,6 +191,45 @@ public class Xbox_Controls : MonoBehaviour {
 		if (Input.GetAxis("360_VerticalDPAD")<0){
 			print ("Down D-PAD button!");
 		}
+
+
+		// LUMP ET COURSE!!
+
+		//Trigger gauche (L)
+		if (Input.GetAxis ("360_TriggerL")> 0.001){
+			print ("Je pèse sur le trigger gauche!!");
+			PlayerMovementSpeed = 4;
+			LumpHaut.SetActive (true);
+			JeLump = true;
+			animatorMist.SetBool ("IsLumpingG", true);
+		} else if (Input.GetAxis ("360_TriggerL") < 0.001) {
+			PlayerMovementSpeed = 2;
+			animatorMist.SetBool ("IsLumpingG", false);
+			LumpHaut.SetActive (false);
+			JeLump = false;
+		}
+
+
+		//Trigger droite (R)
+		if (Input.GetAxis ("360_TriggerR") > 0.001) {
+			print ("Je pèse sur le trigger droit!!");
+			PlayerMovementSpeed = 4;
+			LumpBas.SetActive (true);
+			JeLump = true;
+			animatorMist.SetBool ("IsLumping", true);
+		} else if (Input.GetAxis ("360_TriggerR") < 0.001) {
+			PlayerMovementSpeed = 2;
+			animatorMist.SetBool ("IsLumping", false);
+			LumpBas.SetActive (false);
+			JeLump = false;
+		}
+			
+		if (Input.GetAxis ("360_TriggerR") > 0.001 && Input.GetAxis ("360_TriggerL")> 0.001) {
+			LumpHaut.SetActive (false);
+			LumpBas.SetActive (false);
+			JeLump = false;
+		}
+
 	}
 
 //	void JumpMist(){
@@ -183,11 +239,20 @@ public class Xbox_Controls : MonoBehaviour {
 	IEnumerator JumpMistRoutine(){
 		isjumping = true;
 		animatorMist.SetTrigger ("Jump");
-		animatorMist.SetBool ("Grounded", false);
-		yield return new WaitForSeconds (0.23f);
+		//animatorMist.SetBool ("Grounded", false);
+		yield return new WaitForSeconds (0.115f);
 		cubegrounded.isGrounded = false;
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
+		yield return new WaitForSeconds (0.5f);
 		isjumping = false;
+	}
+
+	void LumpUP (){
+		print ("Je Lump vers le haut ! Wouhou !");
+	}
+
+	void LumpDown (){
+		print ("Je Lump vers le bas ! Wouhou !");
 	}
 
 }

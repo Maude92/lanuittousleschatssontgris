@@ -92,6 +92,7 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 		smoothCamOffset = Vector3.Lerp(smoothCamOffset, noCollisionOffset, smooth * Time.deltaTime);
 
 		cam.position =  player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
+		//cam.position =  player.position + smoothCamOffset;
 	}
 
 	// Set camera offsets to custom values.
