@@ -168,6 +168,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		if (Input.GetAxis ("XbOne_LeftTrigger")> 0.001 || Input.GetAxis ("XbOne_RightTrigger") < -0.001){
 			print ("Je pèse sur le trigger gauche!!");
 			PlayerMovementSpeed = 4;
+			jumpforce = 240;
 			JeLump = true;
 			animatorMist.SetBool ("IsLumping", true);
 			if (Input.GetAxis ("XbOne_LeftTrigger") > 0.001) {
@@ -178,6 +179,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			}
 		} else if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001 || Input.GetAxis ("XbOne_RightTrigger") > -0.001) {
 			PlayerMovementSpeed = 2;
+			jumpforce = 220;
 			JeLump = false;
 			animatorMist.SetBool ("IsLumping", false);
 			if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001) {
