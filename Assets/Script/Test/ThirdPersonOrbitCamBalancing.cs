@@ -108,6 +108,7 @@ public class ThirdPersonOrbitCamBalancing : MonoBehaviour
 			cam.position = player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
 		} 
 		if (BalancingControl.enabled == true) {
+			
 			cam.position = player.position + Quaternion.identity * pivotOffset + Quaternion.identity * camOffset;
 			cam.rotation = Quaternion.identity;
 			cam.position = player.position +  smoothPivotOffset +smoothCamOffset;

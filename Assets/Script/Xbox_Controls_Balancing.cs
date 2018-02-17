@@ -164,13 +164,13 @@ public class Xbox_Controls_Balancing : MonoBehaviour {
 		// Left Bumper (... 4)
 		if (Input.GetButtonDown ("360_LeftBumper")){
 			//print ("Je pèse sur: left bumper!");
-			rb.AddForce (transform.right * -explosion);
+			//rb.AddForce (transform.right * -explosion);
 		}
 
 		// Right bumper (... 5)
 		if (Input.GetButtonDown ("360_RightBumper")){
 			//print ("Je pèse sur: right bumper!");
-			rb.AddForce (transform.right * explosion);
+			//rb.AddForce (transform.right * explosion);
 		}
 
 		// Back button (... 6)

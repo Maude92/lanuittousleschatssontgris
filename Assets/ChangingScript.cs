@@ -6,6 +6,8 @@ public class ChangingScript : MonoBehaviour {
 	public GameObject Mist;
 	public GameObject camera;
 	public GameObject ReferencePoint;
+	public GameObject EmptyMist;
+
 	// Use this for initialization
 	void Start () {
 		Mist.GetComponent<Xbox_Controls_Balancing>().enabled = false;
@@ -16,6 +18,7 @@ public class ChangingScript : MonoBehaviour {
 			transform.parent = col.transform;
 			Mist.transform.forward = ReferencePoint.transform.forward;
 			Mist.transform.position =  new Vector3 (ReferencePoint.transform.position.x, Mist.transform.position.y,Mist.transform.position.z );
+			//col.GetComponent<TorqueOnTube> ().enabled = true;
 			Mist.GetComponent<Xbox_Controls_Balancing>().enabled = true;
 			Mist.GetComponent<Xbox_Controls>().enabled = false;
 		}
@@ -24,7 +27,7 @@ public class ChangingScript : MonoBehaviour {
 		if (col.tag == "Balancing") {
 			Mist.GetComponent<Xbox_Controls_Balancing>().enabled = false;
 			Mist.GetComponent<Xbox_Controls>().enabled = true;
-			transform.parent = null;
+			transform.parent = EmptyMist.transform;
 		}
 	}
 	
