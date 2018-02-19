@@ -6,6 +6,10 @@ public class TorqueOnTube : MonoBehaviour {
 	public float amount = 0.4f;
 	public float direction = 1f;
 	public float tempschange = 1.5f;
+	public float MinTime= 3f;
+	public float MaxTime= 5f;
+	public float smooth = 6;
+
 	public GameObject target;
 
 	public GameObject Mist;
@@ -25,18 +29,18 @@ public class TorqueOnTube : MonoBehaviour {
 		if (tempschange <= 0) {
 			direction *= -1;
 			//tempschange= 4f;
-			tempschange= Random.Range(3f,5f);
+			tempschange= Random.Range(MinTime,MaxTime);
 		}
 		//print (transform.rotation.eulerAngles.x);
 
 		if(transform.rotation.eulerAngles.x <= 72){
 			print ("Cet angle est trop grand");
 			Mist.transform.parent = null;
-			rb.AddForce (-transform.forward* 10);
+			rb.AddForce (-transform.forward* 30);
 //
 		}
 		transform.Rotate(0,(amount * direction),0);
-		transform.rotation = Quaternion.Slerp (transform.rotation, target.transform.rotation, Time.deltaTime *6f);
+		transform.rotation = Quaternion.Slerp (transform.rotation, target.transform.rotation, Time.deltaTime *smooth);
 //		float h = amount * Time.deltaTime;
 //
 //		rigidbody.AddTorque (transform.up * h);
