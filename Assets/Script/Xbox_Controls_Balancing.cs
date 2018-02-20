@@ -14,6 +14,10 @@ public class Xbox_Controls_Balancing : MonoBehaviour {
 	public GameObject mistObj;
 	public Transform camera;
 	public GameObject balancing;
+
+
+	public GameObject cylindre;
+	ActivatingScript activating;
 	//public GameObject cubeGroundObj;
 
 	CubeGrounded cubegrounded;
@@ -37,6 +41,7 @@ public class Xbox_Controls_Balancing : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		activating = cylindre.GetComponent<ActivatingScript> ();
 		rb = GetComponent <Rigidbody> ();
 		animatorMist = mistObj.GetComponent <Animator> ();
 		cubegrounded = GetComponent <CubeGrounded> ();
@@ -136,9 +141,9 @@ public class Xbox_Controls_Balancing : MonoBehaviour {
 	}
 
 	void UserInputs(){
-	
+		
 		// Bouton A (joystick button 0)
-		if (Input.GetButtonDown ("360_AButton") && cubegrounded.isGrounded == true && isjumping == false){
+		if (Input.GetButtonDown ("360_AButton") && cubegrounded.isGrounded == true && isjumping == false){// && activating.youjumped == 0){
 			//print ("Je pèse sur: le bouton A!");
 				//animatorMist.SetTrigger ("Jump");
 				//animatorMist.SetBool ("Grounded", false);

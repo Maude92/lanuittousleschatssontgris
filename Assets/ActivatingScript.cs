@@ -5,8 +5,13 @@ using UnityEngine;
 public class ActivatingScript : MonoBehaviour {
 	public GameObject Tube;
 	Vector3 newRot ;
+
+	public int youjumped = 0;
+
+
 	// Use this for initialization
 	void Start () {
+		
 		Tube.GetComponent<TorqueOnTube>().enabled = false;
 		newRot = new Vector3 (transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
 	}

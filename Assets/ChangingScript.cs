@@ -8,8 +8,11 @@ public class ChangingScript : MonoBehaviour {
 	public GameObject ReferencePoint;
 	public GameObject EmptyMist;
 
+	//CubeGrounded cubegrounded;
+
 	// Use this for initialization
 	void Start () {
+		//cubegrounded = GetComponent <CubeGrounded> ();
 		Mist.GetComponent<Xbox_Controls_Balancing>().enabled = false;
 	}
 
@@ -30,6 +33,14 @@ public class ChangingScript : MonoBehaviour {
 			transform.parent = EmptyMist.transform;
 		}
 	}
+
+//	void OnCollisionEnter(Collider col){
+//		if (col.tag == "Balancing") {
+//			Mist.GetComponent<Xbox_Controls_Balancing>().enabled = false;
+//			Mist.GetComponent<Xbox_Controls>().enabled = true;
+//			transform.parent = EmptyMist.transform;
+//		}
+//	}
 	
 	// Update is called once per frame
 	void Update () {
