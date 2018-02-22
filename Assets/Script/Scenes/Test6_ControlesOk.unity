@@ -659,7 +659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerMovementSpeed: 2
   PlayerRotationSpeed: 10
-  jumpforce: 200
+  jumpforce: 220
   isjumping: 0
   mistObj: {fileID: 1243956811}
   camera: {fileID: 734760060}
@@ -1660,7 +1660,7 @@ MonoBehaviour:
   smooth: 10
   horizontalAimingSpeed: 2
   verticalAimingSpeed: 2
-  maxVerticalAngle: 30
+  maxVerticalAngle: 18
   minVerticalAngle: -60
   XAxis: RightStick
   YAxis: RightStickY
