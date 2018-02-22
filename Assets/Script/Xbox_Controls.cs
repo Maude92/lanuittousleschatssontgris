@@ -10,6 +10,7 @@ public class Xbox_Controls : MonoBehaviour {
 	public int jumpforce = 100;
 
 	public bool isjumping;
+	//public bool jesaute;
 
 	public GameObject mistObj;
 	public Transform camera;
@@ -36,6 +37,8 @@ public class Xbox_Controls : MonoBehaviour {
 		//Pour Lump
 		LumpHaut.SetActive (false);
 		LumpBas.SetActive (false);
+
+		//jesaute = false;
 
 	}
 
@@ -117,6 +120,7 @@ public class Xbox_Controls : MonoBehaviour {
 		// Bouton A (joystick button 0)
 		if (Input.GetButtonDown ("360_AButton") && cubegrounded.isGrounded == true && isjumping == false){
 			print ("Je pèse sur: le bouton A!");
+			//jesaute = true;
 				//animatorMist.SetTrigger ("Jump");
 				//animatorMist.SetBool ("Grounded", false);
 				StartCoroutine (JumpMistRoutine ());
