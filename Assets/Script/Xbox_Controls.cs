@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Xbox_Controls : MonoBehaviour {
-
+	
 	public float PlayerMovementSpeed = 30;
 	public float PlayerRotationSpeed = 180;
 
@@ -45,6 +45,8 @@ public class Xbox_Controls : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
+
 		UserInputs ();
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
@@ -111,6 +113,8 @@ public class Xbox_Controls : MonoBehaviour {
 		// Pour rotater la cam
 		//transform.Rotate(0, Input.GetAxis ("RightStick") * Time.deltaTime * PlayerRotationSpeed, 0);
 	}
+
+
 
 	void UserInputs(){
 	
