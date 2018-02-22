@@ -23,15 +23,21 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	//public GameObject camera;
 
 
-	//Lumping test
+	//Lumping
 	public float longueurRay = 0.8f;
-	private RaycastHit hit;	
+	private RaycastHit hit;
+	private RaycastHit hit2;
 
 	public GameObject LumpHaut;
 	public GameObject LumpBas;
 
-	public bool JeLump = false;
+	public bool JeCours = false;
 	public bool isLerping = false;
+	public bool canLerp = false;
+
+	public int LumpForce = 100;
+
+	public float Distance;
 
 	//Variables Lerp Test
 	public float lerpTime = 1f;
@@ -53,13 +59,14 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		LumpBas.SetActive (false);
 
 		//Pour Lump test
-		startPos = mistObj.transform.position;
+		//startPos = mistObj.transform.position;
 		//endPos = LumpHaut.transform.position + transform.up * moveDistance;
 		//endPos = hit + transform.up * moveDistance;
 	}
 
 	void FixedUpdate(){
 		Movement ();
+		startPos = mistObj.transform.position;
 
 //		//Pour Lump test (LUMP HAUT)
 //		//Ce que j'essai de faire = un Raycast qui, s'il va toucher à un objet (ou le vide ?) vers le haut,il va faire sauter le personnage. Mais comment le faire atterir à la bonne place ? Est-ce que c'est le joueur qui controle sa direction jusqu'à son atterrissage ou je dois faire un Lerp ? (entre paranthèse, Lerp ça me fait penser à un son que ferait un chien qui sort dans langue dans un meme, fin de la paranthèse)
@@ -78,6 +85,24 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		UserInputs ();
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
+
+		//Pour Lump V-LF
+		Distance = hit.transform.position.y - hit2.transform.position.y;
+
+		//Test A
+//		if (Distance <= 0.25f && Distance > 0) {
+//			rb.AddForce (0, LumpForce, -10);
+//			print ("ta mère en short");
+//		}
+
+		//Test B
+		if (Distance > 0.1f) {
+			animatorMist.SetTrigger ("Jump");
+			animatorMist.SetBool ("Grounded", false);
+			rb.velocity = new Vector3 (0, 2.5f, 0);
+			rb.AddForce (0, 0, 10);
+			print ("ta mère en short");
+		}
 
 		// POUR FAIRE PIVOTER LA TÊTE
 		// Tête à gauche
@@ -181,42 +206,74 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			print ("Je pèse sur le trigger gauche!!");
 			PlayerMovementSpeed = 4;
 			jumpforce = 240;
-			JeLump = true;
+			JeCours = true;
 			animatorMist.SetBool ("IsLumping", true);
 			if (Input.GetAxis ("XbOne_LeftTrigger") > 0.001) {
 				LumpHaut.SetActive (true);
 
-				//Copier du truc plus haut pour tester ici
-				if (Physics.Raycast (LumpHaut.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"))) {		// je vais chercher la position du transform sur lequel l'objet est		//origine, direction, maxdistance
-					print ("On touche à : " + hit.transform.name);										// out = va mettre des infos dans la variable hit, va affecter des valeurs à hit												// out : La variable doit absolument être privée et qu'elle n'est pas de valeur déjà assignée
-					print ("JE TOUCHE À UN OBJET SUR LEQUEL JE PEUX FAIRE UN LERP");
-					//endPos = hit.transform.position;
-					isLerping = true;
-				}
-
+				//RAYCAST Version LF
+				//RayCast LumpHaut
+				Physics.Raycast (LumpHaut.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"));
 				Debug.DrawRay (LumpHaut.transform.position, -transform.up * longueurRay, Color.red);
 
-				//LumpUP ();
-				if (isLerping == true) {
-					StartCoroutine (JumpMistRoutine ());
-					//isLerping = false;
-//					//increment timer once per frame
-//					currentLerpTime += Time.deltaTime;
-//					if (currentLerpTime > lerpTime) {
-//						currentLerpTime = lerpTime;
+				//RayCast PositionMist
+				Physics.Raycast (transform.position + new Vector3 (0, 0.5f, 0), -transform.up, out hit2, longueurRay, LayerMask.GetMask("Ground"));
+				Debug.DrawRay (transform.position, -transform.up * longueurRay, Color.yellow);
+
+//				//Ancien RayCast pour Lump Version A-B-C
+//				if (Physics.Raycast (LumpHaut.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"))) {		// je vais chercher la position du transform sur lequel l'objet est		//origine, direction, maxdistance
+//					print ("On touche à : " + hit.transform.name);										// out = va mettre des infos dans la variable hit, va affecter des valeurs à hit												// out : La variable doit absolument être privée et qu'elle n'est pas de valeur déjà assignée
+//					print ("JE TOUCHE À UN OBJET SUR LEQUEL JE PEUX FAIRE UN LERP");
+//					endPos = new Vector3 (hit.transform.position.x, hit.transform.position.y + longueurRay, hit.transform.position.z);
+//					if (hit.transform.tag == "Lump") {
+//						canLerp = true;
 //					}
+//				}
+
+//				Ancienne méthode de Lump
+				//if (canLerp == true && isLerping == false) {
 //
-//					//lerp!
-//					//		float perc = currentLerpTime / lerpTime;
-//					//		transform.position = Vector3.Lerp(startPos, endPos, perc);
-//					float t = currentLerpTime / lerpTime;
-//					//		t = Mathf.Sin(t * Mathf.PI * 0.5f);
-//					//		t = t*t*t * (t * (6f*t - 15f) + 10f);
-//					t = t * t;
-//					transform.position = Vector3.Lerp (startPos, endPos, t);
-//				} else if (isLerping == false) {
-//					currentLerpTime = 0f;
-				}
+//					//Méthode C.2 :
+//					//LumpUP ();
+//
+//					//Méthode A:
+//					rb.AddForce (0, LumpForce, 10);
+//					animatorMist.SetTrigger ("Jump");
+//					animatorMist.SetBool ("Grounded", false);
+//					isLerping = true;
+//
+//					//Méthode B:
+//					//StartCoroutine (JumpMistRoutine ());
+//					// isLerping = true;
+//
+//					//Méthode C:
+////					isLerping = false;
+////					//increment timer once per frame
+////					currentLerpTime += Time.deltaTime;
+////					if (currentLerpTime > lerpTime) {
+////						currentLerpTime = lerpTime;
+////					}
+////
+////					//lerp!
+////					//		float perc = currentLerpTime / lerpTime;
+////					//		transform.position = Vector3.Lerp(startPos, endPos, perc);
+////					float t = currentLerpTime / lerpTime;
+////					//		t = Mathf.Sin(t * Mathf.PI * 0.5f);
+////					//		t = t*t*t * (t * (6f*t - 15f) + 10f);
+////					t = t * t;
+////					transform.position = Vector3.Lerp (startPos, endPos, t);
+////
+////				} else if (isLerping == false) {
+////					currentLerpTime = 0f;
+////				}
+//
+//					//Pour méthode A et B
+//			
+//
+//				} else if (isLerping == true) {  //PENSE ICI LE PROB DU VOL
+//					canLerp = false;
+//					isLerping = false;
+//				}
 			}
 				if (Input.GetAxis ("XbOne_RightTrigger") < -0.001) {
 					LumpBas.SetActive (true);
@@ -224,8 +281,9 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			} else if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001 || Input.GetAxis ("XbOne_RightTrigger") > -0.001) {
 				PlayerMovementSpeed = 2;
 				jumpforce = 220;
-				JeLump = false;
+				JeCours = false;
 				animatorMist.SetBool ("IsLumping", false);
+				Distance = 0;
 				if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001) {
 					LumpHaut.SetActive (false);
 				}
@@ -235,42 +293,13 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			}
 
 			if (Input.GetAxis ("XbOne_RightTrigger") < -0.001 && Input.GetAxis ("XbOne_LeftTrigger") > 0.001) {
+				PlayerMovementSpeed = 2;
+				jumpforce = 220;
 				LumpHaut.SetActive (false);
 				LumpBas.SetActive (false);
-				JeLump = false;
+				JeCours = false;
+				animatorMist.SetBool ("IsLumping", false);
 			}
-
-// ANCIEN LUMP & COURSE
-			//Trigger gauche (L)
-//		if (Input.GetAxis ("XbOne_LeftTrigger")> 0.001){
-//			print ("Je pèse sur le trigger gauche!!");
-//			PlayerMovementSpeed = 5;
-//			LumpHaut.SetActive (true);
-//			JeLump = true;
-//			//LumpUP ();
-//			animatorMist.SetBool ("IsLumpingG", true);
-//		} else if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001) {
-//			PlayerMovementSpeed = 2;
-//			LumpHaut.SetActive (false);
-//			JeLump = false;
-//			animatorMist.SetBool ("IsLumpingG", false);
-//		}
-			
-
-//		//Trigger droite (R)
-//		if (Input.GetAxis ("XbOne_RightTrigger") < -0.001) {
-//			print ("Je pèse sur le trigger droit!!");
-//			PlayerMovementSpeed = 4;
-//			LumpBas.SetActive (true);
-//			JeLump = true;
-//			//LumpDown ();
-//			animatorMist.SetBool ("IsLumping", true);
-//		} else if (Input.GetAxis ("XbOne_RightTrigger") > -0.001) {
-//			PlayerMovementSpeed = 2;
-//			LumpBas.SetActive (false);
-//			JeLump = false;
-//			animatorMist.SetBool ("IsLumping", false);
-//		}
 			
 
 			//D-PAD Mac
@@ -301,7 +330,6 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		}
 
 	IEnumerator JumpMistRoutine(){
-		isLerping = false;
 		isjumping = true;
 		animatorMist.SetTrigger ("Jump");
 		animatorMist.SetBool ("Grounded", false);
@@ -313,7 +341,10 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 //	void LumpUP (){
 //		print ("Je Lump vers le haut ! Wouhou !");
+//		isLerping = true;
 //		if (isLerping == true) {
+//			//Méthode C:
+//			isLerping = false;
 //			//increment timer once per frame
 //			currentLerpTime += Time.deltaTime;
 //			if (currentLerpTime > lerpTime) {
@@ -328,6 +359,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 //			//		t = t*t*t * (t * (6f*t - 15f) + 10f);
 //			t = t * t;
 //			transform.position = Vector3.Lerp (startPos, endPos, t);
+//
 //		} else if (isLerping == false) {
 //			currentLerpTime = 0f;
 //		}
