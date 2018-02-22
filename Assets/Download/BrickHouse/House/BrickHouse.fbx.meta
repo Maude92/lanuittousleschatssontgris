@@ -1,0 +1,1898 @@
+fileFormatVersion: 2
+guid: cb11c63a09db524468e963f79ba8d21f
+timeCreated: 1478085826
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arca
+    100002: Arca2
+    100004: Arca3
+    100006: Arca4
+    100008: Balk
+    100010: BalkLarge
+    100012: BalkSmall
+    100014: //RootNode
+    100016: Circle.004
+    100018: Circle.005
+    100020: Circle.006
+    100022: CircleRoof
+    100024: Cube
+    100026: Cube.006
+    100028: Cube.008
+    100030: Cube.010
+    100032: Cube.019
+    100034: Cube.028
+    100036: Cube.031
+    100038: Cube.032
+    100040: Cube.042
+    100042: Cube.044
+    100044: Cube.046
+    100046: Cube.048
+    100048: Cube.049
+    100050: Cube.050
+    100052: Cube.051
+    100054: Cube.052
+    100056: Cylinder.001
+    100058: Cylinder.002
+    100060: Cylinder.007
+    100062: Door2
+    100064: Door2Arc
+    100066: FirstFloor
+    100068: Glass
+    100070: Handhold
+    100072: Handhold2
+    100074: LoftStairs
+    100076: MainDoor(1)
+    100078: MainDoor(2)
+    100080: PlateArc
+    100082: PlateArc.001
+    100084: Plinth
+    100086: Plinth.001
+    100088: Plinth.002
+    100090: Plinth.003
+    100092: Plinth.004
+    100094: Plinth.005
+    100096: Plinth.006
+    100098: Plinths
+    100100: Porch
+    100102: Roof
+    100104: SecondFloor
+    100106: SecondFloorWalls&Loft
+    100108: SmallRoof
+    100110: SmallRoofStairs
+    100112: Stairs
+    100114: StairsBegin
+    100116: Tower
+    100118: TowerWindow
+    100120: Window
+    100122: Window(2)
+    100124: Window(2).001
+    100126: Window(2).002
+    100128: Window(2).003
+    100130: Window(2).004
+    100132: Window(2).005
+    100134: Window(2).006
+    100136: Window(2).007
+    100138: Window(3)
+    100140: Window(3).001
+    100142: Window(3).002
+    100144: Window(3).003
+    100146: Window(4)
+    100148: Window(5)
+    100150: Window(6)
+    100152: WindowLarge
+    100154: Windows
+    100156: WindowSmall
+    100158: WindowSquare
+    100160: WindowSquare(2)
+    100162: WindowSquareLarge
+    100164: NewStairs
+    100166: Empty
+    100168: Empty.001
+    100170: Empty.002
+    100172: Empty.003
+    100174: Empty.004
+    100176: Empty.005
+    100178: Empty.006
+    100180: Empty.007
+    100182: Empty.008
+    100184: Empty.009
+    100186: Empty.010
+    100188: Empty.011
+    100190: Empty.012
+    100192: Empty.013
+    100194: Empty.014
+    100196: Hemi
+    100198: Point
+    100200: Point.001
+    100202: Point.002
+    100204: Point.003
+    100206: Point.004
+    100208: Sun
+    100210: Sun.001
+    100212: KitchenPanel
+    100214: Box
+    100216: Fridge
+    100218: Table
+    100220: Box.001
+    100222: Seat
+    100224: SecondFloorWalls&Loft.001
+    100226: Door2Loop
+    100228: LoftDoorLoop
+    100230: MainDoorLoop
+    100232: FirstFloor.001
+    100234: Floor
+    100236: MainDoor
+    100238: MainDoorArc
+    100240: Cube.002
+    100242: Cube.003
+    100244: Cube.007
+    100246: ModLogo
+    100248: ModPart1
+    100250: ModPart2
+    100252: ModPillar
+    100254: ModPillar.001
+    100256: ModPorch
+    100258: ModPorch.002
+    100260: ModStair
+    100262: Plinth.007
+    100264: Window(2).008
+    100266: Cube.000
+    100268: Cube.001
+    100270: Fance
+    100272: Fance.001
+    100274: Porch.001
+    100276: PorchRoof
+    100278: Room3Floor
+    100280: Room3Top
+    100282: Room3Wall
+    100284: Room3Wall.001
+    100286: Room3Wall.002
+    100288: Room3Wall.003
+    100290: Room3Wall.004
+    100292: Room3Wall.005
+    100294: FirstFloor.002
+    100296: Room3Wall.006
+    100298: Room3Wall.007
+    100300: Room3Wall.008
+    100302: KitchenFloor
+    100304: KitchenTop
+    100306: LobbyFloor
+    100308: LobbyWall
+    100310: LobbyWall.001
+    100312: LobbyWall.002
+    100314: LobbyWall.003
+    100316: LobbyWall.004
+    100318: LobbyWall.005
+    100320: LobbyWall.006
+    100322: SecondFloor.001
+    100324: FirstFloor.003
+    100326: KitchenWall
+    100328: KitchenWall.001
+    100330: KitchenWall.002
+    100332: LobbyWall.007
+    100334: LobbyWall.008
+    100336: Lobby2Floor
+    100338: Lobby2Top
+    100340: Lobby2Wall
+    100342: Lobby2Wall.001
+    100344: Lobby2Wall.002
+    100346: Lobby2Wall.003
+    100348: Lobby2Wall.004
+    100350: Lobby2Wall.005
+    100352: Lobby2Wall.006
+    100354: SecondFloorWalls&Loft.003
+    100356: RoomFloor
+    100358: RoomTop
+    100360: RoomWall
+    100362: RoomWall.001
+    100364: RoomWall.002
+    100366: RoomWall.003
+    100368: RoomWall.004
+    100370: RoomWall.005
+    100372: RoomWall.006
+    100374: WorkRoomTop
+    100376: WorkRoomWall
+    100378: WorkRoomWall.001
+    100380: WorkRoomWall.002
+    100382: WorkRoomWall.003
+    100384: WorkRoomWallFloor
+    100386: BalconDoorArcWall
+    100388: Circle
+    100390: PorchRoof.001
+    100392: LoftFloor
+    100394: LoftWall
+    100396: LoftWall.001
+    100398: LoftWall.002
+    100400: LoftWall.003
+    100402: LoftWall.004
+    100404: Roof.001
+    100406: Roof.002
+    100408: RoofTop
+    100410: RoofWall
+    100412: RoofWall.001
+    100414: RoofWall.002
+    100416: Cube.004
+    100418: LoftFloor.001
+    100420: RoofTop.001
+    100422: RoofWall.003
+    100424: RoofWall.004
+    100426: RoofWall.005
+    100428: LoftWall.005
+    100430: RoofWall.006
+    100432: RoofWall.007
+    100434: RoofWall.008
+    100436: RoofWall.009
+    100438: Room3Top.001
+    400000: Arca
+    400002: Arca2
+    400004: Arca3
+    400006: Arca4
+    400008: Balk
+    400010: BalkLarge
+    400012: BalkSmall
+    400014: //RootNode
+    400016: Circle.004
+    400018: Circle.005
+    400020: Circle.006
+    400022: CircleRoof
+    400024: Cube
+    400026: Cube.006
+    400028: Cube.008
+    400030: Cube.010
+    400032: Cube.019
+    400034: Cube.028
+    400036: Cube.031
+    400038: Cube.032
+    400040: Cube.042
+    400042: Cube.044
+    400044: Cube.046
+    400046: Cube.048
+    400048: Cube.049
+    400050: Cube.050
+    400052: Cube.051
+    400054: Cube.052
+    400056: Cylinder.001
+    400058: Cylinder.002
+    400060: Cylinder.007
+    400062: Door2
+    400064: Door2Arc
+    400066: FirstFloor
+    400068: Glass
+    400070: Handhold
+    400072: Handhold2
+    400074: LoftStairs
+    400076: MainDoor(1)
+    400078: MainDoor(2)
+    400080: PlateArc
+    400082: PlateArc.001
+    400084: Plinth
+    400086: Plinth.001
+    400088: Plinth.002
+    400090: Plinth.003
+    400092: Plinth.004
+    400094: Plinth.005
+    400096: Plinth.006
+    400098: Plinths
+    400100: Porch
+    400102: Roof
+    400104: SecondFloor
+    400106: SecondFloorWalls&Loft
+    400108: SmallRoof
+    400110: SmallRoofStairs
+    400112: Stairs
+    400114: StairsBegin
+    400116: Tower
+    400118: TowerWindow
+    400120: Window
+    400122: Window(2)
+    400124: Window(2).001
+    400126: Window(2).002
+    400128: Window(2).003
+    400130: Window(2).004
+    400132: Window(2).005
+    400134: Window(2).006
+    400136: Window(2).007
+    400138: Window(3)
+    400140: Window(3).001
+    400142: Window(3).002
+    400144: Window(3).003
+    400146: Window(4)
+    400148: Window(5)
+    400150: Window(6)
+    400152: WindowLarge
+    400154: Windows
+    400156: WindowSmall
+    400158: WindowSquare
+    400160: WindowSquare(2)
+    400162: WindowSquareLarge
+    400164: NewStairs
+    400166: Empty
+    400168: Empty.001
+    400170: Empty.002
+    400172: Empty.003
+    400174: Empty.004
+    400176: Empty.005
+    400178: Empty.006
+    400180: Empty.007
+    400182: Empty.008
+    400184: Empty.009
+    400186: Empty.010
+    400188: Empty.011
+    400190: Empty.012
+    400192: Empty.013
+    400194: Empty.014
+    400196: Hemi
+    400198: Point
+    400200: Point.001
+    400202: Point.002
+    400204: Point.003
+    400206: Point.004
+    400208: Sun
+    400210: Sun.001
+    400212: KitchenPanel
+    400214: Box
+    400216: Fridge
+    400218: Table
+    400220: Box.001
+    400222: Seat
+    400224: SecondFloorWalls&Loft.001
+    400226: Door2Loop
+    400228: LoftDoorLoop
+    400230: MainDoorLoop
+    400232: FirstFloor.001
+    400234: Floor
+    400236: MainDoor
+    400238: MainDoorArc
+    400240: Cube.002
+    400242: Cube.003
+    400244: Cube.007
+    400246: ModLogo
+    400248: ModPart1
+    400250: ModPart2
+    400252: ModPillar
+    400254: ModPillar.001
+    400256: ModPorch
+    400258: ModPorch.002
+    400260: ModStair
+    400262: Plinth.007
+    400264: Window(2).008
+    400266: Cube.000
+    400268: Cube.001
+    400270: Fance
+    400272: Fance.001
+    400274: Porch.001
+    400276: PorchRoof
+    400278: Room3Floor
+    400280: Room3Top
+    400282: Room3Wall
+    400284: Room3Wall.001
+    400286: Room3Wall.002
+    400288: Room3Wall.003
+    400290: Room3Wall.004
+    400292: Room3Wall.005
+    400294: FirstFloor.002
+    400296: Room3Wall.006
+    400298: Room3Wall.007
+    400300: Room3Wall.008
+    400302: KitchenFloor
+    400304: KitchenTop
+    400306: LobbyFloor
+    400308: LobbyWall
+    400310: LobbyWall.001
+    400312: LobbyWall.002
+    400314: LobbyWall.003
+    400316: LobbyWall.004
+    400318: LobbyWall.005
+    400320: LobbyWall.006
+    400322: SecondFloor.001
+    400324: FirstFloor.003
+    400326: KitchenWall
+    400328: KitchenWall.001
+    400330: KitchenWall.002
+    400332: LobbyWall.007
+    400334: LobbyWall.008
+    400336: Lobby2Floor
+    400338: Lobby2Top
+    400340: Lobby2Wall
+    400342: Lobby2Wall.001
+    400344: Lobby2Wall.002
+    400346: Lobby2Wall.003
+    400348: Lobby2Wall.004
+    400350: Lobby2Wall.005
+    400352: Lobby2Wall.006
+    400354: SecondFloorWalls&Loft.003
+    400356: RoomFloor
+    400358: RoomTop
+    400360: RoomWall
+    400362: RoomWall.001
+    400364: RoomWall.002
+    400366: RoomWall.003
+    400368: RoomWall.004
+    400370: RoomWall.005
+    400372: RoomWall.006
+    400374: WorkRoomTop
+    400376: WorkRoomWall
+    400378: WorkRoomWall.001
+    400380: WorkRoomWall.002
+    400382: WorkRoomWall.003
+    400384: WorkRoomWallFloor
+    400386: BalconDoorArcWall
+    400388: Circle
+    400390: PorchRoof.001
+    400392: LoftFloor
+    400394: LoftWall
+    400396: LoftWall.001
+    400398: LoftWall.002
+    400400: LoftWall.003
+    400402: LoftWall.004
+    400404: Roof.001
+    400406: Roof.002
+    400408: RoofTop
+    400410: RoofWall
+    400412: RoofWall.001
+    400414: RoofWall.002
+    400416: Cube.004
+    400418: LoftFloor.001
+    400420: RoofTop.001
+    400422: RoofWall.003
+    400424: RoofWall.004
+    400426: RoofWall.005
+    400428: LoftWall.005
+    400430: RoofWall.006
+    400432: RoofWall.007
+    400434: RoofWall.008
+    400436: RoofWall.009
+    400438: Room3Top.001
+    2300000: Arca
+    2300002: Arca2
+    2300004: Arca3
+    2300006: Arca4
+    2300008: Balk
+    2300010: BalkLarge
+    2300012: BalkSmall
+    2300014: Circle.004
+    2300016: Circle.005
+    2300018: Circle.006
+    2300020: CircleRoof
+    2300022: Cube
+    2300024: Cube.006
+    2300026: Cube.008
+    2300028: Cube.010
+    2300030: Cube.019
+    2300032: Cube.028
+    2300034: Cube.031
+    2300036: Cube.032
+    2300038: Cube.042
+    2300040: Cube.044
+    2300042: Cube.046
+    2300044: Cube.048
+    2300046: Cube.049
+    2300048: Cube.050
+    2300050: Cube.051
+    2300052: Cube.052
+    2300054: Cylinder.001
+    2300056: Cylinder.002
+    2300058: Cylinder.007
+    2300060: Door2
+    2300062: Door2Arc
+    2300064: FirstFloor
+    2300066: Glass
+    2300068: Handhold
+    2300070: Handhold2
+    2300072: LoftStairs
+    2300074: MainDoor(1)
+    2300076: MainDoor(2)
+    2300078: PlateArc
+    2300080: PlateArc.001
+    2300082: Plinth
+    2300084: Plinth.001
+    2300086: Plinth.002
+    2300088: Plinth.003
+    2300090: Plinth.004
+    2300092: Plinth.005
+    2300094: Plinth.006
+    2300096: Plinths
+    2300098: Porch
+    2300100: Roof
+    2300102: SecondFloor
+    2300104: SecondFloorWalls&Loft
+    2300106: SmallRoof
+    2300108: SmallRoofStairs
+    2300110: Stairs
+    2300112: StairsBegin
+    2300114: Tower
+    2300116: TowerWindow
+    2300118: Window
+    2300120: Window(2)
+    2300122: Window(2).001
+    2300124: Window(2).002
+    2300126: Window(2).003
+    2300128: Window(2).004
+    2300130: Window(2).005
+    2300132: Window(2).006
+    2300134: Window(2).007
+    2300136: Window(3)
+    2300138: Window(3).001
+    2300140: Window(3).002
+    2300142: Window(3).003
+    2300144: Window(4)
+    2300146: Window(5)
+    2300148: Window(6)
+    2300150: WindowLarge
+    2300152: Windows
+    2300154: WindowSmall
+    2300156: WindowSquare
+    2300158: WindowSquare(2)
+    2300160: WindowSquareLarge
+    2300162: NewStairs
+    2300164: KitchenPanel
+    2300166: Box
+    2300168: Fridge
+    2300170: Table
+    2300172: Box.001
+    2300174: Seat
+    2300176: SecondFloorWalls&Loft.001
+    2300178: Door2Loop
+    2300180: LoftDoorLoop
+    2300182: MainDoorLoop
+    2300184: FirstFloor.001
+    2300186: Floor
+    2300188: MainDoor
+    2300190: MainDoorArc
+    2300192: Cube.002
+    2300194: Cube.003
+    2300196: Cube.007
+    2300198: ModLogo
+    2300200: ModPart1
+    2300202: ModPart2
+    2300204: ModPillar
+    2300206: ModPillar.001
+    2300208: ModPorch
+    2300210: ModPorch.002
+    2300212: ModStair
+    2300214: Plinth.007
+    2300216: Window(2).008
+    2300218: Cube.000
+    2300220: Cube.001
+    2300222: Fance
+    2300224: Fance.001
+    2300226: Porch.001
+    2300228: PorchRoof
+    2300230: Room3Floor
+    2300232: Room3Top
+    2300234: Room3Wall
+    2300236: Room3Wall.001
+    2300238: Room3Wall.002
+    2300240: Room3Wall.003
+    2300242: Room3Wall.004
+    2300244: Room3Wall.005
+    2300246: FirstFloor.002
+    2300248: Room3Wall.006
+    2300250: Room3Wall.007
+    2300252: Room3Wall.008
+    2300254: KitchenFloor
+    2300256: KitchenTop
+    2300258: LobbyFloor
+    2300260: LobbyWall
+    2300262: LobbyWall.001
+    2300264: LobbyWall.002
+    2300266: LobbyWall.003
+    2300268: LobbyWall.004
+    2300270: LobbyWall.005
+    2300272: LobbyWall.006
+    2300274: SecondFloor.001
+    2300276: FirstFloor.003
+    2300278: KitchenWall
+    2300280: KitchenWall.001
+    2300282: KitchenWall.002
+    2300284: LobbyWall.007
+    2300286: LobbyWall.008
+    2300288: Lobby2Floor
+    2300290: Lobby2Top
+    2300292: Lobby2Wall
+    2300294: Lobby2Wall.001
+    2300296: Lobby2Wall.002
+    2300298: Lobby2Wall.003
+    2300300: Lobby2Wall.004
+    2300302: Lobby2Wall.005
+    2300304: Lobby2Wall.006
+    2300306: SecondFloorWalls&Loft.003
+    2300308: RoomFloor
+    2300310: RoomTop
+    2300312: RoomWall
+    2300314: RoomWall.001
+    2300316: RoomWall.002
+    2300318: RoomWall.003
+    2300320: RoomWall.004
+    2300322: RoomWall.005
+    2300324: RoomWall.006
+    2300326: WorkRoomTop
+    2300328: WorkRoomWall
+    2300330: WorkRoomWall.001
+    2300332: WorkRoomWall.002
+    2300334: WorkRoomWall.003
+    2300336: WorkRoomWallFloor
+    2300338: BalconDoorArcWall
+    2300340: Circle
+    2300342: PorchRoof.001
+    2300344: LoftFloor
+    2300346: LoftWall
+    2300348: LoftWall.001
+    2300350: LoftWall.002
+    2300352: LoftWall.003
+    2300354: LoftWall.004
+    2300356: Roof.001
+    2300358: Roof.002
+    2300360: RoofTop
+    2300362: RoofWall
+    2300364: RoofWall.001
+    2300366: RoofWall.002
+    2300368: Cube.004
+    2300370: LoftFloor.001
+    2300372: RoofTop.001
+    2300374: RoofWall.003
+    2300376: RoofWall.004
+    2300378: RoofWall.005
+    2300380: LoftWall.005
+    2300382: RoofWall.006
+    2300384: RoofWall.007
+    2300386: RoofWall.008
+    2300388: RoofWall.009
+    2300390: Room3Top.001
+    3300000: Arca
+    3300002: Arca2
+    3300004: Arca3
+    3300006: Arca4
+    3300008: Balk
+    3300010: BalkLarge
+    3300012: BalkSmall
+    3300014: Circle.004
+    3300016: Circle.005
+    3300018: Circle.006
+    3300020: CircleRoof
+    3300022: Cube
+    3300024: Cube.006
+    3300026: Cube.008
+    3300028: Cube.010
+    3300030: Cube.019
+    3300032: Cube.028
+    3300034: Cube.031
+    3300036: Cube.032
+    3300038: Cube.042
+    3300040: Cube.044
+    3300042: Cube.046
+    3300044: Cube.048
+    3300046: Cube.049
+    3300048: Cube.050
+    3300050: Cube.051
+    3300052: Cube.052
+    3300054: Cylinder.001
+    3300056: Cylinder.002
+    3300058: Cylinder.007
+    3300060: Door2
+    3300062: Door2Arc
+    3300064: FirstFloor
+    3300066: Glass
+    3300068: Handhold
+    3300070: Handhold2
+    3300072: LoftStairs
+    3300074: MainDoor(1)
+    3300076: MainDoor(2)
+    3300078: PlateArc
+    3300080: PlateArc.001
+    3300082: Plinth
+    3300084: Plinth.001
+    3300086: Plinth.002
+    3300088: Plinth.003
+    3300090: Plinth.004
+    3300092: Plinth.005
+    3300094: Plinth.006
+    3300096: Plinths
+    3300098: Porch
+    3300100: Roof
+    3300102: SecondFloor
+    3300104: SecondFloorWalls&Loft
+    3300106: SmallRoof
+    3300108: SmallRoofStairs
+    3300110: Stairs
+    3300112: StairsBegin
+    3300114: Tower
+    3300116: TowerWindow
+    3300118: Window
+    3300120: Window(2)
+    3300122: Window(2).001
+    3300124: Window(2).002
+    3300126: Window(2).003
+    3300128: Window(2).004
+    3300130: Window(2).005
+    3300132: Window(2).006
+    3300134: Window(2).007
+    3300136: Window(3)
+    3300138: Window(3).001
+    3300140: Window(3).002
+    3300142: Window(3).003
+    3300144: Window(4)
+    3300146: Window(5)
+    3300148: Window(6)
+    3300150: WindowLarge
+    3300152: Windows
+    3300154: WindowSmall
+    3300156: WindowSquare
+    3300158: WindowSquare(2)
+    3300160: WindowSquareLarge
+    3300162: NewStairs
+    3300164: KitchenPanel
+    3300166: Box
+    3300168: Fridge
+    3300170: Table
+    3300172: Box.001
+    3300174: Seat
+    3300176: SecondFloorWalls&Loft.001
+    3300178: Door2Loop
+    3300180: LoftDoorLoop
+    3300182: MainDoorLoop
+    3300184: FirstFloor.001
+    3300186: Floor
+    3300188: MainDoor
+    3300190: MainDoorArc
+    3300192: Cube.002
+    3300194: Cube.003
+    3300196: Cube.007
+    3300198: ModLogo
+    3300200: ModPart1
+    3300202: ModPart2
+    3300204: ModPillar
+    3300206: ModPillar.001
+    3300208: ModPorch
+    3300210: ModPorch.002
+    3300212: ModStair
+    3300214: Plinth.007
+    3300216: Window(2).008
+    3300218: Cube.000
+    3300220: Cube.001
+    3300222: Fance
+    3300224: Fance.001
+    3300226: Porch.001
+    3300228: PorchRoof
+    3300230: Room3Floor
+    3300232: Room3Top
+    3300234: Room3Wall
+    3300236: Room3Wall.001
+    3300238: Room3Wall.002
+    3300240: Room3Wall.003
+    3300242: Room3Wall.004
+    3300244: Room3Wall.005
+    3300246: FirstFloor.002
+    3300248: Room3Wall.006
+    3300250: Room3Wall.007
+    3300252: Room3Wall.008
+    3300254: KitchenFloor
+    3300256: KitchenTop
+    3300258: LobbyFloor
+    3300260: LobbyWall
+    3300262: LobbyWall.001
+    3300264: LobbyWall.002
+    3300266: LobbyWall.003
+    3300268: LobbyWall.004
+    3300270: LobbyWall.005
+    3300272: LobbyWall.006
+    3300274: SecondFloor.001
+    3300276: FirstFloor.003
+    3300278: KitchenWall
+    3300280: KitchenWall.001
+    3300282: KitchenWall.002
+    3300284: LobbyWall.007
+    3300286: LobbyWall.008
+    3300288: Lobby2Floor
+    3300290: Lobby2Top
+    3300292: Lobby2Wall
+    3300294: Lobby2Wall.001
+    3300296: Lobby2Wall.002
+    3300298: Lobby2Wall.003
+    3300300: Lobby2Wall.004
+    3300302: Lobby2Wall.005
+    3300304: Lobby2Wall.006
+    3300306: SecondFloorWalls&Loft.003
+    3300308: RoomFloor
+    3300310: RoomTop
+    3300312: RoomWall
+    3300314: RoomWall.001
+    3300316: RoomWall.002
+    3300318: RoomWall.003
+    3300320: RoomWall.004
+    3300322: RoomWall.005
+    3300324: RoomWall.006
+    3300326: WorkRoomTop
+    3300328: WorkRoomWall
+    3300330: WorkRoomWall.001
+    3300332: WorkRoomWall.002
+    3300334: WorkRoomWall.003
+    3300336: WorkRoomWallFloor
+    3300338: BalconDoorArcWall
+    3300340: Circle
+    3300342: PorchRoof.001
+    3300344: LoftFloor
+    3300346: LoftWall
+    3300348: LoftWall.001
+    3300350: LoftWall.002
+    3300352: LoftWall.003
+    3300354: LoftWall.004
+    3300356: Roof.001
+    3300358: Roof.002
+    3300360: RoofTop
+    3300362: RoofWall
+    3300364: RoofWall.001
+    3300366: RoofWall.002
+    3300368: Cube.004
+    3300370: LoftFloor.001
+    3300372: RoofTop.001
+    3300374: RoofWall.003
+    3300376: RoofWall.004
+    3300378: RoofWall.005
+    3300380: LoftWall.005
+    3300382: RoofWall.006
+    3300384: RoofWall.007
+    3300386: RoofWall.008
+    3300388: RoofWall.009
+    3300390: Room3Top.001
+    4300000: StairsBegin
+    4300002: Plinths
+    4300004: Plinth.006
+    4300006: Plinth.005
+    4300008: Plinth.004
+    4300010: Plinth.003
+    4300012: Plinth.002
+    4300014: Plinth.001
+    4300016: Plinth
+    4300018: Tower
+    4300020: BalkSmall
+    4300022: Cube.032
+    4300024: Cube.031
+    4300026: Cube.052
+    4300028: Cube.051
+    4300030: Cube.049
+    4300032: Cube.048
+    4300034: Cube.050
+    4300036: SmallRoofStairs
+    4300038: Cube.046
+    4300040: PlateArc.001
+    4300042: MainDoor(2)
+    4300044: BalkLarge
+    4300046: Balk
+    4300048: Door2Arc
+    4300050: PlateArc
+    4300052: LoftStairs
+    4300054: Cube.019
+    4300056: Cube.042
+    4300058: Arca3
+    4300060: Arca4
+    4300062: Arca
+    4300064: SecondFloorWalls&Loft
+    4300066: Windows
+    4300068: WindowSmall
+    4300070: Window(3).003
+    4300072: Window(3).002
+    4300074: Window(3).001
+    4300076: Window(2).007
+    4300078: Window(2).006
+    4300080: Window(2).005
+    4300082: Window(2).004
+    4300084: Window(2).003
+    4300086: Window(2).002
+    4300088: Window(2).001
+    4300090: WindowSquare(2)
+    4300092: WindowLarge
+    4300094: Window
+    4300096: Glass
+    4300098: Window(6)
+    4300100: Window(5)
+    4300102: Window(2)
+    4300104: Window(4)
+    4300106: WindowSquare
+    4300108: TowerWindow
+    4300110: WindowSquareLarge
+    4300112: Window(3)
+    4300114: Door2
+    4300116: Cube.028
+    4300118: Cube.044
+    4300120: Circle.005
+    4300122: FirstFloor
+    4300124: MainDoor(1)
+    4300126: Cube.006
+    4300128: CircleRoof
+    4300130: Handhold
+    4300132: Cylinder.001
+    4300134: Cylinder.007
+    4300136: Roof
+    4300138: Handhold2
+    4300140: Stairs
+    4300142: Cube.010
+    4300144: Cube
+    4300146: Cube.008
+    4300148: SecondFloor
+    4300150: Circle.004
+    4300152: Porch
+    4300154: Circle.006
+    4300156: Cylinder.002
+    4300158: Arca2
+    4300160: SmallRoof
+    4300162: NewStairs
+    4300164: KitchenPanel
+    4300166: Table
+    4300168: Box
+    4300170: Fridge
+    4300172: Box.001
+    4300174: Seat
+    4300176: SecondFloorWalls&Loft.001
+    4300178: LoftDoorLoop
+    4300180: Door2Loop
+    4300182: MainDoorLoop
+    4300184: FirstFloor.001
+    4300186: Floor
+    4300188: MainDoorArc
+    4300190: MainDoor
+    4300192: ModLogo
+    4300194: ModPorch.002
+    4300196: ModPillar.001
+    4300198: ModPillar
+    4300200: ModPart2
+    4300202: Cube.007
+    4300204: Cube.002
+    4300206: ModPart1
+    4300208: ModPorch
+    4300210: Cube.003
+    4300212: ModStair
+    4300214: Plinth.007
+    4300216: Window(2).008
+    4300218: Fance.001
+    4300220: Cube.000
+    4300222: Fance
+    4300224: Cube.001
+    4300226: Porch.001
+    4300228: PorchRoof
+    4300230: Room3Floor
+    4300232: Room3Wall.005
+    4300234: Room3Wall
+    4300236: Room3Wall.003
+    4300238: Room3Wall.002
+    4300240: Room3Wall.001
+    4300242: Room3Wall.004
+    4300244: Room3Top
+    4300246: FirstFloor.002
+    4300248: Room3Wall.006
+    4300250: Room3Wall.008
+    4300252: Room3Wall.007
+    4300254: LobbyWall.006
+    4300256: LobbyWall.005
+    4300258: LobbyWall.004
+    4300260: SecondFloor.001
+    4300262: KitchenTop
+    4300264: LobbyWall
+    4300266: LobbyWall.002
+    4300268: LobbyWall.001
+    4300270: LobbyWall.003
+    4300272: KitchenFloor
+    4300274: LobbyFloor
+    4300276: KitchenWall.002
+    4300278: KitchenWall
+    4300280: KitchenWall.001
+    4300282: FirstFloor.003
+    4300284: LobbyWall.008
+    4300286: LobbyWall.007
+    4300288: Lobby2Top
+    4300290: SecondFloorWalls&Loft.003
+    4300292: Lobby2Floor
+    4300294: Lobby2Wall
+    4300296: Lobby2Wall.004
+    4300298: Lobby2Wall.006
+    4300300: Lobby2Wall.005
+    4300302: Lobby2Wall.003
+    4300304: Lobby2Wall.002
+    4300306: Lobby2Wall.001
+    4300308: RoomFloor
+    4300310: RoomWall
+    4300312: RoomWall.003
+    4300314: RoomWall.004
+    4300316: RoomWall.005
+    4300318: RoomWall.006
+    4300320: RoomWall.002
+    4300322: RoomTop
+    4300324: RoomWall.001
+    4300326: WorkRoomTop
+    4300328: WorkRoomWall.003
+    4300330: WorkRoomWall
+    4300332: WorkRoomWall.001
+    4300334: WorkRoomWall.002
+    4300336: WorkRoomWallFloor
+    4300338: BalconDoorArcWall
+    4300340: PorchRoof.001
+    4300342: Circle
+    4300344: RoofWall
+    4300346: RoofTop
+    4300348: Roof.002
+    4300350: Roof.001
+    4300352: LoftWall.004
+    4300354: LoftWall.003
+    4300356: LoftWall
+    4300358: LoftWall.002
+    4300360: LoftWall.001
+    4300362: LoftFloor
+    4300364: RoofWall.001
+    4300366: RoofWall.002
+    4300368: Cube.004
+    4300370: RoofTop.001
+    4300372: RoofWall.004
+    4300374: RoofWall.003
+    4300376: RoofWall.005
+    4300378: LoftFloor.001
+    4300380: RoofWall.009
+    4300382: RoofWall.007
+    4300384: RoofWall.006
+    4300386: RoofWall.008
+    4300388: LoftWall.005
+    4300390: Room3Top.001
+    6400000: Arca
+    6400002: Arca2
+    6400004: Arca3
+    6400006: Arca4
+    6400008: Balk
+    6400010: BalkLarge
+    6400012: BalkSmall
+    6400014: Circle.004
+    6400016: Circle.005
+    6400018: Circle.006
+    6400020: CircleRoof
+    6400022: Cube
+    6400024: Cube.006
+    6400026: Cube.008
+    6400028: Cube.010
+    6400030: Cube.019
+    6400032: Cube.028
+    6400034: Cube.031
+    6400036: Cube.032
+    6400038: Cube.042
+    6400040: Cube.044
+    6400042: Cube.046
+    6400044: Cube.048
+    6400046: Cube.049
+    6400048: Cube.050
+    6400050: Cube.051
+    6400052: Cube.052
+    6400054: Cylinder.001
+    6400056: Cylinder.002
+    6400058: Cylinder.007
+    6400060: Door2
+    6400062: Door2Arc
+    6400064: FirstFloor
+    6400066: Glass
+    6400068: Handhold
+    6400070: Handhold2
+    6400072: LoftStairs
+    6400074: MainDoor(1)
+    6400076: MainDoor(2)
+    6400078: PlateArc
+    6400080: PlateArc.001
+    6400082: Plinth
+    6400084: Plinth.001
+    6400086: Plinth.002
+    6400088: Plinth.003
+    6400090: Plinth.004
+    6400092: Plinth.005
+    6400094: Plinth.006
+    6400096: Plinths
+    6400098: Porch
+    6400100: Roof
+    6400102: SecondFloor
+    6400104: SecondFloorWalls&Loft
+    6400106: SmallRoof
+    6400108: SmallRoofStairs
+    6400110: Stairs
+    6400112: StairsBegin
+    6400114: Tower
+    6400116: TowerWindow
+    6400118: Window
+    6400120: Window(2)
+    6400122: Window(2).001
+    6400124: Window(2).002
+    6400126: Window(2).003
+    6400128: Window(2).004
+    6400130: Window(2).005
+    6400132: Window(2).006
+    6400134: Window(2).007
+    6400136: Window(3)
+    6400138: Window(3).001
+    6400140: Window(3).002
+    6400142: Window(3).003
+    6400144: Window(4)
+    6400146: Window(5)
+    6400148: Window(6)
+    6400150: WindowLarge
+    6400152: Windows
+    6400154: WindowSmall
+    6400156: WindowSquare
+    6400158: WindowSquare(2)
+    6400160: WindowSquareLarge
+    6400162: NewStairs
+    6400164: KitchenPanel
+    6400166: Box
+    6400168: Fridge
+    6400170: Table
+    6400172: Box.001
+    6400174: Seat
+    6400176: SecondFloorWalls&Loft.001
+    6400178: Door2Loop
+    6400180: LoftDoorLoop
+    6400182: MainDoorLoop
+    6400184: FirstFloor.001
+    6400186: Floor
+    6400188: MainDoor
+    6400190: MainDoorArc
+    6400192: Cube.002
+    6400194: Cube.003
+    6400196: Cube.007
+    6400198: ModLogo
+    6400200: ModPart1
+    6400202: ModPart2
+    6400204: ModPillar
+    6400206: ModPillar.001
+    6400208: ModPorch
+    6400210: ModPorch.002
+    6400212: ModStair
+    6400214: Plinth.007
+    6400216: Window(2).008
+    6400218: Cube.000
+    6400220: Cube.001
+    6400222: Fance
+    6400224: Fance.001
+    6400226: Porch.001
+    6400228: PorchRoof
+    6400230: Room3Floor
+    6400232: Room3Top
+    6400234: Room3Wall
+    6400236: Room3Wall.001
+    6400238: Room3Wall.002
+    6400240: Room3Wall.003
+    6400242: Room3Wall.004
+    6400244: Room3Wall.005
+    6400246: FirstFloor.002
+    6400248: Room3Wall.006
+    6400250: Room3Wall.007
+    6400252: Room3Wall.008
+    6400254: KitchenFloor
+    6400256: KitchenTop
+    6400258: LobbyFloor
+    6400260: LobbyWall
+    6400262: LobbyWall.001
+    6400264: LobbyWall.002
+    6400266: LobbyWall.003
+    6400268: LobbyWall.004
+    6400270: LobbyWall.005
+    6400272: LobbyWall.006
+    6400274: SecondFloor.001
+    6400276: FirstFloor.003
+    6400278: KitchenWall
+    6400280: KitchenWall.001
+    6400282: KitchenWall.002
+    6400284: LobbyWall.007
+    6400286: LobbyWall.008
+    6400288: Lobby2Floor
+    6400290: Lobby2Top
+    6400292: Lobby2Wall
+    6400294: Lobby2Wall.001
+    6400296: Lobby2Wall.002
+    6400298: Lobby2Wall.003
+    6400300: Lobby2Wall.004
+    6400302: Lobby2Wall.005
+    6400304: Lobby2Wall.006
+    6400306: SecondFloorWalls&Loft.003
+    6400308: RoomFloor
+    6400310: RoomTop
+    6400312: RoomWall
+    6400314: RoomWall.001
+    6400316: RoomWall.002
+    6400318: RoomWall.003
+    6400320: RoomWall.004
+    6400322: RoomWall.005
+    6400324: RoomWall.006
+    6400326: WorkRoomTop
+    6400328: WorkRoomWall
+    6400330: WorkRoomWall.001
+    6400332: WorkRoomWall.002
+    6400334: WorkRoomWall.003
+    6400336: WorkRoomWallFloor
+    6400338: BalconDoorArcWall
+    6400340: Circle
+    6400342: PorchRoof.001
+    6400344: LoftFloor
+    6400346: LoftWall
+    6400348: LoftWall.001
+    6400350: LoftWall.002
+    6400352: LoftWall.003
+    6400354: LoftWall.004
+    6400356: Roof.001
+    6400358: Roof.002
+    6400360: RoofTop
+    6400362: RoofWall
+    6400364: RoofWall.001
+    6400366: RoofWall.002
+    6400368: Cube.004
+    6400370: LoftFloor.001
+    6400372: RoofTop.001
+    6400374: RoofWall.003
+    6400376: RoofWall.004
+    6400378: RoofWall.005
+    6400380: LoftWall.005
+    6400382: RoofWall.006
+    6400384: RoofWall.007
+    6400386: RoofWall.008
+    6400388: RoofWall.009
+    6400390: Room3Top.001
+    7400000: LoftStairs|Door2Action
+    7400002: LoftStairs|LoftStairsAction
+    7400004: LoftStairs|MainDoor(1)Action
+    7400006: Door2|Door2Action
+    7400008: Door2|LoftStairsAction
+    7400010: Door2|MainDoor(1)Action
+    7400012: MainDoor(1)|Door2Action
+    7400014: MainDoor(1)|LoftStairsAction
+    7400016: MainDoor(1)|MainDoor(1)Action
+    7400018: Cube.006|Door2Action
+    7400020: Cube.006|LoftStairsAction
+    7400022: Cube.006|MainDoor(1)Action
+    7400024: LoftStairs|Cube.019Action
+    7400026: Cube.019|Cube.019Action
+    7400028: Cube.019|Door2Action
+    7400030: Cube.019|LoftStairsAction
+    7400032: Cube.019|MainDoor(1)Action
+    7400034: Door2|Cube.019Action
+    7400036: MainDoor(1)|Cube.019Action
+    7400038: Cube.006|Cube.019Action
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: LoftStairs|Cube.019Action
+      takeName: LoftStairs|Cube.019Action
+      firstFrame: 0
+      lastFrame: 49
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arca
+        weight: 1
+      - path: Arca2
+        weight: 1
+      - path: Arca3
+        weight: 1
+      - path: Arca4
+        weight: 1
+      - path: Balk
+        weight: 1
+      - path: BalkLarge
+        weight: 1
+      - path: BalkSmall
+        weight: 1
+      - path: BalkSmall/Cube.031
+        weight: 1
+      - path: BalkSmall/Cube.032
+        weight: 1
+      - path: BalkSmall/Cube.048
+        weight: 1
+      - path: BalkSmall/Cube.049
+        weight: 1
+      - path: BalkSmall/Cube.050
+        weight: 1
+      - path: BalkSmall/Cube.051
+        weight: 1
+      - path: BalkSmall/Cube.052
+        weight: 1
+      - path: CircleRoof
+        weight: 1
+      - path: Door2
+        weight: 1
+      - path: Door2/Circle.005
+        weight: 1
+      - path: Door2/Cube.028
+        weight: 1
+      - path: Door2/Cube.044
+        weight: 1
+      - path: Door2Arc
+        weight: 1
+      - path: FirstFloor
+        weight: 1
+      - path: Handhold
+        weight: 1
+      - path: Handhold/Cylinder.001
+        weight: 1
+      - path: Handhold/Cylinder.007
+        weight: 1
+      - path: Handhold2
+        weight: 1
+      - path: LoftStairs
+        weight: 1
+      - path: LoftStairs/Cube.042
+        weight: 1
+      - path: LoftStairs/NewStairs
+        weight: 1
+      - path: MainDoor(1)
+        weight: 1
+      - path: MainDoor(1)/Cube.006
+        weight: 1
+      - path: MainDoor(2)
+        weight: 1
+      - path: PlateArc
+        weight: 1
+      - path: PlateArc.001
+        weight: 1
+      - path: Plinths
+        weight: 1
+      - path: Plinths/Plinth
+        weight: 1
+      - path: Plinths/Plinth.001
+        weight: 1
+      - path: Plinths/Plinth.002
+        weight: 1
+      - path: Plinths/Plinth.003
+        weight: 1
+      - path: Plinths/Plinth.004
+        weight: 1
+      - path: Plinths/Plinth.005
+        weight: 1
+      - path: Plinths/Plinth.006
+        weight: 1
+      - path: Porch
+        weight: 1
+      - path: Porch/Circle.006
+        weight: 1
+      - path: Porch/Cylinder.002
+        weight: 1
+      - path: Roof
+        weight: 1
+      - path: SecondFloor
+        weight: 1
+      - path: SecondFloor/Circle.004
+        weight: 1
+      - path: SecondFloorWalls&Loft
+        weight: 1
+      - path: SmallRoof
+        weight: 1
+      - path: SmallRoofStairs
+        weight: 1
+      - path: SmallRoofStairs/Cube.046
+        weight: 1
+      - path: Stairs
+        weight: 1
+      - path: Stairs/Cube
+        weight: 1
+      - path: Stairs/Cube/Cube.008
+        weight: 1
+      - path: Stairs/Cube.010
+        weight: 1
+      - path: StairsBegin
+        weight: 1
+      - path: Tower
+        weight: 1
+      - path: Windows
+        weight: 1
+      - path: Windows/TowerWindow
+        weight: 1
+      - path: Windows/Window
+        weight: 1
+      - path: Windows/Window/Glass
+        weight: 1
+      - path: Windows/Window(2)
+        weight: 1
+      - path: Windows/Window(2).001
+        weight: 1
+      - path: Windows/Window(2).002
+        weight: 1
+      - path: Windows/Window(2).003
+        weight: 1
+      - path: Windows/Window(2).004
+        weight: 1
+      - path: Windows/Window(2).005
+        weight: 1
+      - path: Windows/Window(2).006
+        weight: 1
+      - path: Windows/Window(2).007
+        weight: 1
+      - path: Windows/Window(3)
+        weight: 1
+      - path: Windows/Window(3).001
+        weight: 1
+      - path: Windows/Window(3).002
+        weight: 1
+      - path: Windows/Window(3).003
+        weight: 1
+      - path: Windows/Window(4)
+        weight: 1
+      - path: Windows/Window(5)
+        weight: 1
+      - path: Windows/Window(6)
+        weight: 1
+      - path: Windows/WindowLarge
+        weight: 1
+      - path: Windows/WindowSmall
+        weight: 1
+      - path: Windows/WindowSquare
+        weight: 1
+      - path: Windows/WindowSquare(2)
+        weight: 1
+      - path: Windows/WindowSquareLarge
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Door2|Door2Action
+      takeName: Door2|Door2Action
+      firstFrame: 0
+      lastFrame: 49
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arca
+        weight: 1
+      - path: Arca2
+        weight: 1
+      - path: Arca3
+        weight: 1
+      - path: Arca4
+        weight: 1
+      - path: Balk
+        weight: 1
+      - path: BalkLarge
+        weight: 1
+      - path: BalkSmall
+        weight: 1
+      - path: BalkSmall/Cube.031
+        weight: 1
+      - path: BalkSmall/Cube.032
+        weight: 1
+      - path: BalkSmall/Cube.048
+        weight: 1
+      - path: BalkSmall/Cube.049
+        weight: 1
+      - path: BalkSmall/Cube.050
+        weight: 1
+      - path: BalkSmall/Cube.051
+        weight: 1
+      - path: BalkSmall/Cube.052
+        weight: 1
+      - path: CircleRoof
+        weight: 1
+      - path: Door2
+        weight: 1
+      - path: Door2/Circle.005
+        weight: 1
+      - path: Door2/Cube.028
+        weight: 1
+      - path: Door2/Cube.044
+        weight: 1
+      - path: Door2Arc
+        weight: 1
+      - path: FirstFloor
+        weight: 1
+      - path: Handhold
+        weight: 1
+      - path: Handhold/Cylinder.001
+        weight: 1
+      - path: Handhold/Cylinder.007
+        weight: 1
+      - path: Handhold2
+        weight: 1
+      - path: LoftStairs
+        weight: 1
+      - path: LoftStairs/Cube.042
+        weight: 1
+      - path: LoftStairs/NewStairs
+        weight: 1
+      - path: MainDoor(1)
+        weight: 1
+      - path: MainDoor(1)/Cube.006
+        weight: 1
+      - path: MainDoor(2)
+        weight: 1
+      - path: PlateArc
+        weight: 1
+      - path: PlateArc.001
+        weight: 1
+      - path: Plinths
+        weight: 1
+      - path: Plinths/Plinth
+        weight: 1
+      - path: Plinths/Plinth.001
+        weight: 1
+      - path: Plinths/Plinth.002
+        weight: 1
+      - path: Plinths/Plinth.003
+        weight: 1
+      - path: Plinths/Plinth.004
+        weight: 1
+      - path: Plinths/Plinth.005
+        weight: 1
+      - path: Plinths/Plinth.006
+        weight: 1
+      - path: Porch
+        weight: 1
+      - path: Porch/Circle.006
+        weight: 1
+      - path: Porch/Cylinder.002
+        weight: 1
+      - path: Roof
+        weight: 1
+      - path: SecondFloor
+        weight: 1
+      - path: SecondFloor/Circle.004
+        weight: 1
+      - path: SecondFloorWalls&Loft
+        weight: 1
+      - path: SmallRoof
+        weight: 1
+      - path: SmallRoofStairs
+        weight: 1
+      - path: SmallRoofStairs/Cube.046
+        weight: 1
+      - path: Stairs
+        weight: 1
+      - path: Stairs/Cube
+        weight: 1
+      - path: Stairs/Cube/Cube.008
+        weight: 1
+      - path: Stairs/Cube.010
+        weight: 1
+      - path: StairsBegin
+        weight: 1
+      - path: Tower
+        weight: 1
+      - path: Windows
+        weight: 1
+      - path: Windows/TowerWindow
+        weight: 1
+      - path: Windows/Window
+        weight: 1
+      - path: Windows/Window/Glass
+        weight: 1
+      - path: Windows/Window(2)
+        weight: 1
+      - path: Windows/Window(2).001
+        weight: 1
+      - path: Windows/Window(2).002
+        weight: 1
+      - path: Windows/Window(2).003
+        weight: 1
+      - path: Windows/Window(2).004
+        weight: 1
+      - path: Windows/Window(2).005
+        weight: 1
+      - path: Windows/Window(2).006
+        weight: 1
+      - path: Windows/Window(2).007
+        weight: 1
+      - path: Windows/Window(3)
+        weight: 1
+      - path: Windows/Window(3).001
+        weight: 1
+      - path: Windows/Window(3).002
+        weight: 1
+      - path: Windows/Window(3).003
+        weight: 1
+      - path: Windows/Window(4)
+        weight: 1
+      - path: Windows/Window(5)
+        weight: 1
+      - path: Windows/Window(6)
+        weight: 1
+      - path: Windows/WindowLarge
+        weight: 1
+      - path: Windows/WindowSmall
+        weight: 1
+      - path: Windows/WindowSquare
+        weight: 1
+      - path: Windows/WindowSquare(2)
+        weight: 1
+      - path: Windows/WindowSquareLarge
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MainDoor(1)|MainDoor(1)Action
+      takeName: MainDoor(1)|MainDoor(1)Action
+      firstFrame: 0
+      lastFrame: 49
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arca
+        weight: 1
+      - path: Arca2
+        weight: 1
+      - path: Arca3
+        weight: 1
+      - path: Arca4
+        weight: 1
+      - path: Balk
+        weight: 1
+      - path: BalkLarge
+        weight: 1
+      - path: BalkSmall
+        weight: 1
+      - path: BalkSmall/Cube.031
+        weight: 1
+      - path: BalkSmall/Cube.032
+        weight: 1
+      - path: BalkSmall/Cube.048
+        weight: 1
+      - path: BalkSmall/Cube.049
+        weight: 1
+      - path: BalkSmall/Cube.050
+        weight: 1
+      - path: BalkSmall/Cube.051
+        weight: 1
+      - path: BalkSmall/Cube.052
+        weight: 1
+      - path: CircleRoof
+        weight: 1
+      - path: Door2
+        weight: 1
+      - path: Door2/Circle.005
+        weight: 1
+      - path: Door2/Cube.028
+        weight: 1
+      - path: Door2/Cube.044
+        weight: 1
+      - path: Door2Arc
+        weight: 1
+      - path: FirstFloor
+        weight: 1
+      - path: Handhold
+        weight: 1
+      - path: Handhold/Cylinder.001
+        weight: 1
+      - path: Handhold/Cylinder.007
+        weight: 1
+      - path: Handhold2
+        weight: 1
+      - path: LoftStairs
+        weight: 1
+      - path: LoftStairs/Cube.042
+        weight: 1
+      - path: LoftStairs/NewStairs
+        weight: 1
+      - path: MainDoor(1)
+        weight: 1
+      - path: MainDoor(1)/Cube.006
+        weight: 1
+      - path: MainDoor(2)
+        weight: 1
+      - path: PlateArc
+        weight: 1
+      - path: PlateArc.001
+        weight: 1
+      - path: Plinths
+        weight: 1
+      - path: Plinths/Plinth
+        weight: 1
+      - path: Plinths/Plinth.001
+        weight: 1
+      - path: Plinths/Plinth.002
+        weight: 1
+      - path: Plinths/Plinth.003
+        weight: 1
+      - path: Plinths/Plinth.004
+        weight: 1
+      - path: Plinths/Plinth.005
+        weight: 1
+      - path: Plinths/Plinth.006
+        weight: 1
+      - path: Porch
+        weight: 1
+      - path: Porch/Circle.006
+        weight: 1
+      - path: Porch/Cylinder.002
+        weight: 1
+      - path: Roof
+        weight: 1
+      - path: SecondFloor
+        weight: 1
+      - path: SecondFloor/Circle.004
+        weight: 1
+      - path: SecondFloorWalls&Loft
+        weight: 1
+      - path: SmallRoof
+        weight: 1
+      - path: SmallRoofStairs
+        weight: 1
+      - path: SmallRoofStairs/Cube.046
+        weight: 1
+      - path: Stairs
+        weight: 1
+      - path: Stairs/Cube
+        weight: 1
+      - path: Stairs/Cube/Cube.008
+        weight: 1
+      - path: Stairs/Cube.010
+        weight: 1
+      - path: StairsBegin
+        weight: 1
+      - path: Tower
+        weight: 1
+      - path: Windows
+        weight: 1
+      - path: Windows/TowerWindow
+        weight: 1
+      - path: Windows/Window
+        weight: 1
+      - path: Windows/Window/Glass
+        weight: 1
+      - path: Windows/Window(2)
+        weight: 1
+      - path: Windows/Window(2).001
+        weight: 1
+      - path: Windows/Window(2).002
+        weight: 1
+      - path: Windows/Window(2).003
+        weight: 1
+      - path: Windows/Window(2).004
+        weight: 1
+      - path: Windows/Window(2).005
+        weight: 1
+      - path: Windows/Window(2).006
+        weight: 1
+      - path: Windows/Window(2).007
+        weight: 1
+      - path: Windows/Window(3)
+        weight: 1
+      - path: Windows/Window(3).001
+        weight: 1
+      - path: Windows/Window(3).002
+        weight: 1
+      - path: Windows/Window(3).003
+        weight: 1
+      - path: Windows/Window(4)
+        weight: 1
+      - path: Windows/Window(5)
+        weight: 1
+      - path: Windows/Window(6)
+        weight: 1
+      - path: Windows/WindowLarge
+        weight: 1
+      - path: Windows/WindowSmall
+        weight: 1
+      - path: Windows/WindowSquare
+        weight: 1
+      - path: Windows/WindowSquare(2)
+        weight: 1
+      - path: Windows/WindowSquareLarge
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1.4
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
