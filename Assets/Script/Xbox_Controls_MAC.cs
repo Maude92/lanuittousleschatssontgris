@@ -25,8 +25,10 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 	//Lumping
 	public float longueurRay = 0.8f;
+	public float longueurRayBas = 5.1f;
 	private RaycastHit hit;
 	private RaycastHit hit2;
+	private RaycastHit hit3;
 
 	public GameObject LumpHaut;
 	public GameObject LumpBas;
@@ -35,9 +37,10 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	public bool isLerping = false;
 	public bool canLerp = false;
 
-	public int LumpForce = 100;
+	public float LumpForce;
 
 	public float Distance;
+	public float DistanceBas;
 
 	//Variables Lerp Test
 	public float lerpTime = 1f;
@@ -86,8 +89,14 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
 
-		//Pour Lump V-LF
-		Distance = hit.transform.position.y - hit2.transform.position.y;
+		//Pour Lump Haut V-LF
+		//Distance = hit.transform.position.y - hit2.transform.position.y;
+
+		//Pour Lump Bas
+		DistanceBas = hit2.transform.position.y - hit3.transform.position.y;
+
+	
+		print ("ceci est ma vélocité sur les Y : " + rb.velocity.y);
 
 		//Test A
 //		if (Distance <= 0.25f && Distance > 0) {
@@ -96,12 +105,25 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 //		}
 
 		//Test B
-		if (Distance > 0.1f) {
-			animatorMist.SetTrigger ("Jump");
-			animatorMist.SetBool ("Grounded", false);
-			rb.velocity = new Vector3 (0, 2.5f, 0);
-			rb.AddForce (0, 0, 10);
-			print ("ta mère en short");
+//		if (Distance > 0.1f) {
+//			animatorMist.SetTrigger ("Jump");
+//			animatorMist.SetBool ("Grounded", false);
+//			rb.velocity = new Vector3 (0, 2.5f, 0);
+//			rb.AddForce (0, 0, 15);
+//		}
+
+		//Test C
+		if (DistanceBas > 0.1f) {
+			print ("Ta mère en short vers le bas");
+//			animatorMist.SetTrigger ("Jump");
+//			animatorMist.SetBool ("Grounded", false);
+//			rb.velocity = new Vector3 (0, 2.5f, 0);
+//			rb.AddForce (0, 0, 15);
+		}
+
+		//Si on tombe
+		if (!cubegrounded.isGrounded){
+			animatorMist.SetBool ("IsFalling", true);
 		}
 
 		// POUR FAIRE PIVOTER LA TÊTE
@@ -277,6 +299,15 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			}
 				if (Input.GetAxis ("XbOne_RightTrigger") < -0.001) {
 					LumpBas.SetActive (true);
+					//RAYCAST vers le Bas
+					//RayCast LumpBas
+					Physics.Raycast (LumpBas.transform.position, -transform.up, out hit3, longueurRayBas, LayerMask.GetMask ("Ground"));
+					Debug.DrawRay (LumpBas.transform.position, -transform.up * longueurRayBas, Color.blue);
+
+					//RayCast PositionMist
+					Physics.Raycast (transform.position + new Vector3 (0, 0.5f, 0), -transform.up, out hit2, longueurRay, LayerMask.GetMask("Ground"));
+					Debug.DrawRay (transform.position, -transform.up * longueurRay, Color.yellow);
+
 				}
 			} else if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001 || Input.GetAxis ("XbOne_RightTrigger") > -0.001) {
 				PlayerMovementSpeed = 2;
