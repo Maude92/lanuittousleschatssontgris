@@ -36,6 +36,7 @@ public class Xbox_Controls : MonoBehaviour {
 		//Pour Lump
 		LumpHaut.SetActive (false);
 		LumpBas.SetActive (false);
+
 	}
 
 	void FixedUpdate(){
@@ -47,6 +48,8 @@ public class Xbox_Controls : MonoBehaviour {
 		UserInputs ();
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
+
+
 
 		if (cubegrounded.isGrounded == true) {
 			animatorMist.SetBool ("Grounded", true);
@@ -136,14 +139,14 @@ public class Xbox_Controls : MonoBehaviour {
 		}
 
 		// Left Bumper (... 4)
-		if (Input.GetButtonDown ("360_LeftBumper")){
-			print ("Je pèse sur: left bumper!");
-		}
+//		if (Input.GetButtonDown ("360_LeftBumper")){
+//			print ("Je pèse sur: left bumper!");
+//		}
 
 		// Right bumper (... 5)
-		if (Input.GetButtonDown ("360_RightBumper")){
-			print ("Je pèse sur: right bumper!");
-		}
+//		if (Input.GetButtonDown ("360_RightBumper")){
+//			print ("Je pèse sur: right bumper!");
+//		}
 
 		// Back button (... 6)
 		if (Input.GetButtonDown ("360_BackButton")){
@@ -266,6 +269,27 @@ public class Xbox_Controls : MonoBehaviour {
 
 	void LumpDown (){
 		print ("Je Lump vers le bas ! Wouhou !");
+	}
+
+
+
+	// TEST POUR LA QUEUE QUI BOUGE QUAND EN ÉQUILIBRE
+	void OnTriggerStay (Collider other){
+		if (Input.GetButton ("360_LeftBumper") && other.gameObject.tag == "Balancing") {
+			print ("Je pèse sur: left bumper pis je suis sur un objet balancing!");
+			//animatorMist.SetBool ("TailG", true);
+		} 
+//		else{
+//			animatorMist.SetBool ("TailG", false);
+//	}
+
+		if (Input.GetButton ("360_RightBumper") && other.gameObject.tag == "Balancing") {
+			print ("Je pèse sur: right bumper pis je suis sur un objet balancing!");
+			//animatorMist.SetBool ("TailD", true);
+		} 
+//		else {
+//			animatorMist.SetBool ("TailD", false);
+//		}
 	}
 
 }

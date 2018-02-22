@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Terrain
   - Ground
+  - FallingObjectGauche
+  - FallingObjectDroite
+  - SupportFallingObject
+  - Balancing
   layers:
   - Default
   - TransparentFX
