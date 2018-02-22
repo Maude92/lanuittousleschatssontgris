@@ -6,14 +6,10 @@ TagManager:
   tags:
   - Terrain
   - Ground
-<<<<<<< HEAD
   - FallingObjectGauche
   - FallingObjectDroite
   - SupportFallingObject
   - Balancing
-=======
-  - Lump
->>>>>>> 059755df78b3ca03d75ec99886a3701f8d1fa038
   layers:
   - Default
   - TransparentFX
@@ -24,7 +20,7 @@ TagManager:
   - 
   - 
   - Ground
-  - Lerp
+  - 
   - 
   - 
   - 
