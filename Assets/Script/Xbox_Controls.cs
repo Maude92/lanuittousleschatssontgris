@@ -9,21 +9,34 @@ public class Xbox_Controls : MonoBehaviour {
 
 	public int jumpforce = 100;
 
+	public bool isjumping;
+
 	public GameObject mistObj;
-	public GameObject cubeGroundObj;
+	public Transform camera;
+	//public GameObject cubeGroundObj;
 
 	CubeGrounded cubegrounded;
 
 	Rigidbody rb;
 	Animator animatorMist;
 
-	public GameObject camera;
+	//Lumping test
+	public float longueurRay = 0.8f;
+	private RaycastHit hit;	
+	public GameObject LumpHaut;
+	public GameObject LumpBas;
+	public bool JeLump = false;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent <Rigidbody> ();
 		animatorMist = mistObj.GetComponent <Animator> ();
-		cubegrounded = cubeGroundObj.GetComponent <CubeGrounded> ();
+		cubegrounded = GetComponent <CubeGrounded> ();
+
+		//Pour Lump
+		LumpHaut.SetActive (false);
+		LumpBas.SetActive (false);
+
 	}
 
 	void FixedUpdate(){
@@ -36,22 +49,39 @@ public class Xbox_Controls : MonoBehaviour {
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
 
-		//print (Input.GetAxis ("RightStick"));
 
-		// POUR FAIRE PIVOTER LA TÊTE
+
+		if (cubegrounded.isGrounded == true) {
+			animatorMist.SetBool ("Grounded", true);
+			//isjumping = false;
+		} else if (cubegrounded.isGrounded == false) {
+			animatorMist.SetBool ("Grounded", false);
+			//isjumping = true;
+		}
+
+
+	// POUR FAIRE PIVOTER LA TÊTE
+		// Tête à gauche
 		if (Input.GetAxis ("RightStick") < -0.1f) {
 			print ("Allo! Tête à gauche.");
 			animatorMist.SetFloat ("TurnG", 1);
 		} else
 			animatorMist.SetFloat ("TurnG", 0);
 
+		// Tête à droite
 		if (Input.GetAxis ("RightStick") > 0.1f) {
 			print ("Allo! Tête à droite.");
-		}
+			animatorMist.SetFloat ("TurnD", 1);
+		} else
+			animatorMist.SetFloat ("TurnD", 0);
 
+		// Tête en haut
 		if (Input.GetAxis ("RightStickY") > 0.1f) {
 			print ("Allo! Tête en haut.");
-		}
+			animatorMist.SetFloat ("TurnU", 1);
+		} else 
+			animatorMist.SetFloat ("TurnU", 0);
+
 	}
 
 
@@ -60,13 +90,22 @@ public class Xbox_Controls : MonoBehaviour {
 //		if(Input.GetAxis("Vertical")>0){
 //			transform.forward = camera.transform.forward;
 //		}
+		Vector3 forward = Vector3.Scale(camera.forward, new Vector3(1, 0, 1)).normalized;
+		float v = Input.GetAxis ("Vertical") * Time.deltaTime  * PlayerMovementSpeed;			//float v = Input.GetAxis ("Vertical")  * PlayerMovementSpeed;
+																								//float h = Input.GetAxis ("Horizontal")  * PlayerMovementSpeed;
+		float h = Input.GetAxis ("Horizontal") * Time.deltaTime * PlayerMovementSpeed;
+
+		Vector3 move = v * forward + h * camera.right;
 
 		// Cette ligne est pour le vertical movement, en ce moment c'est sur l'axe Z
-		transform.Translate (0, 0, Input.GetAxis ("Vertical") * Time.deltaTime * PlayerMovementSpeed);
-
+		transform.Translate (move, Space.World);
+																								//rb.velocity = new Vector3 (move.x, rb.velocity.y, move.z);
 		// Cette ligne est pour le horizontal movement, en ce moment c'est sur l'axe X. When combined with vertical movement it can be used for Strafing
-		transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * PlayerMovementSpeed, 0, 0);
-		transform.Rotate (0, Input.GetAxis ("Horizontal") * Time.deltaTime * PlayerRotationSpeed, 0);
+		//transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * PlayerMovementSpeed, 0, 0);
+		if (move.magnitude > 0) {
+			transform.forward = Vector3.RotateTowards(transform.forward, move.normalized, Time.deltaTime * PlayerRotationSpeed, 0);
+		}
+
 		// VERSION CRISTELLE transform.Rotate (0 , 2 * Input.GetAxis("Horizontal"), 0 );
 
 		// Pour rotater la cam
@@ -76,11 +115,12 @@ public class Xbox_Controls : MonoBehaviour {
 	void UserInputs(){
 	
 		// Bouton A (joystick button 0)
-		if (Input.GetButtonDown ("360_AButton")){
+		if (Input.GetButtonDown ("360_AButton") && cubegrounded.isGrounded == true && isjumping == false){
 			print ("Je pèse sur: le bouton A!");
-			animatorMist.SetTrigger ("Jump");
-			animatorMist.SetBool ("Grounded", false);
-			Invoke ("JumpMist", 0.23f);
+				//animatorMist.SetTrigger ("Jump");
+				//animatorMist.SetBool ("Grounded", false);
+				StartCoroutine (JumpMistRoutine ());
+				//Invoke ("JumpMist", 0.23f);																	// WARNING BOGUE!!!
 		}
 			
 		// Bouton B (joystick button 1)
@@ -99,14 +139,14 @@ public class Xbox_Controls : MonoBehaviour {
 		}
 
 		// Left Bumper (... 4)
-		if (Input.GetButtonDown ("360_LeftBumper")){
-			print ("Je pèse sur: left bumper!");
-		}
+//		if (Input.GetButtonDown ("360_LeftBumper")){
+//			print ("Je pèse sur: left bumper!");
+//		}
 
 		// Right bumper (... 5)
-		if (Input.GetButtonDown ("360_RightBumper")){
-			print ("Je pèse sur: right bumper!");
-		}
+//		if (Input.GetButtonDown ("360_RightBumper")){
+//			print ("Je pèse sur: right bumper!");
+//		}
 
 		// Back button (... 6)
 		if (Input.GetButtonDown ("360_BackButton")){
@@ -129,13 +169,13 @@ public class Xbox_Controls : MonoBehaviour {
 		}
 
 		//Trigger gauche (L)
-		if (Input.GetAxis ("360_TriggerL")> 0.001){
-			print ("Je pèse sur le trigger gauche!!");
-		}
+//		if (Input.GetAxis ("360_TriggerL")> 0.001){
+//			//print ("Je pèse sur le trigger gauche!!");
+//		}
 
-		if (Input.GetAxis ("360_TriggerR") > 0.001) {
-			print ("Je pèse sur le trigger droit!!");
-		}
+//		if (Input.GetAxis ("360_TriggerR") > 0.001) {
+//			//print ("Je pèse sur le trigger droit!!");
+//		}
 
 		// The D-PAD is read from the 6th (horizontal) and 7th (vertical) joystick axes and from a sensitivity rating from -1 to 1, similar to the Triggers
 		//RIGHT d-pad button is activated when pressure is above 0, or the dead zone
@@ -154,10 +194,102 @@ public class Xbox_Controls : MonoBehaviour {
 		if (Input.GetAxis("360_VerticalDPAD")<0){
 			print ("Down D-PAD button!");
 		}
+
+
+		// LUMP ET COURSE!!
+
+		//Trigger gauche (L)
+//		if (Input.GetAxis ("360_TriggerL")> 0.001){
+//			print ("Je pèse sur le trigger gauche!!");
+//			PlayerMovementSpeed = 4;
+//			LumpHaut.SetActive (true);
+//			JeLump = true;
+//			animatorMist.SetBool ("IsLumpingG", true);
+//		} else if (Input.GetAxis ("360_TriggerL") < 0.001) {
+//			PlayerMovementSpeed = 2;
+//			animatorMist.SetBool ("IsLumpingG", false);
+//			LumpHaut.SetActive (false);
+//			JeLump = false;
+//		}
+
+
+		//Trigger droite (R)
+		if (Input.GetAxis ("360_TriggerR") > 0.001 || Input.GetAxis ("360_TriggerL") > 0.001) {
+			print ("Je pèse sur le trigger droit!!");
+			PlayerMovementSpeed = 4;
+			//LumpBas.SetActive (true);
+			JeLump = true;
+			animatorMist.SetBool ("IsLumping", true);
+			if (Input.GetAxis ("360_TriggerR") > 0.001) {
+				LumpBas.SetActive (true);
+			}
+			if (Input.GetAxis ("360_TriggerL") > 0.001) {
+				LumpHaut.SetActive (true);
+			}
+		} else if (Input.GetAxis ("360_TriggerR") < 0.001 || Input.GetAxis ("360_TriggerL") < 0.001) {
+			PlayerMovementSpeed = 2;
+			animatorMist.SetBool ("IsLumping", false);
+			//LumpBas.SetActive (false);
+			JeLump = false;
+			if (Input.GetAxis ("360_TriggerR") < 0.001) {
+				LumpBas.SetActive (false);
+			}
+			if (Input.GetAxis ("360_TriggerL") < 0.001) {
+				LumpHaut.SetActive (false);
+			}
+		}
+
+			
+		if (Input.GetAxis ("360_TriggerR") > 0.001 && Input.GetAxis ("360_TriggerL")> 0.001) {
+			LumpHaut.SetActive (false);
+			LumpBas.SetActive (false);
+			JeLump = false;
+		}
+
 	}
 
-	void JumpMist(){
+//	void JumpMist(){
+//		rb.AddForce (new Vector3 (0, jumpforce, 0));
+//	}
+
+	IEnumerator JumpMistRoutine(){
+		isjumping = true;
+		animatorMist.SetTrigger ("Jump");
+		//animatorMist.SetBool ("Grounded", false);
+		yield return new WaitForSeconds (0.115f);
+		cubegrounded.isGrounded = false;
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
+		yield return new WaitForSeconds (0.5f);
+		isjumping = false;
+	}
+
+	void LumpUP (){
+		print ("Je Lump vers le haut ! Wouhou !");
+	}
+
+	void LumpDown (){
+		print ("Je Lump vers le bas ! Wouhou !");
+	}
+
+
+
+	// TEST POUR LA QUEUE QUI BOUGE QUAND EN ÉQUILIBRE
+	void OnTriggerStay (Collider other){
+		if (Input.GetButton ("360_LeftBumper") && other.gameObject.tag == "Balancing") {
+			print ("Je pèse sur: left bumper pis je suis sur un objet balancing!");
+			//animatorMist.SetBool ("TailG", true);
+		} 
+//		else{
+//			animatorMist.SetBool ("TailG", false);
+//	}
+
+		if (Input.GetButton ("360_RightBumper") && other.gameObject.tag == "Balancing") {
+			print ("Je pèse sur: right bumper pis je suis sur un objet balancing!");
+			//animatorMist.SetBool ("TailD", true);
+		} 
+//		else {
+//			animatorMist.SetBool ("TailD", false);
+//		}
 	}
 
 }
