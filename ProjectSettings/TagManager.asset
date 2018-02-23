@@ -4,9 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Terrain
   - Ground
-
+  - Balancing
+  - FallingObjectGauche
+  - SupportFallingObject
+  - FallingObjectDroite
   layers:
   - Default
   - TransparentFX
@@ -16,19 +18,19 @@ TagManager:
   - UI
   - 
   - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - Ground
-  - Lerp
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
