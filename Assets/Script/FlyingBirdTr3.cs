@@ -14,6 +14,10 @@ public class FlyingBirdTr3 : MonoBehaviour {
 	public bool flying = true;
 
 	Animator animatorBird;
+
+	public AudioClip song1;
+	public AudioClip song2;
+
 	// Use this for initialization
 	void Start () {
 		animatorBird = GetComponent <Animator> ();
@@ -83,5 +87,15 @@ public class FlyingBirdTr3 : MonoBehaviour {
 		//birdController.BirdFindTarget(Bird);
 		//birdFly.FlyToTarget(reference.transform.position);
 		//Bird.SendMessage ("FlyToTarget");
+	}
+
+	void PlaySong(){
+		
+			if(Random.value < .5){
+				GetComponent<AudioSource>().PlayOneShot (song1,1);
+			}else{
+				GetComponent<AudioSource>().PlayOneShot (song2,1);
+			}
+
 	}
 }
