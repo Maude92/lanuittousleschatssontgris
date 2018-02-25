@@ -95,9 +95,6 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		//Pour Lump Bas
 		DistanceBas = hit2.transform.position.y - hit3.transform.position.y;
 
-	
-		print ("ceci est ma vélocité sur les Y : " + rb.velocity.y);
-
 		//Test A
 //		if (Distance <= 0.25f && Distance > 0) {
 //			rb.AddForce (0, LumpForce, -10);
@@ -113,18 +110,18 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 //		}
 
 		//Test C
-		if (DistanceBas > 0.1f) {
-			print ("Ta mère en short vers le bas");
+//		if (DistanceBas > 0.1f) {
+//			print ("Ta mère en short vers le bas");
 //			animatorMist.SetTrigger ("Jump");
-//			animatorMist.SetBool ("Grounded", false);
+//			animatorMist.SetBool ("IsFalling", true);
 //			rb.velocity = new Vector3 (0, 2.5f, 0);
 //			rb.AddForce (0, 0, 15);
-		}
+//		}
 
 		//Si on tombe
-		if (!cubegrounded.isGrounded){
-			animatorMist.SetBool ("IsFalling", true);
-		}
+//		if (cubegrounded.isGrounded == false){
+//			animatorMist.SetBool ("IsFalling", true);
+//		}
 
 		// POUR FAIRE PIVOTER LA TÊTE
 		// Tête à gauche
