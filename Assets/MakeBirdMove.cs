@@ -29,6 +29,7 @@ public class MakeBirdMove : MonoBehaviour {
 			
 			//Bird.GetComponent<Rigidbody>().AddForce((FlyingUp.transform.forward * 50f));
 			reference.transform.position = NextTarget.transform.position;
+			//FlyBird.StartingToFly ();
 			Invoke ("Flight", delayflight);
 		}
 
