@@ -21,6 +21,7 @@ public class lb_Bird : MonoBehaviour {
 	public bool fleeCrows = true;
 
 	Animator anim;
+	//lb_BirdController1Bird controller;
 	lb_BirdController controller;
 
 	bool paused = false;
@@ -120,7 +121,7 @@ public class lb_Bird : MonoBehaviour {
 		}
 	}
 	
-	IEnumerator FlyToTarget(Vector3 target){
+	public IEnumerator FlyToTarget(Vector3 target){
 		if(Random.value < .5){
 			GetComponent<AudioSource>().PlayOneShot (flyAway1,.1f);
 		}else{
@@ -142,17 +143,18 @@ public class lb_Bird : MonoBehaviour {
 		}
 
 		//birds fly up and away from their perch for 1 second before orienting to the next target
-		GetComponent<Rigidbody>().AddForce((transform.forward * 50.0f*controller.birdScale)+(transform.up * 100.0f*controller.birdScale));
+		//GetComponent<Rigidbody>().AddForce((transform.forward * 50.0f*controller.birdScale)+(transform.up * 100.0f*controller.birdScale));
+		GetComponent<Rigidbody>().AddForce((transform.forward * 50.0f)+(transform.up * 100.0f));
 		float t = 0.0f;
-		while (t<1.0f){
-			if(!paused){
-				t+= Time.deltaTime;
-				if(t>.2f && !solidCollider.enabled && controller.collideWithObjects){
-					solidCollider.enabled = true;
-				}
-			}
-			yield return 0;
-		}
+//		while (t<1.0f){
+//			if(!paused){
+//				t+= Time.deltaTime;
+//				if(t>.2f && !solidCollider.enabled && controller.collideWithObjects){
+//					solidCollider.enabled = true;
+//				}
+//			}
+//			yield return 0;
+//		}
 		//start to rotate toward target
 		Vector3 vectorDirectionToTarget = (target-transform.position).normalized;
 		Quaternion finalRotation = Quaternion.identity;
