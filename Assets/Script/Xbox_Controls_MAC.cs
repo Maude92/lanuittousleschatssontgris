@@ -33,6 +33,12 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	public GameObject LumpHaut;
 	public GameObject LumpBas;
 
+	//Pour tester le Falling
+	public GameObject FallingTete;
+	public GameObject FallingCul;
+	public bool isFalling = false;
+	public bool ToucheSol;
+
 	public bool JeCours = false;
 	public bool isLerping = false;
 	public bool canLerp = false;
@@ -88,6 +94,36 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		UserInputs ();
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
+
+
+		//Pour animation TOMBER
+		//RayCast pour Falling Test (TETE et CUL)
+		Debug.DrawRay (FallingTete.transform.position, -transform.up * longueurRay, Color.red);
+		Debug.DrawRay (FallingCul.transform.position, -transform.up * longueurRay, Color.blue);
+
+		if (Physics.Raycast (FallingTete.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground")) && Physics.Raycast (FallingCul.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"))) {
+			ToucheSol = true;
+			isFalling = false;
+			animatorMist.SetBool ("IsFalling", false);
+			//animatorMist.SetBool ("Grounded", true);
+
+		} else {
+			isFalling = true;
+			ToucheSol = false;
+		}
+			
+		if (isFalling == true && ToucheSol == false && isjumping == false){
+			//rb.AddForce (0, -5, 2);
+			animatorMist.SetBool ("IsFalling", true);
+			//animatorMist.SetBool ("Grounded", false);
+		}
+
+		if (isjumping == true) {
+			isFalling = false;
+			ToucheSol = false;
+			animatorMist.SetBool ("IsFalling", false);
+			//animatorMist.SetBool ("Grounded", true);
+		}
 
 		//Pour Lump Haut V-LF
 		//Distance = hit.transform.position.y - hit2.transform.position.y;
@@ -226,18 +262,18 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			PlayerMovementSpeed = 4;
 			jumpforce = 240;
 			JeCours = true;
-			animatorMist.SetBool ("IsLumping", true);
+			animatorMist.SetBool ("IsLumping", true); //IsLumping = animation courrir
 			if (Input.GetAxis ("XbOne_LeftTrigger") > 0.001) {
-				LumpHaut.SetActive (true);
+				//LumpHaut.SetActive (true);
 
 				//RAYCAST Version LF
 				//RayCast LumpHaut
-				Physics.Raycast (LumpHaut.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"));
-				Debug.DrawRay (LumpHaut.transform.position, -transform.up * longueurRay, Color.red);
+//				Physics.Raycast (LumpHaut.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"));
+//				Debug.DrawRay (LumpHaut.transform.position, -transform.up * longueurRay, Color.red);
 
 				//RayCast PositionMist
-				Physics.Raycast (transform.position + new Vector3 (0, 0.5f, 0), -transform.up, out hit2, longueurRay, LayerMask.GetMask("Ground"));
-				Debug.DrawRay (transform.position, -transform.up * longueurRay, Color.yellow);
+//				Physics.Raycast (transform.position + new Vector3 (0, 0.5f, 0), -transform.up, out hit2, longueurRay, LayerMask.GetMask("Ground"));
+//				Debug.DrawRay (transform.position, -transform.up * longueurRay, Color.yellow);
 
 //				//Ancien RayCast pour Lump Version A-B-C
 //				if (Physics.Raycast (LumpHaut.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"))) {		// je vais chercher la position du transform sur lequel l'objet est		//origine, direction, maxdistance
@@ -295,16 +331,15 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 //				}
 			}
 				if (Input.GetAxis ("XbOne_RightTrigger") < -0.001) {
-					LumpBas.SetActive (true);
+					//LumpBas.SetActive (true);
 					//RAYCAST vers le Bas
 					//RayCast LumpBas
-					Physics.Raycast (LumpBas.transform.position, -transform.up, out hit3, longueurRayBas, LayerMask.GetMask ("Ground"));
-					Debug.DrawRay (LumpBas.transform.position, -transform.up * longueurRayBas, Color.blue);
-
-					//RayCast PositionMist
-					Physics.Raycast (transform.position + new Vector3 (0, 0.5f, 0), -transform.up, out hit2, longueurRay, LayerMask.GetMask("Ground"));
-					Debug.DrawRay (transform.position, -transform.up * longueurRay, Color.yellow);
-
+//					Physics.Raycast (LumpBas.transform.position, -transform.up, out hit3, longueurRayBas, LayerMask.GetMask ("Ground"));
+//					Debug.DrawRay (LumpBas.transform.position, -transform.up * longueurRayBas, Color.blue);
+//
+//					//RayCast PositionMist
+//					Physics.Raycast (transform.position + new Vector3 (0, 0.5f, 0), -transform.up, out hit2, longueurRay, LayerMask.GetMask("Ground"));
+//					Debug.DrawRay (transform.position, -transform.up * longueurRay, Color.yellow);
 				}
 			} else if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001 || Input.GetAxis ("XbOne_RightTrigger") > -0.001) {
 				PlayerMovementSpeed = 2;
@@ -361,7 +396,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		isjumping = true;
 		animatorMist.SetTrigger ("Jump");
 		animatorMist.SetBool ("Grounded", false);
-		yield return new WaitForSeconds (0.23f);
+		yield return new WaitForSeconds (0.01f);
 		cubegrounded.isGrounded = false;
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
 		isjumping = false;
