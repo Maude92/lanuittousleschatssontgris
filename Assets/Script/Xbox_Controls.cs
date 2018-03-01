@@ -7,6 +7,9 @@ public class Xbox_Controls : MonoBehaviour {
 	public float PlayerMovementSpeed = 30;
 	public float PlayerRotationSpeed = 180;
 
+	public float walkSpeed;
+	public float runSpeed;
+
 	public int jumpforce = 100;
 
 	public bool isjumping;
@@ -49,7 +52,7 @@ public class Xbox_Controls : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-
+		//rb.velocity = new Vector3(0,0,5);
 		UserInputs ();
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
@@ -103,7 +106,10 @@ public class Xbox_Controls : MonoBehaviour {
 		Vector3 move = v * forward + h * camera.right;
 
 		// Cette ligne est pour le vertical movement, en ce moment c'est sur l'axe Z
-		transform.Translate (move, Space.World);
+		//transform.Translate (move, Space.World);
+		//rb.velocity = move * PlayerMovementSpeed;
+		rb.velocity = new Vector3 (move.x * PlayerMovementSpeed, rb.velocity.y, move.z * PlayerMovementSpeed);
+
 																								//rb.velocity = new Vector3 (move.x, rb.velocity.y, move.z);
 		// Cette ligne est pour le horizontal movement, en ce moment c'est sur l'axe X. When combined with vertical movement it can be used for Strafing
 		//transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * PlayerMovementSpeed, 0, 0);
@@ -224,7 +230,7 @@ public class Xbox_Controls : MonoBehaviour {
 		//Trigger droite (R)
 		if (Input.GetAxis ("360_TriggerR") > 0.001 || Input.GetAxis ("360_TriggerL") > 0.001) {
 			print ("Je pèse sur le trigger droit!!");
-			PlayerMovementSpeed = 4;
+			PlayerMovementSpeed = runSpeed;
 			//LumpBas.SetActive (true);
 			JeLump = true;
 			animatorMist.SetBool ("IsLumping", true);
@@ -235,7 +241,7 @@ public class Xbox_Controls : MonoBehaviour {
 				LumpHaut.SetActive (true);
 			}
 		} else if (Input.GetAxis ("360_TriggerR") < 0.001 || Input.GetAxis ("360_TriggerL") < 0.001) {
-			PlayerMovementSpeed = 2;
+			PlayerMovementSpeed = walkSpeed;
 			animatorMist.SetBool ("IsLumping", false);
 			//LumpBas.SetActive (false);
 			JeLump = false;
@@ -281,23 +287,23 @@ public class Xbox_Controls : MonoBehaviour {
 
 
 
-	// TEST POUR LA QUEUE QUI BOUGE QUAND EN ÉQUILIBRE
-	void OnTriggerStay (Collider other){
-		if (Input.GetButton ("360_LeftBumper") && other.gameObject.tag == "Balancing") {
-			print ("Je pèse sur: left bumper pis je suis sur un objet balancing!");
-			//animatorMist.SetBool ("TailG", true);
-		} 
-//		else{
-//			animatorMist.SetBool ("TailG", false);
+//	// TEST POUR LA QUEUE QUI BOUGE QUAND EN ÉQUILIBRE
+//	void OnTriggerStay (Collider other){
+//		if (Input.GetButton ("360_LeftBumper") && other.gameObject.tag == "Balancing") {
+//			print ("Je pèse sur: left bumper pis je suis sur un objet balancing!");
+//			//animatorMist.SetBool ("TailG", true);
+//		} 
+////		else{
+////			animatorMist.SetBool ("TailG", false);
+////	}
+//
+//		if (Input.GetButton ("360_RightBumper") && other.gameObject.tag == "Balancing") {
+//			print ("Je pèse sur: right bumper pis je suis sur un objet balancing!");
+//			//animatorMist.SetBool ("TailD", true);
+//		} 
+////		else {
+////			animatorMist.SetBool ("TailD", false);
+////		}
 //	}
-
-		if (Input.GetButton ("360_RightBumper") && other.gameObject.tag == "Balancing") {
-			print ("Je pèse sur: right bumper pis je suis sur un objet balancing!");
-			//animatorMist.SetBool ("TailD", true);
-		} 
-//		else {
-//			animatorMist.SetBool ("TailD", false);
-//		}
-	}
 
 }
