@@ -56,7 +56,10 @@ public class CubeGrounded : MonoBehaviour {
 	void Update(){
 		//print ("rb.velocity.y = " + rb.velocity.y);
 
-		if (isGrounded == true)
+		if (isGrounded == true) {
 			animatorMist.SetBool ("Grounded", true);
+		} else if (isGrounded == false) {
+			animatorMist.SetBool ("Grounded", false);
+		}
 	}
 }
