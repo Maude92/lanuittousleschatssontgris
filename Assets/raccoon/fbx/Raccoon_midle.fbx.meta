@@ -120,6 +120,7 @@ ModelImporter:
     7400030: Armature.001|walk
     7400032: Armature.001|walk_back
     7400034: Armature.001|walk_fast
+    7400036: Armature.001|run (1)
     9500000: //RootNode
     11100000: //RootNode
     13700000: raccoon_midle
@@ -156,10 +157,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature.001|attack
-      takeName: Armature.001|attack
+      name: Armature.001|run (1)
+      takeName: Armature.001|run
       firstFrame: 0
-      lastFrame: 25
+      lastFrame: 20
       wrapMode: 2
       orientationOffsetY: 0
       level: 0
@@ -412,11 +413,11 @@ ModelImporter:
       takeName: Armature.001|run
       firstFrame: 0
       lastFrame: 20
-      wrapMode: 0
+      wrapMode: 2
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
-      loop: 0
+      loop: 1
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
