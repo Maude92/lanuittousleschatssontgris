@@ -24,12 +24,50 @@ public class Xbox_Controls : MonoBehaviour {
 	Rigidbody rb;
 	Animator animatorMist;
 
-	//Lumping test
+	//ANCIENNE VERSION
+	//Lumping test 
+//	public float longueurRay = 0.8f;
+//	private RaycastHit hit;	
+//	public GameObject LumpHaut;
+//	public GameObject LumpBas;
+//	public bool JeLump = false;
+
+
+// LES NOUVEAUTÉS DE FÉLIX
+	//Genre toutes les variables qui ici jusqu'au Start
+	//Lumping
 	public float longueurRay = 0.8f;
-	private RaycastHit hit;	
-	public GameObject LumpHaut;
-	public GameObject LumpBas;
-	public bool JeLump = false;
+	public float longueurRayBas = 5.1f;
+	private RaycastHit hit;
+	private RaycastHit hit2;
+	private RaycastHit hit3;
+
+	//public GameObject LumpHaut; //n'est plus utile
+	//public GameObject LumpBas; //n'est plus utile
+
+	//Pour tester le Falling
+	public GameObject FallingTete; // C'est un GameObject vide qui va falloir lié. Il remplace LumpHaut. Il est sur la TETE du chat, un peu en hauteur
+	public GameObject FallingCul; // C'est un GameObject vide qui va falloir lié. Il remplace LumpBas. Il est sur le CUL du chat, un peu en hauteur
+	public bool isFalling = false;
+	public bool ToucheSol;
+
+	public bool JeCours = false;
+	public bool isLerping = false;
+	public bool canLerp = false;
+
+	//public float LumpForce;
+
+	//public float Distance;
+	//public float DistanceBas;
+
+	//Variables Lerp Test
+	//public float lerpTime = 1f;
+	//public float currentLerpTime;
+
+	//public float moveDistance = 10f;
+
+	Vector3 startPos;
+	Vector3 endPos;
 
 	// Use this for initialization
 	void Start () {
@@ -38,8 +76,8 @@ public class Xbox_Controls : MonoBehaviour {
 		cubegrounded = GetComponent <CubeGrounded> ();
 
 		//Pour Lump
-		LumpHaut.SetActive (false);
-		LumpBas.SetActive (false);
+		//LumpHaut.SetActive (false); //N'est plus utile
+		//LumpBas.SetActive (false); //N'est plus utile
 
 		//jesaute = false;
 
@@ -47,6 +85,9 @@ public class Xbox_Controls : MonoBehaviour {
 
 	void FixedUpdate(){
 		Movement ();
+
+		//Ça c'est très important
+		startPos = mistObj.transform.position;
 	}
 
 	// Update is called once per frame
@@ -57,6 +98,40 @@ public class Xbox_Controls : MonoBehaviour {
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
 
+
+	// NOUVEAUTÉS DE FÉLIX!!
+		//Tout ce qui est ici est très important
+		//Pour animation TOMBER
+		//RayCast pour Falling Test (TETE et CUL)
+		Debug.DrawRay (FallingTete.transform.position, -transform.up * longueurRay, Color.red);
+		Debug.DrawRay (FallingCul.transform.position, -transform.up * longueurRay, Color.blue);
+
+		if (Physics.Raycast (FallingTete.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground")) && Physics.Raycast (FallingCul.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"))) {
+			ToucheSol = true;
+			isFalling = false;
+			animatorMist.SetBool ("IsFalling", false);
+			//animatorMist.SetBool ("Grounded", true);
+		} else {
+			isFalling = true;
+			ToucheSol = false;
+		}
+
+		if (isFalling == true && ToucheSol == false && isjumping == false){
+			//rb.AddForce (0, -5, 2);
+			animatorMist.SetBool ("IsFalling", true);
+			//animatorMist.SetBool ("Grounded", false);
+		}
+
+		if (isjumping == true) {
+			isFalling = false;
+			ToucheSol = false;
+			animatorMist.SetBool ("IsFalling", false);
+			//animatorMist.SetBool ("Grounded", true);
+		}
+			
+		//Pour Lump Bas
+		//DistanceBas = hit2.transform.position.y - hit3.transform.position.y;
+	// FIN DES NOUVEAUTÉS DE FÉLIX
 
 
 		if (cubegrounded.isGrounded == true) {
@@ -191,6 +266,7 @@ public class Xbox_Controls : MonoBehaviour {
 //			//print ("Je pèse sur le trigger droit!!");
 //		}
 
+
 		// The D-PAD is read from the 6th (horizontal) and 7th (vertical) joystick axes and from a sensitivity rating from -1 to 1, similar to the Triggers
 		//RIGHT d-pad button is activated when pressure is above 0, or the dead zone
 		if (Input.GetAxis ("360_HorizontalDPAD")>0.001){
@@ -231,34 +307,39 @@ public class Xbox_Controls : MonoBehaviour {
 		if (Input.GetAxis ("360_TriggerR") > 0.001 || Input.GetAxis ("360_TriggerL") > 0.001) {
 			print ("Je pèse sur le trigger droit!!");
 			PlayerMovementSpeed = runSpeed;
+			jumpforce = 240;
 			//LumpBas.SetActive (true);
-			JeLump = true;
-			animatorMist.SetBool ("IsLumping", true);
-			if (Input.GetAxis ("360_TriggerR") > 0.001) {
-				LumpBas.SetActive (true);
-			}
-			if (Input.GetAxis ("360_TriggerL") > 0.001) {
-				LumpHaut.SetActive (true);
-			}
+			//JeLump = true;
+			JeCours = true;
+			animatorMist.SetBool ("IsLumping", true); //Is Lumping = animation courir
+//			if (Input.GetAxis ("360_TriggerR") > 0.001) {
+//				//LumpBas.SetActive (true);
+//			}
+//			if (Input.GetAxis ("360_TriggerL") > 0.001) {
+//				//LumpHaut.SetActive (true);
+//			}
 		} else if (Input.GetAxis ("360_TriggerR") < 0.001 || Input.GetAxis ("360_TriggerL") < 0.001) {
 			PlayerMovementSpeed = walkSpeed;
+			jumpforce = 220;
+			JeCours = false;
 			animatorMist.SetBool ("IsLumping", false);
+			//Distance = 0;
 			//LumpBas.SetActive (false);
-			JeLump = false;
-			if (Input.GetAxis ("360_TriggerR") < 0.001) {
-				LumpBas.SetActive (false);
-			}
-			if (Input.GetAxis ("360_TriggerL") < 0.001) {
-				LumpHaut.SetActive (false);
-			}
+			//JeLump = false;
+//			if (Input.GetAxis ("360_TriggerR") < 0.001) {
+//				//LumpBas.SetActive (false);
+//			}
+//			if (Input.GetAxis ("360_TriggerL") < 0.001) {
+//				//LumpHaut.SetActive (false);
+//			}
 		}
 
 			
-		if (Input.GetAxis ("360_TriggerR") > 0.001 && Input.GetAxis ("360_TriggerL")> 0.001) {
-			LumpHaut.SetActive (false);
-			LumpBas.SetActive (false);
-			JeLump = false;
-		}
+//		if (Input.GetAxis ("360_TriggerR") > 0.001 && Input.GetAxis ("360_TriggerL")> 0.001) {
+//			LumpHaut.SetActive (false);
+//			LumpBas.SetActive (false);
+//			JeLump = false;
+//		}
 
 	}
 
@@ -270,20 +351,20 @@ public class Xbox_Controls : MonoBehaviour {
 		isjumping = true;
 		animatorMist.SetTrigger ("Jump");
 		//animatorMist.SetBool ("Grounded", false);
-		yield return new WaitForSeconds (0.115f);
+		yield return new WaitForSeconds (0.115f);			// Version Félix: 0.01f
 		cubegrounded.isGrounded = false;
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
 		yield return new WaitForSeconds (0.5f);
 		isjumping = false;
 	}
 
-	void LumpUP (){
-		print ("Je Lump vers le haut ! Wouhou !");
-	}
-
-	void LumpDown (){
-		print ("Je Lump vers le bas ! Wouhou !");
-	}
+//	void LumpUP (){
+//		print ("Je Lump vers le haut ! Wouhou !");
+//	}
+//
+//	void LumpDown (){
+//		print ("Je Lump vers le bas ! Wouhou !");
+//	}
 
 
 
