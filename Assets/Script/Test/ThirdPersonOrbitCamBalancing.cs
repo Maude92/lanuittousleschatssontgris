@@ -39,8 +39,8 @@ public class ThirdPersonOrbitCamBalancing : MonoBehaviour
 	public float GetH { get { return angleH; } }
 
 	void Start(){
-		BalancingControl = Mist.GetComponent<Xbox_Controls_Balancing> ();
-		NormalControl = Mist.GetComponent<Xbox_Controls> ();
+		//BalancingControl = Mist.GetComponent<Xbox_Controls_Balancing> ();
+		//NormalControl = Mist.GetComponent<Xbox_Controls> ();
 
 	}
 
@@ -71,48 +71,13 @@ public class ThirdPersonOrbitCamBalancing : MonoBehaviour
 
 	void Update()
 	{
-		if (NormalControl.enabled == true) {
-			// Get mouse movement to orbit the camera.
-			// Mouse:
-			angleH += Mathf.Clamp (Input.GetAxis ("Mouse X"), -1, 1) * horizontalAimingSpeed;
-			angleV += Mathf.Clamp (Input.GetAxis ("Mouse Y"), -1, 1) * verticalAimingSpeed;
-			// Joystick:
-			angleH += Mathf.Clamp (Input.GetAxis (XAxis), -1, 1) * 60 * horizontalAimingSpeed * Time.deltaTime;
-			angleV += Mathf.Clamp (Input.GetAxis (YAxis), -1, 1) * 60 * verticalAimingSpeed * Time.deltaTime;
+		
 
-			// Set vertical movement limit.
-			angleV = Mathf.Clamp (angleV, minVerticalAngle, targetMaxVerticalAngle);
-
-			// Set camera orientation.
-			Quaternion camYRotation = Quaternion.Euler (0, angleH, 0);
-			Quaternion aimRotation = Quaternion.Euler (-angleV, angleH, 0);
-			cam.rotation = aimRotation;
-
-			// Set FOV.
-			cam.GetComponent<Camera> ().fieldOfView = Mathf.Lerp (cam.GetComponent<Camera> ().fieldOfView, targetFOV, Time.deltaTime);
-
-			// Test for collision with the environment based on current camera position.
-			Vector3 baseTempPosition = player.position + camYRotation * targetPivotOffset;
-			Vector3 noCollisionOffset = targetCamOffset;
-			for (float zOffset = targetCamOffset.z; zOffset <= 0; zOffset += 0.5f) {
-				noCollisionOffset.z = zOffset;
-				if (DoubleViewingPosCheck (baseTempPosition + aimRotation * noCollisionOffset, Mathf.Abs (zOffset)) || zOffset == 0) {
-					break;
-				} 
-			}
-
-			// Repostition the camera.
-			smoothPivotOffset = Vector3.Lerp (smoothPivotOffset, targetPivotOffset, smooth * Time.deltaTime);
-			smoothCamOffset = Vector3.Lerp (smoothCamOffset, noCollisionOffset, smooth * Time.deltaTime);
-
-			cam.position = player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
-		} 
-		if (BalancingControl.enabled == true) {
 			
 			cam.position = player.position + Quaternion.identity * pivotOffset + Quaternion.identity * camOffset;
 			cam.rotation = Quaternion.identity;
 			cam.position = player.position +  smoothPivotOffset +smoothCamOffset;
-		}
+
 	}
 
 	// Set camera offsets to custom values.

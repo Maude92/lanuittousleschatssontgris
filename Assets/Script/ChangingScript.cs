@@ -14,6 +14,7 @@ public class ChangingScript : MonoBehaviour {
 	void Start () {
 		//cubegrounded = GetComponent <CubeGrounded> ();
 		Mist.GetComponent<Xbox_Controls_Balancing>().enabled = false;
+		camera.GetComponent<ThirdPersonOrbitCamBalancing> ().enabled = false;
 	}
 
 	void OnTriggerEnter(Collider col){
@@ -24,12 +25,30 @@ public class ChangingScript : MonoBehaviour {
 			//col.GetComponent<TorqueOnTube> ().enabled = true;
 			Mist.GetComponent<Xbox_Controls_Balancing>().enabled = true;
 			Mist.GetComponent<Xbox_Controls>().enabled = false;
+			Mist.GetComponent<MistStopWhenIdle>().enabled = false;
+			camera.GetComponent<ThirdPersonOrbitCamBalancing> ().enabled = true;
+			camera.GetComponent<ThirdPersonOrbitCamBasic> ().enabled = false;
 		}
 	}
 	void OnTriggerExit(Collider col){
 		if (col.tag == "Balancing") {
 			Mist.GetComponent<Xbox_Controls_Balancing>().enabled = false;
 			Mist.GetComponent<Xbox_Controls>().enabled = true;
+			Mist.GetComponent<MistStopWhenIdle>().enabled = true;
+			camera.GetComponent<ThirdPersonOrbitCamBalancing> ().enabled = false;
+			camera.GetComponent<ThirdPersonOrbitCamBasic> ().enabled = true;
+			//transform.parent = EmptyMist.transform;
+			transform.parent = EmptyMist.transform;
+		}
+	}
+	void OnCollisionEnter (Collision other){
+		if (other.gameObject.CompareTag("PlatformeMouvante")) {
+			transform.parent = other.transform;
+		}
+	}
+
+	void OnCollisionExit (Collision other){
+		if (other.gameObject.CompareTag("PlatformeMouvante")) {
 			transform.parent = EmptyMist.transform;
 		}
 	}
