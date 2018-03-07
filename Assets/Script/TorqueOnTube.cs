@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TorqueOnTube : MonoBehaviour {
+	public GameObject UI;
+	UiBoussolleBalancing uiScript;
 	public float amount = 0.4f;
 	public float direction = 1f;
 	public float tempschange = 1.5f;
@@ -11,6 +13,8 @@ public class TorqueOnTube : MonoBehaviour {
 	public float smooth = 6;
 
 	public int youjumped = 0;
+	public float biggerAngle;
+	public int directionOfRotation = 1;
 
 	public GameObject target;
 
@@ -25,6 +29,7 @@ public class TorqueOnTube : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		uiScript = UI.GetComponent<UiBoussolleBalancing> ();
 		activating = cylindre.GetComponent<ActivatingScript> ();
 		rb = Mist.GetComponent<Rigidbody> ();
 
@@ -34,22 +39,26 @@ public class TorqueOnTube : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		tempschange -= Time.deltaTime;
-		if (activating.youjumped >= 1) {
-			direction = 3f;
-		}
+//		if (activating.youjumped >= 1) {
+//			direction = 3f;
+//		}
 
 		if (tempschange <= 0) {
 			direction *= -1;
 			//tempschange= 4f;
 			tempschange= Random.Range(MinTime,MaxTime);
 		}
-		//print (transform.rotation.eulerAngles.x);
+		//print (90f - transform.rotation.eulerAngles.x);
+		biggerAngle = 5.3f *(90f - transform.rotation.eulerAngles.x);
+		//print ( biggerAngle);
+
 
 		if(transform.rotation.eulerAngles.x <= 72){
 			Mist.GetComponent<Xbox_Controls_Balancing>().enabled = false;
 			print ("Cet angle est trop grand");
 			Mist.transform.parent = null;
-			rb.AddForce (-transform.forward* 60);
+			//rb.AddForce (-transform.forward* 60);
+			rb.AddForce (uiScript.rotation * -1 *transform.right* 200);
 
 //
 		}

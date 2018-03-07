@@ -9,6 +9,10 @@ TagManager:
   - FallingObjectGauche
   - SupportFallingObject
   - FallingObjectDroite
+  - lb_bird
+  - lb_perchTarget
+  - Needle
+  - PlatformeMouvante
   layers:
   - Default
   - TransparentFX

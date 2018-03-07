@@ -38,7 +38,18 @@ public class ChangingScript : MonoBehaviour {
 			camera.GetComponent<ThirdPersonOrbitCamBalancing> ().enabled = false;
 			camera.GetComponent<ThirdPersonOrbitCamBasic> ().enabled = true;
 			//transform.parent = EmptyMist.transform;
-			transform.parent = null;
+			transform.parent = EmptyMist.transform;
+		}
+	}
+	void OnCollisionEnter (Collision other){
+		if (other.gameObject.CompareTag("PlatformeMouvante")) {
+			transform.parent = other.transform;
+		}
+	}
+
+	void OnCollisionExit (Collision other){
+		if (other.gameObject.CompareTag("PlatformeMouvante")) {
+			transform.parent = EmptyMist.transform;
 		}
 	}
 
