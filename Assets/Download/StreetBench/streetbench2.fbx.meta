@@ -4,8 +4,21 @@ timeCreated: 18446744011573954816
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
+    100000: streetbench2
+    100002: //RootNode
+    400000: streetbench2
+    400002: //RootNode
+    2300000: streetbench2
+    3300000: streetbench2
     4300000: streetbench2
-  externalObjects: {}
+    7400000: Default Take
+    11100000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material__AO_tga_001
+    second: {fileID: 2100000, guid: 08f8601572cb2439289bdccffbad2ced, type: 2}
   materials:
     importMaterials: 1
     materialName: 3
