@@ -9619,7 +9619,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4606647796039024, guid: 86a5ce246fce23647b227080390b954d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.2
+      value: -98.821
       objectReference: {fileID: 0}
     - target: {fileID: 4606647796039024, guid: 86a5ce246fce23647b227080390b954d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -9627,7 +9627,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4606647796039024, guid: 86a5ce246fce23647b227080390b954d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -45.5
+      value: 94.129
       objectReference: {fileID: 0}
     - target: {fileID: 4606647796039024, guid: 86a5ce246fce23647b227080390b954d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -25255,12 +25255,12 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
