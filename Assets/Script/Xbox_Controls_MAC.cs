@@ -8,7 +8,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	public float PlayerRotationSpeed = 180;
 
 	public int jumpforce = 100;
-//Peut être cette variable :
+//Peut-être cette variable :
 	public bool isjumping;
 
 	public GameObject mistObj;
@@ -43,16 +43,17 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	public bool isLerping = false;
 	public bool canLerp = false;
 
-	public float LumpForce;
 
-	public float Distance;
-	public float DistanceBas;
 
-	//Variables Lerp Test
+//	//Variables Lerp Test
 	public float lerpTime = 1f;
 	public float currentLerpTime;
 
 	public float moveDistance = 10f;
+	public float LumpForce;
+
+	public float Distance;
+	public float DistanceBas;
 
 	Vector3 startPos;
 	Vector3 endPos;
