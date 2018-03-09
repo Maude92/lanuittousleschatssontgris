@@ -10,6 +10,7 @@ public class HealthBar : MonoBehaviour {
     public float maxHealth;
     public float currentHealth;
     public float health;
+	public float healtGain;
 
 	public int NbVieRestant;
 
@@ -53,6 +54,8 @@ public class HealthBar : MonoBehaviour {
             HBText.GetComponent<Text>().text = "0";
 			NbVieRestant--;
 			if (NbVieRestant > 0) {
+				//Fade to black
+				//Load au dernier checkpoint
 				currentHealth = 100;
 				health = 100;
 				HBImage.GetComponent<Image>().fillAmount = health;
@@ -64,6 +67,15 @@ public class HealthBar : MonoBehaviour {
 			//SceneManager.LoadScene ("SceneTest");
         }
     }
+
+	public void LifeGain (float gainAmount){
+		currentHealth = (currentHealth + gainAmount);
+		healtGain = (currentHealth) / maxHealth;
+		currentHealth = Mathf.Round(currentHealth);
+		HBImage.GetComponent<Image>().fillAmount = healtGain;
+		HBImage.GetComponent<Image> ().color = Color.Lerp (lowColor, fullColor, HBImage.GetComponent<Image>().fillAmount);
+		HBText.GetComponent<Text>().text = currentHealth.ToString();
+	}
 
 	void Update () {
 //S'il reste 9 Vie :

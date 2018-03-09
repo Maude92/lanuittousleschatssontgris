@@ -8112,6 +8112,7 @@ GameObject:
   - component: {fileID: 431397987}
   - component: {fileID: 431397986}
   - component: {fileID: 431397989}
+  - component: {fileID: 431397990}
   m_Layer: 0
   m_Name: Food
   m_TagString: Untagged
@@ -8233,7 +8234,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -934173865
+  randomSeed: -681903894
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -11519,8 +11520,28 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.68981296, y: 0.16446523, z: 0.7581703}
-  m_Center: {x: 1.2726282, y: -0.7204439, z: 0.15850481}
+  m_Size: {x: 0.6898131, y: 0.23439011, z: 0.86953187}
+  m_Center: {x: 1.2726295, y: -0.6854815, z: 0.10282387}
+--- !u!114 &431397990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 431397985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7721b4f40b007413b95fc453b3881e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mistObj: {fileID: 1992809930}
+  HealthBar: {fileID: 833968174}
+  thisfood: {fileID: 431397985}
+  food1: {fileID: 1227840502}
+  lessfood2: {fileID: 1013440255}
+  lessfood3: {fileID: 1047780137}
+  lessfood4: {fileID: 497290709}
+  lessfood5: {fileID: 1485427866}
+  lessfood6: {fileID: 1189808423}
 --- !u!1001 &432782615
 Prefab:
   m_ObjectHideFlags: 0
@@ -13139,12 +13160,12 @@ Prefab:
     - target: {fileID: 224423751369543984, guid: 90890e4499b1b4398b2154941ee99c40,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 348.5
+      value: 347.5
       objectReference: {fileID: 0}
     - target: {fileID: 224423751369543984, guid: 90890e4499b1b4398b2154941ee99c40,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 196
+      value: 195.5
       objectReference: {fileID: 0}
     - target: {fileID: 224423751369543984, guid: 90890e4499b1b4398b2154941ee99c40,
         type: 2}
@@ -45141,6 +45162,11 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: defde0577f19e7148a6db2bbadd66b1f, type: 3}
+--- !u!1 &1992809930 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1111475900203230, guid: eaadf5dd7f1284221a71191b5c921eff,
+    type: 2}
+  m_PrefabInternal: {fileID: 697910866}
 --- !u!1 &1994808305 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 146770, guid: 1387225ba393d9f40a6bc8eb12908b95, type: 2}

@@ -129,7 +129,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			
 
 		//Pour Lump Bas
-		DistanceBas = hit2.transform.position.y - hit3.transform.position.y;
+		//DistanceBas = hit2.transform.position.y - hit3.transform.position.y;
 //Jusqu' à ici, ce qui est en dessous c'est juste des tests qui fonctionnaient pas pour les Lump Haut
 
 	//Pour Lump Haut V-LF
