@@ -13,8 +13,12 @@ public class TastyV2 : MonoBehaviour {
 
 	//HealthBar HBcode;
 
+	public Canvas ButtonY;
+
 	Animator anim;
 	public float NbPtsVieRedonner = 5;
+
+	public bool Ieat;
 
 	public GameObject thisfood;
 	public GameObject food1;
@@ -31,6 +35,8 @@ public class TastyV2 : MonoBehaviour {
 		xboxcontrolspc = GetComponent <Xbox_Controls> ();
 		xboxcontrolMac = GetComponent <Xbox_Controls_MAC> ();
 		//HBcode = GetComponent <HealthBar> ();
+		Ieat = false;
+		ButtonY.enabled = false;
 	}
 
 	// Update is called once per frame
@@ -43,8 +49,12 @@ public class TastyV2 : MonoBehaviour {
 	}
 
 	void OnTriggerStay (Collider other){
+
+		//ButtonY.enabled = true;
+
 		//Faire attention ici qqchose à modifier quand on va le mettre sur le MSI
-		if (other.gameObject.tag == "Player" && (Input.GetButtonDown ("360_YButton") || Input.GetButtonDown ("XbOne_YButton")) && anim.GetCurrentAnimatorStateInfo (0).IsName ("A_idle")) {
+		if (other.gameObject.tag == "Player" && (Input.GetButtonDown ("360_YButton") || Input.GetButtonDown ("XbOne_YButton")) && anim.GetCurrentAnimatorStateInfo (0).IsName ("A_idle") && Ieat == false) {
+			Ieat = true;
 			print ("Je peux manger");
 			anim.SetBool ("Miam", true);
 			HealthBar.GetComponent<HealthBar>().LifeGain(NbPtsVieRedonner);
@@ -57,8 +67,19 @@ public class TastyV2 : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter (Collider other){
+		ButtonY.enabled = true;
+
+	}
+
+	void OnTriggerExit (Collider other){
+		ButtonY.enabled = false;
+
+	}
+
 	IEnumerator EatThis (){
 		yield return new WaitForSeconds (0.7f);
+		ButtonY.enabled = false;
 		food1.SetActive (false);
 		yield return new WaitForSeconds (0.43f);
 		lessfood2.SetActive (false);
@@ -71,6 +92,7 @@ public class TastyV2 : MonoBehaviour {
 		yield return new WaitForSeconds (0.43f); 
 		lessfood6.SetActive (false);
 		thisfood.SetActive (false);
+		Ieat = false;
 	}
 		
 }
