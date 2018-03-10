@@ -22,6 +22,10 @@ public class FallingPlatform : MonoBehaviour {
 			Invoke ("Fall", fallDelay);
 			//audioManager.PlaySound ("Falling");
 		}
+		if(col.gameObject.CompareTag("Ground")){
+			Destroy (gameObject);
+
+		}
 	}
 
 	void Fall() {
