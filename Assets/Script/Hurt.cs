@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Hurt : MonoBehaviour {
 
-	public GameObject vieObj;
-	HealthBar viescript;
+	//public GameObject vieObj;
+	//HealthBar viescript;
 	//Animator anim;
+
+	public Transform healthbar;
 
 //	private AudioManager audioManager;
 
 	// Use this for initialization
 	void Start () {
-		viescript = vieObj.GetComponent<HealthBar> ();
+		//viescript = vieObj.GetComponent<HealthBar> ();
 		//anim = X.GetComponent<Animator> ();
 
 //		audioManager = AudioManager.instance;
@@ -28,10 +30,11 @@ public class Hurt : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-		if (other.gameObject.tag == "Player" && viescript.currentHealth >= 1.0f) {
+		if (other.gameObject.tag == "Player" /*&& viescript.currentHealth >= 1.0f*/) {
 			//audioManager.PlaySound ("Hurt");
 			//anim.SetBool ("Hit", true);
-			viescript.currentHealth = viescript.currentHealth - 5.0f;
+			//viescript.currentHealth = viescript.currentHealth - 5.0f;
+			healthbar.GetComponent<HealthBar>().Damage(2);
 			StartCoroutine (TurnOffTrigger());
 		}
 	}
