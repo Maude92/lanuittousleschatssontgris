@@ -13,6 +13,7 @@ TagManager:
   - lb_perchTarget
   - Needle
   - PlatformeMouvante
+  - Hurt
   layers:
   - Default
   - TransparentFX
