@@ -30,7 +30,7 @@ public class LoadNextScene : MonoBehaviour {
 	}
 
 	void ReloadScene (){
-		SceneManager.LoadScene (SceneManager.GetActiveScene ());
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	void LoadPrecScene (){
