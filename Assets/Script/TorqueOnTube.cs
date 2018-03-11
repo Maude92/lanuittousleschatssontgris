@@ -92,12 +92,12 @@ public class TorqueOnTube : MonoBehaviour {
 //		}
 
 		if (Input.GetButton ("360_LeftBumper")){
-			target.transform.Rotate(0,0.2f,0);
+			target.transform.Rotate(0,amount,0);
 
 		}
 
 		if (Input.GetButton ("360_RightBumper")){
-			target.transform.Rotate(0,-0.2f,0);
+			target.transform.Rotate(0,-amount,0);
 
 		}
 	}
