@@ -15,12 +15,25 @@ public class LoadNextScene : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Space))
+		if (Input.GetKeyDown (KeyCode.N))
 			LoadNxtScene();
+		if (Input.GetKeyDown (KeyCode.P))
+			LoadPrecScene ();
+		if (Input.GetKeyDown (KeyCode.R))
+			ReloadScene ();
+			
 	}
 
 	void LoadNxtScene (){
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
+	}
+
+	void ReloadScene (){
+		SceneManager.LoadScene (SceneManager.GetActiveScene ());
+	}
+
+	void LoadPrecScene (){
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 	}
 }
