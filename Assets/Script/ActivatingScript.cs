@@ -8,6 +8,7 @@ public class ActivatingScript : MonoBehaviour {
 	public GameObject UI;
 	Vector3 newRot ;
 	TorqueOnTube ToT;
+	UiBoussolleBalancing UIScript;
 
 	public int youjumped = 0;
 
@@ -15,6 +16,7 @@ public class ActivatingScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		ToT = Tube.GetComponent<TorqueOnTube> ();
+		UIScript = UI.GetComponent<UiBoussolleBalancing> ();
 		UI.SetActive (false);
 		//UI.enabled = false;
 		Tube.GetComponent<TorqueOnTube>().enabled = false;
@@ -39,6 +41,8 @@ public class ActivatingScript : MonoBehaviour {
 	void OnTriggerExit(Collider col){
 		if (col.tag == "Player") {
 			transform.rotation = Quaternion.Euler (newRot);
+			//ToT.directionOfRotation = -1;
+			UIScript.rotation = -1;
 			Tube.GetComponent<TorqueOnTube>().enabled = false;
 			UI.SetActive (false);
 
