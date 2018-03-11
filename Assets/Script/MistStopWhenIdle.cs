@@ -21,7 +21,7 @@ public class MistStopWhenIdle : MonoBehaviour {
 		anim.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		anim.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
 
-		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("AtoB") || anim.GetCurrentAnimatorStateInfo (0).IsName ("F_sleep")) {
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("AtoB") || anim.GetCurrentAnimatorStateInfo (0).IsName ("F_sleep") || anim.GetCurrentAnimatorStateInfo (0).IsName ("A_eat") ) {
 			xboxcontrolspc.enabled = false;
 		}
 
