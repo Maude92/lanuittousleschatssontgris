@@ -21,6 +21,8 @@ public class LoadNextScene : MonoBehaviour {
 			LoadPrecScene ();
 		if (Input.GetKeyDown (KeyCode.R))
 			ReloadScene ();
+		if (Input.GetKeyDown (KeyCode.Escape))
+			Quit ();
 			
 	}
 
@@ -35,5 +37,9 @@ public class LoadNextScene : MonoBehaviour {
 
 	void LoadPrecScene (){
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+	}
+
+	void Quit (){
+		Application.Quit ();
 	}
 }
