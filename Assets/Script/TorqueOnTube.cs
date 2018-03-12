@@ -11,6 +11,7 @@ public class TorqueOnTube : MonoBehaviour {
 	public float MinTime= 3f;
 	public float MaxTime= 5f;
 	public float smooth = 6;
+	public float changementAmount = 1;
 
 	public int youjumped = 0;
 	public float biggerAngle;
@@ -92,12 +93,12 @@ public class TorqueOnTube : MonoBehaviour {
 //		}
 
 		if (Input.GetButton ("360_LeftBumper")){
-			target.transform.Rotate(0,(amount * 2f),0);
+			target.transform.Rotate(0,(amount * changementAmount),0);
 
 		}
 
 		if (Input.GetButton ("360_RightBumper")){
-			target.transform.Rotate(0,(-2f * amount),0);
+			target.transform.Rotate(0,(-changementAmount * amount),0);
 
 		}
 	}
