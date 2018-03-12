@@ -3,7 +3,7 @@ guid: 8c4506fa4cf9a054f99b99775fdddb1b
 timeCreated: 1483959511
 licenseType: Store
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: Base
     100002: Box
@@ -993,10 +993,212 @@ ModelImporter:
     6400318: Cylinder.011
     6400320: GroundShelf
     6400322: Hanger
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Awning
+    second: {fileID: 2100000, guid: 2e0fbce50152c0e4fb5dd7e91b8d77c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AwningMe
+    second: {fileID: 2100000, guid: 5304eaf28b027854d80d2436895240ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookShelf
+    second: {fileID: 2100000, guid: 896aab84bb604e34faf53640dea023c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BoxTop
+    second: {fileID: 2100000, guid: 390b1d6297c14f94e851d15da0333b78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BoxWood
+    second: {fileID: 2100000, guid: b612e0f270081dc4a8e90e50355f5acd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ChairSofa
+    second: {fileID: 2100000, guid: 4602521b6217a244ab70c6fdec80349f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ChairWood
+    second: {fileID: 2100000, guid: c5a181f2ae346414984ea2b956f4aedd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Curtain
+    second: {fileID: 2100000, guid: 61a5bff69debe6844b33b50446af2435, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Curtain2
+    second: {fileID: 2100000, guid: 879f624ac88a90948a3a44f53bf091b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CurtainMe
+    second: {fileID: 2100000, guid: 7bc95d6ecee55954fbdfcae28f13b6d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door
+    second: {fileID: 2100000, guid: 927e365823a6beb4ea36be762914758d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorHandle
+    second: {fileID: 2100000, guid: 15fa416b9f5fed74baded5439d7efd2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FloorLampIron
+    second: {fileID: 2100000, guid: d77a1c7b150e5d6489ce7068911cba5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FloorLampIron2
+    second: {fileID: 2100000, guid: 8ce20e7adf5a44643961779ff0d67bb4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FridgeHandle
+    second: {fileID: 2100000, guid: 1425b98fe913d044faa682ea1567c59c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 27d0712c976ebb94cba3c1f6ac737871, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GroundLamp
+    second: {fileID: 2100000, guid: 64874f6e00e722f488d849d45277c76c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Invise
+    second: {fileID: 2100000, guid: efa9ac294b37aba4695c878033ab1513, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KitchenPlate
+    second: {fileID: 2100000, guid: 94a402e67e5f38d48bfed4289d0bdda9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lamp
+    second: {fileID: 2100000, guid: 85d70c93267e58545a181c72c0dc851a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LampGlass
+    second: {fileID: 2100000, guid: 9c38fd029ec72b646be979458305e7f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LampMetal
+    second: {fileID: 2100000, guid: 9e267a68c5cb9a846b9c795a3d976404, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LampMetal2
+    second: {fileID: 2100000, guid: d283846d17347bd4f89e0df12f44e3b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 2d7139d33b5a549419412f813abcad6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Picture
+    second: {fileID: 2100000, guid: 7070918f4ebeb0e49818679b943dc065, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plinth
+    second: {fileID: 2100000, guid: fdbd1db4653f7074292018dd2bb4b018, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RackMetal
+    second: {fileID: 2100000, guid: 53f44532cc018914eb63c3973b38acc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SmallTableWood
+    second: {fileID: 2100000, guid: c01c455bf68ccce49a10c8fb7e8f59f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sofa
+    second: {fileID: 2100000, guid: 3a511b92534ec73489cc60070f59d649, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sunbed
+    second: {fileID: 2100000, guid: a154a048bff506e44a309dc38d8a63ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SunbedWood
+    second: {fileID: 2100000, guid: 0793d108884409e43b71f68d54b19f29, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TableMetal
+    second: {fileID: 2100000, guid: bdc7bc62ef9d1ee4489118d8ba9abedc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall
+    second: {fileID: 2100000, guid: f04336a2258baf54ebd311713041958e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallLampMe
+    second: {fileID: 2100000, guid: eb3ba1826564a9049b4f506e038f7907, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window
+    second: {fileID: 2100000, guid: 0b1ea53bb9f72fd49bf231d5523b3a8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: base
+    second: {fileID: 2100000, guid: ad5a0ea2d6976d44b9a221e47ba89a74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: beer
+    second: {fileID: 2100000, guid: 8ed16b0b2c253334b8e9c274ac9bfadb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fridge
+    second: {fileID: 2100000, guid: d92abe08da4315144a797cc860ba433c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: frlamp
+    second: {fileID: 2100000, guid: c451fe1e8f482f24f9446b66aa632ab6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lamp2
+    second: {fileID: 2100000, guid: 0b2d890626abf9a43870b46abdffa9d0, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -1009,12 +1211,14 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -1022,7 +1226,10 @@ ModelImporter:
     globalScale: 1.4
     meshCompression: 0
     addColliders: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
@@ -1038,6 +1245,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
