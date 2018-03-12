@@ -62,7 +62,7 @@ public class TorqueOnTube : MonoBehaviour {
 
 //
 		}
-		transform.Rotate(0,(amount * direction),0);
+		target.transform.Rotate(0,(amount * direction),0);
 		transform.rotation = Quaternion.Slerp (transform.rotation, target.transform.rotation, Time.deltaTime *smooth);
 //		float h = amount * Time.deltaTime;
 //
@@ -92,12 +92,12 @@ public class TorqueOnTube : MonoBehaviour {
 //		}
 
 		if (Input.GetButton ("360_LeftBumper")){
-			target.transform.Rotate(0,amount,0);
+			target.transform.Rotate(0,(amount * 2f),0);
 
 		}
 
 		if (Input.GetButton ("360_RightBumper")){
-			target.transform.Rotate(0,-amount,0);
+			target.transform.Rotate(0,(-2f * amount),0);
 
 		}
 	}

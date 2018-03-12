@@ -19,7 +19,7 @@ public class ChangingScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col){
 		if (col.tag == "Balancing") {
-			transform.parent = col.transform;
+			//transform.parent = col.transform;
 			Mist.transform.forward = ReferencePoint.transform.forward;
 			Mist.transform.position =  new Vector3 (ReferencePoint.transform.position.x, Mist.transform.position.y,Mist.transform.position.z );
 			//col.GetComponent<TorqueOnTube> ().enabled = true;
@@ -38,17 +38,23 @@ public class ChangingScript : MonoBehaviour {
 			camera.GetComponent<ThirdPersonOrbitCamBalancing> ().enabled = false;
 			camera.GetComponent<ThirdPersonOrbitCamBasic> ().enabled = true;
 			//transform.parent = EmptyMist.transform;
-			transform.parent = EmptyMist.transform;
+			//transform.parent = EmptyMist.transform;
 		}
 	}
 	void OnCollisionEnter (Collision other){
 		if (other.gameObject.CompareTag("PlatformeMouvante")) {
 			transform.parent = other.transform;
 		}
+		if (other.gameObject.CompareTag("Balancing")) {
+			transform.parent = other.transform;
+		}
 	}
 
 	void OnCollisionExit (Collision other){
 		if (other.gameObject.CompareTag("PlatformeMouvante")) {
+			transform.parent = EmptyMist.transform;
+		}
+		if (other.gameObject.CompareTag("Balancing")) {
 			transform.parent = EmptyMist.transform;
 		}
 	}
