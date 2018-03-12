@@ -17,6 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test_Tutoriel_Maude_vFelix.unity
     guid: b32d82bb98c81437fbaaffa8f3e67358
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test_Technique_Demo_Platform.unity
     guid: fef1c48bfce22de48b8a1c611f52d1aa
