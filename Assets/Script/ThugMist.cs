@@ -12,13 +12,13 @@ public class ThugMist : MonoBehaviour {
 	public float thugForce = 100f;
 
 	Animator anim;
-	Collider colFallingObjet;
+	//Collider colFallingObjet;
 	Rigidbody rbObject;
 
 	// Use this for initialization
 	void Start () {
 		anim = mistObj.GetComponent<Animator> ();
-		colFallingObjet = GetComponent<Collider> ();
+		//colFallingObjet = GetComponent<Collider> ();
 		rbObject = GetComponent<Rigidbody> ();
 	}
 	
