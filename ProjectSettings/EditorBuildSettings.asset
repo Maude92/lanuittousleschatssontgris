@@ -8,15 +8,24 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Test_Tutoriel_Maude_v4.unity
     guid: 2ecfa8ea0ac8d1f4896d8805797c5e19
+<<<<<<< HEAD
+=======
+  - enabled: 0
+    path: Assets/Scenes/Test_Tutoriel_Maude_vFelix.unity
+    guid: b32d82bb98c81437fbaaffa8f3e67358
+>>>>>>> d7d4c4fb509dad8bdabcc5b200cddd40c756affc
   - enabled: 1
     path: Assets/Scenes/Test_Tutoriel_Maude_v5.unity
     guid: bad5800abc2737a4d866831a10356759
   - enabled: 1
     path: Assets/Scenes/WIN_SceneNuitTERMINEE_UpdateMaude_version2.unity
     guid: 35b6969a9ae48b448889ba37888404be
+<<<<<<< HEAD
   - enabled: 0
     path: Assets/Scenes/Test_Tutoriel_Maude_vFelix.unity
     guid: b32d82bb98c81437fbaaffa8f3e67358
+=======
+>>>>>>> d7d4c4fb509dad8bdabcc5b200cddd40c756affc
   - enabled: 1
     path: Assets/Scenes/Test_Technique_Demo_Platform.unity
     guid: fef1c48bfce22de48b8a1c611f52d1aa
