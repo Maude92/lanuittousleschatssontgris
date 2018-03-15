@@ -21,11 +21,11 @@ public class MistStopWhenIdle : MonoBehaviour {
 		anim.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		anim.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
 
-		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("AtoB") || anim.GetCurrentAnimatorStateInfo (0).IsName ("F_sleep") || anim.GetCurrentAnimatorStateInfo (0).IsName ("A_eat") ) {
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("AtoB") || anim.GetCurrentAnimatorStateInfo (0).IsName ("F_sleep") || anim.GetCurrentAnimatorStateInfo (0).IsName ("A_eat")) { 		// || anim.GetCurrentAnimatorStateInfo (0).IsName ("A_jump_end")
 			xboxcontrolspc.enabled = false;
 		}
 
-		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("A_idle")) {
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("A_idle")) {			// || anim.GetCurrentAnimatorStateInfo (0).IsName ("A_walk") || anim.GetCurrentAnimatorStateInfo (0).IsName ("A_walk 2")
 			xboxcontrolspc.enabled = true;
 		}
 	}
