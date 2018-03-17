@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23969189408010798}
   - component: {fileID: 95259347150750468}
   - component: {fileID: 64064337075096630}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: StoreShellBlue
   m_TagString: Ground
   m_Icon: {fileID: 0}
