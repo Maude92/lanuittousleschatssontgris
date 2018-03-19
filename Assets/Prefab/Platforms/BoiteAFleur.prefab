@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33156189308260166}
   - component: {fileID: 65556264782039246}
   - component: {fileID: 23551633952407016}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: BoiteAFleur
   m_TagString: Untagged
   m_Icon: {fileID: 0}

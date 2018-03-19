@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33667492205255616}
   - component: {fileID: 23719870128283122}
   - component: {fileID: 65593307807024826}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: Poubelle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
