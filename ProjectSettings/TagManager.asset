@@ -14,6 +14,7 @@ TagManager:
   - Needle
   - PlatformeMouvante
   - Hurt
+  - Platform
   layers:
   - Default
   - TransparentFX
