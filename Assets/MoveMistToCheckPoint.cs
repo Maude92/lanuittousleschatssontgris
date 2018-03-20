@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MoveMistToCheckPoint : MonoBehaviour {
 	public Image Black;
 
+	public GameObject Mist;
 	public GameObject CheckPoint;
 
 	public GameObject Prefab;
@@ -39,7 +40,7 @@ public class MoveMistToCheckPoint : MonoBehaviour {
 		if (other.gameObject.tag == "Player") {
 			Instantiate (Prefab, InstatiatePlatform.transform.position, InstatiatePlatform.transform.rotation);
 			//StartCoroutine (Waiting());
-			other.transform.position = CheckPoint.transform.position;
+			//other.transform.position = CheckPoint.transform.position;
 			StartCoroutine (Waiting ());
 
 //			Black = Black.GetComponent <Image> ();
@@ -53,7 +54,8 @@ public class MoveMistToCheckPoint : MonoBehaviour {
 	}
 
 	IEnumerator Waiting(){
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(3f);
+		Mist.transform.position = CheckPoint.transform.position;
 		fadingback = true;
 	}
 
