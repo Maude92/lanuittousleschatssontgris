@@ -4,7 +4,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class HealthBar : MonoBehaviour {
-    public Transform character;
+   
+	private AudioManager audioManager;
+	public AudioSource LowVieSound;
+
+	public Transform character;
     public Transform HBImage;
     public Transform HBText;
     public float maxHealth;
@@ -32,18 +36,26 @@ public class HealthBar : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        HBImage = gameObject.transform.GetChild(0).GetChild(0);
+		audioManager = AudioManager.instance;
+		if (audioManager == null) {
+			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");
+		}
+
+		HBImage = gameObject.transform.GetChild(0).GetChild(0);
         HBText = gameObject.GetComponentInChildren<Text>().transform;
         HBImage.GetComponent<Image>().fillAmount = 1;
 		HBImage.GetComponent<Image> ().color = fullColor;
         currentHealth = maxHealth;
 
 		NbVieRestant = 9;
+
+		//LowVieSound.enabled = false;
 	}
 	
     public void Damage(float damageAmount)
     {
-        health = (currentHealth - damageAmount) / maxHealth;
+		
+		health = (currentHealth - damageAmount) / maxHealth;
         currentHealth -= damageAmount;
         currentHealth = Mathf.Round(currentHealth);
         HBImage.GetComponent<Image>().fillAmount = health;
@@ -66,10 +78,21 @@ public class HealthBar : MonoBehaviour {
             //GameObject.DestroyObject(character.gameObject);
 			//SceneManager.LoadScene ("SceneTest");
         }
+			
+
+		if (currentHealth <= 25) {
+			//audioManager.PlaySound ("Mist_LowVie");
+			LowVieSound.enabled = true;
+			LowVieSound.Play ();
+		} 
     }
 
 	public void LifeGain (float gainAmount){
+		audioManager.PlaySound ("Mist_Eating");
 		currentHealth = (currentHealth + gainAmount);
+		if (currentHealth > 100) {
+			currentHealth = 100;
+		}
 		healtGain = (currentHealth) / maxHealth;
 		currentHealth = Mathf.Round(currentHealth);
 		HBImage.GetComponent<Image>().fillAmount = healtGain;
@@ -78,6 +101,22 @@ public class HealthBar : MonoBehaviour {
 	}
 
 	void Update () {
+
+//		if (currentHealth < currentHealth + 1 && currentHealth != maxHealth) {
+//			//audioManager.PlaySound ("Mist_Damage");
+//			//Comment faire pour le faire jouer juste une fois ? 
+//		}
+
+//		if (health <= 0.25 && health != 0) {
+//			//audioManager.PlaySound ("Mist_LowVie");
+//			LowVieSound.enabled = true;
+//			LowVieSound.Play ();
+//		} 
+
+		//else /*if (currentHealth > 25)*/ {
+			//LowVieSound.enabled = false;
+		//}
+
 //S'il reste 9 Vie :
 		if (NbVieRestant == 9) {
 			Vie1.enabled = true;

@@ -7,23 +7,19 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	public float PlayerMovementSpeed = 30;
 	public float PlayerRotationSpeed = 180;
 
+	private AudioManager audioManager;
+
 	public int jumpforce = 100;
-//Peut-être cette variable :
 	public bool isjumping;
 
 	public GameObject mistObj;
 	public Transform camera;
-	//public GameObject cubeGroundObj;
 
 	CubeGrounded cubegrounded;
 
 	Rigidbody rb;
 	Animator animatorMist;
 
-	//public GameObject camera;
-
-//Genre toutes les variables qui ici jusqu'au Start
-	//Lumping
 	public float longueurRay = 0.8f;
 	public float longueurRayBas = 5.1f;
 	private RaycastHit hit;
@@ -33,24 +29,23 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	public GameObject LumpHaut; //n'est plus utile
 	public GameObject LumpBas; //n'est plus utile
 
+
+
 	//Pour tester le Falling
 	public GameObject FallingTete; // C'est un GameObject vide qui va falloir lié. Il remplace LumpHaut. Il est sur la TETE du chat, un peu en hauteur
 	public GameObject FallingCul; // C'est un GameObject vide qui va falloir lié. Il remplace LumpBas. Il est sur le CUL du chat, un peu en hauteur
 	public bool isFalling = false;
 	public bool ToucheSol;
-
+	public GameObject FumeeAtterrissage;
 	public bool JeCours = false;
-	public bool isLerping = false;
-	public bool canLerp = false;
 
-
-
-//	//Variables Lerp Test
+	//Variables Lerp Test
 	public float lerpTime = 1f;
 	public float currentLerpTime;
-
 	public float moveDistance = 10f;
 	public float LumpForce;
+	public bool isLerping = false;
+	public bool canLerp = false;
 
 	public float Distance;
 	public float DistanceBas;
@@ -60,6 +55,11 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		audioManager = AudioManager.instance;
+		if (audioManager == null) {
+			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");
+		}
+
 		rb = GetComponent <Rigidbody> ();
 		animatorMist = mistObj.GetComponent <Animator> ();
 		cubegrounded = GetComponent <CubeGrounded> ();
@@ -67,6 +67,8 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		//Pour Lump
 		LumpHaut.SetActive (false); //N'est plus utile
 		LumpBas.SetActive (false); //N'est plus utile
+
+		FumeeAtterrissage.SetActive(false);
 
 		//Pour Lump test
 		//startPos = mistObj.transform.position;
@@ -97,8 +99,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
 
-//Tout ce qui est ici est très important
-		//Pour animation TOMBER
+	//Pour animation TOMBER
 		//RayCast pour Falling Test (TETE et CUL)
 		Debug.DrawRay (FallingTete.transform.position, -transform.up * longueurRay, Color.red);
 		Debug.DrawRay (FallingCul.transform.position, -transform.up * longueurRay, Color.blue);
@@ -125,6 +126,11 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			ToucheSol = false;
 			animatorMist.SetBool ("IsFalling", false);
 			//animatorMist.SetBool ("Grounded", true);
+		}
+
+		if (animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_jump_loop")) {
+			StartCoroutine (Atterrissage ());
+
 		}
 			
 
@@ -213,10 +219,12 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		if (Input.GetButtonDown ("XbOne_AButton") && cubegrounded.isGrounded == true && isjumping == false) {
 			print ("Je pèse sur: le bouton A!");
 			StartCoroutine (JumpMistRoutine ());
+			audioManager.PlaySound ("Mist_Jump");
 		}
 
 		// Bouton B (joystick button 1)
 		if (Input.GetButtonDown ("XbOne_BButton")) {
+			audioManager.PlaySound ("Mist_Meow");
 			print ("Je pèse sur: le bouton B!");
 		}
 
@@ -368,7 +376,6 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 				JeCours = false;
 				animatorMist.SetBool ("IsLumping", false);
 			}
-//Jusqu'à ici environ. Il y a certains trucs que tu devais déjà avoir, mais mieux vaut revérifier au cas où			
 
 			//D-PAD Mac
 			// UP
@@ -396,9 +403,9 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 				print ("Je pèse sur: le bouton Xbox!");
 			}
 		}
-
-//Je crois pas avoir changer des trucs là dedans, mais mieux vaut vérifier quand même.
+		
 	IEnumerator JumpMistRoutine(){
+		//audioManager.PlaySound ("Mist_Jump");
 		isjumping = true;
 		animatorMist.SetTrigger ("Jump");
 		animatorMist.SetBool ("Grounded", false);
@@ -406,6 +413,14 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		cubegrounded.isGrounded = false;
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
 		isjumping = false;
+	}
+
+	IEnumerator Atterrissage(){
+		FumeeAtterrissage.SetActive(true);
+		audioManager.PlaySound ("Mist_Land");
+		yield return new WaitForSeconds (2f);
+		FumeeAtterrissage.SetActive (false);
+		print ("Je fonctionne");
 	}
 
 //	void LumpUP (){

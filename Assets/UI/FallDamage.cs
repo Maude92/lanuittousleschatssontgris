@@ -13,8 +13,16 @@ public class FallDamage : MonoBehaviour {
 
 	CubeGrounded cubegrounded;
 
+	private AudioManager audioManager;
+
 	void Start () {
+		audioManager = AudioManager.instance;
+		if (audioManager == null) {
+			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");
+		}
+
 		cubegrounded = GetComponent <CubeGrounded> ();
+
 	}
 
 
@@ -42,6 +50,7 @@ public class FallDamage : MonoBehaviour {
                 {
                     //healthbar.GetComponent<HealthBar>().Damage(startYPos - endYPos - damageThreshold);
 					healthbar.GetComponent<HealthBar>().Damage(startYPos - endYPos);
+					audioManager.PlaySound ("Mist_Damage");
                     damageMe = false;
                     firstCall = true;
                 }                
