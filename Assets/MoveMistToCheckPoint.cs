@@ -39,8 +39,10 @@ public class MoveMistToCheckPoint : MonoBehaviour {
 	void OnTriggerEnter (Collider other){
 		if (other.gameObject.tag == "Player") {
 			Instantiate (Prefab, InstatiatePlatform.transform.position, InstatiatePlatform.transform.rotation);
+			Mist.GetComponent<Xbox_Controls>().enabled = false;
+			Mist.GetComponent<MistStopWhenIdle>().enabled = false;
 			//StartCoroutine (Waiting());
-			//other.transform.position = CheckPoint.transform.position;
+			other.transform.position = CheckPoint.transform.position;
 			StartCoroutine (Waiting ());
 
 //			Black = Black.GetComponent <Image> ();
@@ -55,8 +57,10 @@ public class MoveMistToCheckPoint : MonoBehaviour {
 
 	IEnumerator Waiting(){
 		yield return new WaitForSeconds(3f);
-		Mist.transform.position = CheckPoint.transform.position;
+		//Mist.transform.position = CheckPoint.transform.position;
 		fadingback = true;
+		Mist.GetComponent<Xbox_Controls>().enabled = true;
+		Mist.GetComponent<MistStopWhenIdle>().enabled = true;
 	}
 
 
