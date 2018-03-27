@@ -86,6 +86,7 @@ public class RaccoonCatchesMist : MonoBehaviour {
 		yield return new WaitForSeconds(3f);
 		Mist.transform.position = CheckPoint.transform.position;
 		Raccoon.transform.position = PositionReference.transform.position;
+		//TriggerRaccoon.TurnRaccoonOff ();
 		//NavMover.destPoint = 0;
 		//RaccoonEmpty.SetActive (false);
 		fadingback = true;
