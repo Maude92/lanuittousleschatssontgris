@@ -8,6 +8,8 @@ public class MoveMistToCheckPoint : MonoBehaviour {
 
 	public GameObject Mist;
 	public GameObject CheckPoint;
+	public GameObject Bird;
+	public GameObject BirdTarget;
 
 	public GameObject Prefab;
 	public Transform InstatiatePlatform;
@@ -43,6 +45,8 @@ public class MoveMistToCheckPoint : MonoBehaviour {
 			Mist.GetComponent<MistStopWhenIdle>().enabled = false;
 			//StartCoroutine (Waiting());
 			other.transform.position = CheckPoint.transform.position;
+			other.transform.rotation = CheckPoint.transform.rotation;
+			Bird.transform.position = BirdTarget.transform.position;
 			StartCoroutine (Waiting ());
 
 //			Black = Black.GetComponent <Image> ();

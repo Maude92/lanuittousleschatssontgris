@@ -74,7 +74,7 @@ public class FlyingBirdTr3 : MonoBehaviour {
 		transform.LookAt (Target.transform.position);
 		animatorBird.SetTrigger("flyingTrigger");
 		GetComponent<Rigidbody> ().AddForce (transform.up * 15f);
-		Invoke ("Flight", 0.73f);
+		Invoke ("Flight", 0.3f);
 		//GetComponent<Rigidbody> ().AddForce ((transform.forward * -30f) + (transform.up * 60f));
 		//GetComponent<Rigidbody>().AddForce((Vector3.up * 50f));
 		//flying = false;

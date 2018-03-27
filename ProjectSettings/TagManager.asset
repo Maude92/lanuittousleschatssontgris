@@ -15,6 +15,7 @@ TagManager:
   - PlatformeMouvante
   - Hurt
   - Platform
+  - Raccoon
   layers:
   - Default
   - TransparentFX
