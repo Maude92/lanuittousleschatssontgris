@@ -15,6 +15,10 @@ public class MoveMistToCheckPoint : MonoBehaviour {
 	public Transform InstatiatePlatform;
 
 	bool fadingback = false;
+	bool isfading = false;
+
+	public float waitforseconds = 3f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -23,6 +27,17 @@ public class MoveMistToCheckPoint : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Black = Black.GetComponent <Image> ();
+
+		if (isfading == true && Black.color.a < 1f) {
+			Color c = Black.color;
+			c.a += (Time.deltaTime * 5f);
+			Black.color = c;
+		} else if (Black.color.a >= 1f) {
+			isfading = false;
+			//			Color c = Black.color;
+			//			c.a = 0f;
+			//			Black.color = c;
+		}
 
 		if (fadingback == true && Black.color.a > 0f) {
 			Color c = Black.color;
@@ -44,9 +59,11 @@ public class MoveMistToCheckPoint : MonoBehaviour {
 			Mist.GetComponent<Xbox_Controls>().enabled = false;
 			Mist.GetComponent<MistStopWhenIdle>().enabled = false;
 			//StartCoroutine (Waiting());
-			other.transform.position = CheckPoint.transform.position;
-			other.transform.rotation = CheckPoint.transform.rotation;
-			Bird.transform.position = BirdTarget.transform.position;
+			isfading = true;
+
+			//other.transform.position = CheckPoint.transform.position;
+			//other.transform.rotation = CheckPoint.transform.rotation;
+			//Bird.transform.position = BirdTarget.transform.position;
 			StartCoroutine (Waiting ());
 
 //			Black = Black.GetComponent <Image> ();
@@ -60,7 +77,10 @@ public class MoveMistToCheckPoint : MonoBehaviour {
 	}
 
 	IEnumerator Waiting(){
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(waitforseconds);
+		Mist.transform.position = CheckPoint.transform.position;
+		Mist.transform.rotation = CheckPoint.transform.rotation;
+		Bird.transform.position = BirdTarget.transform.position;
 		//Mist.transform.position = CheckPoint.transform.position;
 		fadingback = true;
 		Mist.GetComponent<Xbox_Controls>().enabled = true;

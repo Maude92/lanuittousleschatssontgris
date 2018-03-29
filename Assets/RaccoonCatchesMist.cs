@@ -9,21 +9,26 @@ public class RaccoonCatchesMist : MonoBehaviour {
 	public GameObject Mist;
 	public GameObject CheckPoint;
 
-	public GameObject PositionReference;
-	public GameObject Raccoon;
-	public GameObject RaccoonEmpty;
-	NavMover NavMover;
+	public GameObject Prefab;
+	public Transform InstatiatePlatform;
 
-	public GameObject TriggerForRaccoon;
-	TriggerForRaccoon1 TriggerRaccoon;
+	public float waitforseconds = 3f;
+
+	//public GameObject PositionReference;
+	//public GameObject Raccoon;
+	//public GameObject RaccoonEmpty;
+	//NavMover NavMover;
+
+	//public GameObject TriggerForRaccoon;
+	//TriggerForRaccoon1 TriggerRaccoon;
 
 	bool fadingback = false;
 	bool isfading = false;
 
 	// Use this for initialization
 	void Start () {
-		TriggerRaccoon = TriggerForRaccoon.GetComponent<TriggerForRaccoon1> ();
-		NavMover = Raccoon.GetComponent<NavMover> ();
+		//TriggerRaccoon = TriggerForRaccoon.GetComponent<TriggerForRaccoon1> ();
+		//NavMover = Raccoon.GetComponent<NavMover> ();
 		Black = Black.GetComponent <Image> ();
 		//Black.color.a = 0f;
 		Color c = Black.color;
@@ -62,12 +67,15 @@ public class RaccoonCatchesMist : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other){
 		if (other.gameObject.tag == "Player") {
+			Instantiate (Prefab, InstatiatePlatform.transform.position, InstatiatePlatform.transform.rotation);
 			//Instantiate (Prefab, InstatiatePlatform.transform.position, InstatiatePlatform.transform.rotation);
 			Mist.GetComponent<Xbox_Controls>().enabled = false;
 			Mist.GetComponent<MistStopWhenIdle>().enabled = false;
 			//StartCoroutine (Waiting());
 			isfading = true;
 
+			//other.transform.position = CheckPoint.transform.position;
+			//other.transform.rotation = CheckPoint.transform.rotation;
 			//other.transform.position = CheckPoint.transform.position;
 			//RaccoonEmpty.SetActive (false);
 			StartCoroutine (Waiting ());
@@ -83,9 +91,10 @@ public class RaccoonCatchesMist : MonoBehaviour {
 		}
 	}
 	IEnumerator Waiting(){
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(waitforseconds);
 		Mist.transform.position = CheckPoint.transform.position;
-		Raccoon.transform.position = PositionReference.transform.position;
+		Mist.transform.rotation = CheckPoint.transform.rotation;
+		//Raccoon.transform.position = PositionReference.transform.position;
 		//TriggerRaccoon.TurnRaccoonOff ();
 		//NavMover.destPoint = 0;
 		//RaccoonEmpty.SetActive (false);
