@@ -15,6 +15,9 @@ TagManager:
   - PlatformeMouvante
   - Hurt
   - Platform
+  - Water
+  - Solide
+  - Liquide
   layers:
   - Default
   - TransparentFX

@@ -30,13 +30,23 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	public GameObject LumpBas; //n'est plus utile
 
 
+	//Sound Effect
+	public AudioSource WalkWater;
+	public AudioSource WalkGround;
+	public AudioSource RunGround; 
+	public bool InWater;
+	public bool EnMouvement;
+	public bool Ijump;
+	public bool GachetteOn = false;
 
-	//Pour tester le Falling
+
+	//Pour tester le Falling et les particules
 	public GameObject FallingTete; // C'est un GameObject vide qui va falloir lié. Il remplace LumpHaut. Il est sur la TETE du chat, un peu en hauteur
 	public GameObject FallingCul; // C'est un GameObject vide qui va falloir lié. Il remplace LumpBas. Il est sur le CUL du chat, un peu en hauteur
 	public bool isFalling = false;
 	public bool ToucheSol;
 	public GameObject FumeeAtterrissage;
+	public GameObject FumeeRun;
 	public bool JeCours = false;
 
 	//Variables Lerp Test
@@ -68,33 +78,25 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		LumpHaut.SetActive (false); //N'est plus utile
 		LumpBas.SetActive (false); //N'est plus utile
 
+		//Particules
 		FumeeAtterrissage.SetActive(false);
+		FumeeRun.SetActive (false);
 
-		//Pour Lump test
-		//startPos = mistObj.transform.position;
-		//endPos = LumpHaut.transform.position + transform.up * moveDistance;
-		//endPos = hit + transform.up * moveDistance;
+		WalkGround.enabled = false;
+
 	}
 
 	void FixedUpdate(){
 		Movement ();
 //Ça c'est très important
 		startPos = mistObj.transform.position;
-
-//		//Pour Lump test (LUMP HAUT)
-//		//Ce que j'essai de faire = un Raycast qui, s'il va toucher à un objet (ou le vide ?) vers le haut,il va faire sauter le personnage. Mais comment le faire atterir à la bonne place ? Est-ce que c'est le joueur qui controle sa direction jusqu'à son atterrissage ou je dois faire un Lerp ? (entre paranthèse, Lerp ça me fait penser à un son que ferait un chien qui sort dans langue dans un meme, fin de la paranthèse)
-//		if (Physics.Raycast (LumpHaut.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask("Ground"))) {		// je vais chercher la position du transform sur lequel l'objet est		//origine, direction, maxdistance
-//			print ("On touche à : " + hit.transform.name);										// out = va mettre des infos dans la variable hit, va affecter des valeurs à hit												// out : La variable doit absolument être privée et qu'elle n'est pas de valeur déjà assignée
-//			print ("JE TOUCHE À UN OBJET SUR LEQUEL JE PEUX FAIRE UN LERP");
-//			endPos = hit.transform.position;
-//			isLerping = true;
-//		} else {
-//			isLerping = false;
-//		}		
 	}
 
 	// Update is called once per frame
 	void Update () {
+
+		print ("Mes Gachettes sont " + GachetteOn);
+
 		UserInputs ();
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
@@ -128,65 +130,122 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			//animatorMist.SetBool ("Grounded", true);
 		}
 
+		//Pour les particules à l'atterrissage
 		if (animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_jump_loop")) {
-			StartCoroutine (Atterrissage ());
+			//StartCoroutine (Atterrissage ());
 
 		}
+
+	//Pour les sons
+		//Pour jouer son lorsque joueur bouge
+		if (Physics.Raycast (FallingTete.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground")) && Physics.Raycast (FallingCul.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"))) {
+
+			if (hit.transform.tag == "Liquide" && EnMouvement == true && !WalkWater.isPlaying) {
+				//audioManager.PlaySound ("Mist_Nage2");
+				print ("Je touche à de l'eau et je bouge !");
+				WalkWater.enabled = true;
+				WalkWater.Play ();
+
+				//Les Stops
+				WalkGround.enabled = false;
+				WalkGround.Stop ();
+
+//				RunGround.enabled = false;
+//				RunGround.Stop ();
+			}
+
+			if (hit.transform.tag == "Solide" && EnMouvement == true && !WalkGround.isPlaying) {
+				print ("Je touche au sol et je fais du bruit !");
+				WalkGround.enabled = true;
+				WalkGround.Play ();
+
+				//Les Stops
+				WalkWater.Stop ();
+				WalkWater.enabled = false;
+
+//				RunGround.enabled = false;
+//				RunGround.Stop ();
+			} 
+
+			if (hit.transform.tag == "Solide" && EnMouvement == true && !RunGround.isPlaying && GachetteOn == true) {
+				print ("Je cours sur le sol et je fais du bruit !");
+				RunGround.enabled = true;
+				RunGround.Play ();
+
+				//Les Stops
+				WalkWater.Stop ();
+				WalkWater.enabled = false;
+
+				WalkGround.enabled = false;
+				WalkGround.Stop ();
+
+				//Particules Course
+				FumeeRun.SetActive (true);
+			} 
+				
+
+		}
+
+		if (EnMouvement == false) {
+			WalkWater.Stop ();
+			WalkWater.enabled = false;
+
+			WalkGround.enabled = false;
+			WalkGround.Stop ();
+
+			RunGround.enabled = false;
+			RunGround.Stop ();
+		}
+
+		if (EnMouvement == true && Ijump == true) {
+			WalkWater.Stop ();
+			WalkWater.enabled = false;
+
+			WalkGround.enabled = false;
+			WalkGround.Stop ();
+
+			RunGround.enabled = false;
+			RunGround.Stop ();
+		}
+
+		if (GachetteOn == false) {
+			RunGround.enabled = false;
+			RunGround.Stop ();
+			FumeeRun.SetActive (false);
+		}
+
+		if (GachetteOn == true) {
+//			WalkWater.Stop ();
+//			WalkWater.enabled = false;
+
+			WalkGround.enabled = false;
+			WalkGround.Stop ();
+
+		}
+
+		if (GachetteOn && Ijump == true) {
+			FumeeRun.SetActive (false);
+		}
 			
-
-		//Pour Lump Bas
-		//DistanceBas = hit2.transform.position.y - hit3.transform.position.y;
-//Jusqu' à ici, ce qui est en dessous c'est juste des tests qui fonctionnaient pas pour les Lump Haut
-
-	//Pour Lump Haut V-LF
-	//Distance = hit.transform.position.y - hit2.transform.position.y;
-
-		//Test A
-//		if (Distance <= 0.25f && Distance > 0) {
-//			rb.AddForce (0, LumpForce, -10);
-//			print ("ta mère en short");
-//		}
-
-		//Test B
-//		if (Distance > 0.1f) {
-//			animatorMist.SetTrigger ("Jump");
-//			animatorMist.SetBool ("Grounded", false);
-//			rb.velocity = new Vector3 (0, 2.5f, 0);
-//			rb.AddForce (0, 0, 15);
-//		}
-
-		//Test C
-//		if (DistanceBas > 0.1f) {
-//			print ("Ta mère en short vers le bas");
-//			animatorMist.SetTrigger ("Jump");
-//			animatorMist.SetBool ("IsFalling", true);
-//			rb.velocity = new Vector3 (0, 2.5f, 0);
-//			rb.AddForce (0, 0, 15);
-//		}
-
-		//Si on tombe
-//		if (cubegrounded.isGrounded == false){
-//			animatorMist.SetBool ("IsFalling", true);
-//		}
 
 	// POUR FAIRE PIVOTER LA TÊTE
 		// Tête à gauche
 		if (Input.GetAxis ("XbOne_RightStickX") < -0.1f) {
-			print ("Allo! Tête à gauche.");
+			//print ("Allo! Tête à gauche.");
 			animatorMist.SetFloat ("TurnG", 1);
 		} else
 			animatorMist.SetFloat ("TurnG", 0);
 
 		// Tête à droite
 		if (Input.GetAxis ("XbOne_RightStickX") > 0.1f) {
-			print ("Allo! Tête à droite.");
+			//print ("Allo! Tête à droite.");
 			animatorMist.SetFloat ("TurnD", 1);
 		} else
 			animatorMist.SetFloat ("TurnD", 0);
 
 		// Tête en haut
 		if (Input.GetAxis ("XbOne_RightStickY") > 0.1f) {
-			print ("Allo! Tête en haut.");
+			//print ("Allo! Tête en haut.");
 			animatorMist.SetFloat ("TurnU", 1);
 		} else 
 			animatorMist.SetFloat ("TurnU", 0);
@@ -217,9 +276,11 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 		// Bouton A (joystick button 0)
 		if (Input.GetButtonDown ("XbOne_AButton") && cubegrounded.isGrounded == true && isjumping == false) {
-			print ("Je pèse sur: le bouton A!");
+			//print ("Je pèse sur: le bouton A!");
+			Ijump = true;
 			StartCoroutine (JumpMistRoutine ());
 			audioManager.PlaySound ("Mist_Jump");
+			StartCoroutine (Atterrissage ());
 		}
 
 		// Bouton B (joystick button 1)
@@ -268,91 +329,28 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 			print ("Je pèse sur: right thumbstick button!");
 		}
 
+		if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) {
+			EnMouvement = true;
+			print (EnMouvement);
+		} else {
+			EnMouvement = false;
+			print (EnMouvement);
+		}
+
 //Ok ici il y a du stock très important, mais attention à ce que tu ais les bon boutons (Input), ignore les commentaires
 	// LUMP et course
 		if (Input.GetAxis ("XbOne_LeftTrigger") > 0.001 || Input.GetAxis ("XbOne_RightTrigger") < -0.001) {
-			print ("Je pèse sur le trigger gauche!!");
+			//print ("Je pèse sur le trigger gauche!!");
+			GachetteOn = true;
 			PlayerMovementSpeed = 4;
 			jumpforce = 240;
 			JeCours = true;
 			animatorMist.SetBool ("IsLumping", true); //IsLumping = animation courrir
 			if (Input.GetAxis ("XbOne_LeftTrigger") > 0.001) {
-				//LumpHaut.SetActive (true);
-
-				//RAYCAST Version LF
-				//RayCast LumpHaut
-//				Physics.Raycast (LumpHaut.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"));
-//				Debug.DrawRay (LumpHaut.transform.position, -transform.up * longueurRay, Color.red);
-
-				//RayCast PositionMist
-//				Physics.Raycast (transform.position + new Vector3 (0, 0.5f, 0), -transform.up, out hit2, longueurRay, LayerMask.GetMask("Ground"));
-//				Debug.DrawRay (transform.position, -transform.up * longueurRay, Color.yellow);
-
-//				//Ancien RayCast pour Lump Version A-B-C
-//				if (Physics.Raycast (LumpHaut.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"))) {		// je vais chercher la position du transform sur lequel l'objet est		//origine, direction, maxdistance
-//					print ("On touche à : " + hit.transform.name);										// out = va mettre des infos dans la variable hit, va affecter des valeurs à hit												// out : La variable doit absolument être privée et qu'elle n'est pas de valeur déjà assignée
-//					print ("JE TOUCHE À UN OBJET SUR LEQUEL JE PEUX FAIRE UN LERP");
-//					endPos = new Vector3 (hit.transform.position.x, hit.transform.position.y + longueurRay, hit.transform.position.z);
-//					if (hit.transform.tag == "Lump") {
-//						canLerp = true;
-//					}
-//				}
-
-//				Ancienne méthode de Lump
-				//if (canLerp == true && isLerping == false) {
-//
-//					//Méthode C.2 :
-//					//LumpUP ();
-//
-//					//Méthode A:
-//					rb.AddForce (0, LumpForce, 10);
-//					animatorMist.SetTrigger ("Jump");
-//					animatorMist.SetBool ("Grounded", false);
-//					isLerping = true;
-//
-//					//Méthode B:
-//					//StartCoroutine (JumpMistRoutine ());
-//					// isLerping = true;
-//
-//					//Méthode C:
-////					isLerping = false;
-////					//increment timer once per frame
-////					currentLerpTime += Time.deltaTime;
-////					if (currentLerpTime > lerpTime) {
-////						currentLerpTime = lerpTime;
-////					}
-////
-////					//lerp!
-////					//		float perc = currentLerpTime / lerpTime;
-////					//		transform.position = Vector3.Lerp(startPos, endPos, perc);
-////					float t = currentLerpTime / lerpTime;
-////					//		t = Mathf.Sin(t * Mathf.PI * 0.5f);
-////					//		t = t*t*t * (t * (6f*t - 15f) + 10f);
-////					t = t * t;
-////					transform.position = Vector3.Lerp (startPos, endPos, t);
-////
-////				} else if (isLerping == false) {
-////					currentLerpTime = 0f;
-////				}
-//
-//					//Pour méthode A et B
-//			
-//
-//				} else if (isLerping == true) {  //PENSE ICI LE PROB DU VOL
-//					canLerp = false;
-//					isLerping = false;
-//				}
+				//rien du tout
 			}
 				if (Input.GetAxis ("XbOne_RightTrigger") < -0.001) {
-					//LumpBas.SetActive (true);
-					//RAYCAST vers le Bas
-					//RayCast LumpBas
-//					Physics.Raycast (LumpBas.transform.position, -transform.up, out hit3, longueurRayBas, LayerMask.GetMask ("Ground"));
-//					Debug.DrawRay (LumpBas.transform.position, -transform.up * longueurRayBas, Color.blue);
-//
-//					//RayCast PositionMist
-//					Physics.Raycast (transform.position + new Vector3 (0, 0.5f, 0), -transform.up, out hit2, longueurRay, LayerMask.GetMask("Ground"));
-//					Debug.DrawRay (transform.position, -transform.up * longueurRay, Color.yellow);
+				//rien du tout
 				}
 			} else if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001 || Input.GetAxis ("XbOne_RightTrigger") > -0.001) {
 				PlayerMovementSpeed = 2;
@@ -360,6 +358,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 				JeCours = false;
 				animatorMist.SetBool ("IsLumping", false);
 				Distance = 0;
+				GachetteOn = false;
 				if (Input.GetAxis ("XbOne_LeftTrigger") < 0.001) {
 					LumpHaut.SetActive (false);
 				}
@@ -374,6 +373,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 				LumpHaut.SetActive (false);
 				LumpBas.SetActive (false);
 				JeCours = false;
+				GachetteOn = false;
 				animatorMist.SetBool ("IsLumping", false);
 			}
 
@@ -403,9 +403,32 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 				print ("Je pèse sur: le bouton Xbox!");
 			}
 		}
+
+	void OnTriggerEnter (Collider other){
+		if (other.gameObject.CompareTag ("Water")) {
+			Invoke ("Splash", 0.2f);
+		} 
+			
+	}
+
+	void OnCollisionEnter (Collision col){
+		if (col.gameObject.CompareTag("Solide")){
+			audioManager.PlaySound ("Mist_Land");
+			Ijump = false;
+			StartCoroutine (Atterrissage ());
+		}
+
+		if (col.gameObject.CompareTag ("Liquide")) {
+			//audioManager.PlaySound ("Mist_Nage");
+			Ijump = false;
+		}
+	}
+
+	void Splash (){
+		audioManager.PlaySound ("Mist_Splash");
+	}
 		
 	IEnumerator JumpMistRoutine(){
-		//audioManager.PlaySound ("Mist_Jump");
 		isjumping = true;
 		animatorMist.SetTrigger ("Jump");
 		animatorMist.SetBool ("Grounded", false);
@@ -417,39 +440,11 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 	IEnumerator Atterrissage(){
 		FumeeAtterrissage.SetActive(true);
-		audioManager.PlaySound ("Mist_Land");
 		yield return new WaitForSeconds (2f);
 		FumeeAtterrissage.SetActive (false);
 		print ("Je fonctionne");
 	}
+		
 
-//	void LumpUP (){
-//		print ("Je Lump vers le haut ! Wouhou !");
-//		isLerping = true;
-//		if (isLerping == true) {
-//			//Méthode C:
-//			isLerping = false;
-//			//increment timer once per frame
-//			currentLerpTime += Time.deltaTime;
-//			if (currentLerpTime > lerpTime) {
-//				currentLerpTime = lerpTime;
-//			}
-//
-//			//lerp!
-//			//		float perc = currentLerpTime / lerpTime;
-//			//		transform.position = Vector3.Lerp(startPos, endPos, perc);
-//			float t = currentLerpTime / lerpTime;
-//			//		t = Mathf.Sin(t * Mathf.PI * 0.5f);
-//			//		t = t*t*t * (t * (6f*t - 15f) + 10f);
-//			t = t * t;
-//			transform.position = Vector3.Lerp (startPos, endPos, t);
-//
-//		} else if (isLerping == false) {
-//			currentLerpTime = 0f;
-//		}
-//	}
-//
-//	void LumpDown (){
-//		print ("Je Lump vers le bas ! Wouhou !");
-//	}
+
 }
