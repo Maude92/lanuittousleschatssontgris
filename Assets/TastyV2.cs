@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TastyV2 : MonoBehaviour {
 
 	public GameObject mistObj;
+	public GameObject playerObj;
 	public Transform HealthBar;
 
 	Xbox_Controls xboxcontrolspc;
@@ -32,7 +33,7 @@ public class TastyV2 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		anim = mistObj.GetComponent <Animator> ();
-		xboxcontrolspc = GetComponent <Xbox_Controls> ();
+		xboxcontrolspc = playerObj.GetComponent <Xbox_Controls> ();
 		xboxcontrolMac = GetComponent <Xbox_Controls_MAC> ();
 		//HBcode = GetComponent <HealthBar> ();
 		Ieat = false;
