@@ -5,24 +5,24 @@ using UnityEngine.AI;
 public class BrakeZone : MonoBehaviour {
 
 	// Use this for initialization
-	public float targetSpeed = 14f;
+	public float targetSpeed = 0f;
 
 	float orginalSpeed;
 
-	void OnTriggerEnter(Collider col)
+	void OnTriggerEnter(Collider other)
 	{
 
-		if (col.CompareTag ("Player")) {
-			orginalSpeed = col.GetComponent<NavMeshAgent> ().speed;
-			col.GetComponent<NavMeshAgent> ().speed = targetSpeed;
+		if (other.gameObject.tag == "Raccoon") {
+			//orginalSpeed = other.GetComponent<NavMeshAgent> ().speed;
+			other.GetComponent<NavMeshAgent> ().speed = targetSpeed;
 		}
 		
 	}
 
-	void OnTriggerExit(Collider col)
-	{
-
-		if(col.CompareTag("Player"))
-			col.GetComponent<NavMeshAgent> ().speed = orginalSpeed;
-	}
+//	void OnTriggerExit(Collider col)
+//	{
+//
+//		if(col.CompareTag("Raccoon"))
+//			col.GetComponent<NavMeshAgent> ().speed = orginalSpeed;
+//	}
 }

@@ -8,7 +8,7 @@ public class NavMover : MonoBehaviour {
 
 	List<Transform> points = new List <Transform> ();
 
-	private int destPoint = 0;
+	public int destPoint = 0;
 	private NavMeshAgent agent;
 
 	public WaypointSystem path;

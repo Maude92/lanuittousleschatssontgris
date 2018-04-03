@@ -54,7 +54,7 @@ public class HealthBar : MonoBehaviour {
 	
     public void Damage(float damageAmount)
     {
-		
+		audioManager.PlaySound ("Mist_Damage");
 		health = (currentHealth - damageAmount) / maxHealth;
         currentHealth -= damageAmount;
         currentHealth = Mathf.Round(currentHealth);
@@ -80,11 +80,12 @@ public class HealthBar : MonoBehaviour {
         }
 			
 
-		if (currentHealth <= 25) {
-			//audioManager.PlaySound ("Mist_LowVie");
-			LowVieSound.enabled = true;
-			LowVieSound.Play ();
-		} 
+//		if (currentHealth <= 25) {
+//			LowVieSound.enabled = true;
+//			LowVieSound.Play ();
+//		}
+
+
     }
 
 	public void LifeGain (float gainAmount){
@@ -98,24 +99,26 @@ public class HealthBar : MonoBehaviour {
 		HBImage.GetComponent<Image>().fillAmount = healtGain;
 		HBImage.GetComponent<Image> ().color = Color.Lerp (lowColor, fullColor, HBImage.GetComponent<Image>().fillAmount);
 		HBText.GetComponent<Text>().text = currentHealth.ToString();
+
+		if (currentHealth > 25) {
+			LowVieSound.Stop ();
+			LowVieSound.enabled = false;
+		}
 	}
 
 	void Update () {
 
-//		if (currentHealth < currentHealth + 1 && currentHealth != maxHealth) {
-//			//audioManager.PlaySound ("Mist_Damage");
-//			//Comment faire pour le faire jouer juste une fois ? 
-//		}
 
-//		if (health <= 0.25 && health != 0) {
-//			//audioManager.PlaySound ("Mist_LowVie");
-//			LowVieSound.enabled = true;
-//			LowVieSound.Play ();
-//		} 
+		if (currentHealth <= 25 && !LowVieSound.isPlaying) {
+			LowVieSound.enabled = true;
+			LowVieSound.Play ();
+		}
 
-		//else /*if (currentHealth > 25)*/ {
-			//LowVieSound.enabled = false;
-		//}
+		if (currentHealth > 25) {
+			LowVieSound.Stop ();
+			LowVieSound.enabled = false;
+		}
+			
 
 //S'il reste 9 Vie :
 		if (NbVieRestant == 9) {

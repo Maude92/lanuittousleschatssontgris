@@ -50,7 +50,7 @@ public class FallDamage : MonoBehaviour {
                 {
                     //healthbar.GetComponent<HealthBar>().Damage(startYPos - endYPos - damageThreshold);
 					healthbar.GetComponent<HealthBar>().Damage(startYPos - endYPos);
-					audioManager.PlaySound ("Mist_Damage");
+					//audioManager.PlaySound ("Mist_Damage");
                     damageMe = false;
                     firstCall = true;
                 }                
