@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114504689298433942}
   - component: {fileID: 114802741466914638}
   m_Layer: 5
-  m_Name: "UI E\u0301quilibre"
+  m_Name: "UI \xC9quilibre"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

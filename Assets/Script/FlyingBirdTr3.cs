@@ -17,6 +17,8 @@ public class FlyingBirdTr3 : MonoBehaviour {
 
 	public AudioClip song1;
 	public AudioClip song2;
+	public AudioClip flight1;
+	public AudioClip flight2;
 
 	// Use this for initialization
 	void Start () {
@@ -81,6 +83,7 @@ public class FlyingBirdTr3 : MonoBehaviour {
 	}
 
 	void Flight() {
+		GetComponent<AudioSource>().PlayOneShot (flight2,1);
 		GetComponent<Rigidbody> ().AddForce ((transform.forward * -30f) + (transform.up * 60f));
 		//GetComponent<Rigidbody>().AddForce((Vector3.up * 50f));
 		flying = false;
@@ -90,12 +93,12 @@ public class FlyingBirdTr3 : MonoBehaviour {
 	}
 
 	void PlaySong(){
-		
-			if(Random.value < .5){
-				GetComponent<AudioSource>().PlayOneShot (song1,1);
-			}else{
-				GetComponent<AudioSource>().PlayOneShot (song2,1);
-			}
+		GetComponent<AudioSource>().PlayOneShot (song1,1);
+//			if(Random.value < .5){
+//				GetComponent<AudioSource>().PlayOneShot (song1,1);
+//			}else{
+//				GetComponent<AudioSource>().PlayOneShot (song2,1);
+//			}
 
 	}
 }

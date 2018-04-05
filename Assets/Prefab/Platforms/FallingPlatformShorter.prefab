@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65397275776797392}
   - component: {fileID: 95107025286747394}
   - component: {fileID: 114860651023606780}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: FallingPlatformShorter
   m_TagString: Ground
   m_Icon: {fileID: 0}

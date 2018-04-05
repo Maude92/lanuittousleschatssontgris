@@ -106,7 +106,8 @@ public class RaccoonCatchesMist2 : MonoBehaviour {
 		//NavMover.destPoint = 0;
 		//RaccoonEmpty.SetActive (false);
 		fadingback = true;
-		Mist.GetComponent<Xbox_Controls>().enabled = true;
 		Mist.GetComponent<MistStopWhenIdle>().enabled = true;
+		Mist.GetComponent<Xbox_Controls>().enabled = true;
+
 	}
 }
