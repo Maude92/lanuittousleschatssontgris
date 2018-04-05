@@ -6,6 +6,16 @@ TagManager:
   tags:
   - Ground
   - FallingObjectGauche
+  - SupportFallingObject
+  - Balancing
+  - PlatformeMouvante
+  - lb_bird
+  - lb_perchTarget
+  - Platform
+  - FallingObjectDroite
+  - Gazon
+  - Liquide
+  - Solide
   layers:
   - Default
   - TransparentFX
