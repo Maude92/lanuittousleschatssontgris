@@ -9,7 +9,7 @@ public class TastyVersionPC : MonoBehaviour {
 	public Transform HealthBar;
 
 	Xbox_Controls xboxcontrolspc;
-	Xbox_Controls_MAC xboxcontrolMac;
+	//Xbox_Controls_MAC xboxcontrolMac;
 
 	//HealthBar HBcode;
 
@@ -53,12 +53,13 @@ public class TastyVersionPC : MonoBehaviour {
 		//ButtonY.enabled = true;
 
 		//Faire attention ici qqchose à modifier quand on va le mettre sur le MSI
-		if (other.gameObject.tag == "Player" && (Input.GetButtonDown ("360_YButton") || Input.GetButtonDown ("XbOne_YButton")) && anim.GetCurrentAnimatorStateInfo (0).IsName ("A_idle") && Ieat == false) {
+		if (other.gameObject.tag == "Player" && (Input.GetButtonDown ("360_YButton")) && Ieat == false) {
 			Ieat = true;
 			print ("Je peux manger");
 			anim.SetBool ("Miam", true);
-			HealthBar.GetComponent<HealthBar>().LifeGain(NbPtsVieRedonner);
 			StartCoroutine (EatThis ());
+			HealthBar.GetComponent<HealthBar>().LifeGain(NbPtsVieRedonner);
+
 
 
 			//HBcode.LifeGain (10);
