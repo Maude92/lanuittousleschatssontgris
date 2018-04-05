@@ -5,10 +5,24 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+<<<<<<< HEAD
   - Solide
   - Water
   - Liquide
   - Gazon
+=======
+  - FallingObjectGauche
+  - SupportFallingObject
+  - Balancing
+  - PlatformeMouvante
+  - lb_bird
+  - lb_perchTarget
+  - Platform
+  - FallingObjectDroite
+  - Gazon
+  - Liquide
+  - Solide
+>>>>>>> e78c09592cef4313b66f85574be1a5a41a155485
   layers:
   - Default
   - TransparentFX
@@ -30,7 +44,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 
