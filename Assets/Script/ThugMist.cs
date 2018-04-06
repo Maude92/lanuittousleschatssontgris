@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ThugMist : MonoBehaviour {
 
+	private AudioManager audioManager;
+
 	public GameObject fallingobject;
 	public GameObject mistObj;
 	public GameObject particlesDestruction;
@@ -17,6 +19,13 @@ public class ThugMist : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		audioManager = AudioManager.instance;
+		if (audioManager == null) {
+			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");
+		}
+
+
+
 		anim = mistObj.GetComponent<Animator> ();
 		//colFallingObjet = GetComponent<Collider> ();
 		rbObject = GetComponent<Rigidbody> ();
@@ -38,9 +47,10 @@ public class ThugMist : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision other){
-		if (other.gameObject.tag == "Ground") {
+		if (other.gameObject.tag == "Solide" || other.gameObject.tag == "Gazon") {
 			particlesDestruction.transform.position = gameObject.transform.position;
 			particlesDestruction.SetActive (true);
+			audioManager.PlaySound ("Flower_Destroy");
 			Destroy (gameObject);
 		}
 	}
