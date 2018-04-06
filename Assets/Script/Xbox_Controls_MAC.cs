@@ -38,6 +38,8 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	public bool EnMouvement;
 	public bool Ijump;
 	public bool GachetteOn = false;
+	public AudioSource WalkGazon;
+
 
 
 	//Pour tester le Falling et les particules
@@ -59,6 +61,8 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 	public float Distance;
 	public float DistanceBas;
+
+	public CanvasGroup UIVieCanvasGroup;
 
 	Vector3 startPos;
 	Vector3 endPos;
@@ -83,6 +87,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		FumeeRun.SetActive (false);
 
 		WalkGround.enabled = false;
+		WalkGazon.enabled = false;
 
 	}
 
@@ -96,7 +101,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	void Update () {
 
 		print ("Mes Gachettes sont " + GachetteOn);
-
+		SoundEffect ();
 		UserInputs ();
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
@@ -136,97 +141,6 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 		}
 
-	//Pour les sons
-		//Pour jouer son lorsque joueur bouge
-		if (Physics.Raycast (FallingTete.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground")) && Physics.Raycast (FallingCul.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"))) {
-
-			if (hit.transform.tag == "Liquide" && EnMouvement == true && !WalkWater.isPlaying) {
-				//audioManager.PlaySound ("Mist_Nage2");
-				print ("Je touche à de l'eau et je bouge !");
-				WalkWater.enabled = true;
-				WalkWater.Play ();
-
-				//Les Stops
-				WalkGround.enabled = false;
-				WalkGround.Stop ();
-
-//				RunGround.enabled = false;
-//				RunGround.Stop ();
-			}
-
-			if (hit.transform.tag == "Solide" && EnMouvement == true && !WalkGround.isPlaying) {
-				print ("Je touche au sol et je fais du bruit !");
-				WalkGround.enabled = true;
-				WalkGround.Play ();
-
-				//Les Stops
-				WalkWater.Stop ();
-				WalkWater.enabled = false;
-
-//				RunGround.enabled = false;
-//				RunGround.Stop ();
-			} 
-
-			if (hit.transform.tag == "Solide" && EnMouvement == true && !RunGround.isPlaying && GachetteOn == true) {
-				print ("Je cours sur le sol et je fais du bruit !");
-				RunGround.enabled = true;
-				RunGround.Play ();
-
-				//Les Stops
-				WalkWater.Stop ();
-				WalkWater.enabled = false;
-
-				WalkGround.enabled = false;
-				WalkGround.Stop ();
-
-				//Particules Course
-				FumeeRun.SetActive (true);
-			} 
-				
-
-		}
-
-		if (EnMouvement == false) {
-			WalkWater.Stop ();
-			WalkWater.enabled = false;
-
-			WalkGround.enabled = false;
-			WalkGround.Stop ();
-
-			RunGround.enabled = false;
-			RunGround.Stop ();
-		}
-
-		if (EnMouvement == true && Ijump == true) {
-			WalkWater.Stop ();
-			WalkWater.enabled = false;
-
-			WalkGround.enabled = false;
-			WalkGround.Stop ();
-
-			RunGround.enabled = false;
-			RunGround.Stop ();
-		}
-
-		if (GachetteOn == false) {
-			RunGround.enabled = false;
-			RunGround.Stop ();
-			FumeeRun.SetActive (false);
-		}
-
-		if (GachetteOn == true) {
-//			WalkWater.Stop ();
-//			WalkWater.enabled = false;
-
-			WalkGround.enabled = false;
-			WalkGround.Stop ();
-
-		}
-
-		if (GachetteOn && Ijump == true) {
-			FumeeRun.SetActive (false);
-		}
-			
 
 	// POUR FAIRE PIVOTER LA TÊTE
 		// Tête à gauche
@@ -250,6 +164,127 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		} else 
 			animatorMist.SetFloat ("TurnU", 0);
 
+	}
+
+	void SoundEffect(){
+		//Pour jouer son lorsque joueur bouge
+		if (Physics.Raycast (FallingTete.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground")) && Physics.Raycast (FallingCul.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"))) {
+
+			//MARCHE ET COURSE EAU
+			if (hit.transform.tag == "Liquide" && EnMouvement == true && !WalkWater.isPlaying) {
+				//audioManager.PlaySound ("Mist_Nage2");
+				print ("Je touche à de l'eau et je bouge !");
+				WalkWater.enabled = true;
+				WalkWater.Play ();
+
+				//Les Stops
+				WalkGround.enabled = false;
+				WalkGround.Stop ();
+
+				WalkGazon.enabled = false;
+				WalkGazon.Stop ();
+
+			}
+
+			//MARCHE + COURSE GAZON
+			if (hit.transform.tag == "Gazon" && EnMouvement == true && !WalkGazon.isPlaying) {
+				print ("Je marche sur le gazon et je fais du bruit");
+				WalkGazon.enabled = true;
+				WalkGazon.Play ();
+
+				//Les Stops
+				WalkWater.Stop ();
+				WalkWater.enabled = false;
+
+				WalkGround.enabled = false;
+				WalkGround.Stop ();
+
+			} 
+
+			//MARCHE SOL
+			if (hit.transform.tag == "Solide" && EnMouvement == true && !WalkGround.isPlaying) {
+				print ("Je touche au sol et je fais du bruit !");
+				WalkGround.enabled = true;
+				WalkGround.Play ();
+
+				//Les Stops
+				WalkWater.Stop ();
+				WalkWater.enabled = false;
+
+				WalkGazon.enabled = false;
+				WalkGazon.Stop ();
+
+			} 
+
+			//COURSE SOL
+			if (hit.transform.tag == "Solide" && EnMouvement == true && !RunGround.isPlaying && GachetteOn == true) {
+				print ("Je cours sur le sol et je fais du bruit !");
+				RunGround.enabled = true;
+				RunGround.Play ();
+
+				//Les Stops
+				WalkWater.Stop ();
+				WalkWater.enabled = false;
+
+				WalkGround.enabled = false;
+				WalkGround.Stop ();
+
+				WalkGazon.enabled = false;
+				WalkGazon.Stop ();
+
+				//Particules Course
+				FumeeRun.SetActive (true);
+			} 
+
+
+		}
+
+		if (EnMouvement == false) {
+			WalkWater.Stop ();
+			WalkWater.enabled = false;
+
+			WalkGround.enabled = false;
+			WalkGround.Stop ();
+
+			WalkGazon.enabled = false;
+			WalkGazon.Stop ();
+
+			RunGround.enabled = false;
+			RunGround.Stop ();
+		}
+
+		if (EnMouvement == true && Ijump == true) {
+			WalkWater.Stop ();
+			WalkWater.enabled = false;
+
+			WalkGround.enabled = false;
+			WalkGround.Stop ();
+
+			WalkGazon.enabled = false;
+			WalkGazon.Stop ();
+
+			RunGround.enabled = false;
+			RunGround.Stop ();
+		}
+
+		if (GachetteOn == false) {
+			RunGround.enabled = false;
+			RunGround.Stop ();
+			FumeeRun.SetActive (false);
+		}
+
+		if (GachetteOn == true) {
+			//			WalkWater.Stop ();
+			//			WalkWater.enabled = false;
+
+			WalkGround.enabled = false;
+			WalkGround.Stop ();
+
+		}
+
+		if (GachetteOn && Ijump == true) {
+			FumeeRun.SetActive (false);
+		}
 	}
 
 
@@ -292,6 +327,11 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		// Bouton X (... 2)
 		if (Input.GetButtonDown ("XbOne_XButton")) {
 			print ("Je pèse sur: le bouton X!");
+
+		}
+
+		if (Input.GetButton ("XbOne_XButton")) {
+			UIVieCanvasGroup.alpha = 1;
 		}
 
 		// Bouton Y (... 3)
