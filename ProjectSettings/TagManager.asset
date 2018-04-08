@@ -16,6 +16,7 @@ TagManager:
   - Gazon
   - Liquide
   - Solide
+  - NezDeChat
   layers:
   - Default
   - TransparentFX
