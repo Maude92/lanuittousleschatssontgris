@@ -8,9 +8,18 @@ TagManager:
   - lb_bird
   - Raccoon
   - lb_perchTarget
+<<<<<<< HEAD
+  - Platform
+  - FallingObjectDroite
+  - Gazon
+  - Liquide
+  - Solide
+  - NezDeChat
+=======
   - Balancing
   - Needle
   - PlatformeMouvante
+>>>>>>> a758c58114f083464910ca3f462b39c43eeda61b
   layers:
   - Default
   - TransparentFX
