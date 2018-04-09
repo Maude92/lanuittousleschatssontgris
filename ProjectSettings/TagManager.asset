@@ -5,21 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - lb_bird
-  - Raccoon
-  - lb_perchTarget
-<<<<<<< HEAD
-  - Platform
-  - FallingObjectDroite
-  - Gazon
-  - Liquide
-  - Solide
-  - NezDeChat
-=======
   - Balancing
   - Needle
   - PlatformeMouvante
->>>>>>> a758c58114f083464910ca3f462b39c43eeda61b
+  - Liquide
+  - Water
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -29,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
+  - 
   - 
   - 
   - 
