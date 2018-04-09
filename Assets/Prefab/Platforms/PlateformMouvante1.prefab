@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23927796379249572}
   - component: {fileID: 65283803171658754}
   - component: {fileID: 95453803184540978}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: PlateformMouvante1
   m_TagString: Ground
   m_Icon: {fileID: 0}

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65819123200835528}
   - component: {fileID: 114692010523851592}
   - component: {fileID: 95896625997894112}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: Plat1
   m_TagString: Ground
   m_Icon: {fileID: 0}

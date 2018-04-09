@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23676214572421098}
   - component: {fileID: 65520567646207524}
   - component: {fileID: 65720136999586898}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: CoinPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33501339185364126}
   - component: {fileID: 65485825351278634}
   - component: {fileID: 23356384953216796}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: MurBrique
   m_TagString: Untagged
   m_Icon: {fileID: 0}

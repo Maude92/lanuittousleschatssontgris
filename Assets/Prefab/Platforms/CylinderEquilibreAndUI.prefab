@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114223256056297594}
   - component: {fileID: 54095483161081886}
   - component: {fileID: 65365516342669520}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: "UI \xC9quilibre"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4996385504299830}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: ReferencePoint
   m_TagString: Balancing
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 95814614056772894}
   - component: {fileID: 114307547336127346}
   - component: {fileID: 114918324323296390}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: CylinderEquilibreAndUI
   m_TagString: Balancing
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 4840365713887368}
   - component: {fileID: 65516280424034694}
   - component: {fileID: 114517153007228550}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: ChangeReferencePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4167838859443660}
   - component: {fileID: 65427323987177612}
   - component: {fileID: 114934840442299830}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: ChangeReferencePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 224887139943651658}
   - component: {fileID: 222446369332231270}
   - component: {fileID: 114197759940609096}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Jauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4331286154897358}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: RotationReference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4093384125795912}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: ReferencePoint (1)
   m_TagString: Balancing
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 114441593902219182}
   - component: {fileID: 54878367127453226}
   - component: {fileID: 65469303563608684}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Needle
   m_TagString: Needle
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 33144953222585384}
   - component: {fileID: 136765000009578434}
   - component: {fileID: 23205444533399986}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Balancing
   m_Icon: {fileID: 0}
@@ -479,6 +479,7 @@ MonoBehaviour:
   MinTime: 3
   MaxTime: 3
   smooth: 10
+  changementAmount: 1
   youjumped: 0
   biggerAngle: 0
   directionOfRotation: 1
@@ -575,6 +576,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tube: {fileID: 1252975585939374}
   UI: {fileID: 1194787151020846}
+  Explanation: {fileID: 0}
+  TargetAngle: {fileID: 0}
   youjumped: 0
 --- !u!114 &114934840442299830
 MonoBehaviour:
