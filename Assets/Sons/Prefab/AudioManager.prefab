@@ -172,3 +172,9 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0
     randomPitch: 0
+  - name: Flower_Woosh
+    clip: {fileID: 8300000, guid: a8f427341b32848da9212ae6b9d36dbf, type: 3}
+    volume: 1
+    pitch: 0.741
+    randomVolume: 0
+    randomPitch: 0
