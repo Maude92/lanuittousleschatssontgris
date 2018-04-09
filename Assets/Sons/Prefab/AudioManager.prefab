@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1186715548563834}
+  m_IsPrefabParent: 1
+--- !u!1 &1186715548563834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4064549961248306}
+  - component: {fileID: 114224416291515936}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4064549961248306
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1186715548563834}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114224416291515936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1186715548563834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2410c314876ff45b679f1504628082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Mist_Jump
+    clip: {fileID: 8300000, guid: 43eb2710001e3413cb354396429ded98, type: 3}
+    volume: 0.607
+    pitch: 1.208
+    randomVolume: 0
+    randomPitch: 0
+  - name: Mist_Land
+    clip: {fileID: 8300000, guid: 4587f7cad96d64f3c9c8748d1874c758, type: 3}
+    volume: 0.855
+    pitch: 1.473
+    randomVolume: 0
+    randomPitch: 0
+  - name: Mist_Meow
+    clip: {fileID: 8300000, guid: 497d4fb6d5f934bf0a924a342f76c39a, type: 3}
+    volume: 0.143
+    pitch: 1
+    randomVolume: 0.176
+    randomPitch: 0.243
+  - name: Mist_Damage
+    clip: {fileID: 8300000, guid: 3a71cce3368634e9ca235944e0080002, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Mist_LowVie
+    clip: {fileID: 8300000, guid: 7fa4562ca06304f57addde46225b48a4, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Mist_Eating
+    clip: {fileID: 8300000, guid: ba510cad8a8f24cbe9cab9d93d2f6d28, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Mist_Splash
+    clip: {fileID: 8300000, guid: 8ae7a091a33ac49ef80d53e0f251ab40, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Mist_Nage
+    clip: {fileID: 8300000, guid: fbe3f0a04936f45af9d1897978dd76fc, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Flower_Destroy
+    clip: {fileID: 8300000, guid: 4c717be84153f4da1893d2aa84123fd7, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Fade_Meuble
+    clip: {fileID: 8300000, guid: dfa534dea0cff48f3a19ff89a03e7a71, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Raccoon
+    clip: {fileID: 8300000, guid: 99d467935eae742bd8453329cfd7b1e4, type: 3}
+    volume: 0.702
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Menu_Button
+    clip: {fileID: 8300000, guid: 0f89f7b06accf4e96b69efcf309fd526, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Near_River
+    clip: {fileID: 8300000, guid: 911c1ee256cdd4c10b6e28480ea23a4e, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Fontaine
+    clip: {fileID: 8300000, guid: 3c8dc3cb5770c4424afae2be86fa8dc6, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Mist_Walk
+    clip: {fileID: 8300000, guid: 24527eb6e78f548259231268797c4e4c, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Mist_Nage2
+    clip: {fileID: 8300000, guid: cdf5a26d33d084919a13f6cf1fa510e9, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Mist_Run
+    clip: {fileID: 8300000, guid: 2ae32e90fe039481cbd41b7a7cc35053, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Bird_Wing_Flap1
+    clip: {fileID: 8300000, guid: d834e63c348fe47b4bb9261376aa95a1, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Bird_Wing_Flap2
+    clip: {fileID: 8300000, guid: 9c31202747f92470c82f2f0b3a48a26e, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Bird_Wing_Flap3
+    clip: {fileID: 8300000, guid: c8e7aeccbfeb743c28d38af03c02be83, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0

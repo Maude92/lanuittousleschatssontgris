@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33901168287393116}
   - component: {fileID: 65011419333506344}
   - component: {fileID: 23482949128543750}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: RebordFenetre
   m_TagString: Untagged
   m_Icon: {fileID: 0}

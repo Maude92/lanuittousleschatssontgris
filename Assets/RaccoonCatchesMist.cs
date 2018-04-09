@@ -14,21 +14,14 @@ public class RaccoonCatchesMist : MonoBehaviour {
 
 	public float waitforseconds = 3f;
 
-	//public GameObject PositionReference;
-	//public GameObject Raccoon;
-	//public GameObject RaccoonEmpty;
-	//NavMover NavMover;
 
-	//public GameObject TriggerForRaccoon;
-	//TriggerForRaccoon1 TriggerRaccoon;
 
 	bool fadingback = false;
 	bool isfading = false;
 
 	// Use this for initialization
 	void Start () {
-		//TriggerRaccoon = TriggerForRaccoon.GetComponent<TriggerForRaccoon1> ();
-		//NavMover = Raccoon.GetComponent<NavMover> ();
+
 		Black = Black.GetComponent <Image> ();
 		//Black.color.a = 0f;
 		Color c = Black.color;
@@ -76,18 +69,11 @@ public class RaccoonCatchesMist : MonoBehaviour {
 
 			//other.transform.position = CheckPoint.transform.position;
 			//other.transform.rotation = CheckPoint.transform.rotation;
-			//other.transform.position = CheckPoint.transform.position;
-			//RaccoonEmpty.SetActive (false);
+		
 			StartCoroutine (Waiting ());
-			//RaccoonEmpty.SetActive (false);
+		
 
-			//			Black = Black.GetComponent <Image> ();
-			//			//Black.color.a = 0f;
-			//			Color c = Black.color;
-			//			c.a = 0f;
-			//			Black.color = c;
-
-			//transform.parent = other.transform;
+		
 		}
 	}
 	IEnumerator Waiting(){
@@ -99,7 +85,8 @@ public class RaccoonCatchesMist : MonoBehaviour {
 		//NavMover.destPoint = 0;
 		//RaccoonEmpty.SetActive (false);
 		fadingback = true;
-		Mist.GetComponent<Xbox_Controls>().enabled = true;
 		Mist.GetComponent<MistStopWhenIdle>().enabled = true;
+		Mist.GetComponent<Xbox_Controls>().enabled = true;
+
 	}
 }

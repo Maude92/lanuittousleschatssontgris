@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: cb0840b15e63c46fdbab79c5f5c6dd42
+timeCreated: 1523299659
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 300
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Throw My Hands Up in the Air
+  fontNames:
+  - Throw My Hands Up in the Air
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 51e69c6d49dfe4351a98d1e5feb2259f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
