@@ -3,18 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
-  - Ground
-  - Balancing
-  - Needle
-  - PlatformeMouvante
-  - Liquide
-  - Water
-  - Platform
->>>>>>> 0a6160288f2834f1b8ec23a3ab8b2725e8131186
+  - Undefined
   layers:
   - Default
   - TransparentFX
@@ -24,6 +14,7 @@ TagManager:
   - UI
   - 
   - 
+  - Ground
   - 
   - 
   - 
@@ -35,8 +26,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Ground
   - 
   - 
   - 

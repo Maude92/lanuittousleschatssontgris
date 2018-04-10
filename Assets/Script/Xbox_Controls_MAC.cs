@@ -413,7 +413,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 				LumpHaut.SetActive (false);
 				LumpBas.SetActive (false);
 				JeCours = false;
-				GachetteOn = false;
+				GachetteOn = false; //***
 				animatorMist.SetBool ("IsLumping", false);
 			}
 

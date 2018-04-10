@@ -71,8 +71,8 @@ MonoBehaviour:
     randomVolume: 0.176
     randomPitch: 0.243
   - name: Mist_Damage
-    clip: {fileID: 8300000, guid: 3a71cce3368634e9ca235944e0080002, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 2238668ebe6de49369318b916c804e2b, type: 3}
+    volume: 0.7
     pitch: 1
     randomVolume: 0
     randomPitch: 0
