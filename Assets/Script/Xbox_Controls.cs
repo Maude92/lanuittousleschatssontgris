@@ -351,7 +351,7 @@ public class Xbox_Controls : MonoBehaviour {
 		isjumping = true;
 		animatorMist.SetTrigger ("Jump");
 		//animatorMist.SetBool ("Grounded", false);
-		yield return new WaitForSeconds (0.115f);			// Version Félix: 0.01f
+		yield return new WaitForSeconds (0.115f);	// Version Félix: 0.01f
 		cubegrounded.isGrounded = false;
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
 		yield return new WaitForSeconds (0.5f);

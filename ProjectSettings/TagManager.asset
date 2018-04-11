@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
+  - FallingObjectGauche
+  - SupportFallingObject
+  - Liquide
+  - Water
   - lb_bird
+  - Ground
   - Raccoon
   - lb_perchTarget
   - Balancing
