@@ -4,6 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - FallingObjectGauche
   - SupportFallingObject
   - Liquide
@@ -15,6 +16,9 @@ TagManager:
   - Balancing
   - Needle
   - PlatformeMouvante
+=======
+  - Undefined
+>>>>>>> a44d49d3855d48685f93df3f5034db25a1760ed0
   layers:
   - Default
   - TransparentFX
@@ -36,7 +40,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 

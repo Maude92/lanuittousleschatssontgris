@@ -37,6 +37,9 @@ public class HealthBar : MonoBehaviour {
 	public Image Circle;
 	public CanvasGroup UIvie;
 
+	public GameObject SoinCroix;
+
+
 	// Use this for initialization
 	void Start () {
 		audioManager = AudioManager.instance;
@@ -58,6 +61,8 @@ public class HealthBar : MonoBehaviour {
 		NbVieRestant = 9;
 
 		UIvie.alpha = 0;
+
+		SoinCroix.SetActive (false);
 
 		//LowVieSound.enabled = false;
 
@@ -115,7 +120,7 @@ public class HealthBar : MonoBehaviour {
 	public void LifeGain (float gainAmount){
 
 		UIvie.alpha = 1;
-
+		StartCoroutine("Soin");
 		audioManager.PlaySound ("Mist_Eating");
 		currentHealth = (currentHealth + gainAmount);
 		if (currentHealth > 100) {
@@ -329,6 +334,12 @@ public class HealthBar : MonoBehaviour {
 //		if (UIvie.alpha < 0) {
 //			UIvie.alpha = 0;
 //		}
+	}
+
+	IEnumerator Soin(){
+		SoinCroix.SetActive (true);
+		yield return new WaitForSeconds (2.1f);
+		SoinCroix.SetActive(false);
 	}
 
 }
