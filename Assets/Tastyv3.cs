@@ -28,6 +28,7 @@ public class Tastyv3 : MonoBehaviour {
 	public GameObject raccooncutscene2;
 
 	public AudioClip Raccoon1;
+	public AudioClip dramatic;
 
 	public GameObject block;
 
@@ -122,36 +123,47 @@ public class Tastyv3 : MonoBehaviour {
 		Mist.GetComponent<MistStopWhenIdle>().enabled = false;
 		yield return new WaitForSeconds (0.7f);
 		ButtonY.enabled = false;
+		GetComponent<AudioSource>().PlayOneShot (Raccoon1,1);
 		lessfood1.SetActive (false);
-		yield return new WaitForSeconds (0.43f);
+		yield return new WaitForSeconds (0.31f);
+		MainCamera.enabled = false;
+		RaccoonCamera.enabled = true;
+		raccooncutscene1.SetActive (true);
+		raccooncutscene2.SetActive (true);
+		yield return new WaitForSeconds (0.50f);
+
 		lessfood2.SetActive (false);
 		yield return new WaitForSeconds (0.43f);
+		GetComponent<AudioSource>().PlayOneShot (dramatic,1);
 		lessfood3.SetActive (false);
 		yield return new WaitForSeconds (0.43f);
 		lessfood4.SetActive (false);
 		yield return new WaitForSeconds (0.43f);
 		lessfood5.SetActive (false);
 
-		yield return new WaitForSeconds (0.15f); 
-		GetComponent<AudioSource>().PlayOneShot (Raccoon1,1);
-		yield return new WaitForSeconds (0.38f);
+		yield return new WaitForSeconds (0.43f);
 		lessfood6.SetActive (false);
-		yield return new WaitForSeconds (0.43f); 
-		MainCamera.enabled = false;
-		RaccoonCamera.enabled = true;
-		//GetComponent<AudioSource>().PlayOneShot (Raccoon1,1);
-		raccooncutscene1.SetActive (true);
-		raccooncutscene2.SetActive (true);
-		yield return new WaitForSeconds (5.9f); 
-		GetComponent<AudioSource>().PlayOneShot (Raccoon1,1);
-		yield return new WaitForSeconds (0.8f); 
+		yield return new WaitForSeconds (1.1f);
 		MainCamera.enabled = true;
 		RaccoonCamera.enabled = false;
 		Mist.GetComponent<Xbox_Controls>().enabled = true;
 		Mist.GetComponent<MistStopWhenIdle>().enabled = true;
 		raccooncutscene1.SetActive (false);
 		raccooncutscene2.SetActive (false);
-		block.GetComponent<NavMeshAgent> ().enabled = true;
+		//yield return new WaitForSeconds (0.43f); 
+
+		//GetComponent<AudioSource>().PlayOneShot (Raccoon1,1);
+
+//		yield return new WaitForSeconds (5.9f); 
+//		GetComponent<AudioSource>().PlayOneShot (Raccoon1,1);
+//		yield return new WaitForSeconds (0.8f); 
+//		MainCamera.enabled = true;
+//		RaccoonCamera.enabled = false;
+//		Mist.GetComponent<Xbox_Controls>().enabled = true;
+//		Mist.GetComponent<MistStopWhenIdle>().enabled = true;
+//		raccooncutscene1.SetActive (false);
+//		raccooncutscene2.SetActive (false);
+//		block.GetComponent<NavMeshAgent> ().enabled = true;
 
 
 		raccoon1.SetActive (true);
