@@ -4,21 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
-  - FallingObjectGauche
-  - SupportFallingObject
-  - Liquide
-  - Water
-  - lb_bird
-  - Ground
-  - Raccoon
-  - lb_perchTarget
-  - Balancing
-  - Needle
   - PlatformeMouvante
-=======
-  - Undefined
->>>>>>> a44d49d3855d48685f93df3f5034db25a1760ed0
   layers:
   - Default
   - TransparentFX
@@ -28,7 +14,6 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
   - 
   - 
   - 
@@ -40,7 +25,8 @@ TagManager:
   - 
   - 
   - 
-  - Ground
+  - 
+  - 
   - 
   - 
   - 
