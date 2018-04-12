@@ -19,6 +19,10 @@ public class Xbox_Controls : MonoBehaviour {
 	public GameObject mistObj;
 	public Transform camera;
 
+	public AudioClip[] miaulement;
+	private AudioClip miaulementClip;
+	private AudioSource audioSource;
+
 	CubeGrounded cubegrounded;
 
 	Rigidbody rb;
@@ -48,17 +52,7 @@ public class Xbox_Controls : MonoBehaviour {
 	public bool JeCours = false;
 	public bool isLerping = false;
 	public bool canLerp = false;
-
-	//public float LumpForce;
-
-	//public float Distance;
-	//public float DistanceBas;
-
-	//Variables Lerp Test
-	//public float lerpTime = 1f;
-	//public float currentLerpTime;
-
-	//public float moveDistance = 10f;
+	public int landSound;
 
 	Vector3 startPos;
 	Vector3 endPos;
@@ -97,6 +91,10 @@ public class Xbox_Controls : MonoBehaviour {
 		WalkGround.enabled = false;
 		WalkGazon.enabled = false;
 
+		landSound = 0;
+
+		audioSource = gameObject.GetComponent<AudioSource> ();
+
 
 	}
 
@@ -117,6 +115,16 @@ public class Xbox_Controls : MonoBehaviour {
 		UserInputs ();
 		animatorMist.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		animatorMist.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
+
+
+		// POUR LE SON DE LAND
+		if (animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_jump_end")){
+			landSound++;
+			Ijump = false;
+		}
+		if (landSound == 1) {
+			audioManager.PlaySound ("Mist_Land");
+		}
 
 
 	// NOUVEAUTÉS DE FÉLIX!!
@@ -148,10 +156,6 @@ public class Xbox_Controls : MonoBehaviour {
 			animatorMist.SetBool ("IsFalling", false);
 			//animatorMist.SetBool ("Grounded", true);
 		}
-			
-		//Pour Lump Bas
-		//DistanceBas = hit2.transform.position.y - hit3.transform.position.y;
-	// FIN DES NOUVEAUTÉS DE FÉLIX
 
 
 		if (cubegrounded.isGrounded == true) {
@@ -196,10 +200,7 @@ public class Xbox_Controls : MonoBehaviour {
 
 
 	void Movement(){
-		// Partie Cristelle
-//		if(Input.GetAxis("Vertical")>0){
-//			transform.forward = camera.transform.forward;
-//		}
+
 		Vector3 forward = Vector3.Scale(camera.forward, new Vector3(1, 0, 1)).normalized;
 		float v = Input.GetAxis ("Vertical") * Time.deltaTime  * PlayerMovementSpeed;			//float v = Input.GetAxis ("Vertical")  * PlayerMovementSpeed;
 																								//float h = Input.GetAxis ("Horizontal")  * PlayerMovementSpeed;
@@ -243,10 +244,20 @@ public class Xbox_Controls : MonoBehaviour {
 		}
 			
 		// Bouton B (joystick button 1)
-		if (Input.GetButtonDown ("360_BButton")){
-			audioManager.PlaySound ("Mist_Meow");
-			print ("Je pèse sur: le bouton B!");
+//		if (Input.GetButtonDown ("360_BButton")){
+//			audioManager.PlaySound ("Mist_Meow");
+//			print ("Je pèse sur: le bouton B!");
+//		}
+
+		// BOUTON B -> Random miaw quand on appuie sur le bouton
+		if (Input.GetButtonDown ("360_BButton") && (animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_idle") || animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_walk") || animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_walk 2") || animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_run"))){
+			animatorMist.SetBool ("Miaw", true);
+			int indexMiaw = Random.Range (0, miaulement.Length);
+			miaulementClip = miaulement [indexMiaw];
+			audioSource.clip = miaulementClip;
+			audioSource.Play ();
 		}
+
 
 		// Bouton X (... 2)
 //		if (Input.GetButtonDown ("360_XButton")){
@@ -522,11 +533,11 @@ public class Xbox_Controls : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision col){
-		if (col.gameObject.CompareTag("Solide")){
-			audioManager.PlaySound ("Mist_Land");
-			Ijump = false;
-			StartCoroutine (Atterrissage ());
-		}
+//		if (col.gameObject.CompareTag("Solide")){
+//			audioManager.PlaySound ("Mist_Land");
+//			Ijump = false;
+//			StartCoroutine (Atterrissage ());
+//		}
 
 		if (col.gameObject.CompareTag ("Liquide")) {
 			//audioManager.PlaySound ("Mist_Nage");
@@ -545,9 +556,10 @@ public class Xbox_Controls : MonoBehaviour {
 
 	IEnumerator JumpMistRoutine(){
 		isjumping = true;
+		landSound = 0;
 		animatorMist.SetTrigger ("Jump");
 		//animatorMist.SetBool ("Grounded", false);
-		yield return new WaitForSeconds (0.115f);			// Version Félix: 0.01f
+		yield return new WaitForSeconds (0.01f);			// Version Félix: 0.01f
 		cubegrounded.isGrounded = false;
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
 		yield return new WaitForSeconds (0.5f);
