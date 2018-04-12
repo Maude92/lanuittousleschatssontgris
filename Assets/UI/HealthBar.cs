@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+//using XInputDotNetPure;
 
 public class HealthBar : MonoBehaviour {
    
@@ -36,8 +37,14 @@ public class HealthBar : MonoBehaviour {
 
 	public Image Circle;
 	public CanvasGroup UIvie;
+	public CanvasGroup RedDamage;
 
 	public GameObject SoinCroix;
+
+	//Pour Vibration
+//	PlayerIndex playerIndex;
+//	GamePadState state;
+//	GamePadState prevState;
 
 
 	// Use this for initialization
@@ -61,10 +68,13 @@ public class HealthBar : MonoBehaviour {
 		NbVieRestant = 9;
 
 		UIvie.alpha = 0;
+		RedDamage.alpha = 0;
 
 		SoinCroix.SetActive (false);
 
 		//LowVieSound.enabled = false;
+
+	
 
 
 	}
@@ -72,7 +82,11 @@ public class HealthBar : MonoBehaviour {
     public void Damage(float damageAmount)
     {
 
+		//Vibration
+		//GamePad.SetVibration (playerIndex, 100, 100);
+
 		UIvie.alpha = 1;
+		RedDamage.alpha = 1;
 
 		audioManager.PlaySound ("Mist_Damage");
 		health = (currentHealth - damageAmount) / maxHealth;
@@ -82,6 +96,7 @@ public class HealthBar : MonoBehaviour {
 		HBImage.GetComponent<Image> ().color = Color.Lerp (lowColor, fullColor, HBImage.GetComponent<Image>().fillAmount);
 
 		//Circle.color = HBImage.GetComponent<Image> ().color;
+
         
 	//Texte
 		//HBText.GetComponent<Text>().text = currentHealth.ToString();
@@ -144,7 +159,11 @@ public class HealthBar : MonoBehaviour {
 
 	void Update () {
 
+
+
+
 		StartCoroutine("FadeOut");
+		StartCoroutine("FadeOutRed");
 
 
 		if (currentHealth <= 25 && !LowVieSound.isPlaying) {
@@ -157,8 +176,8 @@ public class HealthBar : MonoBehaviour {
 			LowVieSound.enabled = false;
 		}
 			
-
-//S'il reste 9 Vie :
+//Les Vies
+	//S'il reste 9 Vie :
 		if (NbVieRestant == 9) {
 			Vie1.enabled = true;
 			Vie2.enabled = true;
@@ -171,7 +190,7 @@ public class HealthBar : MonoBehaviour {
 			Vie9.enabled = true;
 		}
 	
-//S'il reste 8 Vie :
+	//S'il reste 8 Vie :
 		if (NbVieRestant == 8) {
 			Vie1.enabled = true;
 			Vie2.enabled = true;
@@ -186,7 +205,7 @@ public class HealthBar : MonoBehaviour {
 			Circle.fillAmount = 0.89f;
 		}
 
-//S'il reste 7 Vie :
+	//S'il reste 7 Vie :
 		if (NbVieRestant == 7) {
 			Vie1.enabled = true;
 			Vie2.enabled = true;
@@ -201,7 +220,7 @@ public class HealthBar : MonoBehaviour {
 			Circle.fillAmount = 0.78f;
 		}
 
-//S'il reste 6 Vie :
+	//S'il reste 6 Vie :
 		if (NbVieRestant == 6) {
 			Vie1.enabled = true;
 			Vie2.enabled = true;
@@ -216,7 +235,7 @@ public class HealthBar : MonoBehaviour {
 			Circle.fillAmount = 0.67f;
 		}
 
-//S'il reste 5 Vie :
+	//S'il reste 5 Vie :
 		if (NbVieRestant == 5) {
 			Vie1.enabled = true;
 			Vie2.enabled = true;
@@ -231,7 +250,7 @@ public class HealthBar : MonoBehaviour {
 			Circle.fillAmount = 0.56f;
 		}
 
-//S'il reste 4 Vie :
+	//S'il reste 4 Vie :
 		if (NbVieRestant == 4) {
 			Vie1.enabled = true;
 			Vie2.enabled = true;
@@ -246,7 +265,7 @@ public class HealthBar : MonoBehaviour {
 			Circle.fillAmount = 0.45f;
 		}
 
-//S'il reste 3 Vie :
+	//S'il reste 3 Vie :
 		if (NbVieRestant == 3) {
 			Vie1.enabled = true;
 			Vie2.enabled = true;
@@ -261,7 +280,7 @@ public class HealthBar : MonoBehaviour {
 			Circle.fillAmount = 0.34f;
 		}
 
-//S'il reste 2 Vie :
+	//S'il reste 2 Vie :
 		if (NbVieRestant == 2) {
 			Vie1.enabled = true;
 			Vie2.enabled = true;
@@ -276,7 +295,7 @@ public class HealthBar : MonoBehaviour {
 			Circle.fillAmount = 0.23f;
 		}
 
-//S'il reste 1 Vie :
+	//S'il reste 1 Vie :
 		if (NbVieRestant == 1) {
 			Vie1.enabled = true;
 			Vie2.enabled = false;
@@ -291,7 +310,7 @@ public class HealthBar : MonoBehaviour {
 			Circle.fillAmount = 0.12f;
 		}
 
-//S'il reste 0 Vie :
+	//S'il reste 0 Vie :
 		if (NbVieRestant == 0) {
 			Vie1.enabled = false;
 			Vie2.enabled = false;
@@ -330,10 +349,20 @@ public class HealthBar : MonoBehaviour {
 				UIvie.alpha = 0;
 			}
 		}
+	}
 
-//		if (UIvie.alpha < 0) {
-//			UIvie.alpha = 0;
-//		}
+	IEnumerator FadeOutRed() {
+		//yield return new WaitForSeconds (5f);
+
+		float time2 = 1f;
+
+		if (RedDamage.alpha > 0) {
+			yield return new WaitForSeconds (0.1f);
+			RedDamage.alpha -= Time.deltaTime / time2;
+			if (RedDamage.alpha < 0) {
+				RedDamage.alpha = 0;
+			}
+		}
 	}
 
 	IEnumerator Soin(){
