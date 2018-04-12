@@ -21,7 +21,10 @@ public class MoveMistToCheckPoint : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Black = Black.GetComponent <Image> ();
+		Color c = Black.color;
+		c.a = 0f;
+		Black.color = c;
 	}
 	
 	// Update is called once per frame

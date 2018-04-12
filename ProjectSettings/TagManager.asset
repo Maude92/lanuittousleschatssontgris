@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Undefined
+  - PlatformeMouvante
   layers:
   - Default
   - TransparentFX
@@ -14,7 +14,6 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
   - 
   - 
   - 
@@ -26,7 +25,8 @@ TagManager:
   - 
   - 
   - 
-  - Ground
+  - 
+  - 
   - 
   - 
   - 
