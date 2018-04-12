@@ -14,7 +14,7 @@ public class RaccoonCatchesMist : MonoBehaviour {
 
 	public float waitforseconds = 3f;
 
-
+	public AudioClip raccoon;
 
 	bool fadingback = false;
 	bool isfading = false;
@@ -62,6 +62,7 @@ public class RaccoonCatchesMist : MonoBehaviour {
 		if (other.gameObject.tag == "Player") {
 			Instantiate (Prefab, InstatiatePlatform.transform.position, InstatiatePlatform.transform.rotation);
 			//Instantiate (Prefab, InstatiatePlatform.transform.position, InstatiatePlatform.transform.rotation);
+			GetComponent<AudioSource>().PlayOneShot (raccoon,1);
 			Mist.GetComponent<Xbox_Controls>().enabled = false;
 			Mist.GetComponent<MistStopWhenIdle>().enabled = false;
 			//StartCoroutine (Waiting());

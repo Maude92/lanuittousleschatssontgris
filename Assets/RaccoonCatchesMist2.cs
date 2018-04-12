@@ -19,6 +19,8 @@ public class RaccoonCatchesMist2 : MonoBehaviour {
 
 	public float waitforseconds = 3f;
 
+	public AudioClip raccoon;
+
 	//public GameObject PositionReference;
 	//public GameObject Raccoon;
 	//public GameObject RaccoonEmpty;
@@ -72,10 +74,12 @@ public class RaccoonCatchesMist2 : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other){
 		if (other.gameObject.tag == "Player") {
+			GetComponent<AudioSource>().PlayOneShot (raccoon,1);
 			Instantiate (Prefab1, InstatiatePlatform1.transform.position, InstatiatePlatform1.transform.rotation);
 			Instantiate (Prefab2, InstatiatePlatform2.transform.position, InstatiatePlatform2.transform.rotation);
 			Instantiate (Prefab3, InstatiatePlatform3.transform.position, InstatiatePlatform3.transform.rotation);
 			//Instantiate (Prefab, InstatiatePlatform.transform.position, InstatiatePlatform.transform.rotation);
+
 			Mist.GetComponent<Xbox_Controls>().enabled = false;
 			Mist.GetComponent<MistStopWhenIdle>().enabled = false;
 			//StartCoroutine (Waiting());
