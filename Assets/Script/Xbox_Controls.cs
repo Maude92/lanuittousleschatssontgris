@@ -7,30 +7,23 @@ public class Xbox_Controls : MonoBehaviour {
 	public float PlayerMovementSpeed = 30;
 	public float PlayerRotationSpeed = 180;
 
+	private AudioManager audioManager;
+
 	public float walkSpeed;
 	public float runSpeed;
 
 	public int jumpforce = 100;
 
 	public bool isjumping;
-	//public bool jesaute;
 
 	public GameObject mistObj;
 	public Transform camera;
-	//public GameObject cubeGroundObj;
 
 	CubeGrounded cubegrounded;
 
 	Rigidbody rb;
 	Animator animatorMist;
 
-	//ANCIENNE VERSION
-	//Lumping test 
-//	public float longueurRay = 0.8f;
-//	private RaycastHit hit;	
-//	public GameObject LumpHaut;
-//	public GameObject LumpBas;
-//	public bool JeLump = false;
 
 
 // LES NOUVEAUTÉS DE FÉLIX
@@ -50,7 +43,8 @@ public class Xbox_Controls : MonoBehaviour {
 	public GameObject FallingCul; // C'est un GameObject vide qui va falloir lié. Il remplace LumpBas. Il est sur le CUL du chat, un peu en hauteur
 	public bool isFalling = false;
 	public bool ToucheSol;
-
+	public GameObject FumeeAtterrissage;
+	public GameObject FumeeRun;
 	public bool JeCours = false;
 	public bool isLerping = false;
 	public bool canLerp = false;
@@ -69,17 +63,40 @@ public class Xbox_Controls : MonoBehaviour {
 	Vector3 startPos;
 	Vector3 endPos;
 
+
+	//Sound Effect
+	public AudioSource WalkWater;
+	public AudioSource WalkGround;
+	public AudioSource RunGround; 
+	public bool InWater;
+	public bool EnMouvement;
+	public bool Ijump;
+	public bool GachetteOn = false;
+	public AudioSource WalkGazon;
+
+
+	public CanvasGroup UIVieCanvasGroup;
+
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent <Rigidbody> ();
 		animatorMist = mistObj.GetComponent <Animator> ();
 		cubegrounded = GetComponent <CubeGrounded> ();
 
-		//Pour Lump
-		//LumpHaut.SetActive (false); //N'est plus utile
-		//LumpBas.SetActive (false); //N'est plus utile
+		audioManager = AudioManager.instance;
+		if (audioManager == null) {
+			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");
+		}
 
-		//jesaute = false;
+
+		//Particules
+		FumeeAtterrissage.SetActive(false);
+		FumeeRun.SetActive (false);
+
+		WalkGround.enabled = false;
+		WalkGazon.enabled = false;
+
 
 	}
 
@@ -92,6 +109,9 @@ public class Xbox_Controls : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		print ("Mes Gachettes sont " + GachetteOn);
+		SoundEffect ();
 		
 		//rb.velocity = new Vector3(0,0,5);
 		UserInputs ();
@@ -140,6 +160,13 @@ public class Xbox_Controls : MonoBehaviour {
 		} else if (cubegrounded.isGrounded == false) {
 			animatorMist.SetBool ("Grounded", false);
 			//isjumping = true;
+		}
+
+
+		//Pour les particules à l'atterrissage
+		if (animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_jump_loop")) {
+			//StartCoroutine (Atterrissage ());
+
 		}
 
 
@@ -205,21 +232,29 @@ public class Xbox_Controls : MonoBehaviour {
 		// Bouton A (joystick button 0)
 		if (Input.GetButtonDown ("360_AButton") && cubegrounded.isGrounded == true && isjumping == false){
 			print ("Je pèse sur: le bouton A!");
+			Ijump = true;
 			//jesaute = true;
 				//animatorMist.SetTrigger ("Jump");
 				//animatorMist.SetBool ("Grounded", false);
 				StartCoroutine (JumpMistRoutine ());
+			audioManager.PlaySound ("Mist_Jump");
+			StartCoroutine (Atterrissage ());
 				//Invoke ("JumpMist", 0.23f);																	// WARNING BOGUE!!!
 		}
 			
 		// Bouton B (joystick button 1)
 		if (Input.GetButtonDown ("360_BButton")){
+			audioManager.PlaySound ("Mist_Meow");
 			print ("Je pèse sur: le bouton B!");
 		}
 
 		// Bouton X (... 2)
-		if (Input.GetButtonDown ("360_XButton")){
-			print ("Je pèse sur: le bouton X!");
+//		if (Input.GetButtonDown ("360_XButton")){
+//			print ("Je pèse sur: le bouton X!");
+//		}
+
+		if (Input.GetButton ("360_XButton")) {
+			UIVieCanvasGroup.alpha = 1;
 		}
 
 		// Bouton Y (... 3)
@@ -255,6 +290,14 @@ public class Xbox_Controls : MonoBehaviour {
 		// Right thumbstick (... 9)
 		if (Input.GetButtonDown ("360_RightThumbstickButton")){
 			print ("Je pèse sur: right thumbstick button!");
+		}
+
+		if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) {
+			EnMouvement = true;
+			print (EnMouvement);
+		} else {
+			EnMouvement = false;
+			print (EnMouvement);
 		}
 
 		//Trigger gauche (L)
@@ -303,9 +346,13 @@ public class Xbox_Controls : MonoBehaviour {
 //		}
 
 
+
+
+
 		//Trigger droite (R)
 		if (Input.GetAxis ("360_TriggerR") > 0.001 || Input.GetAxis ("360_TriggerL") > 0.001) {
 			print ("Je pèse sur le trigger droit!!");
+			GachetteOn = true;
 			PlayerMovementSpeed = runSpeed;
 			jumpforce = 240;
 			//LumpBas.SetActive (true);
@@ -323,6 +370,7 @@ public class Xbox_Controls : MonoBehaviour {
 			jumpforce = 220;
 			JeCours = false;
 			animatorMist.SetBool ("IsLumping", false);
+			GachetteOn = false;
 			//Distance = 0;
 			//LumpBas.SetActive (false);
 			//JeLump = false;
@@ -343,6 +391,154 @@ public class Xbox_Controls : MonoBehaviour {
 
 	}
 
+
+	void SoundEffect(){
+		//Pour jouer son lorsque joueur bouge
+		if (Physics.Raycast (FallingTete.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground")) && Physics.Raycast (FallingCul.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"))) {
+
+			//MARCHE ET COURSE EAU
+			if (hit.transform.tag == "Liquide" && EnMouvement == true && !WalkWater.isPlaying) {
+				//audioManager.PlaySound ("Mist_Nage2");
+				print ("Je touche à de l'eau et je bouge !");
+				WalkWater.enabled = true;
+				WalkWater.Play ();
+
+				//Les Stops
+				WalkGround.enabled = false;
+				WalkGround.Stop ();
+
+				WalkGazon.enabled = false;
+				WalkGazon.Stop ();
+
+			}
+
+			//MARCHE + COURSE GAZON
+			if (hit.transform.tag == "Gazon" && EnMouvement == true && !WalkGazon.isPlaying) {
+				print ("Je marche sur le gazon et je fais du bruit");
+				WalkGazon.enabled = true;
+				WalkGazon.Play ();
+
+				//Les Stops
+				WalkWater.Stop ();
+				WalkWater.enabled = false;
+
+				WalkGround.enabled = false;
+				WalkGround.Stop ();
+
+			} 
+
+			//MARCHE SOL
+			if (hit.transform.tag == "Solide" && EnMouvement == true && !WalkGround.isPlaying) {
+				print ("Je touche au sol et je fais du bruit !");
+				WalkGround.enabled = true;
+				WalkGround.Play ();
+
+				//Les Stops
+				WalkWater.Stop ();
+				WalkWater.enabled = false;
+
+				WalkGazon.enabled = false;
+				WalkGazon.Stop ();
+
+			} 
+
+			//COURSE SOL
+			if (hit.transform.tag == "Solide" && EnMouvement == true && !RunGround.isPlaying && GachetteOn == true) {
+				print ("Je cours sur le sol et je fais du bruit !");
+				RunGround.enabled = true;
+				RunGround.Play ();
+
+				//Les Stops
+				WalkWater.Stop ();
+				WalkWater.enabled = false;
+
+				WalkGround.enabled = false;
+				WalkGround.Stop ();
+
+				WalkGazon.enabled = false;
+				WalkGazon.Stop ();
+
+				//Particules Course
+				FumeeRun.SetActive (true);
+			} 
+
+
+		}
+
+		if (EnMouvement == false) {
+			WalkWater.Stop ();
+			WalkWater.enabled = false;
+
+			WalkGround.enabled = false;
+			WalkGround.Stop ();
+
+			WalkGazon.enabled = false;
+			WalkGazon.Stop ();
+
+			RunGround.enabled = false;
+			RunGround.Stop ();
+		}
+
+		if (EnMouvement == true && Ijump == true) {
+			WalkWater.Stop ();
+			WalkWater.enabled = false;
+
+			WalkGround.enabled = false;
+			WalkGround.Stop ();
+
+			WalkGazon.enabled = false;
+			WalkGazon.Stop ();
+
+			RunGround.enabled = false;
+			RunGround.Stop ();
+		}
+
+		if (GachetteOn == false) {
+			RunGround.enabled = false;
+			RunGround.Stop ();
+			FumeeRun.SetActive (false);
+		}
+
+		if (GachetteOn == true) {
+			//			WalkWater.Stop ();
+			//			WalkWater.enabled = false;
+
+			WalkGround.enabled = false;
+			WalkGround.Stop ();
+
+		}
+
+		if (GachetteOn && Ijump == true) {
+			FumeeRun.SetActive (false);
+		}
+	}
+
+
+	void OnTriggerEnter (Collider other){
+		if (other.gameObject.CompareTag ("Water")) {
+			Invoke ("Splash", 0.2f);
+		} 
+
+	}
+
+	void OnCollisionEnter (Collision col){
+		if (col.gameObject.CompareTag("Solide")){
+			audioManager.PlaySound ("Mist_Land");
+			Ijump = false;
+			StartCoroutine (Atterrissage ());
+		}
+
+		if (col.gameObject.CompareTag ("Liquide")) {
+			//audioManager.PlaySound ("Mist_Nage");
+			Ijump = false;
+		}
+	}
+
+	void Splash (){
+		audioManager.PlaySound ("Mist_Splash");
+	}
+
+
 //	void JumpMist(){
 //		rb.AddForce (new Vector3 (0, jumpforce, 0));
 //	}
@@ -351,40 +547,22 @@ public class Xbox_Controls : MonoBehaviour {
 		isjumping = true;
 		animatorMist.SetTrigger ("Jump");
 		//animatorMist.SetBool ("Grounded", false);
-		yield return new WaitForSeconds (0.115f);			// Version Félix: 0.01f
+		//yield return new WaitForSeconds (0.115f);			// Version Félix: 0.01f
+		yield return new WaitForSeconds (0.01f);
 		cubegrounded.isGrounded = false;
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
 		yield return new WaitForSeconds (0.5f);
 		isjumping = false;
 	}
 
-//	void LumpUP (){
-//		print ("Je Lump vers le haut ! Wouhou !");
-//	}
-//
-//	void LumpDown (){
-//		print ("Je Lump vers le bas ! Wouhou !");
-//	}
+
+	IEnumerator Atterrissage(){
+		FumeeAtterrissage.SetActive(true);
+		yield return new WaitForSeconds (2f);
+		FumeeAtterrissage.SetActive (false);
+		print ("Je fonctionne");
+	}
 
 
-
-//	// TEST POUR LA QUEUE QUI BOUGE QUAND EN ÉQUILIBRE
-//	void OnTriggerStay (Collider other){
-//		if (Input.GetButton ("360_LeftBumper") && other.gameObject.tag == "Balancing") {
-//			print ("Je pèse sur: left bumper pis je suis sur un objet balancing!");
-//			//animatorMist.SetBool ("TailG", true);
-//		} 
-////		else{
-////			animatorMist.SetBool ("TailG", false);
-////	}
-//
-//		if (Input.GetButton ("360_RightBumper") && other.gameObject.tag == "Balancing") {
-//			print ("Je pèse sur: right bumper pis je suis sur un objet balancing!");
-//			//animatorMist.SetBool ("TailD", true);
-//		} 
-////		else {
-////			animatorMist.SetBool ("TailD", false);
-////		}
-//	}
 
 }

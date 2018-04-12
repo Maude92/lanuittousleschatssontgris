@@ -3,18 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
-  - Ground
+  - FallingObjectGauche
+  - Raccoon
+  - lb_perchTarget
   - Balancing
   - Needle
-  - PlatformeMouvante
-  - Liquide
-  - Water
-  - Platform
->>>>>>> 0a6160288f2834f1b8ec23a3ab8b2725e8131186
+  - Plateforme
+  - PlateformeMouvante
+  - Solide
+  - Gazon
   layers:
   - Default
   - TransparentFX
@@ -36,7 +34,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 
