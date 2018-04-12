@@ -547,8 +547,7 @@ public class Xbox_Controls : MonoBehaviour {
 		isjumping = true;
 		animatorMist.SetTrigger ("Jump");
 		//animatorMist.SetBool ("Grounded", false);
-		//yield return new WaitForSeconds (0.115f);			// Version Félix: 0.01f
-		yield return new WaitForSeconds (0.01f);
+		yield return new WaitForSeconds (0.115f);			// Version Félix: 0.01f
 		cubegrounded.isGrounded = false;
 		rb.AddForce (new Vector3 (0, jumpforce, 0));
 		yield return new WaitForSeconds (0.5f);
@@ -563,6 +562,36 @@ public class Xbox_Controls : MonoBehaviour {
 		print ("Je fonctionne");
 	}
 
+
+
+	//	void LumpUP (){
+	//		print ("Je Lump vers le haut ! Wouhou !");
+	//	}
+	//
+	//	void LumpDown (){
+	//		print ("Je Lump vers le bas ! Wouhou !");
+	//	}
+
+
+
+	//	// TEST POUR LA QUEUE QUI BOUGE QUAND EN ÉQUILIBRE
+	//	void OnTriggerStay (Collider other){
+	//		if (Input.GetButton ("360_LeftBumper") && other.gameObject.tag == "Balancing") {
+	//			print ("Je pèse sur: left bumper pis je suis sur un objet balancing!");
+	//			//animatorMist.SetBool ("TailG", true);
+	//		} 
+	////		else{
+	////			animatorMist.SetBool ("TailG", false);
+	////	}
+	//
+	//		if (Input.GetButton ("360_RightBumper") && other.gameObject.tag == "Balancing") {
+	//			print ("Je pèse sur: right bumper pis je suis sur un objet balancing!");
+	//			//animatorMist.SetBool ("TailD", true);
+	//		} 
+	////		else {
+	////			animatorMist.SetBool ("TailD", false);
+	////		}
+	//	}
 
 
 }
