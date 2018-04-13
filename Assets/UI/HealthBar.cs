@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-//using XInputDotNetPure;
+using XInputDotNetPure;
 
 public class HealthBar : MonoBehaviour {
    
@@ -41,10 +41,13 @@ public class HealthBar : MonoBehaviour {
 
 	public GameObject SoinCroix;
 
+	Animator anim;
+	public GameObject mistObj;
+
 	//Pour Vibration
-//	PlayerIndex playerIndex;
-//	GamePadState state;
-//	GamePadState prevState;
+	PlayerIndex playerIndex;
+	GamePadState state;
+	GamePadState prevState;
 
 
 	// Use this for initialization
@@ -60,6 +63,8 @@ public class HealthBar : MonoBehaviour {
         HBImage.GetComponent<Image>().fillAmount = 1;
 		HBImage.GetComponent<Image> ().color = fullColor;
         currentHealth = maxHealth;
+
+		anim = mistObj.GetComponent <Animator> ();
 
 	//Circle
 		//Circle.color = HBImage.GetComponent<Image> ().color;
@@ -82,12 +87,15 @@ public class HealthBar : MonoBehaviour {
     public void Damage(float damageAmount)
     {
 
-		//Vibration
-		//GamePad.SetVibration (playerIndex, 100, 100);
+//		//Vibration
+//		GamePad.SetVibration (playerIndex, 5, 5);
+//		GamePad.SetVibration (playerIndex, 0, 0);
+//		StartCoroutine (VibreLaManette());
 
 		UIvie.alpha = 1;
 		RedDamage.alpha = 1;
 
+		anim.SetBool ("Miaw", true);
 		audioManager.PlaySound ("Mist_Damage");
 		health = (currentHealth - damageAmount) / maxHealth;
         currentHealth -= damageAmount;
@@ -357,7 +365,9 @@ public class HealthBar : MonoBehaviour {
 		float time2 = 1f;
 
 		if (RedDamage.alpha > 0) {
-			yield return new WaitForSeconds (0.1f);
+			GamePad.SetVibration (playerIndex, 1, 1);
+			yield return new WaitForSeconds (0.05f);
+			GamePad.SetVibration (playerIndex, 0, 0);
 			RedDamage.alpha -= Time.deltaTime / time2;
 			if (RedDamage.alpha < 0) {
 				RedDamage.alpha = 0;
@@ -370,5 +380,12 @@ public class HealthBar : MonoBehaviour {
 		yield return new WaitForSeconds (2.1f);
 		SoinCroix.SetActive(false);
 	}
+
+
+//	IEnumerator VibreLaManette(){
+//		GamePad.SetVibration (playerIndex, 1, 1);
+//		yield return new WaitForSeconds (0.1f);
+//		GamePad.SetVibration (playerIndex, 0, 0);
+//	}
 
 }
