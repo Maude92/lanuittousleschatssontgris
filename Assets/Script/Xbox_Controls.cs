@@ -168,10 +168,10 @@ public class Xbox_Controls : MonoBehaviour {
 
 
 		//Pour les particules à l'atterrissage
-		if (animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_jump_loop")) {
-			//StartCoroutine (Atterrissage ());
-
-		}
+//		if (animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_jump_loop")) {
+//			//StartCoroutine (Atterrissage ());
+//
+//		}
 
 
 	// POUR FAIRE PIVOTER LA TÊTE
@@ -289,9 +289,9 @@ public class Xbox_Controls : MonoBehaviour {
 		}
 
 		// Start button (... 7)
-		if (Input.GetButtonDown ("360_StartButton")){
-			print ("Je pèse sur: start button!");
-		}
+//		if (Input.GetButtonDown ("360_StartButton")){
+//			print ("Je pèse sur: start button!");
+//		}
 
 		// Left Thumbstick (... 8)
 		if (Input.GetButtonDown ("360_LeftThumbstickButton")){
