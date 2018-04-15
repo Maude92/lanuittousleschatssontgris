@@ -150,6 +150,7 @@ public class Tastyv3 : MonoBehaviour {
 		Mist.GetComponent<MistStopWhenIdle>().enabled = true;
 		raccooncutscene1.SetActive (false);
 		raccooncutscene2.SetActive (false);
+		block.GetComponent<NavMeshAgent> ().enabled = true;
 		//yield return new WaitForSeconds (0.43f); 
 
 		//GetComponent<AudioSource>().PlayOneShot (Raccoon1,1);
