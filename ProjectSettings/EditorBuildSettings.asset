@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test_Tutoriel_Maude_v5.unity
     guid: bad5800abc2737a4d866831a10356759
+  - enabled: 1
+    path: Assets/Scenes/LeTutoriel_v1.unity
+    guid: 38d13fdd9e7b58744b4906b76bff6702
