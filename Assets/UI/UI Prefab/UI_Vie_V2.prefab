@@ -99,6 +99,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1484428269587446
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224826221484213288}
+  - component: {fileID: 222075166720461440}
+  - component: {fileID: 114708489355525782}
+  m_Layer: 5
+  m_Name: ObjectifRappel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1511490103929990
 GameObject:
   m_ObjectHideFlags: 1
@@ -396,18 +413,13 @@ MonoBehaviour:
   NbVieRestant: 0
   fullColor: {r: 0, g: 1, b: 0.25517225, a: 0.64705884}
   lowColor: {r: 1, g: 0, b: 0, a: 0.64705884}
-  Vie1: {fileID: 114010765720173086}
-  Vie2: {fileID: 114867591953198412}
-  Vie3: {fileID: 114353930761903764}
-  Vie4: {fileID: 114266156049863508}
-  Vie5: {fileID: 114010620529146012}
-  Vie6: {fileID: 114700143175118660}
-  Vie7: {fileID: 114845386241713960}
-  Vie8: {fileID: 114287923291785352}
-  Vie9: {fileID: 114372956639705208}
   Circle: {fileID: 114709736956872082}
   UIvie: {fileID: 225743051711522788}
+  RedDamage: {fileID: 0}
   SoinCroix: {fileID: 0}
+  mistObj: {fileID: 0}
+  EcranDePerteDeVie: {fileID: 0}
+  LostALifeScreen: {fileID: 0}
 --- !u!114 &114266156049863508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -607,6 +619,39 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114708489355525782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484428269587446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8673786, g: 0.9117647, b: 0.5899654, a: 0.778}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: cb0840b15e63c46fdbab79c5f5c6dd42, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!114 &114709736956872082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -688,6 +733,12 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!222 &222075166720461440
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484428269587446}
 --- !u!222 &222190632101696350
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -927,6 +978,7 @@ RectTransform:
   m_Children:
   - {fileID: 224144362412542134}
   - {fileID: 224344187745744402}
+  - {fileID: 224826221484213288}
   m_Father: {fileID: 224458434220056480}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1006,6 +1058,24 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -304.08002, y: 162.39998}
   m_SizeDelta: {x: 69.91, y: 69.91}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224826221484213288
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484428269587446}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 162.63, y: -66.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224492173781265524}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 38.93, y: 3.1}
+  m_SizeDelta: {x: 134.87, y: 21.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224830047988364590
 RectTransform:

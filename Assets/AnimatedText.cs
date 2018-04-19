@@ -1,0 +1,95 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class AnimatedText : MonoBehaviour {
+
+	private AudioManager audioManager;
+
+	public float delay = 0.1f;
+	public string fullText;
+	private string currentText = "";
+
+	public CanvasGroup InstructionBoutonStart;
+	public CanvasGroup CeluiCi;
+
+	public bool death = false;
+	public bool reset = false;
+
+	public AudioSource SadSong;
+
+
+	// Use this for initialization
+	void Start () {
+
+		SadSong.enabled = false;
+		SadSong.Stop ();
+
+		InstructionBoutonStart.alpha = 0;
+//		StartCoroutine(ShowText());
+
+
+		audioManager = AudioManager.instance;
+		if (audioManager == null) {
+			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");
+		}
+	
+	}
+
+	void Update () {
+		if (Input.GetButtonDown("XbOne_StartButton") && CeluiCi.alpha == 1) {
+			//Faire reloader le dernier checkpoint ou le début du niveau ?
+			print ("Je dois loader le dernier checkpoint ou faire reloader le level");
+			CeluiCi.alpha = 0;
+			//InstructionBoutonStart.alpha = 0;
+			reset = true;
+			SadSong.Stop ();
+			SadSong.enabled = false;
+		}
+
+		if (reset == true) {
+			currentText = "";
+			InstructionBoutonStart.alpha = 0;
+			reset = false;
+		}
+	}
+
+	public void StartLeShit (){
+		StartCoroutine (ShowText ());
+	}
+		
+
+	IEnumerator ShowText(){
+			SadSong.enabled = true;
+			SadSong.Play ();
+
+			for (int i = 0; i < fullText.Length; i++) {
+			currentText += fullText.Substring (i,1);
+				this.GetComponent<Text> ().text = currentText;
+			print (i + " " + fullText.Substring (i, 1) + currentText);
+				yield return new WaitForSeconds (delay);
+				//audioManager.PlaySound ("GameOver_Screen");
+				
+			}
+			audioManager.PlaySound ("GameOver_Screen");
+			yield return new WaitForSeconds (0.1f);
+			StartCoroutine (FadeIn ());
+	}
+
+	IEnumerator FadeIn() {
+		//yield return new WaitForSeconds (5f);
+
+		float time = 1f;
+
+		//if (InstructionBoutonStart.alpha > 0) {
+		while (InstructionBoutonStart.alpha < 1) {
+			yield return new WaitForSeconds (0.01f);
+			InstructionBoutonStart.alpha += Time.deltaTime * time;
+			if (InstructionBoutonStart.alpha > 1) {
+				InstructionBoutonStart.alpha = 1;
+			}
+		}
+	}
+
+}

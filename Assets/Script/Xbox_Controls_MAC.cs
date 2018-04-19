@@ -39,6 +39,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	public bool Ijump;
 	public bool GachetteOn = false;
 	public AudioSource WalkGazon;
+	public AudioSource RunGazon;
 
 
 
@@ -63,6 +64,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 	public float DistanceBas;
 
 	public CanvasGroup UIVieCanvasGroup;
+	public CanvasGroup BlackObjectifScreen;
 
 	Vector3 startPos;
 	Vector3 endPos;
@@ -86,8 +88,12 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		FumeeAtterrissage.SetActive(false);
 		FumeeRun.SetActive (false);
 
+		//Sons
 		WalkGround.enabled = false;
 		WalkGazon.enabled = false;
+
+		//Objectifs
+		BlackObjectifScreen.alpha = 0;
 
 	}
 
@@ -141,6 +147,12 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 		}
 
+		//Test Objectif 1
+//		if (EnMouvement == true){
+//			StartCoroutine("FadeOutBlackObjectif");
+//
+//		}
+
 
 	// POUR FAIRE PIVOTER LA TÊTE
 		// Tête à gauche
@@ -170,7 +182,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		//Pour jouer son lorsque joueur bouge
 		if (Physics.Raycast (FallingTete.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground")) && Physics.Raycast (FallingCul.transform.position, -transform.up, out hit, longueurRay, LayerMask.GetMask ("Ground"))) {
 
-			//MARCHE ET COURSE EAU
+			//MARCHE ET COURSE EAU (si ne fonctionne pas, vérifier que le Ground et le Tag liquide sont bien sur la fontaine
 			if (hit.transform.tag == "Liquide" && EnMouvement == true && !WalkWater.isPlaying) {
 				//audioManager.PlaySound ("Mist_Nage2");
 				print ("Je touche à de l'eau et je bouge !");
@@ -186,7 +198,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 			}
 
-			//MARCHE + COURSE GAZON
+			//MARCHE GAZON
 			if (hit.transform.tag == "Gazon" && EnMouvement == true && !WalkGazon.isPlaying) {
 				print ("Je marche sur le gazon et je fais du bruit");
 				WalkGazon.enabled = true;
@@ -199,6 +211,30 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 				WalkGround.enabled = false;
 				WalkGround.Stop ();
 
+
+			}
+
+			//COURSE GAZON
+			if (hit.transform.tag == "Gazon" && EnMouvement == true && !RunGazon.isPlaying && GachetteOn == true) {
+				print ("Je cours sur le sol et je fais du bruit !");
+				RunGazon.enabled = true;
+				RunGazon.Play ();
+
+				//Les Stops
+				RunGround.enabled = false;
+				RunGround.Stop ();
+
+				WalkWater.Stop ();
+				WalkWater.enabled = false;
+
+				WalkGround.enabled = false;
+				WalkGround.Stop ();
+
+				WalkGazon.enabled = false;
+				WalkGazon.Stop ();
+
+				//Particules Course
+				FumeeRun.SetActive (true);
 			} 
 
 			//MARCHE SOL
@@ -232,6 +268,9 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 				WalkGazon.enabled = false;
 				WalkGazon.Stop ();
 
+				RunGazon.enabled = false;
+				RunGazon.Stop ();
+
 				//Particules Course
 				FumeeRun.SetActive (true);
 			} 
@@ -251,6 +290,9 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 			RunGround.enabled = false;
 			RunGround.Stop ();
+
+			RunGazon.enabled = false;
+			RunGazon.Stop ();
 		}
 
 		if (EnMouvement == true && Ijump == true) {
@@ -265,11 +307,16 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 			RunGround.enabled = false;
 			RunGround.Stop ();
+
+			RunGazon.enabled = false;
+			RunGazon.Stop ();
 		}
 
 		if (GachetteOn == false) {
 			RunGround.enabled = false;
 			RunGround.Stop ();
+			RunGazon.enabled = false;
+			RunGazon.Stop ();
 			FumeeRun.SetActive (false);
 		}
 
@@ -279,6 +326,8 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 			WalkGround.enabled = false;
 			WalkGround.Stop ();
+			WalkGazon.enabled = false;
+			WalkGazon.Stop ();
 
 		}
 
@@ -483,6 +532,20 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		yield return new WaitForSeconds (2f);
 		FumeeAtterrissage.SetActive (false);
 		print ("Je fonctionne");
+	}
+
+	IEnumerator FadeOutBlackObjectif() {
+		//yield return new WaitForSeconds (5f);
+
+		float time = 1f;
+
+		if (BlackObjectifScreen.alpha > 0) {
+			yield return new WaitForSeconds (0.01f);
+			BlackObjectifScreen.alpha -= Time.deltaTime / time;
+			if (BlackObjectifScreen.alpha < 0) {
+				BlackObjectifScreen.alpha = 0;
+			}
+		}
 	}
 		
 
