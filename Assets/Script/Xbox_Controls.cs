@@ -530,7 +530,19 @@ public class Xbox_Controls : MonoBehaviour {
 			Invoke ("Splash", 0.2f);
 		} 
 
+		if (other.gameObject.tag == "Water") {
+			animatorMist.SetBool ("Nage", true);
+		}
+
 	}
+
+	// JE VEUX QUE MIST NAGE :D
+	void OnTriggerExit (Collider other){
+		if (other.gameObject.tag == "Water") {
+			animatorMist.SetBool ("Nage", false);
+		}
+	}
+
 
 	void OnCollisionEnter (Collision col){
 //		if (col.gameObject.CompareTag("Solide")){

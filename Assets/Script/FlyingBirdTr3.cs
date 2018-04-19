@@ -36,6 +36,8 @@ public class FlyingBirdTr3 : MonoBehaviour {
 			//if (t > 1f && Vector3.Distance(Target.transform.position, transform.position) > 0.02f) {
 			if (Vector3.Distance(Target.transform.position, transform.position) > 1f) {//&& Vector3.Distance(Target.transform.position, transform.position) > 2f) {
 				//animatorBird.SetTrigger("landingTrigger");
+				animatorBird.SetTrigger("flyingTrigger");
+				animatorBird.ResetTrigger("landingTrigger");
 				transform.LookAt (Target.transform.position);
 				//transform.position = Vector3.Lerp (transform.position, Target.transform.position, 1f);
 				transform.position = Vector3.SmoothDamp (transform.position, Target.transform.position, ref velocity, smoothTime, maxvelocity);
@@ -43,6 +45,7 @@ public class FlyingBirdTr3 : MonoBehaviour {
 
 			} else if (Vector3.Distance(Target.transform.position, transform.position) > 0.05f && Vector3.Distance(Target.transform.position, transform.position)<= 1f) {//&& Vector3.Distance(Target.transform.position, transform.position) > 2f) {
 				animatorBird.SetTrigger("landingTrigger");
+				animatorBird.ResetTrigger ("flyingTrigger");
 				transform.up = FlyingUp.transform.up;
 				//transform.position = Vector3.Lerp (transform.position, Target.transform.position, 1f);
 				transform.position = Vector3.SmoothDamp (transform.position, Target.transform.position, ref velocity, smoothTime, maxvelocity);
@@ -50,24 +53,25 @@ public class FlyingBirdTr3 : MonoBehaviour {
 
 			} else if (Vector3.Distance(Target.transform.position, transform.position) <= 0.05f) {
 				animatorBird.ResetTrigger("landingTrigger");
+				//animatorBird.ResetTrigger ("flyingTrigger");
 				GetComponent<Rigidbody> ().velocity = Vector3.zero;
 				flying = true;
 			}
 
 		}
-		if (Input.GetButtonDown ("360_XButton")){
-			print ("Je pèse sur: le bouton X!");
-			//GetComponent<Rigidbody>().AddForce((FlyingUp.transform.forward * 50f));
-			//GetComponent<Rigidbody>().AddForce((transform.up * 50f));
-			GetComponent<Rigidbody>().AddForce((Vector3.up * 50f));
-			flying = false;
+//		if (Input.GetButtonDown ("360_XButton")){
+//			print ("Je pèse sur: le bouton X!");
+//			//GetComponent<Rigidbody>().AddForce((FlyingUp.transform.forward * 50f));
+//			//GetComponent<Rigidbody>().AddForce((transform.up * 50f));
+//			GetComponent<Rigidbody>().AddForce((Vector3.up * 50f));
+//			flying = false;
 
 			//GetComponent<Rigidbody> ().AddForce ((transform.forward * 500f);(transform.up * 100f));
 //			onGround = false;
 //			GetComponent<Rigidbody>().isKinematic = false;
 //			GetComponent<Rigidbody>().drag = 0.5f;
 
-		}
+	//	}
 
 
 	}

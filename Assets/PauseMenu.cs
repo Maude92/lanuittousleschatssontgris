@@ -8,9 +8,13 @@ public class PauseMenu : MonoBehaviour {
 
 	public bool modePause;
 
+	//Xbox_Controls xboxcontrolspc;
+
 	// Use this for initialization
 	void Start () {
 		modePause = false;
+
+		//xboxcontrolspc = GetComponent <Xbox_Controls> ();
 	}
 		
 	
@@ -25,6 +29,7 @@ public class PauseMenu : MonoBehaviour {
 
 		// POUR ACTIVER LE MENU PAUSE
 		if (modePause == true){
+			//xboxcontrolspc.enabled = false;
 			pauseUI.SetActive (true);
 			Time.timeScale = 0;
 		}
@@ -32,6 +37,7 @@ public class PauseMenu : MonoBehaviour {
 
 		// POUR SORTIR DU MENU PAUSE
 		if (modePause == false){
+			//xboxcontrolspc.enabled = true;
 			pauseUI.SetActive (false);
 			Time.timeScale = 1;
 		}

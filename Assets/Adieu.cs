@@ -22,12 +22,21 @@ public class Adieu : MonoBehaviour {
 	public GameObject cetobjet;
 	public GameObject opaqueobjet;
 
+	MistCanSleep mistcansleep;
+	public GameObject player;
+
+
 	//public int childIndex;
 
 	void Start (){
 		alphaColor = new Color(1.0f, 1.0f, 1.0f, 0f);
 		regColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		//meshobj = GetComponent<MeshRenderer> ();
+
+		player = GameObject.FindGameObjectWithTag ("Player");
+		mistcansleep = player.GetComponent<MistCanSleep> ();
+
+
 
 		//meshobjB = shit [1].GetComponent<MeshRenderer> ();
 		//meshobjs = GetComponentsInChildren<MeshRenderer>();
@@ -50,6 +59,7 @@ public class Adieu : MonoBehaviour {
 
 	private void Update()
 	{
+
 //		if(Input.GetKeyDown(KeyCode.F))
 //		{
 //			//StartCoroutine(Lerp_MeshRenderer_Color(1.0f, 1.0f, 1.0f, 0f));
@@ -63,6 +73,7 @@ public class Adieu : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 	
 		if (other.gameObject.tag == "Player") {
+			mistcansleep.countObjetsDisparus++;
 			opaqueobjet.SetActive (false);
 			StartCoroutine(Lerp_MeshRenderer_Color(lerpDuration, regColor, alphaColor));
 		}
