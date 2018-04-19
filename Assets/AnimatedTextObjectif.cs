@@ -12,6 +12,12 @@ public class AnimatedTextObjectif : MonoBehaviour {
 	private string currentText = "";
 
 	public Text ObjectifRappelUIVie;
+	public Text objectifRappelMenuPause;
+
+	public CanvasGroup CeluiCi;
+
+	PauseMenu pausemenu;
+	public GameObject playerObj;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +26,8 @@ public class AnimatedTextObjectif : MonoBehaviour {
 			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");
 		}
 
+		pausemenu = playerObj.GetComponent <PauseMenu> ();
+
 //		StartCoroutine(ShowTextObjectif());
 //		Invoke ("SonObjectif", 0.6f);
 
@@ -27,13 +35,18 @@ public class AnimatedTextObjectif : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (CeluiCi.alpha > 0) {
+			pausemenu.enabled = false;
+		} else if (CeluiCi.alpha == 0) {
+			pausemenu.enabled = true;
+		}
 	}
 
 	public void PartObjectif (){
 		StartCoroutine(ShowTextObjectif());
 		Invoke ("SonObjectif", 0.6f);
 		ObjectifRappelUIVie.text = fullText;
+		objectifRappelMenuPause.text = fullText;
 		if (fullText == "Va dormir, peut-être qu'ils reviendront demain ") {
 			ObjectifRappelUIVie.text = "Va dormir ";
 		}
