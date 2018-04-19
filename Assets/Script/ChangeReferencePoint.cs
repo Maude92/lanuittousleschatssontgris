@@ -6,6 +6,8 @@ public class ChangeReferencePoint : MonoBehaviour {
 	public GameObject PositionReference;
 	public GameObject NewPosition;
 
+	public GameObject ColliderEnd;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -20,6 +22,7 @@ public class ChangeReferencePoint : MonoBehaviour {
 			PositionReference.transform.position = NewPosition.transform.position;
 			Vector3 newRot = new Vector3 (NewPosition.transform.eulerAngles.x, NewPosition.transform.eulerAngles.y, NewPosition.transform.eulerAngles.z);
 				PositionReference.transform.rotation = Quaternion.Euler (newRot);
+			ColliderEnd.GetComponent<Collider> ().isTrigger = true;
 		}
 
 	}

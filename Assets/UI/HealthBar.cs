@@ -54,6 +54,10 @@ public class HealthBar : MonoBehaviour {
 	public CanvasGroup LostALifeScreen;
 	AnimatedText AnimatedTextCode;
 
+	// Pour le fade to black qui chie
+	public GameObject fadeToBlack;
+
+
 	// Use this for initialization
 	void Start () {
 		audioManager = AudioManager.instance;
@@ -115,8 +119,9 @@ public class HealthBar : MonoBehaviour {
         
 	//Texte
 		//HBText.GetComponent<Text>().text = currentHealth.ToString();
-        if (health <= 0)
+        if (health <= 0.01)
         {
+			fadeToBlack.SetActive (false);
            //Texte
 			//HBText.GetComponent<Text>().text = "0";
 			NbVieRestant--;
@@ -126,8 +131,8 @@ public class HealthBar : MonoBehaviour {
 			if (NbVieRestant > 0) {
 				//Fade to black
 				//Load au dernier checkpoint
-				currentHealth = 100;
-				health = 100;
+				currentHealth = 100;			
+				health = 100;					
 			 	HBImage.GetComponent<Image>().fillAmount = health;
 				HBImage.GetComponent<Image> ().color = Color.Lerp (lowColor, fullColor, HBImage.GetComponent<Image>().fillAmount);
 
@@ -140,6 +145,10 @@ public class HealthBar : MonoBehaviour {
             //GameObject.DestroyObject(character.gameObject);
 			//SceneManager.LoadScene ("SceneTest");
         }
+
+		if (health > 0.01) {
+			fadeToBlack.SetActive (true);
+		}
 			
 
 //		if (currentHealth <= 25) {

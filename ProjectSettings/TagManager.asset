@@ -5,6 +5,20 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlatformeMouvante
+  - Solide
+  - Gazon
+  - SupportFallingObject
+  - Balancing
+  - FallingObjectGauche
+  - Ground
+  - NezDeChat
+  - Liquide
+  - Water
+  - lb_bird
+  - lb_perchTarget
+  - Platform
+  - FallingObjectDroite
+  - LitDouillet
   layers:
   - Default
   - TransparentFX
@@ -26,7 +40,7 @@ TagManager:
   - 
   - 
   - 
-  - Ground
+  - 
   - 
   - 
   - 

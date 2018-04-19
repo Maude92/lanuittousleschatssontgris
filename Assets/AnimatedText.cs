@@ -19,6 +19,11 @@ public class AnimatedText : MonoBehaviour {
 
 	public AudioSource SadSong;
 
+	PauseMenu pausemenu;
+	//HealthBar healthbar;
+	public GameObject playerObj;
+	//public GameObject UIdevie;
+
 
 	// Use this for initialization
 	void Start () {
@@ -34,12 +39,16 @@ public class AnimatedText : MonoBehaviour {
 		if (audioManager == null) {
 			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");
 		}
+
+		pausemenu = playerObj.GetComponent <PauseMenu> ();
+		//healthbar = UIdevie.GetComponent<HealthBar> ();
 	
 	}
 
 	void Update () {
-		if (Input.GetButtonDown("XbOne_StartButton") && CeluiCi.alpha == 1) {
+		if (Input.GetButtonDown ("360_StartButton") && InstructionBoutonStart.alpha == 1) {
 			//Faire reloader le dernier checkpoint ou le début du niveau ?
+			//pausemenu.modePause = false;
 			print ("Je dois loader le dernier checkpoint ou faire reloader le level");
 			CeluiCi.alpha = 0;
 			//InstructionBoutonStart.alpha = 0;
@@ -53,6 +62,13 @@ public class AnimatedText : MonoBehaviour {
 			InstructionBoutonStart.alpha = 0;
 			reset = false;
 		}
+
+		if (CeluiCi.alpha > 0) {
+			pausemenu.enabled = false;
+		} else if (CeluiCi.alpha == 0) {
+			pausemenu.enabled = true;
+		}
+			
 	}
 
 	public void StartLeShit (){
@@ -75,6 +91,10 @@ public class AnimatedText : MonoBehaviour {
 			audioManager.PlaySound ("GameOver_Screen");
 			yield return new WaitForSeconds (0.1f);
 			StartCoroutine (FadeIn ());
+//		if (healthbar.NbVieRestant > 0) {
+//			healthbar.currentHealth = 100;
+//			healthbar.health = 100;
+//		}
 	}
 
 	IEnumerator FadeIn() {
@@ -90,6 +110,7 @@ public class AnimatedText : MonoBehaviour {
 				InstructionBoutonStart.alpha = 1;
 			}
 		}
+
 	}
 
 }
