@@ -33,6 +33,10 @@ public class MenuPause : MonoBehaviour {
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex - 1);
 	}
 
+	public void MainMenuFromLevel1(){
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex - 2);
+	}
+
 	public void playClip(){
 		audioManager.PlaySound ("Clic");
 	}
