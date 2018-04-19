@@ -93,7 +93,7 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		WalkGazon.enabled = false;
 
 		//Objectifs
-		BlackObjectifScreen.alpha = 1;
+		BlackObjectifScreen.alpha = 0;
 
 	}
 
@@ -148,10 +148,10 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 		}
 
 		//Test Objectif 1
-		if (EnMouvement == true){
-			StartCoroutine("FadeOutBlackObjectif");
-
-		}
+//		if (EnMouvement == true){
+//			StartCoroutine("FadeOutBlackObjectif");
+//
+//		}
 
 
 	// POUR FAIRE PIVOTER LA TÊTE

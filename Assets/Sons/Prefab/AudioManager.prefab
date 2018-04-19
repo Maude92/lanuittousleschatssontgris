@@ -60,7 +60,7 @@ MonoBehaviour:
     randomPitch: 0
   - name: Mist_Land
     clip: {fileID: 8300000, guid: 4587f7cad96d64f3c9c8748d1874c758, type: 3}
-    volume: 0.855
+    volume: 0
     pitch: 1.473
     randomVolume: 0
     randomPitch: 0
@@ -180,13 +180,13 @@ MonoBehaviour:
     randomPitch: 0
   - name: GameOver_Screen
     clip: {fileID: 8300000, guid: cabfae866cab347928b74b7d0ca6bfa9, type: 3}
-    volume: 1
-    pitch: 1
+    volume: 0.504
+    pitch: 0.548
     randomVolume: 0
     randomPitch: 0
   - name: Objectif_New
-    clip: {fileID: 8300000, guid: a0ca8964c08d54c5dbebf245bdc474ca, type: 3}
-    volume: 1
-    pitch: 1
+    clip: {fileID: 8300000, guid: 79e6baad2fd414b82a6d49ce1568d2e5, type: 3}
+    volume: 0.255
+    pitch: 0.5
     randomVolume: 0
     randomPitch: 0

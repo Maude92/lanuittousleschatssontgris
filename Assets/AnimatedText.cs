@@ -12,14 +12,23 @@ public class AnimatedText : MonoBehaviour {
 	private string currentText = "";
 
 	public CanvasGroup InstructionBoutonStart;
+	public CanvasGroup CeluiCi;
 
-	public bool death = true;
+	public bool death = false;
+	public bool reset = false;
+
+	public AudioSource SadSong;
+
 
 	// Use this for initialization
 	void Start () {
 
-		InstructionBoutonStart.alpha = 0.01f;
-		StartCoroutine(ShowText());
+		SadSong.enabled = false;
+		SadSong.Stop ();
+
+		InstructionBoutonStart.alpha = 0;
+//		StartCoroutine(ShowText());
+
 
 		audioManager = AudioManager.instance;
 		if (audioManager == null) {
@@ -29,32 +38,43 @@ public class AnimatedText : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetButtonDown("XbOne_StartButton")) {
+		if (Input.GetButtonDown("XbOne_StartButton") && CeluiCi.alpha == 1) {
 			//Faire reloader le dernier checkpoint ou le début du niveau ?
 			print ("Je dois loader le dernier checkpoint ou faire reloader le level");
+			CeluiCi.alpha = 0;
+			//InstructionBoutonStart.alpha = 0;
+			reset = true;
+			SadSong.Stop ();
+			SadSong.enabled = false;
 		}
 
-		StartCoroutine(FadeIn());
+		if (reset == true) {
+			currentText = "";
+			InstructionBoutonStart.alpha = 0;
+			reset = false;
+		}
 	}
 
+	public void StartLeShit (){
+		StartCoroutine (ShowText ());
+	}
+		
+
 	IEnumerator ShowText(){
-//		yield return new WaitForSeconds (0.01f);
-//		audioManager.PlaySound ("GameOver_Screen");
-		//audioManager.PlaySound ("Objectif_New"); //Son pour objectif
-		if (death == true){
+			SadSong.enabled = true;
+			SadSong.Play ();
 
-			for(int i = 0; i < fullText.Length; i++){
-				currentText = fullText.Substring(0,i);
-				this.GetComponent<Text>().text = currentText;
-				yield return new WaitForSeconds(delay);
+			for (int i = 0; i < fullText.Length; i++) {
+			currentText += fullText.Substring (i,1);
+				this.GetComponent<Text> ().text = currentText;
+			print (i + " " + fullText.Substring (i, 1) + currentText);
+				yield return new WaitForSeconds (delay);
 				//audioManager.PlaySound ("GameOver_Screen");
+				
 			}
-			//yield return new WaitForSeconds (0.1f);
 			audioManager.PlaySound ("GameOver_Screen");
-			yield return new WaitForSeconds (1.0f);
-			InstructionBoutonStart.alpha = 0;
-		}
-
+			yield return new WaitForSeconds (0.1f);
+			StartCoroutine (FadeIn ());
 	}
 
 	IEnumerator FadeIn() {
@@ -62,7 +82,8 @@ public class AnimatedText : MonoBehaviour {
 
 		float time = 1f;
 
-		if (InstructionBoutonStart.alpha != 0.01f) {
+		//if (InstructionBoutonStart.alpha > 0) {
+		while (InstructionBoutonStart.alpha < 1) {
 			yield return new WaitForSeconds (0.01f);
 			InstructionBoutonStart.alpha += Time.deltaTime * time;
 			if (InstructionBoutonStart.alpha > 1) {
