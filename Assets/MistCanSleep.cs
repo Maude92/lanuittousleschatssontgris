@@ -29,6 +29,7 @@ public class MistCanSleep : MonoBehaviour {
 		if (other.gameObject.tag == "LitDouillet" && Input.GetButtonDown ("360_YButton") && countObjetsDisparus >= nombreMagique) {
 			print ("Zzzzzz.... (cinématique se déclenche quand je pèse sur Y, à implémenter)");
 			goToSleep = true;
+			// Il faut que le UI de Y affiche
 			// Déclenche une cinématique
 			// Animation de Mist qui s'asseoit, miaule, se couche, s'endort
 			// Fade out à la nouvelle scène (même maison, mais fenêtre ouverte)

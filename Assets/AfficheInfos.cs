@@ -6,6 +6,7 @@ public class AfficheInfos : MonoBehaviour {
 
 	public CanvasGroup panneauInfos;
 	public GameObject UIinfos;
+	public GameObject UIprecedent;
 
 	public float fadeTime;
 	public float tempsAffiche;
@@ -21,6 +22,8 @@ public class AfficheInfos : MonoBehaviour {
 		if (fadeInfos == true) {
 			StartCoroutine (AfficheCetInfo());
 		}
+
+
 	}
 
 	void OnTriggerEnter (Collider other){
@@ -31,6 +34,10 @@ public class AfficheInfos : MonoBehaviour {
 	}
 
 	IEnumerator AfficheCetInfo(){
+		if (UIprecedent.activeInHierarchy == true) {
+			panneauInfos.alpha = 0;
+			UIprecedent.SetActive (false);
+		}
 		panneauInfos.alpha += Time.deltaTime / fadeTime;
 		yield return new WaitForSeconds (tempsAffiche);
 		fadeInfos = false;
