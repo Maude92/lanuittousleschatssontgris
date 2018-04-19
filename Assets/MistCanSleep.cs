@@ -19,13 +19,19 @@ public class MistCanSleep : MonoBehaviour {
 	void Update () {
 		if (countObjetsDisparus >= nombreMagique) {
 			print ("Je peux aller me coucher, j'ai fait disparaître le bon nombre d'objets. (à implémenter)");
+			// Faire apparaître nouveau UI objectif
+			// Rendre le lit accessible
+
 		}
 	}
 
 	void OnTriggerStay (Collider other){
-		if (other.gameObject.tag == "LitDouillet" && Input.GetButtonDown ("360_YButton")) {
+		if (other.gameObject.tag == "LitDouillet" && Input.GetButtonDown ("360_YButton") && countObjetsDisparus >= nombreMagique) {
 			print ("Zzzzzz.... (cinématique se déclenche quand je pèse sur Y, à implémenter)");
 			goToSleep = true;
+			// Déclenche une cinématique
+			// Animation de Mist qui s'asseoit, miaule, se couche, s'endort
+			// Fade out à la nouvelle scène (même maison, mais fenêtre ouverte)
 		}
 	}
 }
