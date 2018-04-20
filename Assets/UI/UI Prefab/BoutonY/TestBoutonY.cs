@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class TestBoutonY : MonoBehaviour {
 
-	public Canvas ButtonY;
+	public Canvas ButtonYCanvas;
 	public Text ButtonYText;
-	public string TonTextePourLeBoutonY;
+	public string TextePourLeBoutonY;
 
 	void OnTriggerEnter (Collider other){
-		ButtonY.enabled = true;
-		ButtonYText.text = TonTextePourLeBoutonY;
+		ButtonYCanvas.enabled = true;
+		ButtonYText.text = TextePourLeBoutonY;
 
 	}
 
 	void OnTriggerExit (Collider other){
-		ButtonY.enabled = false;
+		ButtonYCanvas.enabled = false;
 		ButtonYText.text = "";
 
 	}
