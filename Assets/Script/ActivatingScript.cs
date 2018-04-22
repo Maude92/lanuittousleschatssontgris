@@ -4,8 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ActivatingScript : MonoBehaviour {
+	public CanvasGroup panneauInfos;
+	public GameObject UIinfos;
+
+
+
 	public GameObject Tube;
 	public GameObject UI;
+	//public GameObject panneauxinfo;
 	public Canvas Explanation;
 	public GameObject TargetAngle;
 	Vector3 newRot ;
@@ -18,9 +24,12 @@ public class ActivatingScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		panneauInfos.alpha = 0;
+
 		ToT = Tube.GetComponent<TorqueOnTube> ();
 		UIScript = UI.GetComponent<UiBoussolleBalancing> ();
 		UI.SetActive (false);
+		//panneauxinfo.SetActive (false);
 		Explanation = Explanation.GetComponent<Canvas> ();
 		Explanation.enabled = false;
 		//UI.enabled = false;
@@ -35,7 +44,10 @@ public class ActivatingScript : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider col){
 		if (col.tag == "Player") {
+			UIinfos.SetActive (true);
 			UI.SetActive (true);
+			panneauInfos.alpha = 1;
+			//panneauxinfo.SetActive (true);
 			Explanation.enabled = true;
 			Tube.GetComponent<TorqueOnTube>().enabled = true;
 			ToT.tempschange = 1.5f;
@@ -53,6 +65,9 @@ public class ActivatingScript : MonoBehaviour {
 			Tube.GetComponent<TorqueOnTube>().enabled = false;
 			Explanation.enabled = false;
 			UI.SetActive (false);
+			UI.SetActive (false);
+			panneauInfos.alpha = 0;
+			//panneauxinfo.SetActive (false);
 
 
 		}

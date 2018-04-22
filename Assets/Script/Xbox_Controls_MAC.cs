@@ -147,12 +147,6 @@ public class Xbox_Controls_MAC : MonoBehaviour {
 
 		}
 
-		//Test Objectif 1
-//		if (EnMouvement == true){
-//			StartCoroutine("FadeOutBlackObjectif");
-//
-//		}
-
 
 	// POUR FAIRE PIVOTER LA TÊTE
 		// Tête à gauche

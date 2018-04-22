@@ -1,0 +1,125 @@
+fileFormatVersion: 2
+guid: 86ab69da0fe508f41bb06a0eacdd2773
+timeCreated: 1491380431
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: vase.007
+    100004: vase.007_cell
+    100006: vase.007_cell.001
+    100008: vase.007_cell.002
+    100010: vase.007_cell.003
+    100012: vase.007_cell.004
+    100014: vase.007_cell.005
+    100016: vase.007_cell.006
+    100018: vase.007_cell.007
+    100020: "\u041F\u043E\u043B\u0443\u0441\u0444\u0435\u0440\u0430"
+    400000: //RootNode
+    400002: vase.007
+    400004: vase.007_cell
+    400006: vase.007_cell.001
+    400008: vase.007_cell.002
+    400010: vase.007_cell.003
+    400012: vase.007_cell.004
+    400014: vase.007_cell.005
+    400016: vase.007_cell.006
+    400018: vase.007_cell.007
+    400020: "\u041F\u043E\u043B\u0443\u0441\u0444\u0435\u0440\u0430"
+    2300000: //RootNode
+    2300002: vase.007
+    2300004: vase.007_cell
+    2300006: vase.007_cell.001
+    2300008: vase.007_cell.002
+    2300010: vase.007_cell.003
+    2300012: vase.007_cell.004
+    2300014: vase.007_cell.005
+    2300016: vase.007_cell.006
+    2300018: vase.007_cell.007
+    3300000: //RootNode
+    3300002: vase.007
+    3300004: vase.007_cell
+    3300006: vase.007_cell.001
+    3300008: vase.007_cell.002
+    3300010: vase.007_cell.003
+    3300012: vase.007_cell.004
+    3300014: vase.007_cell.005
+    3300016: vase.007_cell.006
+    3300018: vase.007_cell.007
+    4300000: vase.007
+    4300002: vase.007_cell.007
+    4300004: vase.007_cell.006
+    4300006: vase.007_cell.005
+    4300008: vase.007_cell.004
+    4300010: vase.007_cell.003
+    4300012: vase.007_cell.002
+    4300014: vase.007_cell.001
+    4300016: vase.007_cell
+    6400000: vase.007
+    6400002: vase.007_cell
+    6400004: vase.007_cell.001
+    6400006: vase.007_cell.002
+    6400008: vase.007_cell.003
+    6400010: vase.007_cell.004
+    6400012: vase.007_cell.005
+    6400014: vase.007_cell.006
+    6400016: vase.007_cell.007
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
