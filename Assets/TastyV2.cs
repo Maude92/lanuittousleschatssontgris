@@ -15,6 +15,7 @@ public class TastyV2 : MonoBehaviour {
 	//HealthBar HBcode;
 
 	public Canvas ButtonY;
+	public Text ButtonYText;
 
 	Animator anim;
 	public float NbPtsVieRedonner = 5;
@@ -70,11 +71,13 @@ public class TastyV2 : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other){
 		ButtonY.enabled = true;
+		ButtonYText.text = "Manger";
 
 	}
 
 	void OnTriggerExit (Collider other){
 		ButtonY.enabled = false;
+		ButtonYText.text = "";
 
 	}
 
