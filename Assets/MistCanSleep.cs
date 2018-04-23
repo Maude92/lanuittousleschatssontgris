@@ -9,6 +9,8 @@ public class MistCanSleep : MonoBehaviour {
 
 	public bool goToSleep;
 
+	public Canvas ButtonY;
+
 	// Use this for initialization
 	void Start () {
 		countObjetsDisparus = 0;
@@ -25,10 +27,17 @@ public class MistCanSleep : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter (Collider other){
+		if (other.gameObject.tag == "LitDouillet") {
+			ButtonY.enabled = true;
+		}
+	}
+
 	void OnTriggerStay (Collider other){
 		if (other.gameObject.tag == "LitDouillet" && Input.GetButtonDown ("360_YButton") && countObjetsDisparus >= nombreMagique) {
 			print ("Zzzzzz.... (cinématique se déclenche quand je pèse sur Y, à implémenter)");
 			goToSleep = true;
+			ButtonY.enabled = false;
 			// Il faut que le UI de Y affiche
 			// Déclenche une cinématique
 			// Animation de Mist qui s'asseoit, miaule, se couche, s'endort
