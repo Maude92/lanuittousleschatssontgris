@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114472570475773842}
   - component: {fileID: 114898580531586516}
   m_Layer: 5
-  m_Name: Bouton Y
+  m_Name: ANCIEN_BOUTON_Y
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
