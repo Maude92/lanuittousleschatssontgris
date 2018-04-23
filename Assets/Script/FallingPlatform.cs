@@ -5,12 +5,14 @@ using UnityEngine;
 public class FallingPlatform : MonoBehaviour {
 	private Rigidbody rb;
 	private Animator anim;
+	public AudioSource SonFallingPlateforme;
 
 	public float fallDelay = 2f;
 
 
 	// Use this for initialization
 	void Start () {
+		SonFallingPlateforme.enabled = false;
 		anim = GetComponent <Animator> ();
 		anim.enabled = false;
 		rb = GetComponent<Rigidbody>();
@@ -18,6 +20,8 @@ public class FallingPlatform : MonoBehaviour {
 
 	void OnCollisionEnter (Collision col){
 		if (col.gameObject.CompareTag("Player")) {
+			SonFallingPlateforme.enabled = true;
+			SonFallingPlateforme.Play ();
 			anim.enabled = true;
 			Invoke ("Fall", fallDelay);
 			//audioManager.PlaySound ("Falling");
