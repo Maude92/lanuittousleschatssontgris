@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Music/MusiqueOfficielle.meta
 guid: b6e16378604244404b38fb64a883b572
 folderAsset: yes
 timeCreated: 1524447145
+=======
+guid: f8e34a2974ec4224a9c67e4334cc92bb
+folderAsset: yes
+timeCreated: 1524428271
+>>>>>>> 09b37d2b0893c04e58ff46b9df966a03ce67634c:Assets/Music/MusiqueOfficielle.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}

@@ -18,11 +18,6 @@ public class MenuPause : MonoBehaviour {
 
 		pausemenu = player.GetComponent<PauseMenu> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void Quit() {
 		print ("Bye bye!");
