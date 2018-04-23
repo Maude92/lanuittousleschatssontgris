@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GratteLePoteau : MonoBehaviour {
 
 	public GameObject mistObj;
 	public Canvas ButtonY;
+
+	public Text ButtonYText;
+	public string TextePourLeBoutonY;
 
 	Animator anim;
 
@@ -27,10 +31,12 @@ public class GratteLePoteau : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other){
 		ButtonY.enabled = true;
+		ButtonYText.text = TextePourLeBoutonY;
 	}
 
 
 	void OnTriggerExit (Collider other){
 		ButtonY.enabled = false;
+		ButtonYText.text = "";
 	}
 }
