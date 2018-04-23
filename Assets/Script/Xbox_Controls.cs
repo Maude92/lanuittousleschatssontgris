@@ -463,7 +463,7 @@ public class Xbox_Controls : MonoBehaviour {
 			} 
 
 			//MARCHE SOL
-			if (hit.transform.tag == "Solide" && EnMouvement == true && !WalkGround.isPlaying) {
+			if ((hit.transform.tag == "Solide" || hit.transform.tag == "SupportFallingObject") && EnMouvement == true && !WalkGround.isPlaying) {
 				print ("Je touche au sol et je fais du bruit !");
 				WalkGround.enabled = true;
 				WalkGround.Play ();
@@ -478,7 +478,7 @@ public class Xbox_Controls : MonoBehaviour {
 			} 
 
 			//COURSE SOL
-			if (hit.transform.tag == "Solide" && EnMouvement == true && !RunGround.isPlaying && GachetteOn == true) {
+			if ((hit.transform.tag == "Solide" || hit.transform.tag == "SupportFallingObject") && EnMouvement == true && !RunGround.isPlaying && GachetteOn == true) {
 				print ("Je cours sur le sol et je fais du bruit !");
 				RunGround.enabled = true;
 				RunGround.Play ();
