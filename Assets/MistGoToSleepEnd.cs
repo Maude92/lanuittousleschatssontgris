@@ -55,7 +55,8 @@ public class MistGoToSleepEnd : MonoBehaviour {
 		if (other.gameObject.tag == "Player" && (Input.GetButtonDown ("360_YButton") || Input.GetButtonDown ("XbOne_YButton")) && anim.GetCurrentAnimatorStateInfo(0).IsName ("A_idle")){//  && Ieat == false) {
 			//Ieat = true;
 			print ("ZZZZZ");
-			goToSleep = true;
+			anim.SetBool ("DodoTime", true);
+			//goToSleep = true;
 			//anim.SetBool ("Miam", true);
 			StartCoroutine (Sleep ());
 			//HealthBar.GetComponent<HealthBar>().LifeGain(NbPtsVieRedonner);

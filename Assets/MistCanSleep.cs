@@ -15,6 +15,8 @@ public class MistCanSleep : MonoBehaviour {
 	Animator anim;
 	public GameObject mistObj;
 
+	public GameObject health;
+
 	// Use this for initialization
 	void Start () {
 		countObjetsDisparus = 0;
@@ -42,6 +44,7 @@ public class MistCanSleep : MonoBehaviour {
 	void OnTriggerStay (Collider other){
 		if (other.gameObject.tag == "LitDouillet" && Input.GetButtonDown ("360_YButton") && countObjetsDisparus >= nombreMagique) {
 			print ("Zzzzzz.... (cinématique se déclenche quand je pèse sur Y, à implémenter)");
+			Staticlife.numberoflives = health.GetComponent<HealthBar> ().NbVieRestant;
 			anim.SetBool ("DodoTime", true);
 			goToSleep = true;
 			ButtonY.enabled = false;
