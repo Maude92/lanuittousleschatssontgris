@@ -47,6 +47,7 @@ public class Tastyv3 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		ButtonY.enabled = false;
 		block.GetComponent<NavMeshAgent> ().enabled = false;
 		anim = mistObj.GetComponent <Animator> ();
 		raccoon1.SetActive (false);
@@ -100,11 +101,11 @@ public class Tastyv3 : MonoBehaviour {
 	}
 
 	void OnTriggerExit (Collider other){
-		ButtonY.enabled = false;
+		
 
 	}
 	void OnTriggerEnter (Collider other){
-		ButtonY.enabled = true;
+		
 
 	}
 	// Update is called once per frame
