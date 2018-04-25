@@ -19,6 +19,8 @@ TagManager:
   - Platform
   - FallingObjectDroite
   - LitDouillet
+  - FallingObjectSens3
+  - FallingObjectSens4
   layers:
   - Default
   - TransparentFX

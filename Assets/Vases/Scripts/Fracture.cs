@@ -37,6 +37,17 @@ public class Fracture : MonoBehaviour {
 			audioManager.PlaySound ("Flower_Woosh");
 			StartCoroutine (MistEstThug());
 		}
+
+
+		// TEST
+		if (other.gameObject.tag == "Player" && gameObject.tag == "FallingObjectSens3" /*&& Input.GetButtonDown("XbOne_YButton")*/) {
+			audioManager.PlaySound ("Flower_Woosh");
+			StartCoroutine (MistEstThugSens3());
+		}
+		if (other.gameObject.tag == "Player" && gameObject.tag == "FallingObjectSens4" /*&& Input.GetButtonDown("XbOne_YButton")*/) {
+			audioManager.PlaySound ("Flower_Woosh");
+			StartCoroutine (MistEstThugSens4());
+		}
 	}
 
 
@@ -85,6 +96,22 @@ public class Fracture : MonoBehaviour {
 		anim.SetBool ("Punch", true);
 		yield return new WaitForSeconds (timeBeforeFall);
 		rbObject.AddForce (new Vector3 (0, 0, -thugForce));
+		//print ("Die! Pot de fleur");
+	}
+
+	IEnumerator MistEstThugSens3(){
+		anim.SetLayerWeight(3, 1);
+		anim.SetBool ("Punch", true);
+		yield return new WaitForSeconds (timeBeforeFall);
+		rbObject.AddForce (new Vector3 (-thugForce, 0, 0));
+		//print ("Die! Pot de fleur");
+	}
+
+	IEnumerator MistEstThugSens4(){
+		anim.SetLayerWeight(3, 1);
+		anim.SetBool ("Punch", true);
+		yield return new WaitForSeconds (timeBeforeFall);
+		rbObject.AddForce (new Vector3 (thugForce, 0, 0));
 		//print ("Die! Pot de fleur");
 	}
 }

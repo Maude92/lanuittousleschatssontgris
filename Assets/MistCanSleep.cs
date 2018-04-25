@@ -10,6 +10,10 @@ public class MistCanSleep : MonoBehaviour {
 	public bool goToSleep;
 
 	public Canvas ButtonY;
+	public GameObject leTriggerDodo;
+
+	Animator anim;
+	public GameObject mistObj;
 
 	// Use this for initialization
 	void Start () {
@@ -21,10 +25,12 @@ public class MistCanSleep : MonoBehaviour {
 	void Update () {
 		if (countObjetsDisparus >= nombreMagique) {
 			print ("Je peux aller me coucher, j'ai fait disparaître le bon nombre d'objets. (à implémenter)");
+			leTriggerDodo.SetActive (true);
 			// Faire apparaître nouveau UI objectif
 			// Rendre le lit accessible
-
 		}
+
+		anim = mistObj.GetComponent<Animator> ();
 	}
 
 	void OnTriggerEnter (Collider other){
@@ -36,6 +42,7 @@ public class MistCanSleep : MonoBehaviour {
 	void OnTriggerStay (Collider other){
 		if (other.gameObject.tag == "LitDouillet" && Input.GetButtonDown ("360_YButton") && countObjetsDisparus >= nombreMagique) {
 			print ("Zzzzzz.... (cinématique se déclenche quand je pèse sur Y, à implémenter)");
+			anim.SetBool ("DodoTime", true);
 			goToSleep = true;
 			ButtonY.enabled = false;
 			// Il faut que le UI de Y affiche

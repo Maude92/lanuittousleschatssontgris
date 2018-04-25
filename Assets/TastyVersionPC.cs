@@ -68,16 +68,16 @@ public class TastyVersionPC : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter (Collider other){
-		ButtonY.enabled = true;
-
-	}
-
-	void OnTriggerExit (Collider other){
-		ButtonY.enabled = false;
-
-	}
-
+//	void OnTriggerEnter (Collider other){
+//		ButtonY.enabled = true;
+//
+//	}
+//
+//	void OnTriggerExit (Collider other){
+//		ButtonY.enabled = false;
+//
+//	}
+//
 	IEnumerator EatThis (){
 		yield return new WaitForSeconds (0.7f);
 		ButtonY.enabled = false;
