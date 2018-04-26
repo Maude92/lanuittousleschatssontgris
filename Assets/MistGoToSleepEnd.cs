@@ -91,6 +91,7 @@ public class MistGoToSleepEnd : MonoBehaviour {
 		yield return new WaitForSeconds (2.3f);
 		isfading = true;
 		yield return new WaitForSeconds (2.3f);
+		player.SetActive (false);
 		isfadingtext = true;
 
 	}
