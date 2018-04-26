@@ -3426,6 +3426,13 @@ Prefab:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1103688721}
+    - target: {fileID: 114927354197916106, guid: ba1c1ff6dccb8e04cbe52665ff16455c,
+        type: 2}
+      propertyPath: m_Text
+      value: "Les animaux de compagnie font partie\ndu quotidien de nombreuses familles.\nToutefois,
+        au Qu\xE9bec seulement, pr\xE8s\nde 575 000 animaux sont \nabandonn\xE9s par
+        ann\xE9e."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba1c1ff6dccb8e04cbe52665ff16455c, type: 2}
   m_IsPrefabParent: 0
