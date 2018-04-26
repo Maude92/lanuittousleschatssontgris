@@ -11,15 +11,19 @@ public class MistCanSleep : MonoBehaviour {
 
 	public Canvas ButtonY;
 	public GameObject leTriggerDodo;
+	public GameObject leTriggerObjectifC;
 
 	Animator anim;
 	public GameObject mistObj;
 
 	public GameObject health;
 
+	public int afficheObjectifPlease;
+
 	// Use this for initialization
 	void Start () {
 		countObjetsDisparus = 0;
+		afficheObjectifPlease = 0;
 		goToSleep = false;
 	}
 	
@@ -28,9 +32,16 @@ public class MistCanSleep : MonoBehaviour {
 		if (countObjetsDisparus >= nombreMagique) {
 			print ("Je peux aller me coucher, j'ai fait disparaître le bon nombre d'objets. (à implémenter)");
 			leTriggerDodo.SetActive (true);
+//			afficheObjectifPlease++;
 			// Faire apparaître nouveau UI objectif
-			// Rendre le lit accessible
 		}
+
+//		if (afficheObjectifPlease == 1) {
+//			StartCoroutine (AfficheObjectifC ());
+//		} 
+//		if (afficheObjectifPlease >= 2) {
+//			afficheObjectifPlease = 2;
+//		}
 
 		anim = mistObj.GetComponent<Animator> ();
 	}
@@ -53,5 +64,11 @@ public class MistCanSleep : MonoBehaviour {
 			// Animation de Mist qui s'asseoit, miaule, se couche, s'endort
 			// Fade out à la nouvelle scène (même maison, mais fenêtre ouverte)
 		}
+	}
+
+	IEnumerator AfficheObjectifC (){
+		leTriggerObjectifC.SetActive (true);
+		yield return new WaitForSeconds (3f);
+		leTriggerObjectifC.SetActive (false);
 	}
 }

@@ -11,18 +11,34 @@ public class GratteLePoteau : MonoBehaviour {
 	public Text ButtonYText;
 	public string TextePourLeBoutonY;
 
+	//public int jeGratte;
+	public float ledelai;
+
 	Animator anim;
+
+	private AudioManager audioManager;
+
 
 	// Use this for initialization
 	void Start () {
+		//jeGratte = 0;
+
 		anim = mistObj.GetComponent <Animator> ();
 		ButtonY.enabled = false;
+
+		audioManager = AudioManager.instance;
+		if (audioManager == null) {
+			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");	}
 	}
+
+
 
 
 	void OnTriggerStay (Collider other){
 		if (other.gameObject.tag == "NezDeChat" && (Input.GetButtonDown ("360_YButton"))) {
 			print ("Je gratte un poteau! Much fun!");
+			//audioManager.PlaySound ("GratteGratte");
+			StartCoroutine (MistGratte());
 			anim.SetBool ("Gratte", true);
 			ButtonY.enabled = false;
 		}
@@ -38,5 +54,13 @@ public class GratteLePoteau : MonoBehaviour {
 	void OnTriggerExit (Collider other){
 		ButtonY.enabled = false;
 		ButtonYText.text = "";
+	}
+
+	IEnumerator MistGratte(){
+		yield return new WaitForSeconds (ledelai);
+		audioManager.PlaySound ("GratteGratte");
+		gameObject.GetComponent<Collider> ().enabled = false;
+		yield return new WaitForSeconds (3f);
+		gameObject.GetComponent<Collider> ().enabled = true;
 	}
 }

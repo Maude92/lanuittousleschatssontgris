@@ -21,6 +21,9 @@ TagManager:
   - LitDouillet
   - FallingObjectSens3
   - FallingObjectSens4
+  - Raccoon
+  - Needle
+  - Milk
   layers:
   - Default
   - TransparentFX
