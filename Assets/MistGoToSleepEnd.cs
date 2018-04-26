@@ -83,7 +83,7 @@ public class MistGoToSleepEnd : MonoBehaviour {
 	}
 	IEnumerator Sleep (){
 		ButtonY.enabled = false;
-		yield return new WaitForSeconds (3f);
+		yield return new WaitForSeconds (2.3f);
 		isfading = true;
 		yield return new WaitForSeconds (2.3f);
 		isfadingtext = true;
