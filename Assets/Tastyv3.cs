@@ -45,6 +45,8 @@ public class Tastyv3 : MonoBehaviour {
 	public bool cameramoveforward = false;
 	public bool cameramovebackward = false;
 
+	private AudioManager audioManager;
+
 	// Use this for initialization
 	void Start () {
 		ButtonY.enabled = false;
@@ -57,6 +59,10 @@ public class Tastyv3 : MonoBehaviour {
 		//UIRaton.enabled = false;
 		RaccoonCamera.enabled = false;
 		TriggerUIRaton.SetActive (false);
+
+		audioManager = AudioManager.instance;
+		if (audioManager == null) {
+			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");	}
 
 	}
 
@@ -144,6 +150,11 @@ public class Tastyv3 : MonoBehaviour {
 
 
 	IEnumerator EatThis (){
+		if (gameObject.tag == "Milk") {
+			audioManager.PlaySound ("Mist_DrinkMilk");
+		} else if (gameObject.tag != "Milk") {
+			audioManager.PlaySound ("Mist_Eating");
+		}
 		ButtonY.enabled = false;
 		Mist.GetComponent<Xbox_Controls>().enabled = false;
 		Mist.GetComponent<MistStopWhenIdle>().enabled = false;

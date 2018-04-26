@@ -28,6 +28,8 @@ public class TastyVersionPC : MonoBehaviour {
 	public GameObject lessfood5;
 	public GameObject lessfood6;
 
+	private AudioManager audioManager;
+
 
 	// Use this for initialization
 	void Start () {
@@ -37,6 +39,10 @@ public class TastyVersionPC : MonoBehaviour {
 		//HBcode = GetComponent <HealthBar> ();
 		Ieat = false;
 		ButtonY.enabled = false;
+
+		audioManager = AudioManager.instance;
+		if (audioManager == null) {
+			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");	}
 	}
 
 	// Update is called once per frame
@@ -57,6 +63,11 @@ public class TastyVersionPC : MonoBehaviour {
 			Ieat = true;
 			print ("Je peux manger");
 			anim.SetBool ("Miam", true);
+//			if (gameObject.tag == "Milk") {
+//				audioManager.PlaySound ("Mist_DrinkMilk");
+//			} else if (gameObject.tag != "Milk") {
+//				(audioManager.PlaySound ("Mist_Eating"));
+//			}
 			StartCoroutine (EatThis ());
 			HealthBar.GetComponent<HealthBar>().LifeGain(NbPtsVieRedonner);
 
@@ -79,6 +90,11 @@ public class TastyVersionPC : MonoBehaviour {
 //	}
 //
 	IEnumerator EatThis (){
+		if (gameObject.tag == "Milk") {
+			audioManager.PlaySound ("Mist_DrinkMilk");
+		} else if (gameObject.tag != "Milk") {
+			audioManager.PlaySound ("Mist_Eating");
+		}
 		yield return new WaitForSeconds (0.7f);
 		ButtonY.enabled = false;
 		food1.SetActive (false);

@@ -10,6 +10,9 @@ public class PauseMenu : MonoBehaviour {
 
 	Xbox_Controls xboxcontrolspc;
 
+	public GameObject mainPauseUI;
+	public GameObject controlesPauseUI;
+
 	// Use this for initialization
 	void Start () {
 		modePause = false;
@@ -40,6 +43,8 @@ public class PauseMenu : MonoBehaviour {
 			//xboxcontrolspc.enabled = true;
 			pauseUI.SetActive (false);
 			Time.timeScale = 1;
+			mainPauseUI.SetActive (true);
+			controlesPauseUI.SetActive (false);
 		}
 			
 	}

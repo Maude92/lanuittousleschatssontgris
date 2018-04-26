@@ -18,15 +18,22 @@ public class AnimatedText : MonoBehaviour {
 	public bool reset = false;
 
 	public AudioSource SadSong;
+	public AudioSource levelmusique;
 
 	PauseMenu pausemenu;
 	//HealthBar healthbar;
 	public GameObject playerObj;
 	//public GameObject UIdevie;
 
+	public float timefade = 3f;
+
+	public bool pleaseFadeOut;
+	//public bool pleaseFadeIn;
+
 
 	// Use this for initialization
 	void Start () {
+		pleaseFadeOut = false;
 
 		SadSong.enabled = false;
 		SadSong.Stop ();
@@ -55,6 +62,9 @@ public class AnimatedText : MonoBehaviour {
 			reset = true;
 			SadSong.Stop ();
 			SadSong.enabled = false;
+			levelmusique.enabled = true;
+			levelmusique.Play();
+			levelmusique.volume += Time.deltaTime / timefade;
 		}
 
 		if (reset == true) {
@@ -68,6 +78,10 @@ public class AnimatedText : MonoBehaviour {
 		} else if (CeluiCi.alpha == 0) {
 			pausemenu.enabled = true;
 		}
+
+		if (pleaseFadeOut == true) {
+			levelmusique.volume -= Time.deltaTime / timefade;
+		}
 			
 	}
 
@@ -77,6 +91,9 @@ public class AnimatedText : MonoBehaviour {
 		
 
 	IEnumerator ShowText(){
+//		levelmusique.volume -= Time.deltaTime / timefade;
+		pleaseFadeOut = true;
+
 			SadSong.enabled = true;
 			SadSong.Play ();
 
@@ -99,7 +116,7 @@ public class AnimatedText : MonoBehaviour {
 
 	IEnumerator FadeIn() {
 		//yield return new WaitForSeconds (5f);
-
+		pleaseFadeOut = false;
 		float time = 1f;
 
 		//if (InstructionBoutonStart.alpha > 0) {

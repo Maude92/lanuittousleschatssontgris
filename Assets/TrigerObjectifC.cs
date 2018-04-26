@@ -11,34 +11,61 @@ public class TrigerObjectifC : MonoBehaviour {
 	public GameObject MoiMeme; 
 	public Text MonObjectif;
 
+	MistCanSleep mistcansleep;
+	public GameObject playerObj;
+
+	public int afficheObjectif;
+
 	// Use this for initialization
 	void Start () {
 		ObjectifGroup.alpha = 0;
 		AnimatedTextObjectifCode = TextObjectifC.GetComponent <AnimatedTextObjectif> ();
+
+		mistcansleep = playerObj.GetComponent<MistCanSleep> ();
+
+		afficheObjectif = 0;
 	}
+		
 
-	void OnTriggerEnter (Collider other){
-
-		if (other.gameObject.CompareTag("Player")){
-			StartCoroutine ("FadeInObjectifScreen");
-			AnimatedTextObjectifCode.PartObjectif ();
-		}
-
-	}
-
-	void OnTriggerExit (Collider other){
-		if (other.gameObject.CompareTag ("Player")) {
-			StartCoroutine("FadeOutObjectifScreen");
-		}
-	}
+//	void OnTriggerEnter (Collider other){
+//
+//		if (other.gameObject.CompareTag("Player")){
+//			StartCoroutine ("FadeInObjectifScreen");
+//			AnimatedTextObjectifCode.PartObjectif ();
+//		}
+//
+//	}
+//
+//	void OnTriggerExit (Collider other){
+//		if (other.gameObject.CompareTag ("Player")) {
+//			StartCoroutine("FadeOutObjectifScreen");
+//		}
+//	}
 
 	// Update is called once per frame
 	void Update () {
 
+		if (mistcansleep.countObjetsDisparus >= mistcansleep.nombreMagique) {
+			afficheObjectif++;
+		}
+
+		if (afficheObjectif == 1) {
+			StartCoroutine ("FadeInObjectifScreen");
+			AnimatedTextObjectifCode.PartObjectif ();
+		}
+
+		if (afficheObjectif == 250) {
+			StartCoroutine("FadeOutObjectifScreen");
+		}
+
+		if (afficheObjectif >= 251) {
+			afficheObjectif = 251;
+		}
+
 	}
 
 	IEnumerator FadeInObjectifScreen() {
-		//yield return new WaitForSeconds (5f);
+		yield return new WaitForSeconds (4f);
 
 		float time = 1.5f;
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
@@ -21,6 +22,9 @@ public class MainMenu : MonoBehaviour {
 
 	public int panneauInfo;
 
+	public Button backFlecheTry;
+	public Button nextFlecheTry;
+
 	// Use this for initialization
 	void Start () {
 		audioManager = AudioManager.instance;
@@ -41,8 +45,11 @@ public class MainMenu : MonoBehaviour {
 
 
 		if (panneauInfo == 1) {
-			nextFleche.SetActive (true);
-			backFleche.SetActive (false);
+			//nextFleche.SetActive (true);
+			//backFlecheTry.colors.disabledColor;
+			//backFleche.SetActive (false);
+//			nextFlecheTry.interactable = true;
+//			backFlecheTry.interactable = false;
 			info1.SetActive (true);
 			info2.SetActive (false);
 			info3.SetActive (false);
@@ -50,8 +57,10 @@ public class MainMenu : MonoBehaviour {
 		}
 
 		if (panneauInfo == 2) {
-			nextFleche.SetActive (true);
-			backFleche.SetActive (true);
+			//nextFleche.SetActive (true);
+			//backFleche.SetActive (true);
+//			nextFlecheTry.interactable = true;
+//			backFlecheTry.interactable = true;
 			info1.SetActive (false);
 			info2.SetActive (true);
 			info3.SetActive (false);
@@ -59,8 +68,10 @@ public class MainMenu : MonoBehaviour {
 		}
 
 		if (panneauInfo == 3) {
-			nextFleche.SetActive (true);
-			backFleche.SetActive (true);
+			//nextFleche.SetActive (true);
+			//backFleche.SetActive (true);
+//			nextFlecheTry.interactable = true;
+//			backFlecheTry.interactable = true;
 			info1.SetActive (false);
 			info2.SetActive (false);
 			info3.SetActive (true);
@@ -68,8 +79,10 @@ public class MainMenu : MonoBehaviour {
 		}
 
 		if (panneauInfo == 4) {
-			nextFleche.SetActive (false);
-			backFleche.SetActive (true);
+			//nextFleche.SetActive (false);
+			//backFleche.SetActive (true);
+//			nextFlecheTry.interactable = false;
+//			backFlecheTry.interactable = true;
 			info1.SetActive (false);
 			info2.SetActive (false);
 			info3.SetActive (false);

@@ -8,6 +8,9 @@ public class MenuPause : MonoBehaviour {
 	PauseMenu pausemenu;
 	public GameObject player;
 
+	public GameObject mainUIPause;
+	public GameObject controlesUIPause;
+
 	//public GameObject controlesUI;
 
 	// Use this for initialization
@@ -41,6 +44,13 @@ public class MenuPause : MonoBehaviour {
 	}
 
 	public void Controles(){
-		print ("Les contrôles affichent!");
+		mainUIPause.SetActive (false);
+		controlesUIPause.SetActive (true);
+		//print ("Les contrôles affichent!");
+	}
+
+	public void ReturnFromControles(){
+		controlesUIPause.SetActive (false);
+		mainUIPause.SetActive (true);
 	}
 }

@@ -25,10 +25,16 @@ public class Adieu : MonoBehaviour {
 	MistCanSleep mistcansleep;
 	public GameObject player;
 
+	private AudioManager audioManager;
+
 
 	//public int childIndex;
 
 	void Start (){
+		audioManager = AudioManager.instance;
+		if (audioManager == null) {
+			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");	}
+
 		alphaColor = new Color(1.0f, 1.0f, 1.0f, 0f);
 		regColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		//meshobj = GetComponent<MeshRenderer> ();
@@ -75,6 +81,7 @@ public class Adieu : MonoBehaviour {
 		if (other.gameObject.tag == "Player") {
 			mistcansleep.countObjetsDisparus++;
 			opaqueobjet.SetActive (false);
+			audioManager.PlaySound ("Fade_Meuble");
 			StartCoroutine(Lerp_MeshRenderer_Color(lerpDuration, regColor, alphaColor));
 		}
 	

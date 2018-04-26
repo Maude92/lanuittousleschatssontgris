@@ -12,9 +12,15 @@ public class AfficheInfos : MonoBehaviour {
 	public float tempsAffiche;
 	public bool fadeInfos;
 
+	private AudioManager audioManager;
+
 	// Use this for initialization
 	void Start () {
 		panneauInfos.alpha = 0;
+
+		audioManager = AudioManager.instance;
+		if (audioManager == null) {
+			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");	}
 	}
 	
 	// Update is called once per frame
@@ -28,6 +34,7 @@ public class AfficheInfos : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other){
 		if (other.gameObject.tag == "Player") {
+			audioManager.PlaySound ("PanneauInfo");
 			UIinfos.SetActive (true);
 			fadeInfos = true;
 		}
