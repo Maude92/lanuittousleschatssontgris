@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class MistCanSleep : MonoBehaviour {
 
@@ -20,8 +21,11 @@ public class MistCanSleep : MonoBehaviour {
 
 	public int afficheObjectifPlease;
 
+	//public PlayableDirector Cinematique2;
+
 	// Use this for initialization
 	void Start () {
+		//Cinematique2.Stop ();
 		countObjetsDisparus = 0;
 		afficheObjectifPlease = 0;
 		goToSleep = false;
@@ -59,6 +63,7 @@ public class MistCanSleep : MonoBehaviour {
 			anim.SetBool ("DodoTime", true);
 			goToSleep = true;
 			ButtonY.enabled = false;
+			//Cinematique2.Play ();
 			// Il faut que le UI de Y affiche
 			// Déclenche une cinématique
 			// Animation de Mist qui s'asseoit, miaule, se couche, s'endort
