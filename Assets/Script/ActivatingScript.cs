@@ -7,7 +7,7 @@ public class ActivatingScript : MonoBehaviour {
 	public CanvasGroup panneauInfos;
 	public GameObject UIinfos;
 
-
+	public AudioSource grincement;
 
 	public GameObject Tube;
 	public GameObject UI;
@@ -24,6 +24,8 @@ public class ActivatingScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		grincement.enabled = false;
+
 		panneauInfos.alpha = 0;
 
 		ToT = Tube.GetComponent<TorqueOnTube> ();
@@ -44,6 +46,8 @@ public class ActivatingScript : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider col){
 		if (col.tag == "Player") {
+			grincement.enabled = true;
+			grincement.Play ();
 			UIinfos.SetActive (true);
 			UI.SetActive (true);
 			panneauInfos.alpha = 1;

@@ -81,8 +81,9 @@ public class HealthBar : MonoBehaviour {
 		//Circle.color = HBImage.GetComponent<Image> ().color;
 		Circle.fillAmount = 1;
 
-		NbVieRestant = 9;
-
+		//NbVieRestant = 9;
+		NbVieRestant = Staticlife.numberoflives;
+		CheckingLife ();
 		UIvie.alpha = 0;
 		RedDamage.alpha = 0;
 
