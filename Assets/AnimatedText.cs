@@ -17,6 +17,8 @@ public class AnimatedText : MonoBehaviour {
 	public bool death = false;
 	public bool reset = false;
 
+	public bool repartMusique;
+
 	public AudioSource SadSong;
 	public AudioSource levelmusique;
 
@@ -31,8 +33,12 @@ public class AnimatedText : MonoBehaviour {
 	//public bool pleaseFadeIn;
 
 
+
 	// Use this for initialization
 	void Start () {
+
+		repartMusique = false;
+
 		pleaseFadeOut = false;
 
 		SadSong.enabled = false;
@@ -62,9 +68,20 @@ public class AnimatedText : MonoBehaviour {
 			reset = true;
 			SadSong.Stop ();
 			SadSong.enabled = false;
+			repartMusique = true;
 			levelmusique.enabled = true;
 			levelmusique.Play();
+//			levelmusique.volume += Time.deltaTime / timefade;
+		}
+
+		if (repartMusique == true) {
+//			levelmusique.enabled = true;
+//			levelmusique.Play();
 			levelmusique.volume += Time.deltaTime / timefade;
+			if (levelmusique.volume >= 0.85f) {
+				levelmusique.volume = 0.85f;
+				repartMusique = false;
+			}
 		}
 
 		if (reset == true) {
@@ -116,6 +133,7 @@ public class AnimatedText : MonoBehaviour {
 
 	IEnumerator FadeIn() {
 		//yield return new WaitForSeconds (5f);
+		//pausemenu.enabled = false;
 		pleaseFadeOut = false;
 		float time = 1f;
 

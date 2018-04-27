@@ -63,6 +63,10 @@ public class MistStopWhenIdle : MonoBehaviour {
 			audioManager.PlaySound ("MiawIdle");
 		}
 
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("B_idle") && Input.GetButton ("360_RightThumbstickButton")) {
+			anim.SetBool ("Surprise", true);
+		}
+
 
 	}
 		

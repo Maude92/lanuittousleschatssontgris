@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-//using XInputDotNetPure;
+using XInputDotNetPure;
 
 public class HealthBar : MonoBehaviour {
    
@@ -45,9 +45,9 @@ public class HealthBar : MonoBehaviour {
 	public GameObject mistObj;
 
 	//Pour Vibration
-//	PlayerIndex playerIndex;
-//	GamePadState state;
-//	GamePadState prevState;
+	PlayerIndex playerIndex;
+	GamePadState state;
+	GamePadState prevState;
 
 	//Pour écran perte de vie
 	public GameObject EcranDePerteDeVie;
@@ -100,9 +100,9 @@ public class HealthBar : MonoBehaviour {
     {
 
 //		//Vibration
-//		GamePad.SetVibration (playerIndex, 5, 5);
-//		GamePad.SetVibration (playerIndex, 0, 0);
-//		StartCoroutine (VibreLaManette());
+		GamePad.SetVibration (playerIndex, 5, 5);
+		GamePad.SetVibration (playerIndex, 0, 0);
+		StartCoroutine (VibreLaManette());
 
 		UIvie.alpha = 1;
 		RedDamage.alpha = 1;
@@ -386,9 +386,9 @@ public class HealthBar : MonoBehaviour {
 		float time2 = 1f;
 
 		if (RedDamage.alpha > 0) {
-			//GamePad.SetVibration (playerIndex, 1, 1);
+			GamePad.SetVibration (playerIndex, 1, 1);
 			yield return new WaitForSeconds (0.05f);
-			//GamePad.SetVibration (playerIndex, 0, 0);
+			GamePad.SetVibration (playerIndex, 0, 0);
 			RedDamage.alpha -= Time.deltaTime / time2;
 			if (RedDamage.alpha < 0) {
 				RedDamage.alpha = 0;
@@ -417,10 +417,10 @@ public class HealthBar : MonoBehaviour {
 	}
 
 
-//	IEnumerator VibreLaManette(){
-//		GamePad.SetVibration (playerIndex, 1, 1);
-//		yield return new WaitForSeconds (0.1f);
-//		GamePad.SetVibration (playerIndex, 0, 0);
-//	}
+	IEnumerator VibreLaManette(){
+		GamePad.SetVibration (playerIndex, 1, 1);
+		yield return new WaitForSeconds (0.1f);
+		GamePad.SetVibration (playerIndex, 0, 0);
+	}
 
 }

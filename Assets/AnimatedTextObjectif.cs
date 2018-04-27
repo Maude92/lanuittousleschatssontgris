@@ -47,7 +47,7 @@ public class AnimatedTextObjectif : MonoBehaviour {
 		Invoke ("SonObjectif", 0.6f);
 		ObjectifRappelUIVie.text = fullText;
 		objectifRappelMenuPause.text = fullText;
-		if (fullText == "Va dormir, peut-être qu'ils reviendront demain ") {
+		if (fullText == "Va dormir, peut-être qu'ils reviendront demain... ") {
 			ObjectifRappelUIVie.text = "Va dormir ";
 		}
 
