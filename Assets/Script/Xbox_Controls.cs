@@ -260,6 +260,10 @@ public class Xbox_Controls : MonoBehaviour {
 			audioSource.Play ();
 		}
 
+//		if (Input.GetButton ("360_RightThumbstickButton")) {
+//			animatorMist.SetBool ("Surprise", true);
+//		}
+
 
 		// Bouton X (... 2)
 //		if (Input.GetButtonDown ("360_XButton")){
