@@ -11,15 +11,26 @@ public class TrigerObjectifA : MonoBehaviour {
 	public GameObject MoiMeme;
 	public Text MonObjectif;
 
+	public float time = 0f;
+
 	// Use this for initialization
 	void Start () {
 		ObjectifGroup.alpha = 0;
 		AnimatedTextObjectifCode = TextObjectifA.GetComponent <AnimatedTextObjectif> ();
 	}
 
+	void Update () {
+//		time -= Time.deltaTime;
+//
+//		if (time <= 0) {
+//			StartCoroutine("FadeOutObjectifScreen");
+//		}
+	}
+
 	void OnTriggerEnter (Collider other){
 
 		if (other.gameObject.CompareTag("Player")){
+			//time = 7f;
 			StartCoroutine ("FadeInObjectifScreen");
 			AnimatedTextObjectifCode.PartObjectif ();
 		}
@@ -33,9 +44,6 @@ public class TrigerObjectifA : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	IEnumerator FadeInObjectifScreen() {
 		//yield return new WaitForSeconds (5f);

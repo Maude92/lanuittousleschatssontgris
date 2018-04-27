@@ -54,18 +54,18 @@ public class TrigerObjectifC : MonoBehaviour {
 			AnimatedTextObjectifCode.PartObjectif ();
 		}
 
-		if (afficheObjectif == 250) {
+		if (afficheObjectif == 500) {
 			StartCoroutine("FadeOutObjectifScreen");
 		}
 
-		if (afficheObjectif >= 251) {
-			afficheObjectif = 251;
+		if (afficheObjectif >= 501) {
+			afficheObjectif = 501;
 		}
 
 	}
 
 	IEnumerator FadeInObjectifScreen() {
-		yield return new WaitForSeconds (4f);
+		yield return new WaitForSeconds (0.25f);
 
 		float time = 1.5f;
 

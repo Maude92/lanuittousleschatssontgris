@@ -78,8 +78,8 @@ public class AnimatedText : MonoBehaviour {
 //			levelmusique.enabled = true;
 //			levelmusique.Play();
 			levelmusique.volume += Time.deltaTime / timefade;
-			if (levelmusique.volume >= 0.85f) {
-				levelmusique.volume = 0.85f;
+			if (levelmusique.volume >= 0.75f) {
+				levelmusique.volume = 0.75f;
 				repartMusique = false;
 			}
 		}
