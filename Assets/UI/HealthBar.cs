@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using XInputDotNetPure;
+//using XInputDotNetPure;
 
 public class HealthBar : MonoBehaviour {
    
@@ -45,9 +45,9 @@ public class HealthBar : MonoBehaviour {
 	public GameObject mistObj;
 
 	//Pour Vibration
-	PlayerIndex playerIndex;
-	GamePadState state;
-	GamePadState prevState;
+//	PlayerIndex playerIndex;
+//	GamePadState state;
+//	GamePadState prevState;
 
 	//Pour écran perte de vie
 	public GameObject EcranDePerteDeVie;
@@ -346,12 +346,12 @@ public class HealthBar : MonoBehaviour {
 
 
 
-		if (currentHealth <= 25 && !LowVieSound.isPlaying) {
+		if (currentHealth <= 9 && !LowVieSound.isPlaying) {
 			LowVieSound.enabled = true;
 			LowVieSound.Play ();
 		}
 
-		if (currentHealth > 25) {
+		if (currentHealth > 9) {
 			LowVieSound.Stop ();
 			LowVieSound.enabled = false;
 		}
@@ -386,9 +386,9 @@ public class HealthBar : MonoBehaviour {
 		float time2 = 1f;
 
 		if (RedDamage.alpha > 0) {
-			GamePad.SetVibration (playerIndex, 1, 1);
+			//GamePad.SetVibration (playerIndex, 1, 1);
 			yield return new WaitForSeconds (0.05f);
-			GamePad.SetVibration (playerIndex, 0, 0);
+			//GamePad.SetVibration (playerIndex, 0, 0);
 			RedDamage.alpha -= Time.deltaTime / time2;
 			if (RedDamage.alpha < 0) {
 				RedDamage.alpha = 0;
@@ -417,10 +417,10 @@ public class HealthBar : MonoBehaviour {
 	}
 
 
-	IEnumerator VibreLaManette(){
-		GamePad.SetVibration (playerIndex, 1, 1);
-		yield return new WaitForSeconds (0.1f);
-		GamePad.SetVibration (playerIndex, 0, 0);
-	}
+//	IEnumerator VibreLaManette(){
+//		GamePad.SetVibration (playerIndex, 1, 1);
+//		yield return new WaitForSeconds (0.1f);
+//		GamePad.SetVibration (playerIndex, 0, 0);
+//	}
 
 }
