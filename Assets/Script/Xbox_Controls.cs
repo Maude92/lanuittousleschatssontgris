@@ -110,7 +110,7 @@ public class Xbox_Controls : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		print ("Mes Gachettes sont " + GachetteOn);
+		//print ("Mes Gachettes sont " + GachetteOn);
 		SoundEffect ();
 		
 		//rb.velocity = new Vector3(0,0,5);
@@ -179,21 +179,21 @@ public class Xbox_Controls : MonoBehaviour {
 	// POUR FAIRE PIVOTER LA TÊTE
 		// Tête à gauche
 		if (Input.GetAxis ("RightStick") < -0.1f) {
-			print ("Allo! Tête à gauche.");
+			//print ("Allo! Tête à gauche.");
 			animatorMist.SetFloat ("TurnG", 1);
 		} else
 			animatorMist.SetFloat ("TurnG", 0);
 
 		// Tête à droite
 		if (Input.GetAxis ("RightStick") > 0.1f) {
-			print ("Allo! Tête à droite.");
+			//print ("Allo! Tête à droite.");
 			animatorMist.SetFloat ("TurnD", 1);
 		} else
 			animatorMist.SetFloat ("TurnD", 0);
 
 		// Tête en haut
 		if (Input.GetAxis ("RightStickY") > 0.1f) {
-			print ("Allo! Tête en haut.");
+			//print ("Allo! Tête en haut.");
 			animatorMist.SetFloat ("TurnU", 1);
 		} else 
 			animatorMist.SetFloat ("TurnU", 0);
@@ -234,7 +234,7 @@ public class Xbox_Controls : MonoBehaviour {
 	
 		// Bouton A (joystick button 0)
 		if (Input.GetButtonDown ("360_AButton") && cubegrounded.isGrounded == true && isjumping == false){
-			print ("Je pèse sur: le bouton A!");
+			//print ("Je pèse sur: le bouton A!");
 			Ijump = true;
 			//jesaute = true;
 				//animatorMist.SetTrigger ("Jump");
@@ -271,9 +271,9 @@ public class Xbox_Controls : MonoBehaviour {
 		}
 
 		// Bouton Y (... 3)
-		if (Input.GetButtonDown ("360_YButton")){
-			print ("Je pèse sur: le bouton Y!");
-		}
+//		if (Input.GetButtonDown ("360_YButton")){
+//			//print ("Je pèse sur: le bouton Y!");
+//		}
 
 		// Left Bumper (... 4)
 //		if (Input.GetButtonDown ("360_LeftBumper")){
@@ -285,25 +285,25 @@ public class Xbox_Controls : MonoBehaviour {
 //			print ("Je pèse sur: right bumper!");
 //		}
 
-		// Back button (... 6)
-		if (Input.GetButtonDown ("360_BackButton")){
-			print ("Je pèse sur: back button!");
-		}
+//		// Back button (... 6)
+//		if (Input.GetButtonDown ("360_BackButton")){
+//			print ("Je pèse sur: back button!");
+//		}
 
 		// Start button (... 7)
 //		if (Input.GetButtonDown ("360_StartButton")){
 //			print ("Je pèse sur: start button!");
 //		}
 
-		// Left Thumbstick (... 8)
-		if (Input.GetButtonDown ("360_LeftThumbstickButton")){
-			print ("Je pèse sur: left thumbstick button!");
-		}
-
-		// Right thumbstick (... 9)
-		if (Input.GetButtonDown ("360_RightThumbstickButton")){
-			print ("Je pèse sur: right thumbstick button!");
-		}
+//		// Left Thumbstick (... 8)
+//		if (Input.GetButtonDown ("360_LeftThumbstickButton")){
+//			print ("Je pèse sur: left thumbstick button!");
+//		}
+//
+//		// Right thumbstick (... 9)
+//		if (Input.GetButtonDown ("360_RightThumbstickButton")){
+//			print ("Je pèse sur: right thumbstick button!");
+//		}
 
 		if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) {
 			EnMouvement = true;
@@ -325,21 +325,21 @@ public class Xbox_Controls : MonoBehaviour {
 
 		// The D-PAD is read from the 6th (horizontal) and 7th (vertical) joystick axes and from a sensitivity rating from -1 to 1, similar to the Triggers
 		//RIGHT d-pad button is activated when pressure is above 0, or the dead zone
-		if (Input.GetAxis ("360_HorizontalDPAD")>0.001){
-			print ("Right D-PAD button!");
-		}
-		// LEFT d-pad....
-		if(Input.GetAxis ("360_HorizontalDPAD")<0){
-			print ("Left D-PAD button!");
-		}
-		// UP d-pad...
-		if (Input.GetAxis("360_VerticalDPAD")>0.001){
-			print ("Up D-PAD button!");
-		}
-		// DOWN d-pad...
-		if (Input.GetAxis("360_VerticalDPAD")<0){
-			print ("Down D-PAD button!");
-		}
+//		if (Input.GetAxis ("360_HorizontalDPAD")>0.001){
+//			print ("Right D-PAD button!");
+//		}
+//		// LEFT d-pad....
+//		if(Input.GetAxis ("360_HorizontalDPAD")<0){
+//			print ("Left D-PAD button!");
+//		}
+//		// UP d-pad...
+//		if (Input.GetAxis("360_VerticalDPAD")>0.001){
+//			print ("Up D-PAD button!");
+//		}
+//		// DOWN d-pad...
+//		if (Input.GetAxis("360_VerticalDPAD")<0){
+//			print ("Down D-PAD button!");
+//		}
 
 
 		// LUMP ET COURSE!!
@@ -364,7 +364,7 @@ public class Xbox_Controls : MonoBehaviour {
 
 		//Trigger droite (R)
 		if (Input.GetAxis ("360_TriggerR") > 0.001 || Input.GetAxis ("360_TriggerL") > 0.001) {
-			print ("Je pèse sur le trigger droit!!");
+			//print ("Je pèse sur le trigger droit!!");
 			GachetteOn = true;
 			PlayerMovementSpeed = runSpeed;
 			jumpforce = 240;
@@ -412,7 +412,7 @@ public class Xbox_Controls : MonoBehaviour {
 			//MARCHE ET COURSE EAU			** Attention, tag liquide, layer ground!!
 			if (hit.transform.tag == "Liquide" && EnMouvement == true && !WalkWater.isPlaying) {
 				//audioManager.PlaySound ("Mist_Nage2");
-				print ("Je touche à de l'eau et je bouge !");
+				//print ("Je touche à de l'eau et je bouge !");
 				WalkWater.enabled = true;
 				WalkWater.Play ();
 
@@ -427,7 +427,7 @@ public class Xbox_Controls : MonoBehaviour {
 
 			//MARCHE GAZON
 			if (hit.transform.tag == "Gazon" && EnMouvement == true && !WalkGazon.isPlaying) {
-				print ("Je marche sur le gazon et je fais du bruit");
+				//print ("Je marche sur le gazon et je fais du bruit");
 				WalkGazon.enabled = true;
 				WalkGazon.Play ();
 
@@ -441,7 +441,7 @@ public class Xbox_Controls : MonoBehaviour {
 
 			//COURSE GAZON
 			if (hit.transform.tag == "Gazon" && EnMouvement == true && !RunGazon.isPlaying && GachetteOn == true) {
-				print ("Je cours sur le sol et je fais du bruit !");
+				//print ("Je cours sur le sol et je fais du bruit !");
 				RunGazon.enabled = true;
 				RunGazon.Play ();
 
@@ -464,7 +464,7 @@ public class Xbox_Controls : MonoBehaviour {
 
 			//MARCHE SOL
 			if ((hit.transform.tag == "Solide" || hit.transform.tag == "SupportFallingObject") && EnMouvement == true && !WalkGround.isPlaying) {
-				print ("Je touche au sol et je fais du bruit !");
+				//print ("Je touche au sol et je fais du bruit !");
 				WalkGround.enabled = true;
 				WalkGround.Play ();
 
@@ -479,7 +479,7 @@ public class Xbox_Controls : MonoBehaviour {
 
 			//COURSE SOL
 			if ((hit.transform.tag == "Solide" || hit.transform.tag == "SupportFallingObject") && EnMouvement == true && !RunGround.isPlaying && GachetteOn == true) {
-				print ("Je cours sur le sol et je fais du bruit !");
+				//print ("Je cours sur le sol et je fais du bruit !");
 				RunGround.enabled = true;
 				RunGround.Play ();
 
@@ -624,7 +624,7 @@ public class Xbox_Controls : MonoBehaviour {
 		FumeeAtterrissage.SetActive(true);
 		yield return new WaitForSeconds (2f);
 		FumeeAtterrissage.SetActive (false);
-		print ("Je fonctionne");
+		//print ("Je fonctionne");
 	}
 
 

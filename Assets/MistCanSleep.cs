@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MistCanSleep : MonoBehaviour {
 
@@ -21,14 +23,21 @@ public class MistCanSleep : MonoBehaviour {
 
 	public int afficheObjectifPlease;
 
+	public Image Black;
+
+	public bool pleaseFadeToBlack;
+
 	//public PlayableDirector Cinematique2;
 
 	// Use this for initialization
 	void Start () {
 		//Cinematique2.Stop ();
+		pleaseFadeToBlack = false;
 		countObjetsDisparus = 0;
 		afficheObjectifPlease = 0;
 		goToSleep = false;
+
+		anim = mistObj.GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -47,7 +56,11 @@ public class MistCanSleep : MonoBehaviour {
 //			afficheObjectifPlease = 2;
 //		}
 
-		anim = mistObj.GetComponent<Animator> ();
+		if (pleaseFadeToBlack == true) {
+			Color c = Black.color;
+			c.a += (Time.deltaTime * 2f);
+			Black.color = c;
+		}
 	}
 
 	void OnTriggerEnter (Collider other){
@@ -63,6 +76,7 @@ public class MistCanSleep : MonoBehaviour {
 			anim.SetBool ("DodoTime", true);
 			goToSleep = true;
 			ButtonY.enabled = false;
+			StartCoroutine (FadeToNextScreen ());
 			//Cinematique2.Play ();
 			// Il faut que le UI de Y affiche
 			// Déclenche une cinématique
@@ -75,5 +89,12 @@ public class MistCanSleep : MonoBehaviour {
 		leTriggerObjectifC.SetActive (true);
 		yield return new WaitForSeconds (3f);
 		leTriggerObjectifC.SetActive (false);
+	}
+
+	IEnumerator FadeToNextScreen(){
+		yield return new WaitForSeconds (3f);
+		pleaseFadeToBlack = true;
+		yield return new WaitForSeconds (3f);
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 	}
 }

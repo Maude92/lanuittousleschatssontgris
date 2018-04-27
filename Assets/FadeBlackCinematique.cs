@@ -15,7 +15,7 @@ public class FadeBlackCinematique : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Color c = Black.color;
-		c.a -= (Time.deltaTime * 3f);
+		c.a -= (Time.deltaTime * 2f);
 		Black.color = c;
 	}
 }
