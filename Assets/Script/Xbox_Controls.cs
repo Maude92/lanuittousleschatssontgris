@@ -86,8 +86,8 @@ public class Xbox_Controls : MonoBehaviour {
 
 
 		//Particules
-		FumeeAtterrissage.SetActive(false);
-		FumeeRun.SetActive (false);
+		//FumeeAtterrissage.SetActive(false);
+		//FumeeRun.SetActive (false);
 
 		// Sons
 		WalkGround.enabled = false;
@@ -252,7 +252,7 @@ public class Xbox_Controls : MonoBehaviour {
 //		}
 
 		// BOUTON B -> Random miaw quand on appuie sur le bouton
-		if (Input.GetButtonDown ("360_BButton") && (animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_idle") || animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_walk") || animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_walk 2") || animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_run"))){
+		if (Input.GetButtonDown ("360_BButton") && !audioSource.isPlaying && (animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_idle") || animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_walk") || animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_walk 2") || animatorMist.GetCurrentAnimatorStateInfo (0).IsName ("A_run"))){
 			animatorMist.SetBool ("Miaw", true);
 			int indexMiaw = Random.Range (0, miaulement.Length);
 			miaulementClip = miaulement [indexMiaw];
@@ -459,7 +459,7 @@ public class Xbox_Controls : MonoBehaviour {
 				WalkGazon.Stop ();
 
 				//Particules Course
-				FumeeRun.SetActive (true);
+				//FumeeRun.SetActive (true);
 			} 
 
 			//MARCHE SOL
@@ -497,7 +497,7 @@ public class Xbox_Controls : MonoBehaviour {
 				RunGazon.Stop ();
 
 				//Particules Course
-				FumeeRun.SetActive (true);
+				//FumeeRun.SetActive (true);
 			} 
 
 
@@ -542,7 +542,7 @@ public class Xbox_Controls : MonoBehaviour {
 		if (GachetteOn == false) {
 			RunGround.enabled = false;
 			RunGround.Stop ();
-			FumeeRun.SetActive (false);
+			//FumeeRun.SetActive (false);
 
 			RunGazon.enabled = false;
 			RunGazon.Stop ();
@@ -560,9 +560,9 @@ public class Xbox_Controls : MonoBehaviour {
 
 		}
 
-		if (GachetteOn && Ijump == true) {
-			FumeeRun.SetActive (false);
-		}
+//		if (GachetteOn && Ijump == true) {
+//			FumeeRun.SetActive (false);
+//		}
 	}
 
 
@@ -601,11 +601,7 @@ public class Xbox_Controls : MonoBehaviour {
 	void Splash (){
 		audioManager.PlaySound ("Mist_Splash");
 	}
-
-
-//	void JumpMist(){
-//		rb.AddForce (new Vector3 (0, jumpforce, 0));
-//	}
+		
 
 	IEnumerator JumpMistRoutine(){
 		isjumping = true;
@@ -626,37 +622,5 @@ public class Xbox_Controls : MonoBehaviour {
 		FumeeAtterrissage.SetActive (false);
 		//print ("Je fonctionne");
 	}
-
-
-
-	//	void LumpUP (){
-	//		print ("Je Lump vers le haut ! Wouhou !");
-	//	}
-	//
-	//	void LumpDown (){
-	//		print ("Je Lump vers le bas ! Wouhou !");
-	//	}
-
-
-
-	//	// TEST POUR LA QUEUE QUI BOUGE QUAND EN ÉQUILIBRE
-	//	void OnTriggerStay (Collider other){
-	//		if (Input.GetButton ("360_LeftBumper") && other.gameObject.tag == "Balancing") {
-	//			print ("Je pèse sur: left bumper pis je suis sur un objet balancing!");
-	//			//animatorMist.SetBool ("TailG", true);
-	//		} 
-	////		else{
-	////			animatorMist.SetBool ("TailG", false);
-	////	}
-	//
-	//		if (Input.GetButton ("360_RightBumper") && other.gameObject.tag == "Balancing") {
-	//			print ("Je pèse sur: right bumper pis je suis sur un objet balancing!");
-	//			//animatorMist.SetBool ("TailD", true);
-	//		} 
-	////		else {
-	////			animatorMist.SetBool ("TailD", false);
-	////		}
-	//	}
-
-
+		
 }
