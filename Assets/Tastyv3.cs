@@ -10,10 +10,13 @@ public class Tastyv3 : MonoBehaviour {
 	public Canvas ButtonY;
 	//public Canvas UIRaton;
 	public GameObject TriggerUIRaton;
+	public GameObject barricade;
 
 	public float timeUI = -1f;
 
 	Animator anim;
+
+	Animator animBarricade;
 
 	//public GameObject thisfood;
 	public GameObject lessfood1;
@@ -52,6 +55,8 @@ public class Tastyv3 : MonoBehaviour {
 		ButtonY.enabled = false;
 		block.GetComponent<NavMeshAgent> ().enabled = false;
 		anim = mistObj.GetComponent <Animator> ();
+		animBarricade = barricade.GetComponent<Animator> ();
+
 		raccoon1.SetActive (false);
 		raccoon2.SetActive (false);
 		raccooncutscene1.SetActive (false);
@@ -181,10 +186,13 @@ public class Tastyv3 : MonoBehaviour {
 		lessfood4.SetActive (false);
 		cameramoveforward = false;
 		GetComponent<AudioSource>().PlayOneShot (dramatic,1);
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (1.2f);
+		animBarricade.SetBool ("MoveOut", true);
+		yield return new WaitForSeconds (0.3f);
 		RaccoonCamera.GetComponent<CameraLookatRaccoon> ().enabled = false;
 		cameramovebackward = true;
 		lessfood5.SetActive (false);
+
 		yield return new WaitForSeconds (0.21f);
 		//cameramovebackward = false;
 		yield return new WaitForSeconds (0.21f);
@@ -219,6 +227,11 @@ public class Tastyv3 : MonoBehaviour {
 		raccoon2.SetActive (true);
 		TriggerUIRaton.SetActive (true);
 		timeUI = 5f;
+		yield return new WaitForSeconds (5f);
+		animBarricade.SetBool ("MoveOut", false);
+		animBarricade.SetBool ("MoveIn", true);
+		yield return new WaitForSeconds (0.2f);
+		animBarricade.SetBool ("MoveIn", false);
 		//thisfood.SetActive (false);
 		//Ieat = false;
 	}
