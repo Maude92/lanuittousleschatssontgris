@@ -132,7 +132,7 @@ public class HealthBar : MonoBehaviour {
 			if (NbVieRestant > 0) {
 				//Fade to black
 				//Load au dernier checkpoint
-				currentHealth = 100;			
+				currentHealth = maxHealth;			
 				health = 100;					
 			 	HBImage.GetComponent<Image>().fillAmount = health;
 				HBImage.GetComponent<Image> ().color = Color.Lerp (lowColor, fullColor, HBImage.GetComponent<Image>().fillAmount);
@@ -166,8 +166,8 @@ public class HealthBar : MonoBehaviour {
 		StartCoroutine("Soin");
 		//audioManager.PlaySound ("Mist_Eating");
 		currentHealth = (currentHealth + gainAmount);
-		if (currentHealth > 100) {
-			currentHealth = 100;
+		if (currentHealth > maxHealth) {
+			currentHealth = maxHealth;
 		}
 		healtGain = (currentHealth) / maxHealth;
 		currentHealth = Mathf.Round(currentHealth);

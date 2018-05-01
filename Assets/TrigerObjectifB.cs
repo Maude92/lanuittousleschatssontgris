@@ -29,7 +29,9 @@ public class TrigerObjectifB : MonoBehaviour {
 	void OnTriggerExit (Collider other){
 		if (other.gameObject.CompareTag ("Player")) {
 			StartCoroutine("FadeOutObjectifScreen");
+			//MonObjectif.text = "";  //MAUDE !!! ESSAYE ICI VOIR SI ÇA RÈGLE LE BUG DE LA SUPERPOSITION
 		}
+		//MonObjectif.text = ""; //OU ESSAYE ICI SI LA PREMIÈRE ENDROIT NE FONCTIONNAIT PAS !!
 	}
 
 	// Update is called once per frame

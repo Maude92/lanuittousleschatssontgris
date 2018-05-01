@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//C'est le code pour le DeathScreen lorsque le joueur perd une vie
+
 public class AnimatedText : MonoBehaviour {
 
 	private AudioManager audioManager;
 
 	public float delay = 0.1f;
-	public string fullText;
+	public string fullText = "Mist a perdu une de ses 9 vies ";
 	private string currentText = "";
+	public Text EndroitOuLeTexteDoitApparaitre;
 
 	public CanvasGroup InstructionBoutonStart;
 	public CanvasGroup CeluiCi;
@@ -23,9 +26,9 @@ public class AnimatedText : MonoBehaviour {
 	public AudioSource levelmusique;
 
 	PauseMenu pausemenu;
-	//HealthBar healthbar;
 	public GameObject playerObj;
-	//public GameObject UIdevie;
+
+	public GameObject CodeUIvie;
 
 	public float timefade = 3f;
 
@@ -54,7 +57,6 @@ public class AnimatedText : MonoBehaviour {
 		}
 
 		pausemenu = playerObj.GetComponent <PauseMenu> ();
-		//healthbar = UIdevie.GetComponent<HealthBar> ();
 	
 	}
 
@@ -71,12 +73,14 @@ public class AnimatedText : MonoBehaviour {
 			repartMusique = true;
 			levelmusique.enabled = true;
 			levelmusique.Play();
-//			levelmusique.volume += Time.deltaTime / timefade;
+
+		}
+
+		if (CodeUIvie.GetComponent<HealthBar> ().NbVieRestant == 0) {
+			fullText = "Mist a perdu toutes ses vies... ";
 		}
 
 		if (repartMusique == true) {
-//			levelmusique.enabled = true;
-//			levelmusique.Play();
 			levelmusique.volume += Time.deltaTime / timefade;
 			if (levelmusique.volume >= 0.75f) {
 				levelmusique.volume = 0.75f;
@@ -86,6 +90,7 @@ public class AnimatedText : MonoBehaviour {
 
 		if (reset == true) {
 			currentText = "";
+			EndroitOuLeTexteDoitApparaitre.text = "";
 			InstructionBoutonStart.alpha = 0;
 			reset = false;
 		}
@@ -99,6 +104,7 @@ public class AnimatedText : MonoBehaviour {
 		if (pleaseFadeOut == true) {
 			levelmusique.volume -= Time.deltaTime / timefade;
 		}
+			
 			
 	}
 
@@ -125,10 +131,6 @@ public class AnimatedText : MonoBehaviour {
 			audioManager.PlaySound ("GameOver_Screen");
 			yield return new WaitForSeconds (0.1f);
 			StartCoroutine (FadeIn ());
-//		if (healthbar.NbVieRestant > 0) {
-//			healthbar.currentHealth = 100;
-//			healthbar.health = 100;
-//		}
 	}
 
 	IEnumerator FadeIn() {
