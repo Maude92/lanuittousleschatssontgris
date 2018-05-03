@@ -16,6 +16,8 @@ public class TrigerObjectifC : MonoBehaviour {
 
 	public int afficheObjectif;
 
+	public GameObject letextequiveutpasdisparaitre;
+
 	// Use this for initialization
 	void Start () {
 		ObjectifGroup.alpha = 0;
@@ -50,6 +52,7 @@ public class TrigerObjectifC : MonoBehaviour {
 		}
 
 		if (afficheObjectif == 1) {
+			letextequiveutpasdisparaitre.SetActive (false);
 			StartCoroutine ("FadeInObjectifScreen");
 			AnimatedTextObjectifCode.PartObjectif ();
 		}

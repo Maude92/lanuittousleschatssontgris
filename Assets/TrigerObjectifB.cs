@@ -11,6 +11,8 @@ public class TrigerObjectifB : MonoBehaviour {
 	public GameObject MoiMeme; 
 	public Text MonObjectif;
 
+	public GameObject letextequiveutpasdisparaitre;
+
 	// Use this for initialization
 	void Start () {
 		ObjectifGroup.alpha = 0;
@@ -20,6 +22,7 @@ public class TrigerObjectifB : MonoBehaviour {
 	void OnTriggerEnter (Collider other){
 
 		if (other.gameObject.CompareTag("Player")){
+			letextequiveutpasdisparaitre.SetActive (false);
 			StartCoroutine ("FadeInObjectifScreen");
 			AnimatedTextObjectifCode.PartObjectif ();
 		}
@@ -28,6 +31,7 @@ public class TrigerObjectifB : MonoBehaviour {
 
 	void OnTriggerExit (Collider other){
 		if (other.gameObject.CompareTag ("Player")) {
+			//MonObjectif.text = "";
 			StartCoroutine("FadeOutObjectifScreen");
 			//MonObjectif.text = "";  //MAUDE !!! ESSAYE ICI VOIR SI ÇA RÈGLE LE BUG DE LA SUPERPOSITION
 		}
