@@ -5,6 +5,7 @@ using UnityEngine;
 public class DisableEventSystem : MonoBehaviour {
 
 	public GameObject player;
+	//PauseMenuNightLevel pausemenu;
 	PauseMenu pausemenu;
 
 	public GameObject eventSystem;

@@ -15,6 +15,10 @@ public class MistGoToSleepEnd : MonoBehaviour {
 	bool isfading = false;
 	bool isfadingtext = false;
 
+	public GameObject leboutonmenu;
+	public GameObject leeventsystemdouble;
+	public GameObject lenouveaueventsystem;
+
 	// Use this for initialization
 	void Start () {
 		anim = mistObj.GetComponent <Animator> ();
@@ -93,6 +97,10 @@ public class MistGoToSleepEnd : MonoBehaviour {
 		yield return new WaitForSeconds (2.3f);
 		player.SetActive (false);
 		isfadingtext = true;
+		yield return new WaitForSeconds (7f);
+		leeventsystemdouble.SetActive (false);
+		lenouveaueventsystem.SetActive (true);
+		leboutonmenu.SetActive (true);
 
 	}
 
