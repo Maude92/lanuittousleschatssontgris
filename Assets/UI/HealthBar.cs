@@ -133,7 +133,7 @@ public class HealthBar : MonoBehaviour {
 				//Fade to black
 				//Load au dernier checkpoint
 				currentHealth = maxHealth;			
-				health = 100;					
+				health = 50;		// FÉLIX! J'AI CHANGÉ ICI! AVANT C'ÉTAIT 100!!			
 			 	HBImage.GetComponent<Image>().fillAmount = health;
 				HBImage.GetComponent<Image> ().color = Color.Lerp (lowColor, fullColor, HBImage.GetComponent<Image>().fillAmount);
 
@@ -141,6 +141,9 @@ public class HealthBar : MonoBehaviour {
 
 			//Texte
 				//HBText.GetComponent<Text>().text = currentHealth.ToString();
+			} else if (NbVieRestant == 0){			// Pour que le son fatiguant de t'as pu de vie arrête de jouer quand tu es mort!! (Let Mist rest in peace, please)
+				currentHealth = maxHealth;
+				health = 50;
 			}
 
             //GameObject.DestroyObject(character.gameObject);
@@ -344,7 +347,10 @@ public class HealthBar : MonoBehaviour {
 		StartCoroutine("FadeOut");
 		StartCoroutine("FadeOutRed");
 
-
+		if (NbVieRestant == 0) {
+			LowVieSound.Stop ();
+			LowVieSound.enabled = false;
+		}
 
 		if (currentHealth <= 9 && !LowVieSound.isPlaying) {
 			LowVieSound.enabled = true;

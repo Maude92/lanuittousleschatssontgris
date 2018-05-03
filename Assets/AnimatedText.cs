@@ -35,6 +35,13 @@ public class AnimatedText : MonoBehaviour {
 	public bool pleaseFadeOut;
 	//public bool pleaseFadeIn;
 
+	// POUR AFFICHER LE MESSAGE QUAND T'AS PLUS DE VIE
+	public GameObject leeventsystemdouble;
+	public GameObject lenouveaueventsystem;
+	public GameObject messageFinUI;
+
+	HealthBar healthbarscript;
+
 
 
 	// Use this for initialization
@@ -57,23 +64,39 @@ public class AnimatedText : MonoBehaviour {
 		}
 
 		pausemenu = playerObj.GetComponent <PauseMenu> ();
+
+		healthbarscript = CodeUIvie.GetComponent<HealthBar> ();
 	
 	}
 
 	void Update () {
 		if (Input.GetButtonDown ("360_StartButton") && InstructionBoutonStart.alpha == 1) {
-			//Faire reloader le dernier checkpoint ou le début du niveau ?
-			//pausemenu.modePause = false;
-			print ("Je dois loader le dernier checkpoint ou faire reloader le level");
-			CeluiCi.alpha = 0;
-			//InstructionBoutonStart.alpha = 0;
-			reset = true;
-			SadSong.Stop ();
-			SadSong.enabled = false;
-			repartMusique = true;
-			levelmusique.enabled = true;
-			levelmusique.Play();
-
+			if (healthbarscript.NbVieRestant >= 1) {
+				//Faire reloader le dernier checkpoint ou le début du niveau ?
+				//pausemenu.modePause = false;
+				print ("Je dois loader le dernier checkpoint ou faire reloader le level");
+				CeluiCi.alpha = 0;
+				//InstructionBoutonStart.alpha = 0;
+				reset = true;
+				SadSong.Stop ();
+				SadSong.enabled = false;
+				repartMusique = true;
+				levelmusique.enabled = true;
+				levelmusique.Play ();
+			} else if (healthbarscript.NbVieRestant < 1){
+				// J'affiche le panneau de fin!
+				CeluiCi.alpha = 0;
+				reset = true;
+				leeventsystemdouble.SetActive (false);
+				lenouveaueventsystem.SetActive (true);
+				messageFinUI.SetActive (true);
+				levelmusique.volume = 0f;
+				levelmusique.enabled = false;
+				levelmusique.Stop ();
+				pausemenu.enabled = false;
+				//healthbarscript.enabled = false;
+				//playerObj.SetActive (false);
+			}
 		}
 
 		if (CodeUIvie.GetComponent<HealthBar> ().NbVieRestant == 0) {
