@@ -11,15 +11,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Start_Level_1.unity
     guid: 5305a0ec434221243a978d2c831aae27
-  - enabled: 1
-    path: Assets/Scenes/MainMenu_enconstruction.unity
-    guid: 335942eb987600446af64b7f209f8e13
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LeTutoriel_officiel.unity
     guid: efdfb37f9a127c04694f7de06c946e7f
   - enabled: 0
     path: Assets/Scenes/Start_Level_1_v2.unity
     guid: 47963e00bedba8b4f918c24b14594a85
+  - enabled: 1
+    path: Assets/Scenes/MainMenu_enconstruction.unity
+    guid: 335942eb987600446af64b7f209f8e13
+  - enabled: 1
+    path: Assets/Scenes/LeTutoriel_officiel_noshadow.unity
+    guid: 48271fd1ce400ab4197dea47b4fd9475
   - enabled: 1
     path: Assets/Scenes/Start_Level_1_vEffa.unity
     guid: a9604eef816cdd142ae7937a79ca7514

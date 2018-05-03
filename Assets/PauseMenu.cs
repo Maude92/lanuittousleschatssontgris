@@ -67,7 +67,7 @@ public class PauseMenu : MonoBehaviour {
 				if (jesuisdansleleveldenuit == false) {
 					musiqueTuto1.volume = 0.75f;
 				} else if (jesuisdansleleveldenuit == true) {
-					musiqueTuto1.volume = 0.85f;}
+					musiqueTuto1.volume = 0.8f;}
 			} else if (quellemusiquejoue.changeDeMusique == true){
 				// remonter le volume de la track 2
 				musiqueTuto2.volume = 1f;

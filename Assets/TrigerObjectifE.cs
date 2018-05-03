@@ -11,6 +11,8 @@ public class TrigerObjectifE : MonoBehaviour {
 	public GameObject MoiMeme; 
 	public Text MonObjectif;
 
+	public GameObject letextequiveutpasdisparaitre;		// Pour éviter le même bogue que dans le tuto, c'est le texte objectif précédent
+
 	// Use this for initialization
 	void Start () {
 		ObjectifGroup.alpha = 0;
@@ -20,6 +22,7 @@ public class TrigerObjectifE : MonoBehaviour {
 	void OnTriggerEnter (Collider other){
 
 		if (other.gameObject.CompareTag("Player")){
+			letextequiveutpasdisparaitre.SetActive (false);		// Pour éviter le même bogue que dans le tuto, c'est le texte objectif précédent
 			StartCoroutine ("FadeInObjectifScreen");
 			AnimatedTextObjectifCode.PartObjectif ();
 		}
