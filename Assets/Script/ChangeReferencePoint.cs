@@ -8,6 +8,8 @@ public class ChangeReferencePoint : MonoBehaviour {
 
 	public GameObject ColliderEnd;
 
+
+
 	// Use this for initialization
 	void Start () {
 		

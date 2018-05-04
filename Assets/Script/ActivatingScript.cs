@@ -19,6 +19,8 @@ public class ActivatingScript : MonoBehaviour {
 	TorqueOnTube ToT;
 	UiBoussolleBalancing UIScript;
 
+	public GameObject zerofriction;
+
 	public int youjumped = 0;
 
 
@@ -46,6 +48,7 @@ public class ActivatingScript : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider col){
 		if (col.tag == "Player") {
+			zerofriction.SetActive (false);
 			grincement.enabled = true;
 			grincement.Play ();
 			UIinfos.SetActive (true);
@@ -62,6 +65,7 @@ public class ActivatingScript : MonoBehaviour {
 
 	void OnTriggerExit(Collider col){
 		if (col.tag == "Player") {
+			zerofriction.SetActive (true);
 			transform.rotation = Quaternion.Euler (newRot);
 			TargetAngle.transform.rotation = Quaternion.Euler (TargetRot);
 			//ToT.directionOfRotation = -1;
