@@ -36,7 +36,7 @@ public class MistStopWhenIdle : MonoBehaviour {
 		anim.SetFloat ("Speed2", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		anim.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Vertical")));
 
-		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("AtoB") || anim.GetCurrentAnimatorStateInfo (0).IsName ("F_sleep") || anim.GetCurrentAnimatorStateInfo (0).IsName ("F_sleep_") || anim.GetCurrentAnimatorStateInfo (0).IsName ("A_eat") || anim.GetCurrentAnimatorStateInfo (0).IsName ("A_pole_start")) { 		// || anim.GetCurrentAnimatorStateInfo (0).IsName ("A_jump_end")
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("AtoB") || anim.GetCurrentAnimatorStateInfo (0).IsName ("F_sleep") || anim.GetCurrentAnimatorStateInfo (0).IsName ("AtoF_Dodo") || anim.GetCurrentAnimatorStateInfo (0).IsName ("F_sleep_") || anim.GetCurrentAnimatorStateInfo (0).IsName ("A_eat") || anim.GetCurrentAnimatorStateInfo (0).IsName ("A_pole_start")) { 		// || anim.GetCurrentAnimatorStateInfo (0).IsName ("A_jump_end")
 			xboxcontrolspc.enabled = false;
 			miawCount = 0;
 			nezDeChat.SetActive (false);
