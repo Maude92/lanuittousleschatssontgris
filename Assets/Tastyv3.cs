@@ -230,7 +230,7 @@ public class Tastyv3 : MonoBehaviour {
 		yield return new WaitForSeconds (5f);
 		animBarricade.SetBool ("MoveOut", false);
 		animBarricade.SetBool ("MoveIn", true);
-		yield return new WaitForSeconds (0.2f);
+		yield return new WaitForSeconds (1f);
 		animBarricade.SetBool ("MoveIn", false);
 		//thisfood.SetActive (false);
 		//Ieat = false;
