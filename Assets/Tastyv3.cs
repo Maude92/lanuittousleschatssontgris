@@ -30,6 +30,7 @@ public class Tastyv3 : MonoBehaviour {
 	public GameObject raccoon2;
 	public GameObject raccooncutscene1;
 	public GameObject raccooncutscene2;
+	public GameObject foodtasty;
 
 	public AudioClip Raccoon1;
 	public AudioClip dramatic;
@@ -232,6 +233,8 @@ public class Tastyv3 : MonoBehaviour {
 		animBarricade.SetBool ("MoveIn", true);
 		yield return new WaitForSeconds (1f);
 		animBarricade.SetBool ("MoveIn", false);
+		yield return new WaitForSeconds (1f);
+		foodtasty.SetActive (false);
 		//thisfood.SetActive (false);
 		//Ieat = false;
 	}

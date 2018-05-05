@@ -27,10 +27,17 @@ public class MistCanSleep : MonoBehaviour {
 
 	public bool pleaseFadeToBlack;
 
+	public GameObject music;
+	AudioSource audiosourcemusic;
+	public float timefade = 1f;
+	public bool fadelamusiquepournextlevel;
+
 	//public PlayableDirector Cinematique2;
 
 	// Use this for initialization
 	void Start () {
+		fadelamusiquepournextlevel = false;
+
 		//Cinematique2.Stop ();
 		pleaseFadeToBlack = false;
 		countObjetsDisparus = 0;
@@ -38,6 +45,8 @@ public class MistCanSleep : MonoBehaviour {
 		goToSleep = false;
 
 		anim = mistObj.GetComponent<Animator> ();
+
+		audiosourcemusic = music.GetComponent <AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -60,6 +69,10 @@ public class MistCanSleep : MonoBehaviour {
 			Color c = Black.color;
 			c.a += (Time.deltaTime * 2f);
 			Black.color = c;
+		}
+
+		if (fadelamusiquepournextlevel == true) {
+			audiosourcemusic.volume -= Time.deltaTime / timefade;
 		}
 	}
 
@@ -94,6 +107,7 @@ public class MistCanSleep : MonoBehaviour {
 	IEnumerator FadeToNextScreen(){
 		yield return new WaitForSeconds (3f);
 		pleaseFadeToBlack = true;
+		fadelamusiquepournextlevel = true;
 		yield return new WaitForSeconds (3f);
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 	}

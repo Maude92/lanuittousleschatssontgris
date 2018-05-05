@@ -18,6 +18,9 @@ public class GratteLePoteau : MonoBehaviour {
 
 	private AudioManager audioManager;
 
+	Xbox_Controls xboxcontrolspc;
+	public GameObject playerObj;
+
 
 	// Use this for initialization
 	void Start () {
@@ -29,13 +32,16 @@ public class GratteLePoteau : MonoBehaviour {
 		audioManager = AudioManager.instance;
 		if (audioManager == null) {
 			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");	}
+
+		xboxcontrolspc = playerObj.GetComponent<Xbox_Controls> ();
 	}
 
 
 
 
 	void OnTriggerStay (Collider other){
-		if (other.gameObject.tag == "NezDeChat" && (Input.GetButtonDown ("360_YButton"))) {
+		if (other.gameObject.tag == "NezDeChat" && (Input.GetButtonDown ("360_YButton")) && anim.GetCurrentAnimatorStateInfo (0).IsName ("A_idle")) {			// Test :  && anim.GetCurrentAnimatorStateInfo (0).IsName ("A_idle")
+			//xboxcontrolspc.enabled = false;
 			print ("Je gratte un poteau! Much fun!");
 			//audioManager.PlaySound ("GratteGratte");
 			StartCoroutine (MistGratte());
