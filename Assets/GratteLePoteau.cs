@@ -19,7 +19,9 @@ public class GratteLePoteau : MonoBehaviour {
 	private AudioManager audioManager;
 
 	Xbox_Controls xboxcontrolspc;
+	MistStopWhenIdle miststopwhenidlescript;
 	public GameObject playerObj;
+
 
 
 	// Use this for initialization
@@ -34,6 +36,7 @@ public class GratteLePoteau : MonoBehaviour {
 			Debug.LogError ("Attention le AudioManager n'est pas détecter dans cette scène");	}
 
 		xboxcontrolspc = playerObj.GetComponent<Xbox_Controls> ();
+		miststopwhenidlescript = playerObj.GetComponent <MistStopWhenIdle> ();
 	}
 
 
@@ -41,7 +44,8 @@ public class GratteLePoteau : MonoBehaviour {
 
 	void OnTriggerStay (Collider other){
 		if (other.gameObject.tag == "NezDeChat" && (Input.GetButtonDown ("360_YButton")) && anim.GetCurrentAnimatorStateInfo (0).IsName ("A_idle")) {			// Test :  && anim.GetCurrentAnimatorStateInfo (0).IsName ("A_idle")
-			//xboxcontrolspc.enabled = false;
+			xboxcontrolspc.enabled = false;
+			miststopwhenidlescript.enabled = false;
 			print ("Je gratte un poteau! Much fun!");
 			//audioManager.PlaySound ("GratteGratte");
 			StartCoroutine (MistGratte());
@@ -65,6 +69,7 @@ public class GratteLePoteau : MonoBehaviour {
 	IEnumerator MistGratte(){
 		yield return new WaitForSeconds (ledelai);
 		audioManager.PlaySound ("GratteGratte");
+		miststopwhenidlescript.enabled = true;
 		gameObject.GetComponent<Collider> ().enabled = false;
 		yield return new WaitForSeconds (3f);
 		gameObject.GetComponent<Collider> ().enabled = true;
