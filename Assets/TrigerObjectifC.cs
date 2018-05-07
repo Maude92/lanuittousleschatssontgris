@@ -57,12 +57,12 @@ public class TrigerObjectifC : MonoBehaviour {
 			AnimatedTextObjectifCode.PartObjectif ();
 		}
 
-		if (afficheObjectif == 400) {
+		if (afficheObjectif == 340) {
 			StartCoroutine("FadeOutObjectifScreen");
 		}
 
-		if (afficheObjectif >= 401) {
-			afficheObjectif = 401;
+		if (afficheObjectif >= 341) {
+			afficheObjectif = 341;
 		}
 
 	}

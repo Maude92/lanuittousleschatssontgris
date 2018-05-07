@@ -201,6 +201,7 @@ public class HealthBar : MonoBehaviour {
 			//			Vie7.enabled = true;
 			//			Vie8.enabled = true;
 			//			Vie9.enabled = true;
+			Circle.fillAmount = 1;
 		}
 
 		//S'il reste 8 Vie :
