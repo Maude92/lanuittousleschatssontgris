@@ -27,6 +27,11 @@ public class FlyingBirdTr3 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		//TEST
+		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, transform.eulerAngles.y, 0);
+		//FIN DU TEST
+
 		if (flying ==true){
 			transform.LookAt (Mist.transform.position);
 		}
